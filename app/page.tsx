@@ -1,6 +1,6 @@
 "use client";
 import AchievementsGrid from "@/components/home/AchievementsGrid";
-import DrawerThing from "@/components/navigation/DrawerThing";
+import NavDrawer from "@/components/navigation/DrawerThing";
 import { Menu } from "@mui/icons-material";
 import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -14,7 +14,7 @@ export default function Home() {
 	};
 	return (
 		<>
-			<DrawerThing toggleDrawer={toggleDrawer} open={open} />
+			<NavDrawer toggleDrawer={toggleDrawer} open={open} />
 			<AppBar
 				sx={{ backgroundColor: theme.palette.primary.main }}
 				position="sticky"
