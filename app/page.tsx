@@ -1,30 +1,22 @@
 "use client";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import styles from "./page.module.css";
 import {
 	AppBar,
 	Box,
 	Button,
 	Card,
 	CardContent,
-	Divider,
-	Drawer,
 	Grid,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
-	SwipeableDrawer,
 	Toolbar,
 	Typography,
 } from "@mui/material";
-import { grey } from "@mui/material/colors";
 import { useState } from "react";
 import { Menu } from "@mui/icons-material";
-import DrawerThing from "@/components/DrawerThing";
+import DrawerThing from "@/components/navigation/DrawerThing";
 import { useTheme } from "@mui/material/styles";
+import fagkomLogo from "@/public/fagkom.png";
+import onlineLogo from "@/public/Online_bla_o.svg";
+import Image from "next/image";
+import AchievementsGrid from "@/components/home/AchievementsGrid";
 
 export default function Home() {
 	const theme = useTheme();
@@ -62,38 +54,7 @@ export default function Home() {
 			>
 				Student at NTNU
 			</Typography>
-			<Box sx={{ flexGrow: 1 }} padding={2} maxWidth={400} mx={"auto"}>
-				<Grid container spacing={2}>
-					<Grid item xs={8}>
-						<Card>
-							<CardContent>
-								<Typography variant="body1">thingo</Typography>
-							</CardContent>
-						</Card>
-					</Grid>
-					<Grid item xs={4}>
-						<Card>
-							<CardContent>
-								<Typography variant="body1">thingo</Typography>
-							</CardContent>
-						</Card>
-					</Grid>
-					<Grid item xs={4}>
-						<Card>
-							<CardContent>
-								<Typography variant="body1">thingo</Typography>
-							</CardContent>
-						</Card>
-					</Grid>
-					<Grid item xs={8}>
-						<Card>
-							<CardContent>
-								<Typography variant="body1">thingo</Typography>
-							</CardContent>
-						</Card>
-					</Grid>
-				</Grid>
-			</Box>
+			<AchievementsGrid />
 		</>
 	);
 }
