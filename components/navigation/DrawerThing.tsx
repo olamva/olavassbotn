@@ -11,17 +11,11 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { usePathname } from "next/navigation";
+
 interface NavDrawerProps {
 	toggleDrawer: Function;
 	open: boolean;
 }
-type NavItem = {
-	label: string;
-	link?: string;
-	icon?: any;
-	filledIcon?: any;
-	isDivider?: boolean;
-};
 export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 	const pathname = usePathname();
 	const theme = useTheme();
