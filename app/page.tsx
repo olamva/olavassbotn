@@ -1,22 +1,10 @@
 "use client";
-import {
-	AppBar,
-	Box,
-	Button,
-	Card,
-	CardContent,
-	Grid,
-	Toolbar,
-	Typography,
-} from "@mui/material";
-import { useState } from "react";
-import { Menu } from "@mui/icons-material";
-import DrawerThing from "@/components/navigation/DrawerThing";
-import { useTheme } from "@mui/material/styles";
-import fagkomLogo from "@/public/fagkom.png";
-import onlineLogo from "@/public/Online_bla_o.svg";
-import Image from "next/image";
 import AchievementsGrid from "@/components/home/AchievementsGrid";
+import DrawerThing from "@/components/navigation/DrawerThing";
+import { Menu } from "@mui/icons-material";
+import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { useState } from "react";
 
 export default function Home() {
 	const theme = useTheme();

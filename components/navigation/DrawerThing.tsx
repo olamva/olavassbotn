@@ -6,9 +6,7 @@ import {
 	ListItemText,
 	Divider,
 	SwipeableDrawer,
-	Drawer,
 } from "@mui/material";
-import { useState } from "react";
 
 interface DrawerThingProps {
 	toggleDrawer: Function;
