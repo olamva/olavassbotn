@@ -1,7 +1,7 @@
 "use client";
 import theme from "@/public/theme";
 import { Menu } from "@mui/icons-material";
-import { AppBar, Button, Toolbar } from "@mui/material";
+import { Button } from "@mui/material";
 import { useState } from "react";
 import NavDrawer from "./NavDrawer";
 
@@ -13,19 +13,16 @@ export default function Home() {
 	return (
 		<>
 			<NavDrawer toggleDrawer={toggleDrawer} open={open} />
-			<AppBar
-				sx={{ backgroundColor: theme.palette.primary.main }}
-				position="sticky"
+			<Button
+				onClick={toggleDrawer(true)}
+				sx={{
+					color: theme.palette.secondary.main,
+					marginTop: "1rem",
+					marginLeft: "1rem",
+				}}
 			>
-				<Toolbar sx={{ color: theme.palette.primary.main }}>
-					<Button
-						onClick={toggleDrawer(true)}
-						sx={{ color: theme.palette.secondary.main }}
-					>
-						<Menu />
-					</Button>
-				</Toolbar>
-			</AppBar>
+				<Menu />
+			</Button>
 		</>
 	);
 }

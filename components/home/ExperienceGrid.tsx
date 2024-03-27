@@ -9,7 +9,7 @@ import Masonry from "@mui/lab/Masonry";
 import { Box, Card, CardContent, Divider, Typography } from "@mui/material";
 import Image from "next/image";
 
-const listItems: Achievement[] = [
+const listItems: Experience[] = [
 	{
 		title: "Fagkom Online",
 		description: "Nestleder 23/24",
@@ -60,7 +60,7 @@ const listItems: Achievement[] = [
 	},
 ];
 
-const AchievementsGrid = () => {
+const ExperienceGrid = () => {
 	return (
 		<Box sx={{ flexGrow: 1 }} padding={2} maxWidth={500} mx={"auto"}>
 			<Masonry columns={2} spacing={2}>
@@ -169,4 +169,4 @@ const AchievementsGrid = () => {
 	);
 };
 
-export default AchievementsGrid;
+export default ExperienceGrid;

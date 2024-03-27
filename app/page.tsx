@@ -1,6 +1,6 @@
 "use client";
-import AchievementsGrid from "@/components/home/AchievementsGrid";
-import NavBar from "@/components/navigation/NavBar";
+import Template from "@/components/default/template";
+import ExperienceGrid from "@/components/home/ExperienceGrid";
 import { Divider, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
@@ -12,8 +12,7 @@ export default function Home() {
 		setOpen(newOpen);
 	};
 	return (
-		<>
-			<NavBar />
+		<Template>
 			<Typography
 				variant="h1"
 				align="center"
@@ -48,7 +47,7 @@ export default function Home() {
 			>
 				Experience:
 			</Typography>
-			<AchievementsGrid />
-		</>
+			<ExperienceGrid />
+		</Template>
 	);
 }

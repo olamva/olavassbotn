@@ -85,7 +85,6 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			open={open}
 			onOpen={toggleDrawer(true)}
 			onClose={toggleDrawer(false)}
-			// make the color of the drawer itself theme.palette.primary.main
 			sx={{
 				"& .MuiDrawer-paper": {
 					backgroundColor: theme.palette.primary.main,

@@ -1,12 +1,9 @@
-import NavBar from "@/components/navigation/NavBar";
+import Template from "@/components/default/template";
 
 export default function Home() {
 	return (
-		<>
-			<NavBar />
-			<div>
-				<h1>Home</h1>
-			</div>
-		</>
+		<Template>
+			<></>
+		</Template>
 	);
 }
