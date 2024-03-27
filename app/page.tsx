@@ -1,8 +1,7 @@
 "use client";
 import AchievementsGrid from "@/components/home/AchievementsGrid";
-import NavDrawer from "@/components/navigation/DrawerThing";
-import { Menu } from "@mui/icons-material";
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import NavBar from "@/components/navigation/NavBar";
+import { Divider, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 
@@ -14,20 +13,7 @@ export default function Home() {
 	};
 	return (
 		<>
-			<NavDrawer toggleDrawer={toggleDrawer} open={open} />
-			<AppBar
-				sx={{ backgroundColor: theme.palette.primary.main }}
-				position="sticky"
-			>
-				<Toolbar sx={{ color: theme.palette.primary.main }}>
-					<Button
-						onClick={toggleDrawer(true)}
-						sx={{ color: theme.palette.secondary.main }}
-					>
-						<Menu />
-					</Button>
-				</Toolbar>
-			</AppBar>
+			<NavBar />
 			<Typography
 				variant="h1"
 				align="center"
@@ -36,11 +22,31 @@ export default function Home() {
 				Ola Munthe Vassbotn
 			</Typography>
 			<Typography
-				variant="h3"
+				variant="h4"
 				align="center"
+				marginBottom={2}
 				sx={{ color: theme.palette.primary.light, fontWeight: "light" }}
 			>
-				Student at NTNU
+				Bachelor of Informatics at NTNU
+			</Typography>
+			<Divider
+				sx={{
+					my: 1,
+					width: "60%",
+					margin: "auto",
+				}}
+				color={theme.palette.secondary.light}
+			/>
+			<Typography
+				variant="h4"
+				align="center"
+				marginTop={2}
+				sx={{
+					color: theme.palette.secondary.main,
+					fontWeight: "bold",
+				}}
+			>
+				Experience:
 			</Typography>
 			<AchievementsGrid />
 		</>

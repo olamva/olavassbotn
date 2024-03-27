@@ -1,4 +1,9 @@
-import { ContactPage, ContactPageOutlined } from "@mui/icons-material";
+import {
+	ContactPage,
+	ContactPageOutlined,
+	Home,
+	HomeOutlined,
+} from "@mui/icons-material";
 import {
 	Box,
 	Divider,
@@ -20,9 +25,12 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 	const pathname = usePathname();
 	const theme = useTheme();
 	const itemList: NavItem[] = [
-		{ label: "Test1" },
-		{ label: "Test2" },
-		{ label: "Test3" },
+		{
+			label: "Home",
+			icon: HomeOutlined,
+			filledIcon: Home,
+			link: "/",
+		},
 		{ label: "Divider1", isDivider: true },
 		{
 			label: "Contact",
@@ -40,7 +48,11 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			<List sx={{ color: theme.palette.secondary.main }}>
 				{itemList.map((item) =>
 					item.isDivider ? (
-						<Divider key={`divider-${item.label}`} />
+						<Divider
+							key={item.label}
+							color={theme.palette.primary.light}
+							sx={{ margin: "auto", width: "90%" }}
+						/>
 					) : (
 						<ListItem key={item.label} disablePadding>
 							<ListItemButton

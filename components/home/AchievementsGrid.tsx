@@ -1,6 +1,7 @@
 import onlineLogo from "@/public/Online_bla_o.svg";
 import fagkomLogo from "@/public/fagkom.png";
 import javaLogo from "@/public/java.webp";
+import nextjsLogo from "@/public/next-js.svg";
 import pythonLogo from "@/public/python.webp";
 import reactLogo from "@/public/react.png";
 import theme from "@/public/theme";
@@ -26,24 +27,34 @@ const listItems: Achievement[] = [
 		],
 	},
 	{
-		title: "Java skills",
+		title: "Java",
 		imgs: [
 			{ src: javaLogo, alt: "Java logo", href: "https://www.java.com/" },
 		],
 	},
 	{
-		title: "React skills",
+		title: "React",
 		imgs: [
 			{ src: reactLogo, alt: "React logo", href: "https://reactjs.org/" },
 		],
 	},
 	{
-		title: "Python skills",
+		title: "Python",
 		imgs: [
 			{
 				src: pythonLogo,
 				alt: "Python logo",
 				href: "https://www.python.org/",
+			},
+		],
+	},
+	{
+		title: "Next.js",
+		imgs: [
+			{
+				src: nextjsLogo,
+				alt: "Next.JS logo",
+				href: "https://nextjs.org/",
 			},
 		],
 	},
