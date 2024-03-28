@@ -1,6 +1,7 @@
 "use client";
 import onlineLogo from "@/public/Online_bla_o.svg";
-import fagkomLogo from "@/public/fagkom.png";
+import fagkomLogoDark from "@/public/fagkomDark.png";
+import fagkomLogoLight from "@/public/fagkomLight.png";
 import javaLogo from "@/public/java.webp";
 import nextjsLogo from "@/public/next-js.svg";
 import pythonLogo from "@/public/python.webp";
@@ -16,11 +17,12 @@ import {
 } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Image, { StaticImageData } from "next/image";
+import { useEffect } from "react";
 
 const listItems = {
 	0: [
 		{
-			src: fagkomLogo,
+			src: fagkomLogoLight,
 			alt: "Fagkom Online sin logo",
 			href: "https://old.online.ntnu.no/wiki/online/historie/fagkom/",
 		},
@@ -74,6 +76,13 @@ interface ImportedImage {
 
 const ExperienceGrid = () => {
 	const theme = useTheme();
+	useEffect(() => {
+		if (theme.palette.mode === "dark") {
+			listItems[0][0].src = fagkomLogoDark;
+		} else {
+			listItems[0][0].src = fagkomLogoLight;
+		}
+	}, [theme.palette.mode]);
 	const t = useTranslations("experience");
 	let experienceList: Experience[] = [];
 	Object.keys(listItems).forEach((key) => {
@@ -101,7 +110,7 @@ const ExperienceGrid = () => {
 					<Card
 						key={index}
 						sx={{
-							backgroundColor: theme.palette.secondary.main,
+							backgroundColor: theme.palette.primary.main,
 						}}
 					>
 						<CardContent
@@ -158,7 +167,11 @@ const ExperienceGrid = () => {
 							) : null}
 							{/* Box aligns text */}
 							<Box sx={{ margin: "auto", textAlign: "center" }}>
-								<Typography fontWeight={"bold"} variant="body1">
+								<Typography
+									fontWeight={"bold"}
+									variant="body1"
+									color={theme.palette.primary.contrastText}
+								>
 									{item.title}
 								</Typography>
 								{item.description && (
@@ -170,7 +183,13 @@ const ExperienceGrid = () => {
 												width: "90%",
 											}}
 										/>
-										<Typography variant="body1">
+										<Typography
+											variant="body1"
+											color={
+												theme.palette.primary
+													.contrastText
+											}
+										>
 											{item.description}
 										</Typography>
 									</>
