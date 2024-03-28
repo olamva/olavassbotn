@@ -1,12 +1,19 @@
+"use client";
 import onlineLogo from "@/public/Online_bla_o.svg";
 import fagkomLogo from "@/public/fagkom.png";
 import javaLogo from "@/public/java.webp";
 import nextjsLogo from "@/public/next-js.svg";
 import pythonLogo from "@/public/python.webp";
 import reactLogo from "@/public/react.png";
-import theme from "@/public/theme";
 import Masonry from "@mui/lab/Masonry";
-import { Box, Card, CardContent, Divider, Typography } from "@mui/material";
+import {
+	Box,
+	Card,
+	CardContent,
+	Divider,
+	Typography,
+	useTheme,
+} from "@mui/material";
 import Image from "next/image";
 
 const listItems: Experience[] = [
@@ -61,6 +68,7 @@ const listItems: Experience[] = [
 ];
 
 const ExperienceGrid = () => {
+	const theme = useTheme();
 	return (
 		<Box sx={{ flexGrow: 1 }} padding={2} maxWidth={500} mx={"auto"}>
 			<Masonry columns={2} spacing={2}>
