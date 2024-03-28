@@ -32,6 +32,7 @@ export default function Home() {
 				>
 					<Menu />
 				</IconButton>
+
 				<Box>
 					<ThemeToggle />
 					<LangToggle />

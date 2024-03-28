@@ -13,6 +13,7 @@ export default function LocaleLayout({
 	return (
 		<html lang={locale}>
 			<NextIntlClientProvider locale={locale} messages={messages}>
+
 				<ApplicationShell>{children}</ApplicationShell>
 			</NextIntlClientProvider>
 		</html>
