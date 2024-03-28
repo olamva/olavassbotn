@@ -46,8 +46,9 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			onClick={toggleDrawer(false)}
 		>
 			<List sx={{ color: theme.palette.secondary.main }}>
-				{itemList.map((item) =>
-					item.isDivider ? (
+				{itemList.map((item) => {
+					const isActive = pathname === item.link;
+					return item.isDivider ? (
 						<Divider
 							key={item.label}
 							color={theme.palette.primary.light}
@@ -56,12 +57,12 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 					) : (
 						<ListItem key={item.label} disablePadding>
 							<ListItemButton
-								component={item.link ? "a" : "div"}
-								href={item.link || ""}
+								component={isActive ? "div" : "a"}
+								href={isActive ? undefined : item.link}
 							>
 								{item.icon && (
 									<ListItemIcon>
-										{pathname === item.link ? (
+										{isActive ? (
 											<item.filledIcon
 												sx={{ color: "white" }}
 											/>
@@ -75,8 +76,8 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 								<ListItemText primary={item.label} />
 							</ListItemButton>
 						</ListItem>
-					)
-				)}
+					);
+				})}
 			</List>
 		</Box>
 	);
