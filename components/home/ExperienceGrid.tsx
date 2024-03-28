@@ -1,70 +1,103 @@
+"use client";
 import onlineLogo from "@/public/Online_bla_o.svg";
 import fagkomLogo from "@/public/fagkom.png";
 import javaLogo from "@/public/java.webp";
 import nextjsLogo from "@/public/next-js.svg";
 import pythonLogo from "@/public/python.webp";
 import reactLogo from "@/public/react.png";
-import theme from "@/public/theme";
 import Masonry from "@mui/lab/Masonry";
-import { Box, Card, CardContent, Divider, Typography } from "@mui/material";
-import Image from "next/image";
+import {
+	Box,
+	Card,
+	CardContent,
+	Divider,
+	Typography,
+	useTheme,
+} from "@mui/material";
+import { useTranslations } from "next-intl";
+import Image, { StaticImageData } from "next/image";
 
-const listItems: Experience[] = [
-	{
-		title: "Fagkom Online",
-		description: "Nestleder 23/24",
-		imgs: [
-			{
-				src: fagkomLogo,
-				alt: "Fagkom Online sin logo",
-				href: "https://old.online.ntnu.no/wiki/online/historie/fagkom/",
-			},
-			{
-				src: onlineLogo,
-				alt: "Online sin logo",
-				href: "https://online.ntnu.no/",
-			},
-		],
-	},
-	{
-		title: "Java",
-		imgs: [
-			{ src: javaLogo, alt: "Java logo", href: "https://www.java.com/" },
-		],
-	},
-	{
-		title: "React",
-		imgs: [
-			{ src: reactLogo, alt: "React logo", href: "https://reactjs.org/" },
-		],
-	},
-	{
-		title: "Python",
-		imgs: [
-			{
-				src: pythonLogo,
-				alt: "Python logo",
-				href: "https://www.python.org/",
-			},
-		],
-	},
-	{
-		title: "Next.js",
-		imgs: [
-			{
-				src: nextjsLogo,
-				alt: "Next.JS logo",
-				href: "https://nextjs.org/",
-			},
-		],
-	},
-];
+const listItems = {
+	0: [
+		{
+			src: fagkomLogo,
+			alt: "Fagkom Online sin logo",
+			href: "https://old.online.ntnu.no/wiki/online/historie/fagkom/",
+		},
+		{
+			src: onlineLogo,
+			alt: "Online sin logo",
+			href: "https://online.ntnu.no/",
+		},
+	],
+	1: [
+		{
+			src: javaLogo,
+			alt: "Java logo",
+			href: "https://www.java.com/",
+		},
+	],
+	2: [
+		{
+			src: reactLogo,
+			alt: "React logo",
+			href: "https://reactjs.org/",
+		},
+	],
+	3: [
+		{
+			src: pythonLogo,
+			alt: "Python logo",
+			href: "https://www.python.org/",
+		},
+	],
+	4: [
+		{
+			src: nextjsLogo,
+			alt: "Next.JS logo",
+			href: "https://nextjs.org/",
+		},
+	],
+};
+
+interface Experience {
+	title: string;
+	description?: string;
+	imgs: ImportedImage[];
+}
+
+interface ImportedImage {
+	src: StaticImageData | string;
+	alt: string;
+	href?: string;
+}
 
 const ExperienceGrid = () => {
+	const theme = useTheme();
+	const t = useTranslations("experience");
+	let experienceList: Experience[] = [];
+	Object.keys(listItems).forEach((key) => {
+		const numericKey = parseInt(key) as keyof typeof listItems;
+		const item = listItems[numericKey];
+		const experience: Experience = {
+			title: t(`${key}.title`),
+			imgs: item.map((img: ImportedImage) => ({
+				src: img.src,
+				alt: img.alt,
+				href: img.href,
+			})),
+		};
+		const hasDescription = t(`${key}.hasDescription`);
+		if (hasDescription == "true") {
+			experience.description = t(`${key}.description`);
+		}
+		experienceList.push(experience);
+	});
+
 	return (
-		<Box sx={{ flexGrow: 1 }} padding={2} maxWidth={500} mx={"auto"}>
+		<Box p={2} maxWidth="50%" m={"auto"}>
 			<Masonry columns={2} spacing={2}>
-				{listItems.map((item, index) => (
+				{experienceList.map((item, index) => (
 					<Card
 						key={index}
 						sx={{
@@ -77,90 +110,72 @@ const ExperienceGrid = () => {
 								"&:last-child": {
 									paddingBottom: "16px",
 								},
+								display: "flex",
+								alignItems: "center",
 							}}
 						>
 							{item.imgs.length > 0 ? (
+								// Box stacks images
 								<Box
 									sx={{
 										display: "flex",
+										flexDirection: "column",
 										alignItems: "center",
+										justifyContent: "center",
 									}}
 								>
-									<Box
-										sx={{
-											display: "flex",
-											flexDirection: "column",
-											alignItems: "center",
-											marginRight: 3,
-										}}
-									>
-										{item.imgs.map((img, imgIndex) => (
-											<Image
-												key={imgIndex}
-												src={img.src}
-												alt={img.alt}
-												onClick={() => {
-													img.href &&
-														(window.location.href =
-															img.href);
-												}}
-												height={30}
-												width={30}
-												style={{
-													margin:
-														imgIndex === 0
-															? "0 0 5px 0"
-															: "5px 0 0 0",
-													cursor: img.href
-														? "pointer"
-														: "default",
-												}}
-											/>
-										))}
-									</Box>
-									<Box
-										sx={{
-											display: "flex",
-											flexDirection: "column",
-											alignItems: "center",
-										}}
-									>
-										<Typography fontWeight={"bold"}>
-											{item.title}
-										</Typography>
-
-										{item.description && (
-											<>
-												<Divider
-													sx={{
-														my: 1,
-														width: "100%",
-													}}
-												/>
-												<Typography>
-													{item.description}
-												</Typography>
-											</>
-										)}
-									</Box>
+									{item.imgs.map((img, imgIndex) => (
+										<Image
+											key={imgIndex}
+											src={img.src}
+											alt={img.alt}
+											onClick={() => {
+												img.href &&
+													(window.location.href =
+														img.href);
+											}}
+											height={30}
+											width={30}
+											style={{
+												cursor: img.href
+													? "pointer"
+													: "default",
+												marginBottom:
+													item.imgs.length > 1 &&
+													imgIndex !==
+														item.imgs.length - 1
+														? "10px"
+														: "0px",
+												marginTop:
+													item.imgs.length > 1 &&
+													imgIndex !== 0
+														? "10px"
+														: "0px",
+											}}
+										/>
+									))}
 								</Box>
-							) : (
-								<>
-									<Typography fontWeight={"bold"}>
-										{item.title}
-									</Typography>
-									{item.description && (
-										<>
-											<Divider
-												sx={{ my: 1, width: "100%" }}
-											/>
-											<Typography>
-												{item.description}
-											</Typography>
-										</>
-									)}
-								</>
-							)}
+							) : null}
+							{/* Box aligns text */}
+							<Box sx={{ margin: "auto", textAlign: "center" }}>
+								<Typography fontWeight={"bold"} variant="body1">
+									{item.title}
+								</Typography>
+								{item.description && (
+									<>
+										<Divider
+											sx={{
+												my: 1,
+												mx: "auto",
+												width: "90%",
+											}}
+										/>
+										<Typography variant="body1">
+											{item.description}
+										</Typography>
+									</>
+								)}
+							</Box>
 						</CardContent>
 					</Card>
 				))}

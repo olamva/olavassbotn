@@ -15,6 +15,7 @@ import {
 	SwipeableDrawer,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 
 interface NavDrawerProps {
@@ -22,6 +23,8 @@ interface NavDrawerProps {
 	open: boolean;
 }
 export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
+	const locale = useLocale();
+	const root = "/" + locale;
 	const pathname = usePathname();
 	const theme = useTheme();
 	const itemList: NavItem[] = [
@@ -29,14 +32,14 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			label: "Home",
 			icon: HomeOutlined,
 			filledIcon: Home,
-			link: "/",
+			link: root,
 		},
 		{ label: "Divider1", isDivider: true },
 		{
 			label: "Contact",
 			icon: ContactPageOutlined,
 			filledIcon: ContactPage,
-			link: "/contact",
+			link: root + "/contact",
 		},
 	];
 	const DrawerList = (
@@ -46,8 +49,9 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			onClick={toggleDrawer(false)}
 		>
 			<List sx={{ color: theme.palette.secondary.main }}>
-				{itemList.map((item) =>
-					item.isDivider ? (
+				{itemList.map((item) => {
+					const isActive = pathname === item.link;
+					return item.isDivider ? (
 						<Divider
 							key={item.label}
 							color={theme.palette.primary.light}
@@ -56,12 +60,12 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 					) : (
 						<ListItem key={item.label} disablePadding>
 							<ListItemButton
-								component={item.link ? "a" : "div"}
-								href={item.link || ""}
+								component={isActive ? "div" : "a"}
+								href={isActive ? undefined : item.link}
 							>
 								{item.icon && (
 									<ListItemIcon>
-										{pathname === item.link ? (
+										{isActive ? (
 											<item.filledIcon
 												sx={{ color: "white" }}
 											/>
@@ -75,8 +79,8 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 								<ListItemText primary={item.label} />
 							</ListItemButton>
 						</ListItem>
-					)
-				)}
+					);
+				})}
 			</List>
 		</Box>
 	);

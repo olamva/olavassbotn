@@ -1,32 +1,35 @@
 "use client";
-import Template from "@/components/default/template";
 import ExperienceGrid from "@/components/home/ExperienceGrid";
 import { Divider, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useState } from "react";
+import { useTranslations } from "next-intl";
 
-export default function Home() {
+type HomePageProps = {
+	params: { locale: string };
+};
+
+export default function Home({ params: { locale } }: HomePageProps) {
+	const t = useTranslations("HomePage");
 	const theme = useTheme();
-	const [open, setOpen] = useState(false);
-	const toggleDrawer = (newOpen: boolean) => () => {
-		setOpen(newOpen);
-	};
 	return (
-		<Template>
+		<>
 			<Typography
 				variant="h1"
 				align="center"
 				sx={{ color: theme.palette.secondary.main }}
 			>
-				Ola Munthe Vassbotn
+				{t("title")}
 			</Typography>
 			<Typography
 				variant="h4"
 				align="center"
 				marginBottom={2}
-				sx={{ color: theme.palette.primary.light, fontWeight: "light" }}
+				sx={{
+					color: theme.palette.primary.light,
+					fontWeight: "light",
+				}}
 			>
-				Bachelor of Informatics at NTNU
+				{t("subtitle")}
 			</Typography>
 			<Divider
 				sx={{
@@ -45,9 +48,9 @@ export default function Home() {
 					fontWeight: "bold",
 				}}
 			>
-				Experience:
+				{t("experienceTitle")}
 			</Typography>
 			<ExperienceGrid />
-		</Template>
+		</>
 	);
 }
