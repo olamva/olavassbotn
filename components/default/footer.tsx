@@ -62,7 +62,15 @@ export default function Footer() {
 							mb: 2,
 						}}
 					>
-						<social.icon sx={{ color: "white" }} fontSize="large" />
+						<social.icon
+							sx={{
+								color:
+									theme.palette.mode == "dark"
+										? "white"
+										: "black",
+							}}
+							fontSize="large"
+						/>
 					</Link>
 				))}
 			</Box>
@@ -87,11 +95,22 @@ export default function Footer() {
 					>
 						<Box sx={{ display: "flex", alignItems: "center" }}>
 							<contact.icon
-								sx={{ color: "white", mr: 1 }}
+								sx={{
+									color:
+										theme.palette.mode == "dark"
+											? "white"
+											: "black",
+									mr: 1,
+								}}
 								fontSize="large"
 							/>
 							{contact.label && (
-								<Typography sx={{ color: "white" }}>
+								<Typography
+									sx={{
+										color: theme.palette.primary
+											.contrastText,
+									}}
+								>
 									{contact.label}
 								</Typography>
 							)}

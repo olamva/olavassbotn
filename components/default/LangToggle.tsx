@@ -1,17 +1,20 @@
 import NOFlag from "@/public/NO.png";
 import UKFlag from "@/public/UK.png";
+// TODO swap out UK flag with US flag
 import { Button } from "@mui/material";
 import { useLocale } from "next-intl";
 import Image, { StaticImageData } from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const LangToggle: React.FC = () => {
 	const locale = useLocale();
 	const router = useRouter();
+	const pathname = usePathname();
 	const toggleLanguage = () => {
-		// if the locale is "en", set router to "/no" else set it to "/en"
-		router.push(locale === "en" ? "/no" : "/en");
+		const newLocale = locale === "en" ? "no" : "en";
+		const newPathname = "/" + newLocale + pathname.slice(3);
+		router.push(newPathname);
 	};
 
 	const languages: { [key: string]: StaticImageData } = {

@@ -1,8 +1,10 @@
 import {
-	ContactPage,
-	ContactPageOutlined,
+	Assignment,
+	AssignmentOutlined,
 	Home,
 	HomeOutlined,
+	Person,
+	PersonOutlined,
 } from "@mui/icons-material";
 import {
 	Box,
@@ -36,10 +38,16 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 		},
 		{ label: "Divider1", isDivider: true },
 		{
-			label: "Contact",
-			icon: ContactPageOutlined,
-			filledIcon: ContactPage,
-			link: root + "/contact",
+			label: "Projects",
+			icon: AssignmentOutlined,
+			filledIcon: Assignment,
+			link: root + "/projects",
+		},
+		{
+			label: "About Me",
+			icon: PersonOutlined,
+			filledIcon: Person,
+			link: root + "/about-me",
 		},
 	];
 	const DrawerList = (
@@ -67,11 +75,23 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 									<ListItemIcon>
 										{isActive ? (
 											<item.filledIcon
-												sx={{ color: "white" }}
+												sx={{
+													color:
+														theme.palette.mode ==
+														"dark"
+															? "white"
+															: "black",
+												}}
 											/>
 										) : (
 											<item.icon
-												sx={{ color: "white" }}
+												sx={{
+													color:
+														theme.palette.mode ==
+														"dark"
+															? "white"
+															: "black",
+												}}
 											/>
 										)}
 									</ListItemIcon>
