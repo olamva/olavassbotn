@@ -12,20 +12,9 @@ export default function ApplicationShell({
 	children: React.ReactNode;
 }) {
 	const [mode, setMode] = useState<PaletteMode>("light");
-	const colorMode = useMemo(
-		() => ({
-			// The dark mode switch would invoke this method
-			toggleColorMode: () => {
-				setMode((prevMode: PaletteMode) =>
-					prevMode === "light" ? "dark" : "light"
-				);
-			},
-		}),
-		[]
-	);
 	const theme = useMemo(() => makeThemeWithMode(mode), [mode]);
 	return (
-		<ThemeModeProvider>
+		<ThemeModeProvider mode={mode} setMode={setMode}>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
 				<body>

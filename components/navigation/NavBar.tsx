@@ -3,6 +3,7 @@ import LangToggle from "@/components/default/LangToggle";
 import { Menu } from "@mui/icons-material";
 import { Box, IconButton, useTheme } from "@mui/material";
 import { useState } from "react";
+import ThemeToggle from "../default/ThemeToggle";
 import NavDrawer from "./NavDrawer";
 export default function Home() {
 	const theme = useTheme();
@@ -31,11 +32,11 @@ export default function Home() {
 				>
 					<Menu />
 				</IconButton>
-				<LangToggle />
+				<Box>
+					<ThemeToggle />
+					<LangToggle />
+				</Box>
 			</Box>
-			{
-				// TODO Add a button that onClick changes from light mode to dark mode
-			}
 		</>
 	);
 }

@@ -1,5 +1,5 @@
-import ThemeToggle from "@/components/default/ThemeToggle";
+import { Typography } from "@mui/material";
 
 export default function Home() {
-	return <ThemeToggle />;
+	return <Typography variant="h1">TODO</Typography>;
 }
