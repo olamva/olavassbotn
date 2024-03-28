@@ -3,5 +3,28 @@
 		"title": "Ola Munthe Vassbotn",
 		"subtitle": "Bachelor of Informatics at NTNU",
 		"experienceTitle": "Experience:"
+	},
+	"experience": {
+		"0": {
+			"title": "Academic Courses Comittee, Student Organization Online",
+			"hasDescription": "true",
+			"description": "Deputy Head 23/24"
+		},
+		"1": {
+			"title": "Java",
+			"hasDescription": "false"
+		},
+		"2": {
+			"title": "Python",
+			"hasDescription": "false"
+		},
+		"3": {
+			"title": "React",
+			"hasDescription": "false"
+		},
+		"4": {
+			"title": "Next.js",
+			"hasDescription": "false"
+		}
 	}
 }

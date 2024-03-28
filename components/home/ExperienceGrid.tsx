@@ -14,65 +14,96 @@ import {
 	Typography,
 	useTheme,
 } from "@mui/material";
-import Image from "next/image";
+import { useTranslations } from "next-intl";
+import Image, { StaticImageData } from "next/image";
 
-const listItems: Experience[] = [
-	{
-		title: "Fagkom Online",
-		description: "Nestleder 23/24",
-		imgs: [
-			{
-				src: fagkomLogo,
-				alt: "Fagkom Online sin logo",
-				href: "https://old.online.ntnu.no/wiki/online/historie/fagkom/",
-			},
-			{
-				src: onlineLogo,
-				alt: "Online sin logo",
-				href: "https://online.ntnu.no/",
-			},
-		],
-	},
-	{
-		title: "Java",
-		imgs: [
-			{ src: javaLogo, alt: "Java logo", href: "https://www.java.com/" },
-		],
-	},
-	{
-		title: "React",
-		imgs: [
-			{ src: reactLogo, alt: "React logo", href: "https://reactjs.org/" },
-		],
-	},
-	{
-		title: "Python",
-		imgs: [
-			{
-				src: pythonLogo,
-				alt: "Python logo",
-				href: "https://www.python.org/",
-			},
-		],
-	},
-	{
-		title: "Next.js",
-		imgs: [
-			{
-				src: nextjsLogo,
-				alt: "Next.JS logo",
-				href: "https://nextjs.org/",
-			},
-		],
-	},
-];
+const listItems = {
+	0: [
+		{
+			src: fagkomLogo,
+			alt: "Fagkom Online sin logo",
+			href: "https://old.online.ntnu.no/wiki/online/historie/fagkom/",
+		},
+		{
+			src: onlineLogo,
+			alt: "Online sin logo",
+			href: "https://online.ntnu.no/",
+		},
+	],
+	1: [
+		{
+			src: javaLogo,
+			alt: "Java logo",
+			href: "https://www.java.com/",
+		},
+	],
+	2: [
+		{
+			src: reactLogo,
+			alt: "React logo",
+			href: "https://reactjs.org/",
+		},
+	],
+	3: [
+		{
+			src: pythonLogo,
+			alt: "Python logo",
+			href: "https://www.python.org/",
+		},
+	],
+	4: [
+		{
+			src: nextjsLogo,
+			alt: "Next.JS logo",
+			href: "https://nextjs.org/",
+		},
+	],
+};
+
+interface Experience {
+	title: string;
+	description?: string;
+	imgs: ImportedImage[];
+}
+
+interface ImportedImage {
+	src: StaticImageData | string;
+	alt: string;
+	href?: string;
+}
 
 const ExperienceGrid = () => {
 	const theme = useTheme();
+	const t = useTranslations("experience");
+	let experienceList: Experience[] = [];
+	Object.keys(listItems).forEach((key) => {
+		const numericKey = parseInt(key) as keyof typeof listItems;
+		const item = listItems[numericKey];
+		const experience: Experience = {
+			title: t(`${key}.title`),
+			imgs: item.map((img: ImportedImage) => ({
+				src: img.src,
+				alt: img.alt,
+				href: img.href,
+			})),
+		};
+		const hasDescription = t(`${key}.hasDescription`);
+		if (hasDescription == "true") {
+			console.log(hasDescription);
+			experience.description = t(`${key}.description`);
+		}
+		experienceList.push(experience);
+	});
+
 	return (
-		<Box sx={{ flexGrow: 1 }} padding={2} maxWidth={500} mx={"auto"}>
+		<Box
+			sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}
+			padding={2}
+			maxWidth="50%"
+			mx={"auto"}
+		>
 			<Masonry columns={2} spacing={2}>
-				{listItems.map((item, index) => (
+				{experienceList.map((item, index) => (
 					<Card
 						key={index}
 						sx={{
@@ -99,7 +130,7 @@ const ExperienceGrid = () => {
 											display: "flex",
 											flexDirection: "column",
 											alignItems: "center",
-											marginRight: 3,
+											justifyContent: "center",
 										}}
 									>
 										{item.imgs.map((img, imgIndex) => (
@@ -131,6 +162,7 @@ const ExperienceGrid = () => {
 											display: "flex",
 											flexDirection: "column",
 											alignItems: "center",
+											margin: "auto",
 										}}
 									>
 										<Typography fontWeight={"bold"}>
