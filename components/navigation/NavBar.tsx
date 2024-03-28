@@ -23,6 +23,12 @@ export default function Home() {
 			>
 				<Menu />
 			</Button>
+			{
+				// TODO Add a button that onClick changes from light mode to dark mode
+			}
+			{
+				// TODO Add a button that onClick changes language from english to norwegian
+			}
 		</>
 	);
 }
