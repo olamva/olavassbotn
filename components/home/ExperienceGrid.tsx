@@ -157,17 +157,17 @@ const ExperienceGrid = () => {
 								</Box>
 							) : null}
 							{/* Box aligns text */}
-							<Box sx={{ margin: "auto" }}>
+							<Box sx={{ margin: "auto", textAlign: "center" }}>
 								<Typography fontWeight={"bold"} variant="body1">
 									{item.title}
 								</Typography>
-
 								{item.description && (
 									<>
 										<Divider
 											sx={{
 												my: 1,
-												width: "100%",
+												mx: "auto",
+												width: "90%",
 											}}
 										/>
 										<Typography variant="body1">
