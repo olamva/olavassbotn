@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ola Munthe Vassbotn
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+Introduce yourself and provide a brief overview of who you are, what you do, and your areas of expertise.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Projects
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+List any notable projects you have worked on or are currently working on. Include a brief description and any relevant links or documentation.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Skills
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Highlight your key skills and technologies that you are proficient in. This can include programming languages, frameworks, tools, or any other relevant skills.
 
-## Learn More
+## Experience
 
-To learn more about Next.js, take a look at the following resources:
+Provide a summary of your professional experience, including any relevant positions, companies, or organizations you have worked with. You can also mention any certifications or awards you have received.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Education
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+List your educational background, including any degrees or certifications you have obtained.
 
-## Deploy on Vercel
+## Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Include your contact information, such as email address or social media profiles, so that others can reach out to you.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+
+Specify the license under which your code or projects are released, if applicable.
+
+## Acknowledgements
+
+Give credit to any individuals or resources that have contributed to your work or have inspired you.
+
+## Contributing
+
+Provide guidelines for others who may want to contribute to your projects, such as how to report issues or submit pull requests.
+
+## Feedback
+
+Encourage readers to provide feedback or suggestions for improvement.
+
+## Conclusion
+
+Wrap up your README with a closing statement or call to action.
