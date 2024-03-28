@@ -15,6 +15,7 @@ import {
 	SwipeableDrawer,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 
 interface NavDrawerProps {
@@ -22,6 +23,8 @@ interface NavDrawerProps {
 	open: boolean;
 }
 export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
+	const locale = useLocale();
+	const root = "/" + locale;
 	const pathname = usePathname();
 	const theme = useTheme();
 	const itemList: NavItem[] = [
@@ -29,14 +32,14 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			label: "Home",
 			icon: HomeOutlined,
 			filledIcon: Home,
-			link: "/",
+			link: root,
 		},
 		{ label: "Divider1", isDivider: true },
 		{
 			label: "Contact",
 			icon: ContactPageOutlined,
 			filledIcon: ContactPage,
-			link: "/contact",
+			link: root + "/contact",
 		},
 	];
 	const DrawerList = (
