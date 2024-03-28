@@ -3,5 +3,28 @@
 		"title": "Ola Munthe Vassbotn",
 		"subtitle": "Bachelor i informatikk ved NTNU",
 		"experienceTitle": "Erfaring:"
+	},
+	"experience": {
+		"0": {
+			"title": "Fag- og kurskomiteen, Linjeforeningen Online",
+			"hasDescription": "true",
+			"description": "Nestleder 23/24"
+		},
+		"1": {
+			"title": "Java",
+			"hasDescription": "false"
+		},
+		"2": {
+			"title": "Python",
+			"hasDescription": "false"
+		},
+		"3": {
+			"title": "React",
+			"hasDescription": "false"
+		},
+		"4": {
+			"title": "Next.js",
+			"hasDescription": "false"
+		}
 	}
 }
