@@ -1,23 +1,27 @@
-// import { useLanguage } from "@/contexts/LanguageContext";
 import NOFlag from "@/public/NO.png";
 import UKFlag from "@/public/UK.png";
 import { Button } from "@mui/material";
+import { useLocale } from "next-intl";
 import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
+
 const LangToggle: React.FC = () => {
-	// const { language, setLanguage } = useLanguage();
-	// const toggleLanguage = () => {
-	// 	setLanguage(language === "en" ? "no" : "en");
-	// };
+	const locale = useLocale();
+	const router = useRouter();
+	const toggleLanguage = () => {
+		// if the locale is "en", set router to "/no" else set it to "/en"
+		router.push(locale === "en" ? "/no" : "/en");
+	};
 
 	const languages: { [key: string]: StaticImageData } = {
 		en: UKFlag,
 		no: NOFlag,
 	};
-	// const flagSrc = languages[language];
+	const flagSrc = languages[locale];
 	return (
 		<Button
-			// onClick={toggleLanguage}
+			onClick={toggleLanguage}
 			sx={{
 				background: "none",
 				border: "none",
@@ -33,8 +37,7 @@ const LangToggle: React.FC = () => {
 			}}
 		>
 			<Image
-				// src={flagSrc}
-				src={NOFlag}
+				src={flagSrc}
 				alt="Toggle Language"
 				width={27}
 				height={27}
