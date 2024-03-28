@@ -89,19 +89,13 @@ const ExperienceGrid = () => {
 		};
 		const hasDescription = t(`${key}.hasDescription`);
 		if (hasDescription == "true") {
-			console.log(hasDescription);
 			experience.description = t(`${key}.description`);
 		}
 		experienceList.push(experience);
 	});
 
 	return (
-		<Box
-			sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}
-			padding={2}
-			maxWidth="50%"
-			mx={"auto"}
-		>
+		<Box p={2} maxWidth="50%" m={"auto"}>
 			<Masonry columns={2} spacing={2}>
 				{experienceList.map((item, index) => (
 					<Card
@@ -116,91 +110,72 @@ const ExperienceGrid = () => {
 								"&:last-child": {
 									paddingBottom: "16px",
 								},
+								display: "flex",
+								alignItems: "center",
 							}}
 						>
 							{item.imgs.length > 0 ? (
+								// Box stacks images
 								<Box
 									sx={{
 										display: "flex",
+										flexDirection: "column",
 										alignItems: "center",
+										justifyContent: "center",
 									}}
 								>
-									<Box
-										sx={{
-											display: "flex",
-											flexDirection: "column",
-											alignItems: "center",
-											justifyContent: "center",
-										}}
-									>
-										{item.imgs.map((img, imgIndex) => (
-											<Image
-												key={imgIndex}
-												src={img.src}
-												alt={img.alt}
-												onClick={() => {
-													img.href &&
-														(window.location.href =
-															img.href);
-												}}
-												height={30}
-												width={30}
-												style={{
-													margin:
-														imgIndex === 0
-															? "0 0 5px 0"
-															: "5px 0 0 0",
-													cursor: img.href
-														? "pointer"
-														: "default",
-												}}
-											/>
-										))}
-									</Box>
-									<Box
-										sx={{
-											display: "flex",
-											flexDirection: "column",
-											alignItems: "center",
-											margin: "auto",
-										}}
-									>
-										<Typography fontWeight={"bold"}>
-											{item.title}
-										</Typography>
-
-										{item.description && (
-											<>
-												<Divider
-													sx={{
-														my: 1,
-														width: "100%",
-													}}
-												/>
-												<Typography>
-													{item.description}
-												</Typography>
-											</>
-										)}
-									</Box>
+									{item.imgs.map((img, imgIndex) => (
+										<Image
+											key={imgIndex}
+											src={img.src}
+											alt={img.alt}
+											onClick={() => {
+												img.href &&
+													(window.location.href =
+														img.href);
+											}}
+											height={30}
+											width={30}
+											style={{
+												cursor: img.href
+													? "pointer"
+													: "default",
+												marginBottom:
+													item.imgs.length > 1 &&
+													imgIndex !==
+														item.imgs.length - 1
+														? "10px"
+														: "0px",
+												marginTop:
+													item.imgs.length > 1 &&
+													imgIndex !== 0
+														? "10px"
+														: "0px",
+											}}
+										/>
+									))}
 								</Box>
-							) : (
-								<>
-									<Typography fontWeight={"bold"}>
-										{item.title}
-									</Typography>
-									{item.description && (
-										<>
-											<Divider
-												sx={{ my: 1, width: "100%" }}
-											/>
-											<Typography>
-												{item.description}
-											</Typography>
-										</>
-									)}
-								</>
-							)}
+							) : null}
+							{/* Box aligns text */}
+							<Box sx={{ margin: "auto" }}>
+								<Typography fontWeight={"bold"} variant="body1">
+									{item.title}
+								</Typography>
+
+								{item.description && (
+									<>
+										<Divider
+											sx={{
+												my: 1,
+												width: "100%",
+											}}
+										/>
+										<Typography variant="body1">
+											{item.description}
+										</Typography>
+									</>
+								)}
+							</Box>
 						</CardContent>
 					</Card>
 				))}
