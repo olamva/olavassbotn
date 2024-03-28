@@ -18,13 +18,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<LanguageProvider>
-			<html lang="en">
+		<html lang="en">
+			<LanguageProvider>
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
 					<body>{children}</body>
 				</ThemeProvider>
-			</html>
-		</LanguageProvider>
+			</LanguageProvider>
+		</html>
 	);
 }
