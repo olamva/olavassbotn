@@ -1,8 +1,9 @@
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import theme from "@/public/theme";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider, CssBaseline } from "@mui/material";
-import theme from "@/public/theme";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,15 +14,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
-}: Readonly<{
+}: {
 	children: React.ReactNode;
-}>) {
+}) {
 	return (
-		<html lang="en">
-			<ThemeProvider theme={theme}>
-				<CssBaseline />
-				<body className={inter.className}>{children}</body>
-			</ThemeProvider>
-		</html>
+		<LanguageProvider>
+			<html lang="en">
+				<ThemeProvider theme={theme}>
+					<CssBaseline />
+					<body>{children}</body>
+				</ThemeProvider>
+			</html>
+		</LanguageProvider>
 	);
 }
