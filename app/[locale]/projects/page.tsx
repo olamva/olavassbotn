@@ -1,6 +1,5 @@
 import { Typography } from "@mui/material";
 
 export default function Home() {
-
-	return <Typography variant="h1">TODO</Typography>;
+	return <Typography variant="h1">TODO PROJECTS</Typography>;
 }

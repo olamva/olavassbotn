@@ -1,16 +1,18 @@
 "use client";
 import LangToggle from "@/components/default/LangToggle";
-import { Menu } from "@mui/icons-material";
+import { Home, Menu } from "@mui/icons-material";
 import { Box, IconButton, useTheme } from "@mui/material";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import ThemeToggle from "../default/ThemeToggle";
 import NavDrawer from "./NavDrawer";
-export default function Home() {
+export default function NavBar() {
 	const theme = useTheme();
 	const [open, setOpen] = useState(false);
 	const toggleDrawer = (newOpen: boolean) => () => {
 		setOpen(newOpen);
 	};
+	const pathname = usePathname();
 	return (
 		<>
 			<NavDrawer toggleDrawer={toggleDrawer} open={open} />
@@ -24,14 +26,24 @@ export default function Home() {
 					marginRight: "1rem",
 				}}
 			>
-				<IconButton
-					onClick={toggleDrawer(true)}
-					sx={{
-						color: theme.palette.secondary.main,
-					}}
-				>
-					<Menu />
-				</IconButton>
+				<Box>
+					<IconButton
+						onClick={toggleDrawer(true)}
+						sx={{
+							color: theme.palette.secondary.main,
+						}}
+					>
+						<Menu />
+					</IconButton>
+					<IconButton
+						href={pathname == "/no" || pathname == "/en" ? "" : "/"}
+						sx={{
+							color: theme.palette.secondary.main,
+						}}
+					>
+						<Home />
+					</IconButton>
+				</Box>
 
 				<Box>
 					<ThemeToggle />
