@@ -1,13 +1,7 @@
 import "@/app/globals.css";
-import Template from "@/components/default/template";
-import theme from "@/public/theme";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import ApplicationShell from "@/components/default/ApplicationShell";
 import { NextIntlClientProvider, useMessages } from "next-intl";
-import { Inter } from "next/font/google";
 import { ReactNode } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
-
 export default function LocaleLayout({
 	children,
 	params: { locale },
@@ -19,12 +13,8 @@ export default function LocaleLayout({
 	return (
 		<html lang={locale}>
 			<NextIntlClientProvider locale={locale} messages={messages}>
-				<ThemeProvider theme={theme}>
-					<CssBaseline />
-					<body>
-						<Template>{children}</Template>
-					</body>
-				</ThemeProvider>
+
+				<ApplicationShell>{children}</ApplicationShell>
 			</NextIntlClientProvider>
 		</html>
 	);

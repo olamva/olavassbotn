@@ -1,11 +1,12 @@
 "use client";
 import LangToggle from "@/components/default/LangToggle";
-import theme from "@/public/theme";
 import { Menu } from "@mui/icons-material";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, useTheme } from "@mui/material";
 import { useState } from "react";
+import ThemeToggle from "../default/ThemeToggle";
 import NavDrawer from "./NavDrawer";
 export default function Home() {
+	const theme = useTheme();
 	const [open, setOpen] = useState(false);
 	const toggleDrawer = (newOpen: boolean) => () => {
 		setOpen(newOpen);
@@ -31,11 +32,12 @@ export default function Home() {
 				>
 					<Menu />
 				</IconButton>
-				<LangToggle />
+
+				<Box>
+					<ThemeToggle />
+					<LangToggle />
+				</Box>
 			</Box>
-			{
-				// TODO Add a button that onClick changes from light mode to dark mode
-			}
 		</>
 	);
 }
