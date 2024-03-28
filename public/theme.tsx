@@ -1,20 +1,16 @@
 "use client";
-import { createTheme } from "@mui/material/styles";
+import { Theme, createTheme } from "@mui/material/styles";
 
-const theme = createTheme({
+export const makeThemeWithMode = (mode: "light" | "dark"): Theme => {
+	return createTheme({
+		palette: {
+			mode: mode,
+		},
+	});
+};
+
+export const theme = createTheme({
 	palette: {
-		primary: {
-			main: "#31363F",
-			light: "#76ABAE",
-			dark: "#31363F",
-		},
-		secondary: {
-			main: "#EEEEEE",
-			light: "#085156",
-		},
-		background: {
-			default: "#222831",
-		},
+		mode: "dark",
 	},
 });
-export default theme;
