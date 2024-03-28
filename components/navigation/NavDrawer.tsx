@@ -75,11 +75,23 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 									<ListItemIcon>
 										{isActive ? (
 											<item.filledIcon
-												sx={{ color: "white" }}
+												sx={{
+													color:
+														theme.palette.mode ==
+														"dark"
+															? "white"
+															: "black",
+												}}
 											/>
 										) : (
 											<item.icon
-												sx={{ color: "white" }}
+												sx={{
+													color:
+														theme.palette.mode ==
+														"dark"
+															? "white"
+															: "black",
+												}}
 											/>
 										)}
 									</ListItemIcon>
