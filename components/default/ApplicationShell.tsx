@@ -4,19 +4,20 @@ import ThemeModeProvider from "@/contexts/ThemeModeProvider";
 import { makeThemeWithMode } from "@/public/theme";
 import { ThemeProvider } from "@emotion/react";
 import { CssBaseline, PaletteMode } from "@mui/material";
+import Cookies from "js-cookie";
 import { useEffect, useMemo, useState } from "react";
+
 export default function ApplicationShell({
 	children,
+	savedMode,
 }: {
 	children: React.ReactNode;
+	savedMode: PaletteMode;
 }) {
-	const [mode, setMode] = useState<PaletteMode>(() => {
-		const savedMode = localStorage.getItem("themeMode");
-		return (savedMode as PaletteMode) || "light";
-	});
+	const [mode, setMode] = useState<PaletteMode>(savedMode);
 	useEffect(() => {
-		localStorage.setItem("themeMode", mode);
-	}, [mode]);
+		Cookies.set("themeMode", mode);
+	}, [mode, savedMode]);
 	const theme = useMemo(() => makeThemeWithMode(mode), [mode]);
 	return (
 		<ThemeModeProvider mode={mode} setMode={setMode}>
