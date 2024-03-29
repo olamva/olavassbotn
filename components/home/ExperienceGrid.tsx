@@ -18,12 +18,12 @@ import {
 } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Image, { StaticImageData } from "next/image";
-import { useEffect } from "react";
 
 const listItems = {
 	0: [
 		{
 			src: fagkomLogoLight,
+			darkSrc: fagkomLogoDark,
 			alt: "Fagkom Online sin logo",
 			href: "https://old.online.ntnu.no/wiki/online/historie/fagkom/",
 		},
@@ -71,6 +71,7 @@ interface Experience {
 
 interface ImportedImage {
 	src: StaticImageData | string;
+	darkSrc?: StaticImageData | string;
 	alt: string;
 	href?: string;
 }
@@ -78,13 +79,6 @@ interface ImportedImage {
 const ExperienceGrid = () => {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
-	useEffect(() => {
-		if (theme.palette.mode === "dark") {
-			listItems[0][0].src = fagkomLogoDark;
-		} else {
-			listItems[0][0].src = fagkomLogoLight;
-		}
-	}, [theme.palette.mode]);
 	const t = useTranslations("experience");
 	let experienceList: Experience[] = [];
 	Object.keys(listItems).forEach((key) => {
@@ -94,6 +88,7 @@ const ExperienceGrid = () => {
 			title: t(`${key}.title`),
 			imgs: item.map((img: ImportedImage) => ({
 				src: img.src,
+				darkSrc: img.darkSrc,
 				alt: img.alt,
 				href: img.href,
 			})),
@@ -106,8 +101,12 @@ const ExperienceGrid = () => {
 	});
 
 	return (
-		<Box p={2} maxWidth="65%" m={"auto"}>
-			<Masonry columns={matches ? 1 : 2} spacing={2}>
+		<Box p={2} maxWidth={matches ? "80%" : "65%"} m={"auto"}>
+			<Masonry
+				columns={matches ? 1 : 2}
+				sx={{ m: 0, width: "100%" }}
+				spacing={2}
+			>
 				{experienceList.map((item, index) => (
 					<Card
 						key={index}
@@ -117,68 +116,88 @@ const ExperienceGrid = () => {
 					>
 						<CardContent
 							sx={{
-								padding: "16px",
+								padding: "24px",
 								"&:last-child": {
-									paddingBottom: "16px",
+									paddingBottom: "24px",
 								},
 								display: "flex",
-								alignItems: "center",
-								lineHeight: "1.5", // Adjust line height for better text wrapping
+								lineHeight: "1.5",
 							}}
 						>
 							{item.imgs.length > 0 ? (
-								// Box stacks images
 								<Box
 									sx={{
 										display: "flex",
 										flexDirection: "column",
 										alignItems: "center",
 										justifyContent: "center",
+										marginRight: "24px",
 									}}
 								>
 									{item.imgs.map((img, imgIndex) => (
-										<Image
+										<Box
 											key={imgIndex}
-											src={img.src}
-											alt={img.alt}
-											onClick={() => {
-												img.href &&
-													(window.location.href =
-														img.href);
+											sx={{
+												width: 30,
+												height: 30,
+												paddingTop: "100%",
+												position: "relative",
 											}}
-											height={30}
-											width={30}
-											style={{
-												cursor: img.href
-													? "pointer"
-													: "default",
-												marginBottom:
-													item.imgs.length > 1 &&
-													imgIndex !==
-														item.imgs.length - 1
-														? "10px"
-														: "0px",
-												marginTop:
-													item.imgs.length > 1 &&
-													imgIndex !== 0
-														? "10px"
-														: "0px",
-											}}
-										/>
+										>
+											<Image
+												src={
+													theme.palette.mode == "dark"
+														? img.src
+														: img.darkSrc ?? img.src
+												}
+												alt={img.alt}
+												onClick={() => {
+													img.href &&
+														(window.location.href =
+															img.href);
+												}}
+												style={{
+													position: "absolute",
+													top: 0,
+													left: 0,
+													width: "100%",
+													height: "100%",
+													cursor: img.href
+														? "pointer"
+														: "default",
+													marginBottom:
+														item.imgs.length > 1 &&
+														imgIndex !==
+															item.imgs.length - 1
+															? "10px"
+															: "0px",
+													marginTop:
+														item.imgs.length > 1 &&
+														imgIndex !== 0
+															? "10px"
+															: "0px",
+												}}
+											/>
+										</Box>
 									))}
 								</Box>
 							) : null}
 							{/* Box aligns text */}
-							<Box sx={{ margin: "auto", textAlign: "center" }}>
+							<Box
+								sx={{
+									my: "auto",
+									// textAlign: "center",
+								}}
+							>
 								<Typography
 									fontWeight={"bold"}
 									variant="body1"
 									color={theme.palette.primary.contrastText}
 									sx={{
 										fontSize: {
-											xs: "0.75rem", // for xs breakpoint
-											sm: "0.875rem", // for sm breakpoint
-											md: "1rem", // for md breakpoint and above
+											xs: "0.75rem",
+											sm: "0.875rem",
+											md: "1rem",
 										},
 									}}
 								>
@@ -190,20 +209,15 @@ const ExperienceGrid = () => {
 											sx={{
 												my: 1,
 												mx: "auto",
-												width: "90%",
+												width: "100%",
 											}}
 										/>
 										<Typography
-											variant="body2"
-											color={
-												theme.palette.primary
-													.contrastText
-											}
 											sx={{
 												fontSize: {
-													xs: "0.75rem", // for xs breakpoint
-													sm: "0.875rem", // for sm breakpoint
-													md: "1rem", // for md breakpoint and above
+													xs: "0.75rem",
+													sm: "0.875rem",
+													md: "1rem",
 												},
 											}}
 										>

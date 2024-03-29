@@ -1,10 +1,11 @@
 "use client";
 import { Email, GitHub, LinkedIn, Phone } from "@mui/icons-material";
-import { Box, Link, Typography } from "@mui/material";
+import { Box, Link, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 export default function Footer() {
 	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 	const socialLinks: SocialLink[] = [
 		{
 			icon: GitHub,
@@ -31,7 +32,7 @@ export default function Footer() {
 		<Box
 			component="footer"
 			sx={{
-				py: 5,
+				py: matches ? 2 : 4,
 				m: "auto",
 				width: "100%",
 				backgroundColor: theme.palette.primary.main,
@@ -59,7 +60,7 @@ export default function Footer() {
 							textDecoration: "none",
 							display: "flex",
 							alignItems: "center",
-							mb: 2,
+							mb: index == contactLinks.length - 1 ? 0 : 2,
 						}}
 					>
 						<social.icon
@@ -90,7 +91,7 @@ export default function Footer() {
 							textDecoration: "none",
 							display: "flex",
 							alignItems: "center",
-							mb: 2,
+							mb: index == contactLinks.length - 1 ? 0 : 2,
 						}}
 					>
 						<Box sx={{ display: "flex", alignItems: "center" }}>
