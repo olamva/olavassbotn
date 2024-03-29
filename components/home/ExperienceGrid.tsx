@@ -3,7 +3,7 @@ import onlineLogo from "@/public/Online_bla_o.svg";
 import fagkomLogoDark from "@/public/fagkomDark.png";
 import fagkomLogoLight from "@/public/fagkomLight.png";
 import javaLogo from "@/public/java.webp";
-import nextjsLogo from "@/public/next-js.svg";
+import nextLogo from "@/public/next-js.svg";
 import pythonLogo from "@/public/python.webp";
 import reactLogo from "@/public/react.png";
 import Masonry from "@mui/lab/Masonry";
@@ -18,62 +18,72 @@ import {
 } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
-const listItems = {
-	0: [
-		{
-			src: fagkomLogoLight,
-			darkSrc: fagkomLogoDark,
-			alt: "Fagkom Online sin logo",
-			href: "https://old.online.ntnu.no/wiki/online/historie/fagkom/",
-		},
-		{
-			src: onlineLogo,
-			alt: "Online sin logo",
-			href: "https://online.ntnu.no/",
-		},
-	],
-	1: [
-		{
-			src: javaLogo,
-			alt: "Java logo",
-			href: "https://www.java.com/",
-		},
-	],
-	2: [
-		{
-			src: pythonLogo,
-			alt: "Python logo",
-			href: "https://www.python.org/",
-		},
-	],
-	3: [
-		{
-			src: reactLogo,
-			alt: "React logo",
-			href: "https://reactjs.org/",
-		},
-	],
-	4: [
-		{
-			src: nextjsLogo,
-			alt: "Next.JS logo",
-			href: "https://nextjs.org/",
-		},
-	],
-};
+const listItems = [
+	{
+		href: "https://online.ntnu.no/",
+		imgs: [
+			{
+				src: fagkomLogoLight,
+				darkSrc: fagkomLogoDark,
+				alt: "Fagkom Online sin logo",
+			},
+			{
+				src: onlineLogo,
+				alt: "Online sin logo",
+			},
+		],
+	},
+	{
+		href: "https://www.java.com/",
+		imgs: [
+			{
+				src: javaLogo,
+				alt: "Java logo",
+			},
+		],
+	},
+	{
+		href: "https://www.python.org/",
+		imgs: [
+			{
+				src: pythonLogo,
+				alt: "Python logo",
+			},
+		],
+	},
+	{
+		href: "https://reactjs.org/",
+		imgs: [
+			{
+				src: reactLogo,
+				alt: "React logo",
+			},
+		],
+	},
+	{
+		href: "https://nextjs.org/",
+		imgs: [
+			{
+				src: nextLogo,
+				alt: "Next.JS logo",
+			},
+		],
+	},
+];
 
 interface Experience {
 	title: string;
 	description?: string;
 	imgs: ImportedImage[];
+	href?: string;
 }
 
 interface ImportedImage {
 	src: StaticImageData | string;
 	darkSrc?: StaticImageData | string;
 	alt: string;
-	href?: string;
 }
 
 const ExperienceGrid = () => {
@@ -81,21 +91,23 @@ const ExperienceGrid = () => {
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 	const t = useTranslations("experience");
 	let experienceList: Experience[] = [];
-	Object.keys(listItems).forEach((key) => {
-		const numericKey = parseInt(key) as keyof typeof listItems;
-		const item = listItems[numericKey];
+	listItems.forEach((item, index) => {
+		const imgs = item.imgs;
 		const experience: Experience = {
-			title: t(`${key}.title`),
-			imgs: item.map((img: ImportedImage) => ({
+			title: t(`${index}.title`),
+			imgs: imgs.map((img: ImportedImage) => ({
 				src: img.src,
 				darkSrc: img.darkSrc,
 				alt: img.alt,
-				href: img.href,
 			})),
 		};
-		const hasDescription = t(`${key}.hasDescription`);
+		const hasDescription = t(`${index}.hasDescription`);
 		if (hasDescription == "true") {
-			experience.description = t(`${key}.description`);
+			experience.description = t(`${index}.description`);
+		}
+		const href = item.href;
+		if (href) {
+			experience.href = href;
 		}
 		experienceList.push(experience);
 	});
@@ -114,119 +126,120 @@ const ExperienceGrid = () => {
 							backgroundColor: theme.palette.primary.main,
 						}}
 					>
-						<CardContent
-							sx={{
-								padding: "24px",
-								"&:last-child": {
-									paddingBottom: "24px",
-								},
-								display: "flex",
-								lineHeight: "1.5",
-							}}
-						>
-							{item.imgs.length > 0 ? (
-								<Box
-									sx={{
-										display: "flex",
-										flexDirection: "column",
-										alignItems: "center",
-										justifyContent: "center",
-										marginRight: "24px",
-									}}
-								>
-									{item.imgs.map((img, imgIndex) => (
-										<Box
-											key={imgIndex}
-											sx={{
-												width: 30,
-												height: 30,
-												paddingTop: "100%",
-												position: "relative",
-											}}
-										>
-											<Image
-												src={
-													theme.palette.mode == "dark"
-														? img.src
-														: img.darkSrc ?? img.src
-												}
-												alt={img.alt}
-												onClick={() => {
-													img.href &&
-														(window.location.href =
-															img.href);
-												}}
-												style={{
-													position: "absolute",
-													top: 0,
-													left: 0,
-													width: "100%",
-													height: "100%",
-													cursor: img.href
-														? "pointer"
-														: "default",
-													marginBottom:
-														item.imgs.length > 1 &&
-														imgIndex !==
-															item.imgs.length - 1
-															? "10px"
-															: "0px",
-													marginTop:
-														item.imgs.length > 1 &&
-														imgIndex !== 0
-															? "10px"
-															: "0px",
-												}}
-											/>
-										</Box>
-									))}
-								</Box>
-							) : null}
-							{/* Box aligns text */}
-							<Box
+						<Link style={{ width: "100%" }} href={item.href || ""}>
+							<CardContent
 								sx={{
-									my: "auto",
-									// textAlign: "center",
+									padding: "24px",
+									"&:last-child": {
+										paddingBottom: "24px",
+									},
+									display: "flex",
+									lineHeight: "1.5",
+									cursor: item.href ? "pointer" : "default",
 								}}
 							>
-								<Typography
-									fontWeight={"bold"}
-									variant="body1"
-									color={theme.palette.primary.contrastText}
+								{item.imgs.length > 0 ? (
+									<Box
+										sx={{
+											display: "flex",
+											flexDirection: "column",
+											alignItems: "center",
+											justifyContent: "center",
+											marginRight: "24px",
+										}}
+									>
+										{item.imgs.map((img, imgIndex) => (
+											<Box
+												key={imgIndex}
+												sx={{
+													width: 30,
+													height: 30,
+													paddingTop: "100%",
+													position: "relative",
+												}}
+											>
+												<Image
+													src={
+														theme.palette.mode ==
+														"dark"
+															? img.src
+															: img.darkSrc ??
+															  img.src
+													}
+													alt={img.alt}
+													style={{
+														position: "absolute",
+														top: 0,
+														left: 0,
+														width: "100%",
+														height: "100%",
+														marginBottom:
+															item.imgs.length >
+																1 &&
+															imgIndex !==
+																item.imgs
+																	.length -
+																	1
+																? "10px"
+																: "0px",
+														marginTop:
+															item.imgs.length >
+																1 &&
+															imgIndex !== 0
+																? "10px"
+																: "0px",
+													}}
+												/>
+											</Box>
+										))}
+									</Box>
+								) : null}
+								<Box
 									sx={{
-										fontSize: {
-											xs: "0.75rem",
-											sm: "0.875rem",
-											md: "1rem",
-										},
+										my: "auto",
 									}}
 								>
-									{item.title}
-								</Typography>
-								{item.description && (
-									<>
-										<Divider
-											sx={{
-												my: 1,
-												mx: "auto",
-												width: "100%",
-											}}
-										/>
-										<Typography
-											sx={{
-												fontSize: {
-													xs: "0.75rem",
-													sm: "0.875rem",
-													md: "1rem",
-												},
-											}}
-										>
-											{item.description}
-										</Typography>
-									</>
-								)}
-							</Box>
-						</CardContent>
+									<Typography
+										fontWeight="bold"
+										variant="body1"
+										color={
+											theme.palette.primary.contrastText
+										}
+										sx={{
+											fontSize: {
+												xs: "0.75rem",
+												sm: "0.875rem",
+												md: "1rem",
+											},
+										}}
+									>
+										{item.title}
+									</Typography>
+									{item.description && (
+										<>
+											<Divider
+												sx={{
+													my: 1,
+													mx: "auto",
+													width: "100%",
+												}}
+											/>
+											<Typography
+												sx={{
+													fontSize: {
+														xs: "0.75rem",
+														sm: "0.875rem",
+														md: "1rem",
+													},
+												}}
+											>
+												{item.description}
+											</Typography>
+										</>
+									)}
+								</Box>
+							</CardContent>
+						</Link>
 					</Card>
 				))}
 			</Masonry>
