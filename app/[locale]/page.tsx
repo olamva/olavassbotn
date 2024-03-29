@@ -31,7 +31,8 @@ export default function Home({ params: { locale } }: HomePageProps) {
 			<Typography
 				variant="h4"
 				align="center"
-				marginBottom={2}
+				mb={2}
+				mt={1}
 				sx={{
 					color: theme.palette.primary.light,
 					fontWeight: "light",
