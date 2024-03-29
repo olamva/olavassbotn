@@ -3,6 +3,7 @@ import LangToggle from "@/components/default/LangToggle";
 import { Home, Menu } from "@mui/icons-material";
 import { Box, IconButton, useTheme } from "@mui/material";
 import { useLocale } from "next-intl";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import ThemeToggle from "../default/ThemeToggle";
@@ -35,14 +36,19 @@ export default function NavBar() {
 					>
 						<Menu />
 					</IconButton>
-					<IconButton
+					<Link
+						style={{ width: "100%" }}
 						href={pathname == "/" + locale ? "" : "/" + locale}
-						sx={{
-							color: theme.palette.secondary.main,
-						}}
+						passHref
 					>
-						<Home />
-					</IconButton>
+						<IconButton
+							sx={{
+								color: theme.palette.secondary.main,
+							}}
+						>
+							<Home />
+						</IconButton>
+					</Link>
 				</Box>
 
 				<Box>
