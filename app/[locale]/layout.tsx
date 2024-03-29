@@ -2,6 +2,7 @@ import "@/app/globals.css";
 import ApplicationShell from "@/components/default/ApplicationShell";
 import { Metadata } from "next";
 import { NextIntlClientProvider, useMessages } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function LocaleLayout({
 	children: ReactNode;
 	params: { locale: string };
 }) {
+	unstable_setRequestLocale(locale);
 	const messages = useMessages();
 	return (
 		<html lang={locale}>
