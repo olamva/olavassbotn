@@ -13,6 +13,7 @@ import {
 	CardContent,
 	Divider,
 	Typography,
+	useMediaQuery,
 	useTheme,
 } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -76,6 +77,7 @@ interface ImportedImage {
 
 const ExperienceGrid = () => {
 	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 	useEffect(() => {
 		if (theme.palette.mode === "dark") {
 			listItems[0][0].src = fagkomLogoDark;
@@ -104,8 +106,8 @@ const ExperienceGrid = () => {
 	});
 
 	return (
-		<Box p={2} maxWidth="50%" m={"auto"}>
-			<Masonry columns={2} spacing={2}>
+		<Box p={2} maxWidth="65%" m={"auto"}>
+			<Masonry columns={matches ? 1 : 2} spacing={2}>
 				{experienceList.map((item, index) => (
 					<Card
 						key={index}
@@ -121,6 +123,7 @@ const ExperienceGrid = () => {
 								},
 								display: "flex",
 								alignItems: "center",
+								lineHeight: "1.5", // Adjust line height for better text wrapping
 							}}
 						>
 							{item.imgs.length > 0 ? (
@@ -171,6 +174,13 @@ const ExperienceGrid = () => {
 									fontWeight={"bold"}
 									variant="body1"
 									color={theme.palette.primary.contrastText}
+									sx={{
+										fontSize: {
+											xs: "0.75rem", // for xs breakpoint
+											sm: "0.875rem", // for sm breakpoint
+											md: "1rem", // for md breakpoint and above
+										},
+									}}
 								>
 									{item.title}
 								</Typography>
@@ -184,11 +194,18 @@ const ExperienceGrid = () => {
 											}}
 										/>
 										<Typography
-											variant="body1"
+											variant="body2"
 											color={
 												theme.palette.primary
 													.contrastText
 											}
+											sx={{
+												fontSize: {
+													xs: "0.75rem", // for xs breakpoint
+													sm: "0.875rem", // for sm breakpoint
+													md: "1rem", // for md breakpoint and above
+												},
+											}}
 										>
 											{item.description}
 										</Typography>
