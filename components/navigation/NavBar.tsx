@@ -21,9 +21,7 @@ export default function NavBar() {
 					display: "flex",
 					justifyContent: "space-between",
 					alignItems: "center",
-					marginTop: "1rem",
-					marginLeft: "1rem",
-					marginRight: "1rem",
+					margin: "1rem",
 				}}
 			>
 				<Box>
