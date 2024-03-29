@@ -39,7 +39,6 @@ export default function NavBar() {
 					<Link
 						style={{ width: "100%" }}
 						href={pathname == "/" + locale ? "" : "/" + locale}
-						passHref
 					>
 						<IconButton
 							sx={{

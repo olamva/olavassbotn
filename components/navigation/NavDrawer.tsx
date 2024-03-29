@@ -71,10 +71,8 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 							<Link
 								style={{ width: "100%" }}
 								href={item.link ?? ""}
-								passHref
 							>
 								<ListItemButton
-									component="a"
 									onClick={(e) =>
 										isActive && e.preventDefault()
 									}
