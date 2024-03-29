@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useLocale } from "next-intl";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface NavDrawerProps {
@@ -67,37 +68,45 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 						/>
 					) : (
 						<ListItem key={item.label} disablePadding>
-							<ListItemButton
-								component={isActive ? "div" : "a"}
-								href={isActive ? undefined : item.link}
+							<Link
+								style={{ width: "100%" }}
+								href={item.link ?? ""}
+								passHref
 							>
-								{item.icon && (
-									<ListItemIcon>
-										{isActive ? (
-											<item.filledIcon
-												sx={{
-													color:
-														theme.palette.mode ==
-														"dark"
-															? "white"
-															: "black",
-												}}
-											/>
-										) : (
-											<item.icon
-												sx={{
-													color:
-														theme.palette.mode ==
-														"dark"
-															? "white"
-															: "black",
-												}}
-											/>
-										)}
-									</ListItemIcon>
-								)}
-								<ListItemText primary={item.label} />
-							</ListItemButton>
+								<ListItemButton
+									component="a"
+									onClick={(e) =>
+										isActive && e.preventDefault()
+									}
+								>
+									{item.icon && (
+										<ListItemIcon>
+											{isActive ? (
+												<item.filledIcon
+													sx={{
+														color:
+															theme.palette
+																.mode === "dark"
+																? "white"
+																: "black",
+													}}
+												/>
+											) : (
+												<item.icon
+													sx={{
+														color:
+															theme.palette
+																.mode === "dark"
+																? "white"
+																: "black",
+													}}
+												/>
+											)}
+										</ListItemIcon>
+									)}
+									<ListItemText primary={item.label} />
+								</ListItemButton>
+							</Link>
 						</ListItem>
 					);
 				})}

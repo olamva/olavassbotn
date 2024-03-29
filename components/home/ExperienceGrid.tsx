@@ -42,16 +42,16 @@ const listItems = {
 	],
 	2: [
 		{
-			src: reactLogo,
-			alt: "React logo",
-			href: "https://reactjs.org/",
+			src: pythonLogo,
+			alt: "Python logo",
+			href: "https://www.python.org/",
 		},
 	],
 	3: [
 		{
-			src: pythonLogo,
-			alt: "Python logo",
-			href: "https://www.python.org/",
+			src: reactLogo,
+			alt: "React logo",
+			href: "https://reactjs.org/",
 		},
 	],
 	4: [

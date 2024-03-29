@@ -1,7 +1,7 @@
 import NOFlag from "@/public/NO.png";
-import UKFlag from "@/public/UK.png";
-// TODO swap out UK flag with US flag
-import { Button } from "@mui/material";
+import USFlag from "@/public/US.png";
+
+import { IconButton } from "@mui/material";
 import { useLocale } from "next-intl";
 import Image, { StaticImageData } from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -18,18 +18,17 @@ const LangToggle: React.FC = () => {
 	};
 
 	const languages: { [key: string]: StaticImageData } = {
-		en: UKFlag,
+		en: USFlag,
 		no: NOFlag,
 	};
 	const flagSrc = languages[locale];
 	return (
-		<Button
+		<IconButton
 			onClick={toggleLanguage}
 			sx={{
 				background: "none",
 				border: "none",
 				cursor: "pointer",
-				padding: "0",
 				minWidth: "0",
 				"& .MuiButton-startIcon": {
 					margin: "0",
@@ -48,7 +47,7 @@ const LangToggle: React.FC = () => {
 					borderRadius: "50%",
 				}}
 			/>
-		</Button>
+		</IconButton>
 	);
 };
 export default LangToggle;
