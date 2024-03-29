@@ -17,7 +17,7 @@ export default function NotFound() {
 				marginTop: "5rem",
 			}}
 		>
-			<Typography variant="h2">Not Found</Typography>
+			<Typography variant="h2">404: Page Not Found</Typography>
 			<Typography variant="body1">
 				Could not find requested resource
 			</Typography>
