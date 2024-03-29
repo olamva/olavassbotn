@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 	description: "A website designed to show off Ola's skills and projects.",
 };
 
-export default function LocaleLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
 	const messages = useMessages();
 	return (
 		<html lang="en">
