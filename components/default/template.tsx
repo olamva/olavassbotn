@@ -9,7 +9,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					minHeight: "100vh",
+					minHeight: "100svh",
 				}}
 			>
 				<Box
