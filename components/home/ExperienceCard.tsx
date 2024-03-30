@@ -86,7 +86,7 @@ const ExperienceCard = ({ experience, key }: ExperienceCardProps) => {
 						}}
 					>
 						<Typography
-							fontWeight="bold"
+							fontWeight={700}
 							variant="body1"
 							color={theme.palette.primary.contrastText}
 							sx={{

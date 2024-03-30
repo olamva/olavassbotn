@@ -25,6 +25,7 @@ export default function Home({ params: { locale } }: HomePageProps) {
 						lg: "5rem", // large screens
 					},
 				}}
+				fontWeight={400}
 				// gutterBottom
 			>
 				{t("title")}
@@ -34,7 +35,6 @@ export default function Home({ params: { locale } }: HomePageProps) {
 				align="center"
 				sx={{
 					color: theme.palette.primary.contrastText,
-					fontWeight: "light",
 					fontSize: {
 						xs: "1.25rem", // smaller screens
 						sm: "1.5rem", // small screens
@@ -42,6 +42,7 @@ export default function Home({ params: { locale } }: HomePageProps) {
 						lg: "2rem", // large screens
 					},
 				}}
+				fontWeight={100}
 				gutterBottom
 			>
 				{t("subtitle")}
@@ -60,7 +61,6 @@ export default function Home({ params: { locale } }: HomePageProps) {
 				marginTop={2}
 				sx={{
 					color: theme.palette.primary.contrastText,
-					fontWeight: "bold",
 					fontSize: {
 						xs: "1.25rem", // smaller screens
 						sm: "1.5rem", // small screens
@@ -68,6 +68,7 @@ export default function Home({ params: { locale } }: HomePageProps) {
 						lg: "2rem", // large screens
 					},
 				}}
+				fontWeight={700}
 			>
 				{t("experienceTitle")}
 			</Typography>

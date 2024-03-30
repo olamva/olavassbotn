@@ -51,6 +51,14 @@ export default function AboutMe() {
 												theme.palette.primary
 													.contrastText
 											}
+											sx={{
+												fontSize: {
+													xs: "1rem",
+													sm: "1.5rem",
+													md: "2rem",
+												},
+											}}
+											fontWeight={700}
 										>
 											{section.title}
 										</Typography>
@@ -60,7 +68,14 @@ export default function AboutMe() {
 												theme.palette.primary
 													.contrastText
 											}
-											sx={{ flexGrow: 1 }}
+											sx={{
+												flexGrow: 1,
+												fontSize: {
+													xs: "0.75rem",
+													sm: "0.875rem",
+													md: "1rem",
+												},
+											}}
 										>
 											{section.content}
 										</Typography>

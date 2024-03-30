@@ -10,7 +10,17 @@ const ExperienceGrid = () => {
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
 	return (
-		<Box p={2} maxWidth={matches ? "80%" : "65%"} m={"auto"}>
+		<Box
+			p={2}
+			sx={{
+				maxWidth: {
+					xs: "100%",
+					sm: "100%",
+					md: "80%",
+				},
+			}}
+			m={"auto"}
+		>
 			<Masonry
 				columns={matches ? 1 : 2}
 				sx={{ m: 0, width: "100%" }}
