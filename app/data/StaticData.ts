@@ -1,4 +1,4 @@
-import { ListItem, SocialLink } from "@/app/types/default";
+import { ExperienceListItem, SocialLink } from "@/app/types/default";
 import onlineLogo from "@/public/Online_bla_o.svg";
 import fagkomLogoDark from "@/public/fagkomDark.png";
 import fagkomLogoLight from "@/public/fagkomLight.png";
@@ -8,7 +8,7 @@ import pythonLogo from "@/public/python.webp";
 import reactLogo from "@/public/react.png";
 import { Email, GitHub, LinkedIn, Phone } from "@mui/icons-material";
 
-export const listItems: ListItem[] = [
+export const ExperiencelistItems: ExperienceListItem[] = [
 	{
 		href: "https://online.ntnu.no/",
 		imgs: [
@@ -60,6 +60,7 @@ export const listItems: ListItem[] = [
 		],
 	},
 ];
+
 export const socialLinks: SocialLink[] = [
 	{
 		icon: GitHub,
