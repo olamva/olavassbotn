@@ -1,11 +1,11 @@
 import { ExperienceListItem, SocialLink } from "@/app/types/default";
-import onlineLogo from "@/public/Online_bla_o.svg";
-import fagkomLogoDark from "@/public/fagkomDark.png";
-import fagkomLogoLight from "@/public/fagkomLight.png";
-import javaLogo from "@/public/java.webp";
-import nextLogo from "@/public/next-js.svg";
-import pythonLogo from "@/public/python.webp";
-import reactLogo from "@/public/react.png";
+import onlineLogo from "@/public/logos/Online_bla_o.svg";
+import fagkomLogoDark from "@/public/logos/fagkomDark.png";
+import fagkomLogoLight from "@/public/logos/fagkomLight.png";
+import javaLogo from "@/public/logos/java.webp";
+import nextLogo from "@/public/logos/next-js.svg";
+import pythonLogo from "@/public/logos/python.webp";
+import reactLogo from "@/public/logos/react.png";
 import { Email, GitHub, LinkedIn, Phone } from "@mui/icons-material";
 
 export const ExperiencelistItems: ExperienceListItem[] = [
