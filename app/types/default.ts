@@ -10,12 +10,12 @@ export interface ImportedImage {
 	darkSrc?: StaticImageData | string;
 	alt: string;
 }
-export interface ListItem {
+export interface ExperienceListItem {
 	href: string;
 	imgs: ImportedImage[];
 }
 
-export interface Experience extends ListItem {
+export interface Experience extends ExperienceListItem {
 	title: string;
 	description?: string;
 }

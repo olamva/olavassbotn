@@ -6,13 +6,11 @@ import Link from "next/link";
 
 interface ExperienceCardProps {
 	experience: Experience;
-	key: number;
 }
-const ExperienceCard = ({ experience, key }: ExperienceCardProps) => {
+const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 	const theme = useTheme();
 	return (
 		<Card
-			key={key}
 			sx={{
 				backgroundColor: theme.palette.primary.main,
 			}}

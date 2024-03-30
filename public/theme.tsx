@@ -9,7 +9,7 @@ export const makeThemeWithMode = (mode: "light" | "dark"): Theme => {
 						main: "rgb(211,212,200)",
 					},
 					secondary: {
-						main: "rgb(25, 133, 122)",
+						main: "rgb(98, 105, 80)",
 					},
 					background: {
 						default: "rgb(240, 241, 231)",

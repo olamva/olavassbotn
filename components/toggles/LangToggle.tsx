@@ -1,5 +1,5 @@
-import NOFlag from "@/public/NO.png";
-import USFlag from "@/public/US.png";
+import NOFlag from "@/public/flags/NO.png";
+import USFlag from "@/public/flags/US.png";
 
 import { IconButton } from "@mui/material";
 import { useLocale } from "next-intl";
