@@ -1,4 +1,5 @@
 "use client";
+import { SocialLink } from "@/app/types/default";
 import { Email, GitHub, LinkedIn, Phone } from "@mui/icons-material";
 import { Box, Link, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
