@@ -19,7 +19,7 @@ import {
 	SwipeableDrawer,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -32,28 +32,29 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 	const root = "/" + locale;
 	const pathname = usePathname();
 	const theme = useTheme();
-	const itemList: NavItem[] = [
+	const t = useTranslations("NavDrawer");
+	const navItems: NavItem[] = [
 		{
-			label: "Home",
+			label: t("home"),
 			icon: HomeOutlined,
 			filledIcon: Home,
 			link: root,
 		},
 		{ label: "Divider1", isDivider: true },
 		{
-			label: "Projects",
+			label: t("projects"),
 			icon: AssignmentOutlined,
 			filledIcon: Assignment,
 			link: root + "/projects",
 		},
 		{
-			label: "About Me",
+			label: t("about-me"),
 			icon: PersonOutlined,
 			filledIcon: Person,
 			link: root + "/about-me",
 		},
 		{
-			label: "Themes",
+			label: t("themes"),
 			icon: PaletteOutlined,
 			filledIcon: Palette,
 			link: root + "/themes",
@@ -66,7 +67,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			onClick={toggleDrawer(false)}
 		>
 			<List>
-				{itemList.map((item) => {
+				{navItems.map((item) => {
 					const isActive = pathname === item.link;
 					return item.isDivider ? (
 						<Divider

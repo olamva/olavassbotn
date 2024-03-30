@@ -1,8 +1,10 @@
 "use client";
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { useTranslations } from "next-intl";
 export default function Home() {
 	const theme = useTheme();
+	const t = useTranslations("Themes");
 	const papers = [
 		{ label: "Primary Main", color: theme.palette.primary.main },
 		{ label: "Primary Dark", color: theme.palette.primary.dark },
@@ -34,20 +36,24 @@ export default function Home() {
 					},
 				}}
 			>
-				Color Theme for This Website
+				{t("title")}
 			</Typography>
-			{papers.map((paper, index) => (
-				<Paper
-					key={index}
-					sx={{
-						backgroundColor: paper.color,
-						padding: 2,
-						marginBottom: 2,
-					}}
-				>
-					{paper.label}: {paper.color}
-				</Paper>
-			))}
+
+			<Grid container spacing={3}>
+				{papers.map((paper, index) => (
+					<Grid key={index} item xs={12} md={6}>
+						<Paper
+							sx={{
+								backgroundColor: paper.color,
+								padding: 2,
+								marginBottom: 2,
+							}}
+						>
+							{paper.label}: {paper.color}
+						</Paper>
+					</Grid>
+				))}
+			</Grid>
 		</Box>
 	);
 }
