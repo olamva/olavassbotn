@@ -14,7 +14,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 	const theme = useTheme();
 	useEffect(() => {
 		if (context && open) {
-			const snake = [{ x: 200, y: 200 }];
+			let snake = [{ x: 200, y: 200 }];
 			let food = { x: 300, y: 300 };
 			let dx = 10;
 			let dy = 0;
@@ -28,34 +28,46 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				snake.forEach(drawSnakePart);
 			};
 			const moveSnake = () => {
-				const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-				// Wrap snake position when it goes off canvas
-				if (canvasRef.current) {
-					const canvasWidth = canvasRef.current.width;
-					const canvasHeight = canvasRef.current.height;
-					head.x = (head.x + canvasWidth) % canvasWidth;
-					head.y = (head.y + canvasHeight) % canvasHeight;
-				}
-				snake.unshift(head);
-				if (snake[0].x === food.x && snake[0].y === food.y) {
+				if (snake.length > 0) {
+					const head = { x: snake[0].x + dx, y: snake[0].y + dy };
 					if (canvasRef.current) {
-						food = {
-							x:
-								Math.round(
-									(Math.random() *
-										(canvasRef.current.width - 10)) /
-										10
-								) * 10,
-							y:
-								Math.round(
-									(Math.random() *
-										(canvasRef.current.height - 10)) /
-										10
-								) * 10,
-						};
+						const canvasWidth = canvasRef.current.width;
+						const canvasHeight = canvasRef.current.height;
+						head.x = (head.x + canvasWidth) % canvasWidth;
+						head.y = (head.y + canvasHeight) % canvasHeight;
 					}
-				} else {
-					snake.pop();
+					snake.unshift(head);
+					// Check for collision with the snake's own body
+					for (let i = 1; i < snake.length; i++) {
+						if (snake[i].x === head.x && snake[i].y === head.y) {
+							// Reset the game
+							food = { x: 300, y: 300 }; // Reset food to initial position
+							snake = [{ x: 200, y: 200 }]; // Reset snake to initial position
+							dx = 10; // Reset direction
+							dy = 0;
+							return; // Exit the function to prevent further execution
+						}
+					}
+					if (snake[0].x === food.x && snake[0].y === food.y) {
+						if (canvasRef.current) {
+							food = {
+								x:
+									Math.round(
+										(Math.random() *
+											(canvasRef.current.width - 10)) /
+											10
+									) * 10,
+								y:
+									Math.round(
+										(Math.random() *
+											(canvasRef.current.height - 10)) /
+											10
+									) * 10,
+							};
+						}
+					} else {
+						snake.pop();
+					}
 				}
 			};
 			const drawFood = () => {
