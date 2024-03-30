@@ -1,6 +1,6 @@
 import { konamiCode } from "@/app/data/SiteWideData";
 import Footer from "@/components/default/Footer";
-import InputDetector from "@/components/default/InputDetector";
+import InputDetector from "@/components/game/InputDetector";
 import NavBar from "@/components/navigation/NavBar";
 import { Box } from "@mui/material";
 

@@ -1,4 +1,4 @@
-import SnakeGame from "@/components/default/SnakeGame";
+import SnakeGame from "@/components/game/SnakeGame";
 import { FC, useEffect, useState } from "react";
 
 interface InputDetectorProps {
