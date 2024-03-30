@@ -1,5 +1,7 @@
 import { Dialog, DialogContent } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { FC, useEffect, useRef, useState } from "react";
+
 interface SnakeGameProps {
 	open: boolean;
 	onClose: () => void;
@@ -9,6 +11,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 	const [context, setContext] = useState<CanvasRenderingContext2D | null>(
 		null
 	);
+	const theme = useTheme();
 	useEffect(() => {
 		if (context && open) {
 			const snake = [{ x: 200, y: 200 }];
@@ -71,6 +74,15 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 			};
 			const gameLoop = () => {
 				clearCanvas();
+				if (context && canvasRef.current) {
+					context.fillStyle = theme.palette.secondary.contrastText;
+					context.fillRect(
+						0,
+						0,
+						canvasRef.current.width,
+						canvasRef.current.height
+					);
+				}
 				drawFood();
 				moveSnake();
 				drawSnake();
@@ -109,7 +121,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				clearInterval(gameInterval);
 			};
 		}
-	}, [context, open]);
+	}, [context, open, theme.palette.secondary.contrastText]);
 	return (
 		<Dialog
 			open={open}
@@ -122,12 +134,14 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 					}
 				},
 			}}
-			PaperProps={{
-				style: { width: "auto", height: "auto" }, // Adjust to fit content
-			}}
 		>
 			<DialogContent
-				style={{ padding: 0, width: "600px", height: "480px" }}
+				sx={{
+					padding: 0,
+					width: "600px",
+					height: "480px",
+					backgroundColor: theme.palette.secondary.contrastText,
+				}}
 			>
 				<canvas ref={canvasRef} width="600" height="480" />
 			</DialogContent>
