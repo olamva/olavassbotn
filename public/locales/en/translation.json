@@ -42,15 +42,15 @@
 			},
 			{
 				"title": "My Skills",
-				"content": "I specialize in React with TypeScript, leveraging frameworks like Next.js for server-side rendering and SEO benefits. My toolset includes Material UI for designing responsive and theme-consistent UIs, along with a strong foundation in HTML, CSS, and JavaScript."
+				"content": "I designed this website in React with TypeScript, leveraging frameworks like Next.js for server-side rendering and SEO benefits. My toolset includes Material UI for designing responsive and theme-consistent UIs, along with a strong foundation in HTML, CSS, and JavaScript. Additionally, I have experience with Java and Python, and have worked on projects in both languages. I am always looking to expand my skillset and learn new technologies."
 			},
 			{
 				"title": "My Journey",
-				"content": "I started my journey in informatics in 2019, and have since then learned a lot about programming, web development, and software engineering. I have worked on several projects, both alone and in groups, and have gained a lot of experience in the field."
+				"content": "I started my journey in informatics in 2020, when I took some introductory programming classes in High School. After that, I started my Bachelor of Informatics at NTNU Trondheim and have since then learned a lot about programming, web development, and software engineering. I have worked on several projects, both alone and in groups, and have gained a lot of experience in the field."
 			},
 			{
 				"title": "My Goals",
-				"content": "My goal is to become a full-stack developer, with a strong focus on front-end development. I want to work on projects that make a difference, and that can help people in their everyday lives. I am passionate about technology, and I am always looking for new challenges and opportunities to learn and grow."
+				"content": "My goal is to become a full-stack developer. I want to work on projects that make a difference, and that can help people in their everyday lives. I am passionate about technology, and I am always looking for new challenges and opportunities to learn and grow."
 			}
 		]
 	},
