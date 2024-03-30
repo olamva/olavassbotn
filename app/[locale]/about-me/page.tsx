@@ -41,14 +41,14 @@ export default function AboutMe() {
 											height: "100%",
 											p: 3,
 											backgroundColor:
-												theme.palette.primary.main,
+												theme.palette.secondary.main,
 										}}
 									>
 										<Typography
 											variant="h5"
 											gutterBottom
 											color={
-												theme.palette.primary
+												theme.palette.secondary
 													.contrastText
 											}
 											sx={{
@@ -65,7 +65,7 @@ export default function AboutMe() {
 										<Typography
 											variant="body1"
 											color={
-												theme.palette.primary
+												theme.palette.secondary
 													.contrastText
 											}
 											sx={{

@@ -49,7 +49,19 @@ export default function Home() {
 								marginBottom: 2,
 							}}
 						>
-							{paper.label}: {paper.color}
+							<Typography
+								variant="body1"
+								color={theme.palette.primary.contrastText}
+								sx={{
+									fontSize: {
+										xs: "0.75rem",
+										sm: "0.875rem",
+										md: "1rem",
+									},
+								}}
+							>
+								{paper.label}: {paper.color}
+							</Typography>
 						</Paper>
 					</Grid>
 				))}

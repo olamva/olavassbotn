@@ -1,7 +1,7 @@
 "use client";
 import LangToggle from "@/components/toggles/LangToggle";
 import { Home, Menu } from "@mui/icons-material";
-import { Box, IconButton, useTheme } from "@mui/material";
+import { AppBar, Box, IconButton, Toolbar, useTheme } from "@mui/material";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -19,42 +19,47 @@ export default function NavBar() {
 	return (
 		<>
 			<NavDrawer toggleDrawer={toggleDrawer} open={open} />
-			<Box
-				sx={{
-					display: "flex",
-					justifyContent: "space-between",
-					alignItems: "center",
-					margin: "1rem",
-				}}
+			<AppBar
+				position="fixed"
+				sx={{ backgroundColor: theme.palette.background.default }}
+				elevation={0}
 			>
-				<Box>
-					<IconButton
-						onClick={toggleDrawer(true)}
+				<Toolbar>
+					<Box
 						sx={{
-							color: theme.palette.primary.contrastText,
+							flexGrow: 1,
+							display: "flex",
+							alignItems: "center",
 						}}
 					>
-						<Menu />
-					</IconButton>
-					<Link
-						style={{ width: "100%" }}
-						href={pathname == "/" + locale ? "" : "/" + locale}
-					>
 						<IconButton
+							onClick={toggleDrawer(true)}
 							sx={{
 								color: theme.palette.primary.contrastText,
 							}}
 						>
-							<Home />
+							<Menu />
 						</IconButton>
-					</Link>
-				</Box>
-
-				<Box>
-					<ThemeToggle />
-					<LangToggle />
-				</Box>
-			</Box>
+						<Link
+							style={{ width: "100%" }}
+							href={pathname == "/" + locale ? "" : "/" + locale}
+						>
+							<IconButton
+								sx={{
+									color: theme.palette.primary.contrastText,
+								}}
+							>
+								<Home />
+							</IconButton>
+						</Link>
+					</Box>
+					<Box>
+						<ThemeToggle />
+						<LangToggle />
+					</Box>
+				</Toolbar>
+			</AppBar>
+			<Toolbar />
 		</>
 	);
 }
