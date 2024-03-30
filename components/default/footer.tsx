@@ -6,7 +6,6 @@ import { useTheme } from "@mui/material/styles";
 
 export default function Footer() {
 	const theme = useTheme();
-	console.log(theme.palette.primary.contrastText);
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 	const socialLinks: SocialLink[] = [
 		{
