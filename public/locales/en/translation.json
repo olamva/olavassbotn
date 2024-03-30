@@ -56,5 +56,22 @@
 	},
 	"Themes": {
 		"title": "Color Theme for This Website"
+	},
+	"Projects": {
+		"title": "WIP: Projects",
+		"projects": [
+			{
+				"title": "Project 1",
+				"description": "Description"
+			},
+			{
+				"title": "Project 2",
+				"description": "Description"
+			},
+			{
+				"title": "Project 3",
+				"description": "Description"
+			}
+		]
 	}
 }

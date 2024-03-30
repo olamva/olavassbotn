@@ -56,5 +56,22 @@
 	},
 	"Themes": {
 		"title": "Fargetema for Denne Nettsiden"
+	},
+	"Projects": {
+		"title": "WIP: Prosjekter",
+		"projects": [
+			{
+				"title": "Prosjekt 1",
+				"description": "Beskrivelse"
+			},
+			{
+				"title": "Prosjekt 2",
+				"description": "Beskrivelse"
+			},
+			{
+				"title": "Prosjekt 3",
+				"description": "Beskrivelse"
+			}
+		]
 	}
 }
