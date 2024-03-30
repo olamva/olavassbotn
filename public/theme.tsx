@@ -1,6 +1,4 @@
-"use client";
 import { Theme, createTheme } from "@mui/material/styles";
-
 export const makeThemeWithMode = (mode: "light" | "dark"): Theme => {
 	switch (mode) {
 		case "light":
@@ -8,17 +6,13 @@ export const makeThemeWithMode = (mode: "light" | "dark"): Theme => {
 				palette: {
 					mode: mode,
 					primary: {
-						main: "#C4C9CC", // Lighter shade for main color
-						light: "#31363F", // Darker shade for light color
-						dark: "#ECEFF1", // Lighter shade for dark color
-						contrastText: "#222831", // Darker contrast text
+						main: "rgb(211,212,200)",
 					},
 					secondary: {
-						main: "#222831", // Darker shade for main color
-						light: "#76ABAE", // Original light color from primary
+						main: "rgb(25, 133, 122)",
 					},
 					background: {
-						default: "#EEEEEE", // Lighter background
+						default: "rgb(240, 241, 231)",
 					},
 				},
 			});
@@ -27,17 +21,13 @@ export const makeThemeWithMode = (mode: "light" | "dark"): Theme => {
 				palette: {
 					mode: mode,
 					primary: {
-						main: "#31363F",
-						light: "#76ABAE",
-						dark: "#31363F",
-						contrastText: "#EEEEEE",
+						main: "rgb(98, 105, 80)",
 					},
 					secondary: {
-						main: "#EEEEEE",
-						light: "#085156",
+						main: "rgb(179, 187, 157)",
 					},
 					background: {
-						default: "#222831",
+						default: "rgb(33, 35, 27)",
 					},
 				},
 			});
