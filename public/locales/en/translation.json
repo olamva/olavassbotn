@@ -6,9 +6,9 @@
 	},
 	"experience": {
 		"0": {
-			"title": "Academic Courses Comittee\nStudent Organization Online",
+			"title": "Academic Courses Comittee, Student Organization Online",
 			"hasDescription": "true",
-			"description": "Deputy Head 23/24"
+			"description": "Deputy Head 24/25"
 		},
 		"1": {
 			"title": "Java",
@@ -38,19 +38,19 @@
 		"sections": [
 			{
 				"title": "Who I Am",
-				"content": "I am a 21 year old student at NTNU, studying informatics. I am currently in my 3rd year of my bachelor's degree. I am a member of the academic courses comittee at the student organization Online, where I am the deputy head for the year 23/24."
+				"content": "I am a 20 year old Informatics student at NTNU, and i'm in the 2nd year of my bachelor's degree. I am a member of the Academic Courses Comittee at the Student Organization Online, where I am the deputy head for the school year 24/25."
 			},
 			{
 				"title": "My Skills",
-				"content": "I specialize in React with TypeScript, leveraging frameworks like Next.js for server-side rendering and SEO benefits. My toolset includes Material UI for designing responsive and theme-consistent UIs, along with a strong foundation in HTML, CSS, and JavaScript."
+				"content": "I designed this website in React with TypeScript, leveraging frameworks like Next.js for server-side rendering and SEO benefits. My toolset includes Material UI for designing responsive and theme-consistent UIs, along with a strong foundation in HTML, CSS, and JavaScript. Additionally, I have experience with Java and Python, and have worked on projects in both languages. I am always looking to expand my skillset and learn new technologies."
 			},
 			{
 				"title": "My Journey",
-				"content": "I started my journey in informatics in 2019, and have since then learned a lot about programming, web development, and software engineering. I have worked on several projects, both alone and in groups, and have gained a lot of experience in the field."
+				"content": "I started my journey in informatics in 2020, when I took some introductory programming classes in High School. After that, I started my Bachelor of Informatics at NTNU Trondheim and have since then learned a lot about programming, web development, and software engineering. I have worked on several projects, both alone and in groups, and have gained a lot of experience in the field."
 			},
 			{
 				"title": "My Goals",
-				"content": "My goal is to become a full-stack developer, with a strong focus on front-end development. I want to work on projects that make a difference, and that can help people in their everyday lives. I am passionate about technology, and I am always looking for new challenges and opportunities to learn and grow."
+				"content": "My goal is to become a full-stack developer. I want to work on projects that make a difference, and that can help people in their everyday lives. I am passionate about technology, and I am always looking for new challenges and opportunities to learn and grow."
 			}
 		]
 	},

@@ -6,9 +6,9 @@
 	},
 	"experience": {
 		"0": {
-			"title": "Fag- og kurskomiteen\nLinjeforeningen Online",
+			"title": "Fag- og kurskomiteen, Linjeforeningen Online",
 			"hasDescription": "true",
-			"description": "Nestleder 23/24"
+			"description": "Nestleder 24/25"
 		},
 		"1": {
 			"title": "Java",
@@ -38,19 +38,19 @@
 		"sections": [
 			{
 				"title": "Hvem Jeg Er",
-				"content": "Jeg er en 21 år gammel student ved NTNU, som studerer informatikk. Jeg er for tiden i mitt tredje år av bachelorgraden. Jeg er medlem av fagkomiteen i studentorganisasjonen Online, hvor jeg er nestleder for året 23/24."
+				"content": "Jeg er en 20 år gammel Informatikk student ved NTNU, og jeg er i det 2. året i bacheloren min. Jeg er medlem av Fag- og Kurskomiteen i Linjeforeningen Online, hvor jeg er nestleder for skoleåret 24/25."
 			},
 			{
 				"title": "Mine Ferdigheter",
-				"content": "Jeg spesialiserer meg på React med TypeScript, og benytter rammeverk som Next.js for server-side rendering og SEO-fordeler. Mitt verktøysett inkluderer Material UI for å designe responsive og tema-konsistente brukergrensesnitt, sammen med en solid grunnmur i HTML, CSS og JavaScript."
+				"content": "Jeg designet denne nettsiden i React med TypeScript, og benyttet rammeverk som Next.js for server-side rendering og SEO-fordeler. Mitt verktøysett inkluderer Material UI for å designe responsive og tema-konsistente brukergrensesnitt, sammen med en solid grunnlag i HTML, CSS, og JavaScript. I tillegg har jeg erfaring med Java og Python, og har jobbet på prosjekt i begge språkene. Jeg ser alltid etter nye muligheter til å utvide mine ferdigheter og lære nye teknologier."
 			},
 			{
 				"title": "Min Reise",
-				"content": "Jeg startet min reise innen informatikk i 2019, og har siden da lært mye om programmering, webutvikling og programvareteknikk. Jeg har jobbet med flere prosjekter, både alene og i grupper, og har opparbeidet meg mye erfaring i feltet."
+				"content": "Jeg startet min reise med informatikk i 2020, da jeg tok noen IT1 og IT2 på videregående skole. Etter det begynte jeg på Bachelor i Informatikk ved NTNU Trondheim og har siden da lært mye om programmering, webutvikling, og programvareutvikling. Jeg har jobbet på flere prosjekt, både alene og i grupper, og har fått mye relevant erfaring."
 			},
 			{
 				"title": "Mine Mål",
-				"content": "Mitt mål er å bli en full-stack utvikler, med et sterkt fokus på front-end utvikling. Jeg ønsker å jobbe med prosjekter som gjør en forskjell, og som kan hjelpe folk i deres hverdagsliv. Jeg er lidenskapelig opptatt av teknologi, og jeg er alltid på utkikk etter nye utfordringer og muligheter for å lære og vokse."
+				"content": "Mitt mål er å bli en full-stack utvikler. Jeg ønsker å jobbe med prosjekter som gjør en forskjell, og som kan hjelpe folk i deres hverdagsliv. Jeg er lidenskapelig opptatt av teknologi, og jeg ser alltid etter nye utfordringer og muligheter for å lære."
 			}
 		]
 	},
