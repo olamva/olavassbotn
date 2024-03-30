@@ -9,12 +9,12 @@ export default function Home() {
 			variant="h1"
 			align="center"
 			sx={{
-				color: theme.palette.secondary.main,
+				color: theme.palette.primary.contrastText,
 				fontSize: {
-					xs: "2.5rem", // smaller screens
-					sm: "3rem", // small screens
-					md: "4rem", // medium screens
-					lg: "5rem", // large screens
+					xs: "2.5rem",
+					sm: "3rem",
+					md: "4rem",
+					lg: "5rem",
 				},
 			}}
 		>

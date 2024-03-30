@@ -3,6 +3,8 @@ import {
 	AssignmentOutlined,
 	Home,
 	HomeOutlined,
+	Palette,
+	PaletteOutlined,
 	Person,
 	PersonOutlined,
 } from "@mui/icons-material";
@@ -17,7 +19,7 @@ import {
 	SwipeableDrawer,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -30,25 +32,32 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 	const root = "/" + locale;
 	const pathname = usePathname();
 	const theme = useTheme();
-	const itemList: NavItem[] = [
+	const t = useTranslations("NavDrawer");
+	const navItems: NavItem[] = [
 		{
-			label: "Home",
+			label: t("home"),
 			icon: HomeOutlined,
 			filledIcon: Home,
 			link: root,
 		},
 		{ label: "Divider1", isDivider: true },
 		{
-			label: "Projects",
+			label: t("projects"),
 			icon: AssignmentOutlined,
 			filledIcon: Assignment,
 			link: root + "/projects",
 		},
 		{
-			label: "About Me",
+			label: t("about-me"),
 			icon: PersonOutlined,
 			filledIcon: Person,
 			link: root + "/about-me",
+		},
+		{
+			label: t("themes"),
+			icon: PaletteOutlined,
+			filledIcon: Palette,
+			link: root + "/themes",
 		},
 	];
 	const DrawerList = (
@@ -57,24 +66,26 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			role="presentation"
 			onClick={toggleDrawer(false)}
 		>
-			<List sx={{ color: theme.palette.secondary.main }}>
-				{itemList.map((item) => {
+			<List>
+				{navItems.map((item) => {
 					const isActive = pathname === item.link;
 					return item.isDivider ? (
 						<Divider
 							key={item.label}
-							color={theme.palette.primary.light}
-							sx={{ margin: "auto", width: "90%" }}
+							sx={{
+								margin: "auto",
+								width: "90%",
+								backgroundColor:
+									theme.palette.primary.contrastText,
+							}}
 						/>
 					) : (
 						<ListItem key={item.label} disablePadding>
 							<Link
 								style={{ width: "100%" }}
 								href={item.link ?? ""}
-								passHref
 							>
 								<ListItemButton
-									component="a"
 									onClick={(e) =>
 										isActive && e.preventDefault()
 									}
@@ -84,27 +95,29 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 											{isActive ? (
 												<item.filledIcon
 													sx={{
-														color:
-															theme.palette
-																.mode === "dark"
-																? "white"
-																: "black",
+														color: theme.palette
+															.primary
+															.contrastText,
 													}}
 												/>
 											) : (
 												<item.icon
 													sx={{
-														color:
-															theme.palette
-																.mode === "dark"
-																? "white"
-																: "black",
+														color: theme.palette
+															.primary
+															.contrastText,
 													}}
 												/>
 											)}
 										</ListItemIcon>
 									)}
-									<ListItemText primary={item.label} />
+									<ListItemText
+										primary={item.label}
+										sx={{
+											color: theme.palette.primary
+												.contrastText,
+										}}
+									/>
 								</ListItemButton>
 							</Link>
 						</ListItem>
@@ -120,7 +133,10 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			onClose={toggleDrawer(false)}
 			sx={{
 				"& .MuiDrawer-paper": {
-					backgroundColor: theme.palette.primary.main,
+					backgroundColor:
+						theme.palette.mode === "dark"
+							? theme.palette.primary.dark
+							: theme.palette.primary.light,
 				},
 			}}
 		>

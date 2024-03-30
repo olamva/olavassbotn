@@ -1,5 +1,5 @@
 "use client";
-import Template from "@/components/default/template";
+import Template from "@/components/default/Template";
 import ThemeModeProvider from "@/contexts/ThemeModeProvider";
 import { makeThemeWithMode } from "@/public/theme";
 import { ThemeProvider } from "@emotion/react";

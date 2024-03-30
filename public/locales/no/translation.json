@@ -26,5 +26,35 @@
 			"title": "Next.js",
 			"hasDescription": "false"
 		}
+	},
+	"NavDrawer": {
+		"home": "Hjem",
+		"projects": "Prosjekt",
+		"about-me": "Om Meg",
+		"themes": "Temaer"
+	},
+	"About Me": {
+		"title": "Om Meg",
+		"sections": [
+			{
+				"title": "Hvem Jeg Er",
+				"content": "Jeg er en 21 år gammel student ved NTNU, som studerer informatikk. Jeg er for tiden i mitt tredje år av bachelorgraden. Jeg er medlem av fagkomiteen i studentorganisasjonen Online, hvor jeg er nestleder for året 23/24."
+			},
+			{
+				"title": "Mine Ferdigheter",
+				"content": "Jeg spesialiserer meg på React med TypeScript, og benytter rammeverk som Next.js for server-side rendering og SEO-fordeler. Mitt verktøysett inkluderer Material UI for å designe responsive og tema-konsistente brukergrensesnitt, sammen med en solid grunnmur i HTML, CSS og JavaScript."
+			},
+			{
+				"title": "Min Reise",
+				"content": "Jeg startet min reise innen informatikk i 2019, og har siden da lært mye om programmering, webutvikling og programvareteknikk. Jeg har jobbet med flere prosjekter, både alene og i grupper, og har opparbeidet meg mye erfaring i feltet."
+			},
+			{
+				"title": "Mine Mål",
+				"content": "Mitt mål er å bli en full-stack utvikler, med et sterkt fokus på front-end utvikling. Jeg ønsker å jobbe med prosjekter som gjør en forskjell, og som kan hjelpe folk i deres hverdagsliv. Jeg er lidenskapelig opptatt av teknologi, og jeg er alltid på utkikk etter nye utfordringer og muligheter for å lære og vokse."
+			}
+		]
+	},
+	"Themes": {
+		"title": "Fargetema for Denne Nettsiden"
 	}
 }

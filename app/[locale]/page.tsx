@@ -17,7 +17,7 @@ export default function Home({ params: { locale } }: HomePageProps) {
 				variant="h1"
 				align="center"
 				sx={{
-					color: theme.palette.secondary.main,
+					color: theme.palette.primary.contrastText,
 					fontSize: {
 						xs: "2.5rem", // smaller screens
 						sm: "3rem", // small screens
@@ -25,16 +25,16 @@ export default function Home({ params: { locale } }: HomePageProps) {
 						lg: "5rem", // large screens
 					},
 				}}
+				fontWeight={400}
+				// gutterBottom
 			>
 				{t("title")}
 			</Typography>
 			<Typography
 				variant="h4"
 				align="center"
-				marginBottom={2}
 				sx={{
-					color: theme.palette.primary.light,
-					fontWeight: "light",
+					color: theme.palette.primary.contrastText,
 					fontSize: {
 						xs: "1.25rem", // smaller screens
 						sm: "1.5rem", // small screens
@@ -42,6 +42,8 @@ export default function Home({ params: { locale } }: HomePageProps) {
 						lg: "2rem", // large screens
 					},
 				}}
+				fontWeight={100}
+				gutterBottom
 			>
 				{t("subtitle")}
 			</Typography>
@@ -50,16 +52,15 @@ export default function Home({ params: { locale } }: HomePageProps) {
 					my: 1,
 					width: "80%",
 					margin: "auto",
+					backgroundColor: theme.palette.primary.contrastText,
 				}}
-				color={theme.palette.secondary.light}
 			/>
 			<Typography
 				variant="h4"
 				align="center"
 				marginTop={2}
 				sx={{
-					color: theme.palette.secondary.main,
-					fontWeight: "bold",
+					color: theme.palette.primary.contrastText,
 					fontSize: {
 						xs: "1.25rem", // smaller screens
 						sm: "1.5rem", // small screens
@@ -67,6 +68,7 @@ export default function Home({ params: { locale } }: HomePageProps) {
 						lg: "2rem", // large screens
 					},
 				}}
+				fontWeight={700}
 			>
 				{t("experienceTitle")}
 			</Typography>

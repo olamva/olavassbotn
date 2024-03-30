@@ -1,33 +1,10 @@
-"use client";
-import { Email, GitHub, LinkedIn, Phone } from "@mui/icons-material";
+import { contactLinks, socialLinks } from "@/app/data/StaticData";
 import { Box, Link, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 export default function Footer() {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
-	const socialLinks: SocialLink[] = [
-		{
-			icon: GitHub,
-			link: "https://github.com/olamva",
-		},
-		{
-			icon: LinkedIn,
-			link: "https://www.linkedin.com/olavassbotn/",
-		},
-	];
-	const contactLinks: SocialLink[] = [
-		{
-			icon: Phone,
-			link: "tel:+4790778680",
-			label: "+47 90 77 86 80",
-		},
-		{
-			icon: Email,
-			link: "mailto:ola@vassbotn.com",
-			label: "ola@vassbotn.com",
-		},
-	];
 	return (
 		<Box
 			component="footer"
@@ -46,9 +23,9 @@ export default function Footer() {
 			<Box
 				sx={{
 					display: "flex",
-					flexDirection: "column",
+					flexDirection: matches ? "column" : "row",
 					alignItems: "center",
-					mr: 4,
+					mr: matches ? 4 : 0,
 				}}
 			>
 				{socialLinks.map((social, index) => (
@@ -60,25 +37,27 @@ export default function Footer() {
 							textDecoration: "none",
 							display: "flex",
 							alignItems: "center",
-							mb: index == contactLinks.length - 1 ? 0 : 2,
+							px: matches ? 0 : 2,
+							mb:
+								index == contactLinks.length - 1 && matches
+									? 0
+									: 2,
 						}}
 					>
 						<social.icon
 							sx={{
-								color:
-									theme.palette.mode == "dark"
-										? "white"
-										: "black",
+								color: theme.palette.primary.contrastText,
 							}}
 							fontSize="large"
 						/>
 					</Link>
 				))}
 			</Box>
+
 			<Box
 				sx={{
 					display: "flex",
-					flexDirection: "column",
+					flexDirection: matches ? "column" : "row",
 					alignItems: "flex-start",
 				}}
 			>
@@ -91,16 +70,17 @@ export default function Footer() {
 							textDecoration: "none",
 							display: "flex",
 							alignItems: "center",
-							mb: index == contactLinks.length - 1 ? 0 : 2,
+							px: matches ? 0 : 2,
+							mb:
+								index == contactLinks.length - 1 && matches
+									? 0
+									: 2,
 						}}
 					>
 						<Box sx={{ display: "flex", alignItems: "center" }}>
 							<contact.icon
 								sx={{
-									color:
-										theme.palette.mode == "dark"
-											? "white"
-											: "black",
+									color: theme.palette.primary.contrastText,
 									mr: 1,
 								}}
 								fontSize="large"

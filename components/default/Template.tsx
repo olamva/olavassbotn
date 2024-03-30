@@ -1,4 +1,4 @@
-import Footer from "@/components/default/footer";
+import Footer from "@/components/default/Footer";
 import NavBar from "@/components/navigation/NavBar";
 import { Box } from "@mui/material";
 
