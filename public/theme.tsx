@@ -1,4 +1,3 @@
-"use client";
 import { Theme, createTheme } from "@mui/material/styles";
 export const makeThemeWithMode = (mode: "light" | "dark"): Theme => {
 	switch (mode) {

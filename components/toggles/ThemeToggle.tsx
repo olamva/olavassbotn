@@ -1,4 +1,3 @@
-"use client";
 import { useColorMode } from "@/contexts/ThemeModeProvider";
 import { DarkMode, LightMode } from "@mui/icons-material";
 import { IconButton } from "@mui/material";

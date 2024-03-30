@@ -1,4 +1,3 @@
-"use client";
 import { useExperienceList } from "@/hooks/useExperienceList";
 import Masonry from "@mui/lab/Masonry";
 import { Box, useMediaQuery, useTheme } from "@mui/material";

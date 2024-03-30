@@ -1,4 +1,3 @@
-"use client";
 import LangToggle from "@/components/toggles/LangToggle";
 import { Home, Menu } from "@mui/icons-material";
 import { AppBar, Box, IconButton, Toolbar, useTheme } from "@mui/material";

@@ -1,4 +1,3 @@
-"use client";
 import { PaletteMode } from "@mui/material";
 import {
 	Dispatch,
