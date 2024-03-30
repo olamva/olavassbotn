@@ -1,4 +1,4 @@
-import { ExperiencelistItems } from "@/app/data/StaticData";
+import { ExperiencelistItems } from "@/app/data/ExperienceGridData";
 import { Experience } from "@/app/types/default";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
