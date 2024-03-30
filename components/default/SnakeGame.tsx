@@ -12,7 +12,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 	useEffect(() => {
 		if (context && open) {
 			const snake = [{ x: 200, y: 200 }];
-			let food = { x: 300, y: 300 }; // Make food let to reassign
+			let food = { x: 300, y: 300 };
 			let dx = 10;
 			let dy = 0;
 			const drawSnakePart = (snakePart: { x: number; y: number }) => {
@@ -26,10 +26,15 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 			};
 			const moveSnake = () => {
 				const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+				// Wrap snake position when it goes off canvas
+				if (canvasRef.current) {
+					const canvasWidth = canvasRef.current.width;
+					const canvasHeight = canvasRef.current.height;
+					head.x = (head.x + canvasWidth) % canvasWidth;
+					head.y = (head.y + canvasHeight) % canvasHeight;
+				}
 				snake.unshift(head);
-				// Check if snake eats food
 				if (snake[0].x === food.x && snake[0].y === food.y) {
-					// Generate new food location
 					if (canvasRef.current) {
 						food = {
 							x:
@@ -47,7 +52,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 						};
 					}
 				} else {
-					snake.pop(); // Only remove the tail if food is not eaten
+					snake.pop();
 				}
 			};
 			const drawFood = () => {
@@ -117,11 +122,14 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 					}
 				},
 			}}
-			maxWidth="md"
-			fullWidth
+			PaperProps={{
+				style: { width: "auto", height: "auto" }, // Adjust to fit content
+			}}
 		>
-			<DialogContent style={{ padding: 0, border: "2px solid black" }}>
-				<canvas ref={canvasRef} width={640} height={480} />
+			<DialogContent
+				style={{ padding: 0, width: "600px", height: "480px" }}
+			>
+				<canvas ref={canvasRef} width="600" height="480" />
 			</DialogContent>
 		</Dialog>
 	);
