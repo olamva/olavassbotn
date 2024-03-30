@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogTitle } from "@mui/material";
+import { Dialog, DialogContent } from "@mui/material";
 import { FC, useEffect, useRef, useState } from "react";
 interface SnakeGameProps {
 	open: boolean;
@@ -12,7 +12,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 	useEffect(() => {
 		if (context && open) {
 			const snake = [{ x: 200, y: 200 }];
-			const food = { x: 300, y: 300 };
+			let food = { x: 300, y: 300 }; // Make food let to reassign
 			let dx = 10;
 			let dy = 0;
 			const drawSnakePart = (snakePart: { x: number; y: number }) => {
@@ -27,7 +27,28 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 			const moveSnake = () => {
 				const head = { x: snake[0].x + dx, y: snake[0].y + dy };
 				snake.unshift(head);
-				snake.pop();
+				// Check if snake eats food
+				if (snake[0].x === food.x && snake[0].y === food.y) {
+					// Generate new food location
+					if (canvasRef.current) {
+						food = {
+							x:
+								Math.round(
+									(Math.random() *
+										(canvasRef.current.width - 10)) /
+										10
+								) * 10,
+							y:
+								Math.round(
+									(Math.random() *
+										(canvasRef.current.height - 10)) /
+										10
+								) * 10,
+						};
+					}
+				} else {
+					snake.pop(); // Only remove the tail if food is not eaten
+				}
 			};
 			const drawFood = () => {
 				context.fillStyle = "red";
@@ -99,8 +120,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 			maxWidth="md"
 			fullWidth
 		>
-			<DialogTitle>Snake Game</DialogTitle>
-			<DialogContent>
+			<DialogContent style={{ padding: 0, border: "2px solid black" }}>
 				<canvas ref={canvasRef} width={640} height={480} />
 			</DialogContent>
 		</Dialog>
