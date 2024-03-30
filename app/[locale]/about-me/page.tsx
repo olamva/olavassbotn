@@ -1,5 +1,12 @@
 "use client";
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import {
+	Box,
+	Container,
+	Divider,
+	Grid,
+	Paper,
+	Typography,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 export default function AboutMe() {
@@ -19,12 +26,19 @@ export default function AboutMe() {
 							md: "4rem",
 							lg: "5rem",
 						},
-						mb: 4,
 					}}
+					gutterBottom
 				>
 					{t("title")}
 				</Typography>
-				<Grid container spacing={3}>
+				<Divider
+					sx={{
+						width: "80%",
+						margin: "auto",
+						backgroundColor: theme.palette.primary.contrastText,
+					}}
+				/>
+				<Grid container spacing={3} my={2}>
 					{t
 						.raw("sections")
 						.map(
