@@ -1,4 +1,4 @@
-import { ListItem } from "@/app/types/default";
+import { ListItem, SocialLink } from "@/app/types/default";
 import onlineLogo from "@/public/Online_bla_o.svg";
 import fagkomLogoDark from "@/public/fagkomDark.png";
 import fagkomLogoLight from "@/public/fagkomLight.png";
@@ -6,6 +6,7 @@ import javaLogo from "@/public/java.webp";
 import nextLogo from "@/public/next-js.svg";
 import pythonLogo from "@/public/python.webp";
 import reactLogo from "@/public/react.png";
+import { Email, GitHub, LinkedIn, Phone } from "@mui/icons-material";
 
 export const listItems: ListItem[] = [
 	{
@@ -57,5 +58,28 @@ export const listItems: ListItem[] = [
 				alt: "Next.JS logo",
 			},
 		],
+	},
+];
+export const socialLinks: SocialLink[] = [
+	{
+		icon: GitHub,
+		link: "https://github.com/olamva",
+	},
+	{
+		icon: LinkedIn,
+		link: "https://www.linkedin.com/olavassbotn/",
+	},
+];
+
+export const contactLinks: SocialLink[] = [
+	{
+		icon: Phone,
+		link: "tel:+4790778680",
+		label: "+47 90 77 86 80",
+	},
+	{
+		icon: Email,
+		link: "mailto:ola@vassbotn.com",
+		label: "ola@vassbotn.com",
 	},
 ];
