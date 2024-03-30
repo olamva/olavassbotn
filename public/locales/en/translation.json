@@ -61,6 +61,10 @@
 		"title": "Projects",
 		"projects": [
 			{
+				"title": "Website built with React, TypeScript, Next.js, and Material UI",
+				"description": "This project is actually this website! It was built with React, TypeScript, Next.js, and Material UI. It is a responsive and theme-consistent website that showcases my skills, experience, and projects. It is designed to be easy to navigate and visually appealing. I built this website to showcase my work and to provide information about myself to potential employers and collaborators. If you have any feedback or suggestions, feel free to reach out to me! 😊"
+			},
+			{
 				"title": "Snake Game with React",
 				"description": "A Canvas Snake Game built with React and TypeScript. All the typical snake features are included. If you want to try it out, input the konami code 😉"
 			}
