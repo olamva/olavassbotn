@@ -24,13 +24,7 @@ export default function NavBar() {
 				elevation={0}
 			>
 				<Toolbar>
-					<Box
-						sx={{
-							flexGrow: 1,
-							display: "flex",
-							alignItems: "center",
-						}}
-					>
+					<Box>
 						<IconButton
 							onClick={toggleDrawer(true)}
 							sx={{
@@ -52,6 +46,11 @@ export default function NavBar() {
 							</IconButton>
 						</Link>
 					</Box>
+					<Box
+						sx={{
+							flexGrow: 1,
+						}}
+					></Box>
 					<Box>
 						<ThemeToggle />
 						<LangToggle />
