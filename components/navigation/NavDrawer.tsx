@@ -3,6 +3,8 @@ import {
 	AssignmentOutlined,
 	Home,
 	HomeOutlined,
+	Palette,
+	PaletteOutlined,
 	Person,
 	PersonOutlined,
 } from "@mui/icons-material";
@@ -50,6 +52,12 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			filledIcon: Person,
 			link: root + "/about-me",
 		},
+		{
+			label: "Themes",
+			icon: PaletteOutlined,
+			filledIcon: Palette,
+			link: root + "/themes",
+		},
 	];
 	const DrawerList = (
 		<Box
@@ -57,14 +65,18 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			role="presentation"
 			onClick={toggleDrawer(false)}
 		>
-			<List sx={{ color: theme.palette.secondary.main }}>
+			<List>
 				{itemList.map((item) => {
 					const isActive = pathname === item.link;
 					return item.isDivider ? (
 						<Divider
 							key={item.label}
-							color={theme.palette.primary.light}
-							sx={{ margin: "auto", width: "90%" }}
+							sx={{
+								margin: "auto",
+								width: "90%",
+								backgroundColor:
+									theme.palette.primary.contrastText,
+							}}
 						/>
 					) : (
 						<ListItem key={item.label} disablePadding>
@@ -82,27 +94,29 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 											{isActive ? (
 												<item.filledIcon
 													sx={{
-														color:
-															theme.palette
-																.mode === "dark"
-																? "white"
-																: "black",
+														color: theme.palette
+															.primary
+															.contrastText,
 													}}
 												/>
 											) : (
 												<item.icon
 													sx={{
-														color:
-															theme.palette
-																.mode === "dark"
-																? "white"
-																: "black",
+														color: theme.palette
+															.primary
+															.contrastText,
 													}}
 												/>
 											)}
 										</ListItemIcon>
 									)}
-									<ListItemText primary={item.label} />
+									<ListItemText
+										primary={item.label}
+										sx={{
+											color: theme.palette.primary
+												.contrastText,
+										}}
+									/>
 								</ListItemButton>
 							</Link>
 						</ListItem>
@@ -118,7 +132,10 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			onClose={toggleDrawer(false)}
 			sx={{
 				"& .MuiDrawer-paper": {
-					backgroundColor: theme.palette.primary.main,
+					backgroundColor:
+						theme.palette.mode === "dark"
+							? theme.palette.primary.dark
+							: theme.palette.primary.light,
 				},
 			}}
 		>

@@ -125,6 +125,7 @@ const ExperienceGrid = () => {
 						sx={{
 							backgroundColor: theme.palette.primary.main,
 						}}
+						elevation={3}
 					>
 						<Link style={{ width: "100%" }} href={item.href || ""}>
 							<CardContent
@@ -232,6 +233,10 @@ const ExperienceGrid = () => {
 														md: "1rem",
 													},
 												}}
+												color={
+													theme.palette.primary
+														.contrastText
+												}
 											>
 												{item.description}
 											</Typography>

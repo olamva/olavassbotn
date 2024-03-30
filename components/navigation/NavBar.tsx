@@ -31,7 +31,7 @@ export default function NavBar() {
 					<IconButton
 						onClick={toggleDrawer(true)}
 						sx={{
-							color: theme.palette.secondary.main,
+							color: theme.palette.primary.contrastText,
 						}}
 					>
 						<Menu />
@@ -42,7 +42,7 @@ export default function NavBar() {
 					>
 						<IconButton
 							sx={{
-								color: theme.palette.secondary.main,
+								color: theme.palette.primary.contrastText,
 							}}
 						>
 							<Home />

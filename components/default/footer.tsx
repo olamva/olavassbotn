@@ -5,6 +5,7 @@ import { useTheme } from "@mui/material/styles";
 
 export default function Footer() {
 	const theme = useTheme();
+	console.log(theme.palette.primary.contrastText);
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 	const socialLinks: SocialLink[] = [
 		{
@@ -65,10 +66,7 @@ export default function Footer() {
 					>
 						<social.icon
 							sx={{
-								color:
-									theme.palette.mode == "dark"
-										? "white"
-										: "black",
+								color: theme.palette.primary.contrastText,
 							}}
 							fontSize="large"
 						/>
@@ -97,10 +95,7 @@ export default function Footer() {
 						<Box sx={{ display: "flex", alignItems: "center" }}>
 							<contact.icon
 								sx={{
-									color:
-										theme.palette.mode == "dark"
-											? "white"
-											: "black",
+									color: theme.palette.primary.contrastText,
 									mr: 1,
 								}}
 								fontSize="large"

@@ -17,7 +17,7 @@ export default function Home({ params: { locale } }: HomePageProps) {
 				variant="h1"
 				align="center"
 				sx={{
-					color: theme.palette.secondary.main,
+					color: theme.palette.primary.contrastText,
 					fontSize: {
 						xs: "2.5rem", // smaller screens
 						sm: "3rem", // small screens
@@ -25,16 +25,15 @@ export default function Home({ params: { locale } }: HomePageProps) {
 						lg: "5rem", // large screens
 					},
 				}}
+				// gutterBottom
 			>
 				{t("title")}
 			</Typography>
 			<Typography
 				variant="h4"
 				align="center"
-				mb={2}
-				mt={1}
 				sx={{
-					color: theme.palette.primary.light,
+					color: theme.palette.primary.contrastText,
 					fontWeight: "light",
 					fontSize: {
 						xs: "1.25rem", // smaller screens
@@ -43,6 +42,7 @@ export default function Home({ params: { locale } }: HomePageProps) {
 						lg: "2rem", // large screens
 					},
 				}}
+				gutterBottom
 			>
 				{t("subtitle")}
 			</Typography>
@@ -51,15 +51,15 @@ export default function Home({ params: { locale } }: HomePageProps) {
 					my: 1,
 					width: "80%",
 					margin: "auto",
+					backgroundColor: theme.palette.primary.contrastText,
 				}}
-				color={theme.palette.secondary.light}
 			/>
 			<Typography
 				variant="h4"
 				align="center"
 				marginTop={2}
 				sx={{
-					color: theme.palette.secondary.main,
+					color: theme.palette.primary.contrastText,
 					fontWeight: "bold",
 					fontSize: {
 						xs: "1.25rem", // smaller screens
