@@ -58,19 +58,11 @@
 		"title": "Fargetema for Denne Nettsiden"
 	},
 	"Projects": {
-		"title": "WIP: Prosjekter",
+		"title": "Prosjekter",
 		"projects": [
 			{
-				"title": "Prosjekt 1",
-				"description": "Beskrivelse"
-			},
-			{
-				"title": "Prosjekt 2",
-				"description": "Beskrivelse"
-			},
-			{
-				"title": "Prosjekt 3",
-				"description": "Beskrivelse"
+				"title": "Snake-spill i React",
+				"description": "Et Canvas Snake-spill bygget med React og TypeScript. Alle de typiske snake-funksjonene er inkludert. Om du ønsker å prøve det ut, skriv inn konami-koden 😉"
 			}
 		]
 	}
