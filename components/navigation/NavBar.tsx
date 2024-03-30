@@ -1,12 +1,12 @@
 "use client";
-import LangToggle from "@/components/default/LangToggle";
+import LangToggle from "@/components/toggles/LangToggle";
 import { Home, Menu } from "@mui/icons-material";
 import { Box, IconButton, useTheme } from "@mui/material";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import ThemeToggle from "../default/ThemeToggle";
+import ThemeToggle from "../toggles/ThemeToggle";
 import NavDrawer from "./NavDrawer";
 export default function NavBar() {
 	const theme = useTheme();
