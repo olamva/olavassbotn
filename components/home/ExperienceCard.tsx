@@ -46,6 +46,17 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 										height: 30,
 										paddingTop: "100%",
 										position: "relative",
+										marginBottom:
+											experience.imgs.length > 1 &&
+											imgIndex !==
+												experience.imgs.length - 1
+												? "10px"
+												: "0px",
+										marginTop:
+											experience.imgs.length > 1 &&
+											imgIndex !== 0
+												? "10px"
+												: "0px",
 									}}
 								>
 									<Image
@@ -61,17 +72,6 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 											left: 0,
 											width: "100%",
 											height: "100%",
-											marginBottom:
-												experience.imgs.length > 1 &&
-												imgIndex !==
-													experience.imgs.length - 1
-													? "10px"
-													: "0px",
-											marginTop:
-												experience.imgs.length > 1 &&
-												imgIndex !== 0
-													? "10px"
-													: "0px",
 										}}
 									/>
 								</Box>
