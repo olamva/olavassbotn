@@ -23,8 +23,7 @@ export default function LocaleLayout({
 	const messages = useMessages();
 	const cookieStore = cookies();
 	const savedMode = cookieStore.get("themeMode");
-	const savedTheme =
-		(savedMode?.value as PaletteMode) ?? "light";
+	const savedTheme = (savedMode?.value as PaletteMode) ?? "dark";
 	return (
 		<html lang={locale}>
 			<NextIntlClientProvider locale={locale} messages={messages}>
