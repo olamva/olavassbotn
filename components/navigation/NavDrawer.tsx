@@ -164,6 +164,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 															.primary
 															.contrastText,
 													}}
+													fontSize="small"
 												/>
 											</ListItemIcon>
 										)}
@@ -172,7 +173,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 												sx={{
 													color: theme.palette.primary
 														.contrastText,
-													fontSize: "0.8rem",
+													fontSize: "0.7rem",
 												}}
 											>
 												{item.label}
