@@ -4,4 +4,5 @@ type NavItem = {
 	icon?: any;
 	filledIcon?: any;
 	isDivider?: boolean;
+	isFooter?: boolean;
 };

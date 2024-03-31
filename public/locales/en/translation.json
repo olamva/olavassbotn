@@ -31,7 +31,8 @@
 		"home": "Home",
 		"projects": "Projects",
 		"about-me": "About Me",
-		"themes": "Themes"
+		"themes": "Themes",
+		"contribute": "Interested in learning how the website is built?"
 	},
 	"About Me": {
 		"title": "About Me",
