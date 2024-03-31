@@ -13,7 +13,7 @@ interface ColorModeContextType {
 }
 const ColorModeContext = createContext<ColorModeContextType>({
 	toggleColorMode: () => {},
-	mode: "light",
+	mode: "dark",
 });
 
 interface ThemeModeProviderProps {

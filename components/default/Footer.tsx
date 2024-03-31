@@ -39,9 +39,9 @@ export default function Footer() {
 							alignItems: "center",
 							px: matches ? 0 : 2,
 							mb:
-								index == contactLinks.length - 1 && matches
-									? 0
-									: 2,
+								matches && index !== socialLinks.length - 1
+									? 2
+									: 0,
 						}}
 					>
 						<social.icon
@@ -53,7 +53,6 @@ export default function Footer() {
 					</Link>
 				))}
 			</Box>
-
 			<Box
 				sx={{
 					display: "flex",
@@ -72,9 +71,9 @@ export default function Footer() {
 							alignItems: "center",
 							px: matches ? 0 : 2,
 							mb:
-								index == contactLinks.length - 1 && matches
-									? 0
-									: 2,
+								matches && index !== contactLinks.length - 1
+									? 2
+									: 0,
 						}}
 					>
 						<Box sx={{ display: "flex", alignItems: "center" }}>
