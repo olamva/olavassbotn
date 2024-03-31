@@ -6,26 +6,24 @@ import { Box } from "@mui/material";
 
 export default function Template({ children }: { children: React.ReactNode }) {
 	return (
-		<>
+		<Box
+			sx={{
+				display: "flex",
+				flexDirection: "column",
+				minHeight: "100svh",
+			}}
+		>
 			<InputDetector sequenceToCheck={konamiCode} />
 			<Box
+				component="main"
 				sx={{
-					display: "flex",
-					flexDirection: "column",
-					minHeight: "100svh",
+					flexGrow: 1,
 				}}
 			>
-				<Box
-					component="main"
-					sx={{
-						flexGrow: 1,
-					}}
-				>
-					<NavBar />
-					{children}
-				</Box>
-				<Footer />
+				<NavBar />
+				{children}
 			</Box>
-		</>
+			<Footer />
+		</Box>
 	);
 }
