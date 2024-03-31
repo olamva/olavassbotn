@@ -9,13 +9,11 @@ import {
 } from "react";
 interface ColorModeContextType {
 	toggleColorMode: () => void;
-	mode: PaletteMode;
+	mode?: PaletteMode;
 }
 const ColorModeContext = createContext<ColorModeContextType>({
 	toggleColorMode: () => {},
-	mode: "dark",
 });
-
 interface ThemeModeProviderProps {
 	children: ReactNode;
 	mode: PaletteMode;
