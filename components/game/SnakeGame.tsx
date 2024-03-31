@@ -18,6 +18,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 			let food = { x: 300, y: 300 };
 			let dx = 10;
 			let dy = 0;
+			let nextDirection = { dx: 10, dy: 0 };
 			const drawSnakePart = (snakePart: { x: number; y: number }) => {
 				context.fillStyle = "green";
 				context.strokeStyle = "darkgreen";
@@ -45,6 +46,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 							snake = [{ x: 200, y: 200 }]; // Reset snake to initial position
 							dx = 10; // Reset direction
 							dy = 0;
+							nextDirection = { dx: 10, dy: 0 }; // Reset next direction
 							return; // Exit the function to prevent further execution
 						}
 					}
@@ -95,6 +97,8 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 						canvasRef.current.height
 					);
 				}
+				dx = nextDirection.dx;
+				dy = nextDirection.dy;
 				drawFood();
 				moveSnake();
 				drawSnake();
@@ -110,20 +114,13 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				const goingRight = dx === 10;
 				const goingLeft = dx === -10;
 				if (keyPressed === LEFT_KEY && !goingRight) {
-					dx = -10;
-					dy = 0;
-				}
-				if (keyPressed === UP_KEY && !goingDown) {
-					dx = 0;
-					dy = -10;
-				}
-				if (keyPressed === RIGHT_KEY && !goingLeft) {
-					dx = 10;
-					dy = 0;
-				}
-				if (keyPressed === DOWN_KEY && !goingUp) {
-					dx = 0;
-					dy = 10;
+					nextDirection = { dx: -10, dy: 0 };
+				} else if (keyPressed === UP_KEY && !goingDown) {
+					nextDirection = { dx: 0, dy: -10 };
+				} else if (keyPressed === RIGHT_KEY && !goingLeft) {
+					nextDirection = { dx: 10, dy: 0 };
+				} else if (keyPressed === DOWN_KEY && !goingUp) {
+					nextDirection = { dx: 0, dy: 10 };
 				}
 			};
 			document.addEventListener("keydown", changeDirection);
