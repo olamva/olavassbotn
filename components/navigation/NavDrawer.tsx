@@ -1,6 +1,8 @@
 import {
 	Assignment,
 	AssignmentOutlined,
+	Chat,
+	ChatOutlined,
 	Help,
 	HelpOutline,
 	Home,
@@ -61,6 +63,12 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			icon: PaletteOutlined,
 			filledIcon: Palette,
 			link: root + "/themes",
+		},
+		{
+			label: t("chatbot"),
+			icon: ChatOutlined,
+			filledIcon: Chat,
+			link: root + "/chatbot",
 		},
 		{
 			label: t("contribute"),

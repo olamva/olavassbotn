@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
-export default function AboutMe() {
+export default function AboutMePage() {
 	const theme = useTheme();
 	const t = useTranslations("About Me");
 	return (

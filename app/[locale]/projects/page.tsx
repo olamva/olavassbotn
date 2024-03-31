@@ -10,7 +10,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 
-export default function Home() {
+export default function ProjectsPage() {
 	const theme = useTheme();
 	const t = useTranslations("Projects");
 	return (

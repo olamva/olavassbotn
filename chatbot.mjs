@@ -1,8 +1,10 @@
 import chalk from "chalk";
+import dotenv from "dotenv";
 import { OpenAI } from "openai";
 import readline from "readline";
 
 process.stdout.write("\x1Bc");
+dotenv.config({ path: "./.env.local" });
 
 const messages = [
 	{
