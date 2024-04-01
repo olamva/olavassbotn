@@ -1,4 +1,3 @@
-"use client";
 import {
 	Box,
 	Container,
@@ -7,11 +6,9 @@ import {
 	Paper,
 	Typography,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 
 export default function Home() {
-	const theme = useTheme();
 	const t = useTranslations("Projects");
 	return (
 		<Container maxWidth="lg">
@@ -20,7 +17,7 @@ export default function Home() {
 					variant="h1"
 					align="center"
 					sx={{
-						color: theme.palette.primary.contrastText,
+						color: "primary.contrastText",
 						fontSize: {
 							xs: "2.5rem",
 							sm: "3rem",
@@ -36,7 +33,7 @@ export default function Home() {
 					sx={{
 						width: "80%",
 						margin: "auto",
-						backgroundColor: theme.palette.primary.contrastText,
+						backgroundColor: "primary.contrastText",
 					}}
 				/>
 				<Grid container spacing={3} my={2}>
@@ -55,16 +52,12 @@ export default function Home() {
 											flexDirection: "column",
 											height: "100%",
 											p: 3,
-											backgroundColor:
-												theme.palette.primary.main,
+											backgroundColor: "primary.main",
 										}}
 									>
 										<Typography
 											variant="h5"
-											color={
-												theme.palette.primary
-													.contrastText
-											}
+											color={"primary.contrastText"}
 											sx={{
 												fontSize: {
 													xs: "1rem",
@@ -83,8 +76,7 @@ export default function Home() {
 													sm: "0.875rem",
 													md: "1rem",
 												},
-												color: theme.palette.primary
-													.contrastText,
+												color: "primary.contrastText",
 											}}
 										>
 											{section.description}

@@ -93,8 +93,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 									sx={{
 										margin: "auto",
 										width: "90%",
-										backgroundColor:
-											theme.palette.primary.contrastText,
+										backgroundColor: "primary.contrastText",
 									}}
 								/>
 							) : (
@@ -113,19 +112,13 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 													{isActive ? (
 														<item.filledIcon
 															sx={{
-																color: theme
-																	.palette
-																	.primary
-																	.contrastText,
+																color: "primary.contrastText",
 															}}
 														/>
 													) : (
 														<item.icon
 															sx={{
-																color: theme
-																	.palette
-																	.primary
-																	.contrastText,
+																color: "primary.contrastText",
 															}}
 														/>
 													)}
@@ -134,8 +127,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 											<ListItemText
 												primary={item.label}
 												sx={{
-													color: theme.palette.primary
-														.contrastText,
+													color: "primary.contrastText",
 												}}
 											/>
 										</ListItemButton>
@@ -160,9 +152,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 											<ListItemIcon>
 												<item.icon
 													sx={{
-														color: theme.palette
-															.primary
-															.contrastText,
+														color: "primary.contrastText",
 													}}
 													fontSize="small"
 												/>
@@ -171,8 +161,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 										<ListItemText>
 											<Typography
 												sx={{
-													color: theme.palette.primary
-														.contrastText,
+													color: "primary.contrastText",
 													fontSize: "0.7rem",
 												}}
 											>
@@ -196,8 +185,8 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 				"& .MuiDrawer-paper": {
 					backgroundColor:
 						theme.palette.mode === "dark"
-							? theme.palette.primary.dark
-							: theme.palette.primary.light,
+							? "primary.dark"
+							: "primary.light",
 				},
 			}}
 		>

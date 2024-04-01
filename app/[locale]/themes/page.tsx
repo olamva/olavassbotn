@@ -1,24 +1,21 @@
-"use client";
 import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 export default function Home() {
-	const theme = useTheme();
 	const t = useTranslations("Themes");
 	const papers = [
-		{ label: "Primary Main", color: theme.palette.primary.main },
-		{ label: "Primary Dark", color: theme.palette.primary.dark },
-		{ label: "Primary Light", color: theme.palette.primary.light },
+		{ label: "Primary Main", color: "primary.main" },
+		{ label: "Primary Dark", color: "primary.dark" },
+		{ label: "Primary Light", color: "primary.light" },
 		{
 			label: "Primary Contrast Text",
-			color: theme.palette.primary.contrastText,
+			color: "primary.contrastText",
 		},
-		{ label: "Secondary Main", color: theme.palette.secondary.main },
-		{ label: "Secondary Dark", color: theme.palette.secondary.dark },
-		{ label: "Secondary Light", color: theme.palette.secondary.light },
+		{ label: "Secondary Main", color: "secondary.main" },
+		{ label: "Secondary Dark", color: "secondary.dark" },
+		{ label: "Secondary Light", color: "secondary.light" },
 		{
 			label: "Secondary Contrast Text",
-			color: theme.palette.secondary.contrastText,
+			color: "secondary.contrastText",
 		},
 	];
 	return (
@@ -27,7 +24,7 @@ export default function Home() {
 				variant="h1"
 				align="center"
 				sx={{
-					color: theme.palette.primary.contrastText,
+					color: "primary.contrastText",
 					fontSize: {
 						xs: "2.5rem",
 						sm: "3rem",
@@ -43,7 +40,7 @@ export default function Home() {
 				sx={{
 					width: "80%",
 					margin: "auto",
-					backgroundColor: theme.palette.primary.contrastText,
+					backgroundColor: "primary.contrastText",
 				}}
 			/>
 			<Grid container spacing={3} my={2}>
@@ -58,7 +55,7 @@ export default function Home() {
 						>
 							<Typography
 								variant="body1"
-								color={theme.palette.primary.contrastText}
+								color="primary.contrastText"
 								sx={{
 									fontSize: {
 										xs: "0.75rem",

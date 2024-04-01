@@ -1,7 +1,8 @@
+"use client";
+import ExperienceCard from "@/components/home/ExperienceCard";
 import { useExperienceList } from "@/hooks/useExperienceList";
 import Masonry from "@mui/lab/Masonry";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
-import ExperienceCard from "./ExperienceCard";
 
 const ExperienceGrid = () => {
 	const theme = useTheme();

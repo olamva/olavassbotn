@@ -1,14 +1,13 @@
+import NavDrawer from "@/components/navigation/NavDrawer";
 import LangToggle from "@/components/toggles/LangToggle";
+import ThemeToggle from "@/components/toggles/ThemeToggle";
 import { Home, Menu } from "@mui/icons-material";
-import { AppBar, Box, IconButton, Toolbar, useTheme } from "@mui/material";
+import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import ThemeToggle from "../toggles/ThemeToggle";
-import NavDrawer from "./NavDrawer";
 export default function NavBar() {
-	const theme = useTheme();
 	const [open, setOpen] = useState(false);
 	const toggleDrawer = (newOpen: boolean) => () => {
 		setOpen(newOpen);
@@ -20,7 +19,7 @@ export default function NavBar() {
 			<NavDrawer toggleDrawer={toggleDrawer} open={open} />
 			<AppBar
 				position="fixed"
-				sx={{ backgroundColor: theme.palette.background.default }}
+				sx={{ backgroundColor: "background.default" }}
 				elevation={0}
 			>
 				<Toolbar>
@@ -28,7 +27,7 @@ export default function NavBar() {
 						<IconButton
 							onClick={toggleDrawer(true)}
 							sx={{
-								color: theme.palette.primary.contrastText,
+								color: "primary.contrastText",
 							}}
 						>
 							<Menu />
@@ -39,7 +38,7 @@ export default function NavBar() {
 						>
 							<IconButton
 								sx={{
-									color: theme.palette.primary.contrastText,
+									color: "primary.contrastText",
 								}}
 							>
 								<Home />
