@@ -47,8 +47,12 @@ export default function Footer() {
 						<social.icon
 							sx={{
 								color: theme.palette.primary.contrastText,
+								fontSize: {
+									xs: "1.5rem",
+									sm: "1.75rem",
+									md: "2rem",
+								},
 							}}
-							fontSize="large"
 						/>
 					</Link>
 				))}
@@ -81,14 +85,23 @@ export default function Footer() {
 								sx={{
 									color: theme.palette.primary.contrastText,
 									mr: 1,
+									fontSize: {
+										xs: "1.5rem",
+										sm: "1.75rem",
+										md: "2rem",
+									},
 								}}
-								fontSize="large"
 							/>
 							{contact.label && (
 								<Typography
 									sx={{
 										color: theme.palette.primary
 											.contrastText,
+										fontSize: {
+											xs: "0.75rem",
+											sm: "0.875rem",
+											md: "1rem",
+										},
 									}}
 								>
 									{contact.label}
