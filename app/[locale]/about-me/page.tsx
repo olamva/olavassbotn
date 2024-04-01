@@ -6,12 +6,14 @@ import {
 	Grid,
 	Paper,
 	Typography,
+	useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 export default function AboutMe() {
 	const theme = useTheme();
 	const t = useTranslations("About Me");
+	const matches = useMediaQuery(theme.breakpoints.up("md"));
 	return (
 		<Container maxWidth="lg">
 			<Box sx={{ my: 4 }}>
@@ -19,7 +21,7 @@ export default function AboutMe() {
 					variant="h1"
 					align="center"
 					sx={{
-						color: theme.palette.primary.contrastText,
+						color: "primary.contrastText",
 						fontSize: {
 							xs: "2.5rem",
 							sm: "3rem",
@@ -31,14 +33,7 @@ export default function AboutMe() {
 				>
 					{t("title")}
 				</Typography>
-				<Divider
-					sx={{
-						width: "80%",
-						margin: "auto",
-						backgroundColor: theme.palette.primary.contrastText,
-					}}
-				/>
-				<Grid container spacing={3} my={2}>
+				<Grid container spacing={3} mb={7}>
 					{t
 						.raw("sections")
 						.map(
@@ -46,25 +41,24 @@ export default function AboutMe() {
 								section: { title: string; content: string },
 								index: number
 							) => (
-								<Grid item xs={12} md={6} key={index}>
-									<Paper
-										elevation={3}
+								<Grid item xs={12} md={6} key={index} mb={4}>
+									<Divider
+										textAlign={
+											matches
+												? "left"
+												: index % 2
+												? "right"
+												: "left"
+										}
 										sx={{
-											display: "flex",
-											flexDirection: "column",
-											height: "100%",
-											p: 3,
-											backgroundColor:
-												theme.palette.secondary.main,
+											"&::before, &::after": {
+												borderColor:
+													"primary.contrastText",
+											},
 										}}
 									>
 										<Typography
-											variant="h5"
-											gutterBottom
-											color={
-												theme.palette.secondary
-													.contrastText
-											}
+											color="primary.contrastText"
 											sx={{
 												fontSize: {
 													xs: "1rem",
@@ -72,16 +66,23 @@ export default function AboutMe() {
 													md: "2rem",
 												},
 											}}
-											fontWeight={700}
 										>
 											{section.title}
 										</Typography>
+									</Divider>
+									<Paper
+										elevation={3}
+										sx={{
+											display: "flex",
+											flexDirection: "column",
+											height: "100%",
+											p: 3,
+											backgroundColor: "primary.light",
+										}}
+									>
 										<Typography
 											variant="body1"
-											color={
-												theme.palette.secondary
-													.contrastText
-											}
+											color="primary.contrastText"
 											sx={{
 												flexGrow: 1,
 												fontSize: {
