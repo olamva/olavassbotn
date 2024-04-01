@@ -72,7 +72,6 @@ export default function Home() {
 													md: "2rem",
 												},
 											}}
-											// align="center"
 											gutterBottom
 										>
 											{section.title}
