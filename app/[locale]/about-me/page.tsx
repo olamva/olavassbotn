@@ -77,7 +77,7 @@ export default function AboutMe() {
 											flexDirection: "column",
 											height: "100%",
 											p: 3,
-											backgroundColor: "primary.light",
+											backgroundColor: "primary.main",
 										}}
 									>
 										<Typography
