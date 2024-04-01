@@ -12,7 +12,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 	return (
 		<Card
 			sx={{
-				backgroundColor: theme.palette.primary.main,
+				backgroundColor: "primary.main",
 			}}
 			elevation={3}
 		>
@@ -86,7 +86,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 						<Typography
 							fontWeight={700}
 							variant="body1"
-							color={theme.palette.primary.contrastText}
+							color="primary.contrastText"
 							sx={{
 								fontSize: {
 									xs: "0.75rem",
@@ -114,7 +114,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 											md: "1rem",
 										},
 									}}
-									color={theme.palette.primary.contrastText}
+									color="primary.contrastText"
 								>
 									{experience.description}
 								</Typography>

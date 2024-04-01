@@ -12,7 +12,7 @@ export default function Footer() {
 				py: matches ? 2 : 4,
 				m: "auto",
 				width: "100%",
-				backgroundColor: theme.palette.primary.main,
+				backgroundColor: "primary.main",
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
@@ -46,7 +46,7 @@ export default function Footer() {
 					>
 						<social.icon
 							sx={{
-								color: theme.palette.primary.contrastText,
+								color: "primary.contrastText",
 								fontSize: {
 									xs: "1.5rem",
 									sm: "1.75rem",
@@ -83,7 +83,7 @@ export default function Footer() {
 						<Box sx={{ display: "flex", alignItems: "center" }}>
 							<contact.icon
 								sx={{
-									color: theme.palette.primary.contrastText,
+									color: "primary.contrastText",
 									mr: 1,
 									fontSize: {
 										xs: "1.5rem",
@@ -95,8 +95,7 @@ export default function Footer() {
 							{contact.label && (
 								<Typography
 									sx={{
-										color: theme.palette.primary
-											.contrastText,
+										color: "primary.contrastText",
 										fontSize: {
 											xs: "0.75rem",
 											sm: "0.875rem",
