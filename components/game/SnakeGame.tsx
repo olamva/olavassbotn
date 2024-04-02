@@ -155,15 +155,17 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				const xDiff = xDown - xUp;
 				const yDiff = yDown - yUp;
 				if (Math.abs(xDiff) > Math.abs(yDiff)) {
-					nextDirections.push({
-						dx: xDiff > 0 ? -unitSize : unitSize,
-						dy: 0,
-					});
+					if (xDiff > 0 && dx === 0) {
+						nextDirections.push({ dx: -unitSize, dy: 0 });
+					} else if (xDiff < 0 && dx === 0) {
+						nextDirections.push({ dx: unitSize, dy: 0 });
+					}
 				} else {
-					nextDirections.push({
-						dx: 0,
-						dy: yDiff > 0 ? -unitSize : unitSize,
-					});
+					if (yDiff > 0 && dy === 0) {
+						nextDirections.push({ dx: 0, dy: -unitSize });
+					} else if (yDiff < 0 && dy === 0) {
+						nextDirections.push({ dx: 0, dy: unitSize });
+					}
 				}
 				xDown = null;
 				yDown = null;
