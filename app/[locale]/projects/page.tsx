@@ -1,5 +1,5 @@
 "use client";
-import { konamiCode } from "@/app/data/SiteWideData";
+import { konamiCode } from "@/app/data/ProjectsData";
 import InputDetector from "@/components/game/InputDetector";
 import {
 	Box,
