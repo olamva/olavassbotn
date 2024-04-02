@@ -82,10 +82,10 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			onClick={toggleDrawer(false)}
 		>
 			<Box flexGrow={1}>
-				<List>
+				<List sx={{ pt: 0 }}>
 					{navItems
 						.filter((item) => !item.isFooter)
-						.map((item) => {
+						.map((item, index) => {
 							const isActive = pathname === item.link;
 							return item.isDivider ? (
 								<Divider
@@ -113,12 +113,20 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 														<item.filledIcon
 															sx={{
 																color: "primary.contrastText",
+																mt:
+																	index === 0
+																		? 1
+																		: 0,
 															}}
 														/>
 													) : (
 														<item.icon
 															sx={{
 																color: "primary.contrastText",
+																mt:
+																	index === 0
+																		? 1
+																		: 0,
 															}}
 														/>
 													)}
