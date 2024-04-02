@@ -139,14 +139,54 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 					nextDirections.push({ dx: 0, dy: 10 });
 				}
 			};
+			let xDown: number | null = null;
+			let yDown: number | null = null;
+			const handleTouchStart = (e: TouchEvent) => {
+				const firstTouch = e.touches[0];
+				xDown = firstTouch.clientX;
+				yDown = firstTouch.clientY;
+			};
+			const handleTouchMove = (e: TouchEvent) => {
+				if (!xDown || !yDown) {
+					return;
+				}
+				const xUp = e.touches[0].clientX;
+				const yUp = e.touches[0].clientY;
+				const xDiff = xDown - xUp;
+				const yDiff = yDown - yUp;
+				if (Math.abs(xDiff) > Math.abs(yDiff)) {
+					if (xDiff > 0) {
+						/* left swipe */
+						nextDirections.push({ dx: -10, dy: 0 });
+					} else {
+						/* right swipe */
+						nextDirections.push({ dx: 10, dy: 0 });
+					}
+				} else {
+					if (yDiff > 0) {
+						/* up swipe */
+						nextDirections.push({ dx: 0, dy: -10 });
+					} else {
+						/* down swipe */
+						nextDirections.push({ dx: 0, dy: 10 });
+					}
+				}
+				xDown = null;
+				yDown = null;
+			};
 			document.addEventListener("keydown", changeDirection);
+			document.addEventListener("touchstart", handleTouchStart, false);
+			document.addEventListener("touchmove", handleTouchMove, false);
 			const gameInterval = setInterval(gameLoop, 100);
 			return () => {
 				document.removeEventListener("keydown", changeDirection);
+				document.removeEventListener("touchstart", handleTouchStart);
+				document.removeEventListener("touchmove", handleTouchMove);
 				clearInterval(gameInterval);
 			};
 		}
 	}, [context, open, theme.palette.secondary.contrastText]);
+
 	return (
 		<Dialog
 			open={open}
