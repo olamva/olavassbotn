@@ -99,7 +99,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 							) : (
 								<ListItem key={item.label} disablePadding>
 									<Link
-										href={item.link ?? ""}
+										href={isActive ? "" : item.link ?? ""}
 										style={{ width: "100%" }}
 									>
 										<ListItemButton
