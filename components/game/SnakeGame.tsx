@@ -1,7 +1,6 @@
 import { Dialog, DialogContent } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { FC, useEffect, useRef, useState } from "react";
-
 interface SnakeGameProps {
 	open: boolean;
 	onClose: () => void;
@@ -11,25 +10,58 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 	const [context, setContext] = useState<CanvasRenderingContext2D | null>(
 		null
 	);
-	const canvasWidth = Math.round((window.innerWidth * 0.7) / 10) * 10;
-	const canvasHeight = Math.round((window.innerHeight * 0.7) / 10) * 10;
 	const theme = useTheme();
+	// const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+	// const unitSize = isMobile ? 20 : 10;
+	const unitSize = 20;
+	const canvasWidth =
+		Math.round((window.innerWidth * 0.7) / unitSize) * unitSize;
+	const canvasHeight =
+		Math.round((window.innerHeight * 0.7) / unitSize) * unitSize;
 	useEffect(() => {
 		if (context && open) {
-			let snake = [{ x: 200, y: 200 }];
-			let food = { x: 100, y: 100 };
-			let dx = 10;
+			let snake = [{ x: 5 * unitSize, y: 5 * unitSize }];
+			let food = { x: 0, y: 0 };
+			const respawnFood = () => {
+				if (canvasRef.current) {
+					let foodX: number, foodY: number;
+					do {
+						foodX =
+							Math.round(
+								(Math.random() *
+									(canvasRef.current.width - unitSize)) /
+									unitSize
+							) * unitSize;
+						foodY =
+							Math.round(
+								(Math.random() *
+									(canvasRef.current.height - unitSize)) /
+									unitSize
+							) * unitSize;
+					} while (
+						snake.some(
+							(part) => part.x === foodX && part.y === foodY
+						)
+					);
+					food = { x: foodX, y: foodY };
+				}
+			};
+			respawnFood();
+			let dx = unitSize;
 			let dy = 0;
-			let nextDirections = [{ dx: 10, dy: 0 }];
+			let nextDirections = [{ dx: unitSize, dy: 0 }];
 			const drawSnakePart = (snakePart: { x: number; y: number }) => {
 				context.fillStyle = "green";
 				context.strokeStyle = "darkgreen";
-				context.fillRect(snakePart.x, snakePart.y, 10, 10);
-				context.strokeRect(snakePart.x, snakePart.y, 10, 10);
+				context.fillRect(snakePart.x, snakePart.y, unitSize, unitSize);
+				context.strokeRect(
+					snakePart.x,
+					snakePart.y,
+					unitSize,
+					unitSize
+				);
 			};
-			const drawSnake = () => {
-				snake.forEach(drawSnakePart);
-			};
+			const drawSnake = () => snake.forEach(drawSnakePart);
 			const moveSnake = () => {
 				if (snake.length > 0) {
 					const head = { x: snake[0].x + dx, y: snake[0].y + dy };
@@ -40,35 +72,18 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 						head.y = (head.y + canvasHeight) % canvasHeight;
 					}
 					snake.unshift(head);
-					// Check for collision with the snake's own body
 					for (let i = 1; i < snake.length; i++) {
 						if (snake[i].x === head.x && snake[i].y === head.y) {
-							// Reset the game
-							food = { x: 300, y: 300 }; // Reset food to initial position
-							snake = [{ x: 200, y: 200 }]; // Reset snake to initial position
-							dx = 10; // Reset direction
+							respawnFood();
+							snake = [{ x: 5 * unitSize, y: 5 * unitSize }];
+							dx = unitSize;
 							dy = 0;
-							nextDirections.push({ dx: 10, dy: 0 }); // Reset next direction
-							return; // Exit the function to prevent further execution
+							nextDirections.push({ dx: unitSize, dy: 0 });
+							return;
 						}
 					}
 					if (snake[0].x === food.x && snake[0].y === food.y) {
-						if (canvasRef.current) {
-							food = {
-								x:
-									Math.round(
-										(Math.random() *
-											(canvasRef.current.width - 10)) /
-											10
-									) * 10,
-								y:
-									Math.round(
-										(Math.random() *
-											(canvasRef.current.height - 10)) /
-											10
-									) * 10,
-							};
-						}
+						respawnFood();
 					} else {
 						snake.pop();
 					}
@@ -76,7 +91,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 			};
 			const drawFood = () => {
 				context.fillStyle = "red";
-				context.fillRect(food.x, food.y, 10, 10);
+				context.fillRect(food.x, food.y, unitSize, unitSize);
 			};
 			const clearCanvas = () => {
 				if (canvasRef.current) {
@@ -101,19 +116,8 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				}
 				const nextDirection = nextDirections.pop();
 				if (nextDirection) {
-					const goingUp = dy === -10;
-					const goingDown = dy === 10;
-					const goingRight = dx === 10;
-					const goingLeft = dx === -10;
-					if (
-						(nextDirection.dx === -10 && !goingRight) ||
-						(nextDirection.dx === 10 && !goingLeft) ||
-						(nextDirection.dy === -10 && !goingDown) ||
-						(nextDirection.dy === 10 && !goingUp)
-					) {
-						dx = nextDirection.dx;
-						dy = nextDirection.dy;
-					}
+					dx = nextDirection.dx;
+					dy = nextDirection.dy;
 				}
 				drawFood();
 				moveSnake();
@@ -125,18 +129,14 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				const UP_KEY = 38;
 				const DOWN_KEY = 40;
 				const keyPressed = event.keyCode;
-				const goingUp = dy === -10;
-				const goingDown = dy === 10;
-				const goingRight = dx === 10;
-				const goingLeft = dx === -10;
-				if (keyPressed === LEFT_KEY && !goingRight) {
-					nextDirections.push({ dx: -10, dy: 0 });
-				} else if (keyPressed === UP_KEY && !goingDown) {
-					nextDirections.push({ dx: 0, dy: -10 });
-				} else if (keyPressed === RIGHT_KEY && !goingLeft) {
-					nextDirections.push({ dx: 10, dy: 0 });
-				} else if (keyPressed === DOWN_KEY && !goingUp) {
-					nextDirections.push({ dx: 0, dy: 10 });
+				if (keyPressed === LEFT_KEY && dx !== unitSize) {
+					nextDirections.push({ dx: -unitSize, dy: 0 });
+				} else if (keyPressed === UP_KEY && dy !== unitSize) {
+					nextDirections.push({ dx: 0, dy: -unitSize });
+				} else if (keyPressed === RIGHT_KEY && dx !== -unitSize) {
+					nextDirections.push({ dx: unitSize, dy: 0 });
+				} else if (keyPressed === DOWN_KEY && dy !== -unitSize) {
+					nextDirections.push({ dx: 0, dy: unitSize });
 				}
 			};
 			let xDown: number | null = null;
@@ -155,21 +155,15 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				const xDiff = xDown - xUp;
 				const yDiff = yDown - yUp;
 				if (Math.abs(xDiff) > Math.abs(yDiff)) {
-					if (xDiff > 0) {
-						/* left swipe */
-						nextDirections.push({ dx: -10, dy: 0 });
-					} else {
-						/* right swipe */
-						nextDirections.push({ dx: 10, dy: 0 });
-					}
+					nextDirections.push({
+						dx: xDiff > 0 ? -unitSize : unitSize,
+						dy: 0,
+					});
 				} else {
-					if (yDiff > 0) {
-						/* up swipe */
-						nextDirections.push({ dx: 0, dy: -10 });
-					} else {
-						/* down swipe */
-						nextDirections.push({ dx: 0, dy: 10 });
-					}
+					nextDirections.push({
+						dx: 0,
+						dy: yDiff > 0 ? -unitSize : unitSize,
+					});
 				}
 				xDown = null;
 				yDown = null;
@@ -190,8 +184,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				clearInterval(gameInterval);
 			};
 		}
-	}, [context, open, theme.palette.secondary.contrastText]);
-
+	}, [context, open, theme.palette.secondary.contrastText, unitSize]);
 	return (
 		<Dialog
 			open={open}
