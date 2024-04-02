@@ -1,15 +1,23 @@
+"use client";
+import SnakeGame from "@/components/game/SnakeGame";
 import {
 	Box,
+	Button,
 	Container,
 	Divider,
 	Grid,
 	Paper,
 	Typography,
+	useMediaQuery,
+	useTheme,
 } from "@mui/material";
 import { useTranslations } from "next-intl";
-
+import { useState } from "react";
 export default function Home() {
 	const t = useTranslations("Projects");
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 	return (
 		<Container maxWidth="lg">
 			<Box sx={{ my: 4 }}>
@@ -37,56 +45,83 @@ export default function Home() {
 					}}
 				/>
 				<Grid container spacing={3} my={2}>
-					{t
-						.raw("projects")
-						.map(
-							(
-								section: { title: string; description: string },
-								index: number
-							) => (
-								<Grid item xs={12} md={6} key={index}>
-									<Paper
-										elevation={3}
+					{t.raw("projects").map(
+						(
+							section: {
+								title: string;
+								description: string;
+								mobileDescription?: string;
+							},
+							index: number
+						) => (
+							<Grid item xs={12} md={6} key={index}>
+								<Paper
+									elevation={3}
+									sx={{
+										display: "flex",
+										flexDirection: "column",
+										height: "100%",
+										p: 3,
+										backgroundColor: "primary.main",
+									}}
+								>
+									<Typography
+										variant="h5"
+										color={"primary.contrastText"}
 										sx={{
-											display: "flex",
-											flexDirection: "column",
-											height: "100%",
-											p: 3,
-											backgroundColor: "primary.main",
+											fontSize: {
+												xs: "1rem",
+												sm: "1.5rem",
+												md: "2rem",
+											},
+										}}
+										gutterBottom
+									>
+										{section.title}
+									</Typography>
+									<Typography
+										sx={{
+											fontSize: {
+												xs: "0.75rem",
+												sm: "0.875rem",
+												md: "1rem",
+											},
+											color: "primary.contrastText",
 										}}
 									>
-										<Typography
-											variant="h5"
-											color={"primary.contrastText"}
+										{isMobile
+											? section.mobileDescription ??
+											  section.description
+											: section.description}
+									</Typography>
+									{isMobile && index === 1 && (
+										<Button
+											variant="contained"
+											color="secondary"
 											sx={{
-												fontSize: {
-													xs: "1rem",
-													sm: "1.5rem",
-													md: "2rem",
-												},
+												mt: "auto",
+												alignSelf: "center",
 											}}
-											gutterBottom
-										>
-											{section.title}
-										</Typography>
-										<Typography
-											sx={{
-												fontSize: {
-													xs: "0.75rem",
-													sm: "0.875rem",
-													md: "1rem",
-												},
-												color: "primary.contrastText",
+											onClick={() => {
+												setIsDialogOpen(true);
 											}}
 										>
-											{section.description}
-										</Typography>
-									</Paper>
-								</Grid>
-							)
-						)}
+											Play Snake Game
+										</Button>
+									)}
+								</Paper>
+							</Grid>
+						)
+					)}
 				</Grid>
 			</Box>
+			<SnakeGame
+				open={isDialogOpen}
+				onClose={() => {
+					setIsDialogOpen(false);
+				}}
+			/>
+			;
 		</Container>
 	);
 }
