@@ -3,8 +3,14 @@ import { FC, useEffect, useState } from "react";
 
 interface InputDetectorProps {
 	sequenceToCheck: string;
+	override?: boolean;
+	setOverride?: (override: boolean) => void;
 }
-const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
+const InputDetector: FC<InputDetectorProps> = ({
+	sequenceToCheck,
+	override,
+	setOverride,
+}) => {
 	const [keySequence, setKeySequence] = useState<string[]>([]);
 	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 	useEffect(() => {
@@ -24,6 +30,11 @@ const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
 			setIsDialogOpen(true);
 		}
 	}, [keySequence, sequenceToCheck, isDialogOpen]);
+	useEffect(() => {
+		if (override) {
+			setIsDialogOpen(true);
+		}
+	}, [override]);
 	return (
 		<>
 			{isDialogOpen && (
@@ -31,6 +42,7 @@ const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
 					open={isDialogOpen}
 					onClose={() => {
 						setIsDialogOpen(false);
+						setOverride && setOverride(false);
 						setKeySequence([]);
 					}}
 				/>
