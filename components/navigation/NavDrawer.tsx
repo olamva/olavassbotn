@@ -132,12 +132,16 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 													)}
 												</ListItemIcon>
 											)}
-											<ListItemText
-												primary={item.label}
-												sx={{
-													color: "primary.contrastText",
-												}}
-											/>
+											<ListItemText>
+												<Typography
+													sx={{
+														color: "primary.contrastText",
+														mt: index === 0 ? 1 : 0,
+													}}
+												>
+													{item.label}
+												</Typography>
+											</ListItemText>
 										</ListItemButton>
 									</Link>
 								</ListItem>
