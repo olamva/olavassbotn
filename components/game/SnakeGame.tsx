@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, useMediaQuery } from "@mui/material";
+import { Dialog, DialogContent } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { FC, useEffect, useRef, useState } from "react";
 interface SnakeGameProps {
@@ -11,8 +11,9 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 		null
 	);
 	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-	const unitSize = isMobile ? 20 : 10;
+	// const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+	// const unitSize = isMobile ? 20 : 10;
+	const unitSize = 20;
 	const canvasWidth =
 		Math.round((window.innerWidth * 0.7) / unitSize) * unitSize;
 	const canvasHeight =
