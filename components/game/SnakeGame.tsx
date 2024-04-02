@@ -11,14 +11,16 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 	const [context, setContext] = useState<CanvasRenderingContext2D | null>(
 		null
 	);
+	const canvasWidth = Math.round((window.innerWidth * 0.7) / 10) * 10;
+	const canvasHeight = Math.round((window.innerHeight * 0.7) / 10) * 10;
 	const theme = useTheme();
 	useEffect(() => {
 		if (context && open) {
 			let snake = [{ x: 200, y: 200 }];
-			let food = { x: 300, y: 300 };
+			let food = { x: 100, y: 100 };
 			let dx = 10;
 			let dy = 0;
-			let nextDirection = { dx: 10, dy: 0 };
+			let nextDirections = [{ dx: 10, dy: 0 }];
 			const drawSnakePart = (snakePart: { x: number; y: number }) => {
 				context.fillStyle = "green";
 				context.strokeStyle = "darkgreen";
@@ -46,7 +48,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 							snake = [{ x: 200, y: 200 }]; // Reset snake to initial position
 							dx = 10; // Reset direction
 							dy = 0;
-							nextDirection = { dx: 10, dy: 0 }; // Reset next direction
+							nextDirections.push({ dx: 10, dy: 0 }); // Reset next direction
 							return; // Exit the function to prevent further execution
 						}
 					}
@@ -97,8 +99,22 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 						canvasRef.current.height
 					);
 				}
-				dx = nextDirection.dx;
-				dy = nextDirection.dy;
+				const nextDirection = nextDirections.pop();
+				if (nextDirection) {
+					const goingUp = dy === -10;
+					const goingDown = dy === 10;
+					const goingRight = dx === 10;
+					const goingLeft = dx === -10;
+					if (
+						(nextDirection.dx === -10 && !goingRight) ||
+						(nextDirection.dx === 10 && !goingLeft) ||
+						(nextDirection.dy === -10 && !goingDown) ||
+						(nextDirection.dy === 10 && !goingUp)
+					) {
+						dx = nextDirection.dx;
+						dy = nextDirection.dy;
+					}
+				}
 				drawFood();
 				moveSnake();
 				drawSnake();
@@ -114,13 +130,13 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				const goingRight = dx === 10;
 				const goingLeft = dx === -10;
 				if (keyPressed === LEFT_KEY && !goingRight) {
-					nextDirection = { dx: -10, dy: 0 };
+					nextDirections.push({ dx: -10, dy: 0 });
 				} else if (keyPressed === UP_KEY && !goingDown) {
-					nextDirection = { dx: 0, dy: -10 };
+					nextDirections.push({ dx: 0, dy: -10 });
 				} else if (keyPressed === RIGHT_KEY && !goingLeft) {
-					nextDirection = { dx: 10, dy: 0 };
+					nextDirections.push({ dx: 10, dy: 0 });
 				} else if (keyPressed === DOWN_KEY && !goingUp) {
-					nextDirection = { dx: 0, dy: 10 };
+					nextDirections.push({ dx: 0, dy: 10 });
 				}
 			};
 			document.addEventListener("keydown", changeDirection);
@@ -143,16 +159,20 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 					}
 				},
 			}}
+			maxWidth="xl"
+			PaperProps={{
+				style: {
+					width: canvasWidth,
+					height: canvasHeight,
+				},
+			}}
 		>
-			<DialogContent
-				sx={{
-					padding: 0,
-					width: "600px",
-					height: "480px",
-					backgroundColor: theme.palette.secondary.contrastText,
-				}}
-			>
-				<canvas ref={canvasRef} width="600" height="480" />
+			<DialogContent sx={{ padding: 0, overflow: "hidden" }}>
+				<canvas
+					ref={canvasRef}
+					width={canvasWidth}
+					height={canvasHeight}
+				/>
 			</DialogContent>
 		</Dialog>
 	);
