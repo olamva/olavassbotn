@@ -67,7 +67,8 @@
 			},
 			{
 				"title": "Snake-spill i React",
-				"description": "Et Canvas Snake-spill bygget med React og TypeScript. Alle de typiske snake-funksjonene er inkludert. Om du ønsker å prøve det ut, skriv inn konami-koden 😉"
+				"description": "Et Canvas Snake-spill bygget med React og TypeScript. Alle de typiske snake-funksjonene er inkludert. Om du ønsker å prøve det ut, skriv inn konami-koden 😉",
+				"mobileDescription": "Et Canvas Snake-spill bygget med React og TypeScript. Alle de typiske snake-funksjonene er inkludert."
 			}
 		]
 	}
