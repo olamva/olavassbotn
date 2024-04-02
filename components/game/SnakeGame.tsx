@@ -174,14 +174,19 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				xDown = null;
 				yDown = null;
 			};
+			const preventDefault = (e: TouchEvent) => e.preventDefault();
 			document.addEventListener("keydown", changeDirection);
 			document.addEventListener("touchstart", handleTouchStart, false);
 			document.addEventListener("touchmove", handleTouchMove, false);
+			document.addEventListener("touchmove", preventDefault, {
+				passive: false,
+			});
 			const gameInterval = setInterval(gameLoop, 100);
 			return () => {
 				document.removeEventListener("keydown", changeDirection);
 				document.removeEventListener("touchstart", handleTouchStart);
 				document.removeEventListener("touchmove", handleTouchMove);
+				document.removeEventListener("touchmove", preventDefault);
 				clearInterval(gameInterval);
 			};
 		}
