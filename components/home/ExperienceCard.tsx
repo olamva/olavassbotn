@@ -65,8 +65,13 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 												: img.darkSrc ?? img.src
 										}
 										alt={img.alt}
-										layout="fill"
-										objectFit="contain"
+										style={{
+											position: "absolute",
+											top: 0,
+											left: 0,
+											width: "100%",
+											height: "auto",
+										}}
 									/>
 								</Box>
 							))}
