@@ -28,7 +28,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 						cursor: experience.href ? "pointer" : "default",
 					}}
 				>
-					{experience.imgs.length > 0 ? (
+					{experience.imgs.length && (
 						<Box
 							sx={{
 								display: "flex",
@@ -44,7 +44,6 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 									sx={{
 										width: 30,
 										height: 30,
-										paddingTop: "100%",
 										position: "relative",
 										marginBottom:
 											experience.imgs.length > 1 &&
@@ -66,18 +65,13 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 												: img.darkSrc ?? img.src
 										}
 										alt={img.alt}
-										style={{
-											position: "absolute",
-											top: 0,
-											left: 0,
-											width: "100%",
-											height: "100%",
-										}}
+										layout="fill"
+										objectFit="contain"
 									/>
 								</Box>
 							))}
 						</Box>
-					) : null}
+					)}
 					<Box
 						sx={{
 							my: "auto",
