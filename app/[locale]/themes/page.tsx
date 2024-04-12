@@ -1,21 +1,26 @@
+"use client";
+
 import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
+
 export default function Home() {
 	const t = useTranslations("Themes");
+	const theme = useTheme();
 	const papers = [
-		{ label: "Primary Main", color: "primary.main" },
-		{ label: "Primary Dark", color: "primary.dark" },
-		{ label: "Primary Light", color: "primary.light" },
+		{ label: "Primary Main", color: theme.palette.primary.main },
+		{ label: "Primary Dark", color: theme.palette.primary.dark },
+		{ label: "Primary Light", color: theme.palette.primary.light },
 		{
 			label: "Primary Contrast Text",
-			color: "primary.contrastText",
+			color: theme.palette.primary.contrastText,
 		},
-		{ label: "Secondary Main", color: "secondary.main" },
-		{ label: "Secondary Dark", color: "secondary.dark" },
-		{ label: "Secondary Light", color: "secondary.light" },
+		{ label: "Secondary Main", color: theme.palette.secondary.main },
+		{ label: "Secondary Dark", color: theme.palette.secondary.dark },
+		{ label: "Secondary Light", color: theme.palette.secondary.light },
 		{
 			label: "Secondary Contrast Text",
-			color: "secondary.contrastText",
+			color: theme.palette.secondary.contrastText,
 		},
 	];
 	return (
