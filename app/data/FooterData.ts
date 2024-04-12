@@ -8,7 +8,7 @@ export const socialLinks: SocialLink[] = [
 	},
 	{
 		icon: LinkedIn,
-		link: "https://www.linkedin.com/olavassbotn/",
+		link: "https://www.linkedin.com/in/ola-vassbotn/",
 	},
 ];
 
