@@ -15,6 +15,7 @@ const LangToggle: React.FC = () => {
 		const newLocale = locale === "en" ? "no" : "en";
 		const newPathname = "/" + newLocale + pathname.slice(3);
 		router.push(newPathname);
+		router.refresh(); // without this extra refresh, the theme toggle completely breaks apart when changing the language
 	};
 
 	const languages: { [key: string]: StaticImageData } = {
