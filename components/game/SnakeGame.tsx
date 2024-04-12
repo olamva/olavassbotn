@@ -141,34 +141,47 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 			};
 			let xDown: number | null = null;
 			let yDown: number | null = null;
+			let handlingSwipe = false;
 			const handleTouchStart = (e: TouchEvent) => {
 				const firstTouch = e.touches[0];
 				xDown = firstTouch.clientX;
 				yDown = firstTouch.clientY;
 			};
 			const handleTouchMove = (e: TouchEvent) => {
-				if (!xDown || !yDown) {
+				if (!xDown || !yDown || handlingSwipe) {
 					return;
 				}
 				const xUp = e.touches[0].clientX;
 				const yUp = e.touches[0].clientY;
 				const xDiff = xDown - xUp;
 				const yDiff = yDown - yUp;
+				const sensitivity = 20; // Increase for more wiggle room
 				if (Math.abs(xDiff) > Math.abs(yDiff)) {
-					if (xDiff > 0 && dx === 0) {
-						nextDirections.push({ dx: -unitSize, dy: 0 });
-					} else if (xDiff < 0 && dx === 0) {
-						nextDirections.push({ dx: unitSize, dy: 0 });
+					if (Math.abs(xDiff) > sensitivity) {
+						handlingSwipe = true;
+						if (xDiff > 0 && dx !== unitSize) {
+							nextDirections.push({ dx: -unitSize, dy: 0 });
+						} else if (xDiff < 0 && dx !== -unitSize) {
+							nextDirections.push({ dx: unitSize, dy: 0 });
+						}
+						xDown = xUp;
+						yDown = yUp;
 					}
 				} else {
-					if (yDiff > 0 && dy === 0) {
-						nextDirections.push({ dx: 0, dy: -unitSize });
-					} else if (yDiff < 0 && dy === 0) {
-						nextDirections.push({ dx: 0, dy: unitSize });
+					if (Math.abs(yDiff) > sensitivity) {
+						handlingSwipe = true;
+						if (yDiff > 0 && dy !== unitSize) {
+							nextDirections.push({ dx: 0, dy: -unitSize });
+						} else if (yDiff < 0 && dy !== -unitSize) {
+							nextDirections.push({ dx: 0, dy: unitSize });
+						}
+						xDown = xUp;
+						yDown = yUp;
 					}
 				}
-				xDown = null;
-				yDown = null;
+				if (handlingSwipe) {
+					setTimeout(() => (handlingSwipe = false), 100);
+				}
 			};
 			const preventDefault = (e: TouchEvent) => e.preventDefault();
 			document.addEventListener("keydown", changeDirection);
