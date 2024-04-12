@@ -141,34 +141,37 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 			};
 			let xDown: number | null = null;
 			let yDown: number | null = null;
+			let handlingSwipe = false;
 			const handleTouchStart = (e: TouchEvent) => {
 				const firstTouch = e.touches[0];
 				xDown = firstTouch.clientX;
 				yDown = firstTouch.clientY;
 			};
 			const handleTouchMove = (e: TouchEvent) => {
-				if (!xDown || !yDown) {
+				if (!xDown || !yDown || handlingSwipe) {
 					return;
 				}
+				handlingSwipe = true;
 				const xUp = e.touches[0].clientX;
 				const yUp = e.touches[0].clientY;
 				const xDiff = xDown - xUp;
 				const yDiff = yDown - yUp;
 				if (Math.abs(xDiff) > Math.abs(yDiff)) {
-					if (xDiff > 0 && dx === 0) {
+					if (xDiff > 0 && dx !== unitSize) {
 						nextDirections.push({ dx: -unitSize, dy: 0 });
-					} else if (xDiff < 0 && dx === 0) {
+					} else if (xDiff < 0 && dx !== -unitSize) {
 						nextDirections.push({ dx: unitSize, dy: 0 });
 					}
 				} else {
-					if (yDiff > 0 && dy === 0) {
+					if (yDiff > 0 && dy !== unitSize) {
 						nextDirections.push({ dx: 0, dy: -unitSize });
-					} else if (yDiff < 0 && dy === 0) {
+					} else if (yDiff < 0 && dy !== -unitSize) {
 						nextDirections.push({ dx: 0, dy: unitSize });
 					}
 				}
-				xDown = null;
-				yDown = null;
+				xDown = xUp; // Update xDown for continuous movement
+				yDown = yUp; // Update yDown for continuous movement
+				setTimeout(() => (handlingSwipe = false), 100); // Reset handlingSwipe after a delay to allow for continuous movement
 			};
 			const preventDefault = (e: TouchEvent) => e.preventDefault();
 			document.addEventListener("keydown", changeDirection);
