@@ -6,14 +6,21 @@ import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 export default function NavBar() {
 	const [open, setOpen] = useState(false);
-	const toggleDrawer = (newOpen: boolean) => () => {
-		setOpen(newOpen);
-	};
+	const toggleDrawer = useMemo(
+		() => (newOpen: boolean) => () => {
+			setOpen(newOpen);
+		},
+		[]
+	);
 	const locale = useLocale();
 	const pathname = usePathname();
+	const homeLink = useMemo(
+		() => (pathname === `/${locale}` ? "" : `/${locale}`),
+		[pathname, locale]
+	);
 	return (
 		<>
 			<NavDrawer toggleDrawer={toggleDrawer} open={open} />
@@ -32,10 +39,7 @@ export default function NavBar() {
 						>
 							<Menu />
 						</IconButton>
-						<Link
-							style={{ width: "100%" }}
-							href={pathname == "/" + locale ? "" : "/" + locale}
-						>
+						<Link style={{ width: "100%" }} href={homeLink}>
 							<IconButton
 								sx={{
 									color: "primary.contrastText",
