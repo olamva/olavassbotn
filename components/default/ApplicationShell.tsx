@@ -17,7 +17,7 @@ export default function ApplicationShell({
 	const [mode, setMode] = useState<PaletteMode>(savedMode);
 	useEffect(() => {
 		Cookies.set("themeMode", mode);
-	}, [mode, savedMode]);
+	}, [mode]);
 	const theme = useMemo(() => makeThemeWithMode(mode), [mode]);
 	return (
 		<ThemeModeProvider mode={mode} setMode={setMode}>

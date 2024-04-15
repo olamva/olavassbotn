@@ -1,3 +1,3 @@
-export const locales = ["en", "no"] as const;
+export const locales = ["no", "en"] as const;
 
 export const localePrefix = undefined;
