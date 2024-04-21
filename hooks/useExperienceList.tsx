@@ -1,29 +1,25 @@
 import { ExperiencelistItems } from "@/app/data/ExperienceGridData";
 import { Experience } from "@/app/types/default";
-import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
-
+import { useMemo } from "react";
 export const useExperienceList = (): Experience[] => {
-	const theme = useTheme();
-	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 	const t = useTranslations("experience");
-	let experienceList: Experience[] = ExperiencelistItems.map(
-		(item, index) => {
+	const experienceList = useMemo(() => {
+		return ExperiencelistItems.map((item, index) => {
+			const title = t(`${index}.title`);
+			const hasDescription = t(`${index}.hasDescription`);
+			const description =
+				hasDescription === "true"
+					? t(`${index}.description`)
+					: undefined;
 			const experience: Experience = {
 				...item,
-				title: t(`${index}.title`),
-				imgs: item.imgs.map((img) => ({
-					...img,
-					src: matches && img.darkSrc ? img.darkSrc : img.src,
-				})),
+				title: title || `Missing title for ${index}`,
+				description,
+				imgs: item.imgs.map((img) => ({ ...img })),
 			};
-			const hasDescription = t(`${index}.hasDescription`);
-			if (hasDescription === "true") {
-				experience.description = t(`${index}.description`);
-			}
 			return experience;
-		}
-	);
+		});
+	}, [t]);
 	return experienceList;
 };
