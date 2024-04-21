@@ -129,13 +129,32 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				const UP_KEY = 38;
 				const DOWN_KEY = 40;
 				const keyPressed = event.keyCode;
-				if (keyPressed === LEFT_KEY && dx !== unitSize) {
+				const lastDirection = nextDirections[
+					nextDirections.length - 1
+				] || { dx, dy };
+				if (
+					keyPressed === LEFT_KEY &&
+					dx !== unitSize &&
+					lastDirection.dx !== -unitSize
+				) {
 					nextDirections.push({ dx: -unitSize, dy: 0 });
-				} else if (keyPressed === UP_KEY && dy !== unitSize) {
+				} else if (
+					keyPressed === UP_KEY &&
+					dy !== unitSize &&
+					lastDirection.dy !== -unitSize
+				) {
 					nextDirections.push({ dx: 0, dy: -unitSize });
-				} else if (keyPressed === RIGHT_KEY && dx !== -unitSize) {
+				} else if (
+					keyPressed === RIGHT_KEY &&
+					dx !== -unitSize &&
+					lastDirection.dx !== unitSize
+				) {
 					nextDirections.push({ dx: unitSize, dy: 0 });
-				} else if (keyPressed === DOWN_KEY && dy !== -unitSize) {
+				} else if (
+					keyPressed === DOWN_KEY &&
+					dy !== -unitSize &&
+					lastDirection.dy !== unitSize
+				) {
 					nextDirections.push({ dx: 0, dy: unitSize });
 				}
 			};

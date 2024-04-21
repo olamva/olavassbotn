@@ -1,5 +1,10 @@
-import { ExperienceListItem } from "@/app/types/default";
+import type { ExperienceListItem } from "@/app/types/default";
+import CSSLogo from "@/public/logos/CSS.png";
+import HTMLLogo from "@/public/logos/HTML.png";
+import JSLogo from "@/public/logos/JS.png";
 import onlineLogo from "@/public/logos/Online_bla_o.svg";
+import TSLogo from "@/public/logos/TS.svg";
+import tanaLogo from "@/public/logos/Tana.svg";
 import fagkomLogoDark from "@/public/logos/fagkomDark.png";
 import fagkomLogoLight from "@/public/logos/fagkomLight.png";
 import javaLogo from "@/public/logos/java.webp";
@@ -19,6 +24,51 @@ export const ExperiencelistItems: ExperienceListItem[] = [
 			{
 				src: onlineLogo,
 				alt: "Online sin logo",
+			},
+		],
+	},
+	{
+		href: "https://tana.inc/",
+		imgs: [
+			{
+				src: tanaLogo,
+				alt: "Tana sin logo",
+			},
+		],
+	},
+	{
+		href: "https://en.wikipedia.org/wiki/HTML",
+		imgs: [
+			{
+				src: HTMLLogo,
+				alt: "HTML logo",
+			},
+		],
+	},
+	{
+		href: "https://en.wikipedia.org/wiki/CSS",
+		imgs: [
+			{
+				src: CSSLogo,
+				alt: "CSS logo",
+			},
+		],
+	},
+	{
+		href: "https://en.wikipedia.org/wiki/JavaScript",
+		imgs: [
+			{
+				src: JSLogo,
+				alt: "JavaScript logo",
+			},
+		],
+	},
+	{
+		href: "https://www.typescriptlang.org/",
+		imgs: [
+			{
+				src: TSLogo,
+				alt: "TypeScript logo",
 			},
 		],
 	},

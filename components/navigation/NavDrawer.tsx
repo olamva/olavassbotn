@@ -1,3 +1,4 @@
+import { NavItem } from "@/app/types/nav";
 import {
 	Assignment,
 	AssignmentOutlined,
@@ -36,6 +37,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 	const pathname = usePathname();
 	const theme = useTheme();
 	const t = useTranslations("NavDrawer");
+
 	const navItems: NavItem[] = [
 		{
 			label: t("home"),

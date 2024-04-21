@@ -11,18 +11,39 @@
 			"description": "Deputy Head 24/25"
 		},
 		"1": {
-			"title": "Java",
-			"hasDescription": "false"
+			"title": "UI-test Engineer at Tana",
+			"hasDescription": "true",
+			"description": "Implemented automated UI tests using Cypress"
 		},
 		"2": {
-			"title": "Python",
+			"title": "HTML",
 			"hasDescription": "false"
 		},
 		"3": {
-			"title": "React",
+			"title": "CSS",
 			"hasDescription": "false"
 		},
 		"4": {
+			"title": "JavaScript",
+			"hasDescription": "false"
+		},
+		"5": {
+			"title": "TypeScript",
+			"hasDescription": "false"
+		},
+		"6": {
+			"title": "Java",
+			"hasDescription": "false"
+		},
+		"7": {
+			"title": "Python",
+			"hasDescription": "false"
+		},
+		"8": {
+			"title": "React",
+			"hasDescription": "false"
+		},
+		"9": {
 			"title": "Next.js",
 			"hasDescription": "false"
 		}
