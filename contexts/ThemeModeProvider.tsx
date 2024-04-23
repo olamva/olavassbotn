@@ -28,9 +28,7 @@ const ThemeModeProvider: React.FC<ThemeModeProviderProps> = ({
 	const colorMode = useMemo(
 		() => ({
 			toggleColorMode: () => {
-				setMode((prevMode) =>
-					prevMode === "light" ? "dark" : "light"
-				);
+				setMode((prevMode) => (prevMode === "dark" ? "light" : "dark"));
 			},
 			mode,
 		}),
