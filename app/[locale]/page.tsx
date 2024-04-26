@@ -10,10 +10,10 @@ export default function Home() {
 				sx={{
 					color: "primary.contrastText",
 					fontSize: {
-						xs: "3rem",
-						sm: "4rem",
-						md: "6rem",
-						lg: "8rem",
+						xs: "2rem",
+						sm: "3rem",
+						md: "5rem",
+						lg: "6rem",
 					},
 				}}
 				fontWeight={900}
@@ -26,9 +26,9 @@ export default function Home() {
 				sx={{
 					color: "primary.contrastText",
 					fontSize: {
-						xs: "1.25rem",
-						sm: "1.5rem",
-						md: "1.75rem",
+						xs: "0.75rem",
+						sm: "1rem",
+						md: "1.5rem",
 						lg: "2rem",
 					},
 				}}
