@@ -1,6 +1,6 @@
 import { Experience } from "@/app/types/default";
+import { useColorMode } from "@/contexts/ThemeModeProvider";
 import { Box, Card, CardContent, Divider, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,11 +8,12 @@ interface ExperienceCardProps {
 	experience: Experience;
 }
 const ExperienceCard = ({ experience }: ExperienceCardProps) => {
-	const theme = useTheme();
+	const { mode } = useColorMode();
 	return (
 		<Card
 			sx={{
-				backgroundColor: "primary.dark",
+				backgroundColor:
+					mode == "dark" ? "primary.dark" : "primary.light",
 			}}
 			elevation={3}
 		>
@@ -60,7 +61,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 								>
 									<Image
 										src={
-											theme.palette.mode == "dark"
+											mode == "dark"
 												? img.src
 												: img.darkSrc ?? img.src
 										}
