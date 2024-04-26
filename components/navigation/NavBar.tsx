@@ -1,17 +1,23 @@
 import NavDrawer from "@/components/navigation/NavDrawer";
+import NavMenu from "@/components/navigation/NavMenu";
+import SearchField from "@/components/navigation/SearchField";
 import LangToggle from "@/components/toggles/LangToggle";
 import ThemeToggle from "@/components/toggles/ThemeToggle";
 import { Home, Menu } from "@mui/icons-material";
-import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
+import { Box, IconButton, Toolbar } from "@mui/material";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo, useState } from "react";
+import { useHandleOpenCommandPalette } from "react-cmdk";
 export default function NavBar() {
-	const [open, setOpen] = useState(false);
+	const [openDrawer, setOpenDrawer] = useState(false);
+	const [openMenu, setOpenMenu] = useState<boolean>(false);
+	useHandleOpenCommandPalette(setOpenMenu);
+
 	const toggleDrawer = useMemo(
 		() => (newOpen: boolean) => () => {
-			setOpen(newOpen);
+			setOpenDrawer(newOpen);
 		},
 		[]
 	);
@@ -23,44 +29,37 @@ export default function NavBar() {
 	);
 	return (
 		<>
-			<NavDrawer toggleDrawer={toggleDrawer} open={open} />
-			<AppBar
-				position="fixed"
-				sx={{ backgroundColor: "background.default" }}
-				elevation={0}
-			>
-				<Toolbar>
-					<Box>
+			<NavMenu isOpen={openMenu} setIsOpen={setOpenMenu} />
+			<NavDrawer toggleDrawer={toggleDrawer} open={openDrawer} />
+			<Toolbar>
+				<Box>
+					<IconButton
+						onClick={toggleDrawer(true)}
+						sx={{
+							color: "primary.contrastText",
+						}}
+					>
+						<Menu />
+					</IconButton>
+					<Link style={{ width: "100%" }} href={homeLink}>
 						<IconButton
-							onClick={toggleDrawer(true)}
 							sx={{
 								color: "primary.contrastText",
 							}}
 						>
-							<Menu />
+							<Home />
 						</IconButton>
-						<Link style={{ width: "100%" }} href={homeLink}>
-							<IconButton
-								sx={{
-									color: "primary.contrastText",
-								}}
-							>
-								<Home />
-							</IconButton>
-						</Link>
-					</Box>
-					<Box
-						sx={{
-							flexGrow: 1,
-						}}
-					></Box>
-					<Box>
-						<ThemeToggle />
-						<LangToggle />
-					</Box>
-				</Toolbar>
-			</AppBar>
-			<Toolbar />
+					</Link>
+				</Box>
+				<Box flexGrow={1}></Box>
+				<Box>
+					<SearchField setOpen={setOpenMenu} />
+				</Box>
+				<Box>
+					<ThemeToggle />
+					<LangToggle />
+				</Box>
+			</Toolbar>
 		</>
 	);
 }

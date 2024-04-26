@@ -48,12 +48,13 @@
 			"hasDescription": "false"
 		}
 	},
-	"NavDrawer": {
+	"NavItems": {
 		"home": "Home",
 		"projects": "Projects",
 		"about-me": "About Me",
 		"themes": "Themes",
-		"contribute": "Interested in learning how the website is put together?"
+		"contribute": "Interested in learning how the website is put together?",
+		"search-field": "Search.."
 	},
 	"About Me": {
 		"title": "About Me",

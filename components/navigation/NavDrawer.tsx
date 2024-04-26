@@ -1,4 +1,4 @@
-import { navItems } from "@/app/data/SitewideData";
+import { navItems } from "@/app/data/NavItems";
 import {
 	Box,
 	Divider,
@@ -24,7 +24,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 	const root = "/" + locale;
 	const pathname = usePathname();
 	const theme = useTheme();
-	const t = useTranslations("NavDrawer");
+	const t = useTranslations("NavItems");
 
 	const DrawerList = (
 		<Box
