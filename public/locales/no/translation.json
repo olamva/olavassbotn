@@ -90,7 +90,7 @@
 	},
 	"Themes": {
 		"title": "Fargetema for Denne Nettsiden",
-		"accessDenied": "Tilgang nektet. Vennligst skru på utviklermodus for å se denne siden."
+		"accessDenied": "Ingen adgang. Vennligst skru på utviklermodus for å se denne siden."
 	},
 	"Projects": {
 		"title": "Prosjekter",
