@@ -3,7 +3,7 @@ import { Experience } from "@/app/types/default";
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 export const useExperienceList = (): Experience[] => {
-	const t = useTranslations("experience");
+	const t = useTranslations("Experience");
 	const experienceList = useMemo(() => {
 		return ExperiencelistItems.map((item, index) => {
 			const title = t(`${index}.title`);

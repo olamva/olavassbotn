@@ -26,7 +26,7 @@ const NavMenu = ({ isOpen, setIsOpen }: NavMenuProps) => {
 						return {
 							id: item.label,
 							children: t(item.label),
-							icon: item.icon,
+							icon: item.filledIcon,
 							href: itemLink,
 						};
 					}),
