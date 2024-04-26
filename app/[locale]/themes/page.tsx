@@ -4,7 +4,7 @@ import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 
-export default function Home() {
+export default function Themes() {
 	const t = useTranslations("Themes");
 	const theme = useTheme();
 	const papers = [
