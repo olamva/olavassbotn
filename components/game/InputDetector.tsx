@@ -15,10 +15,9 @@ const InputDetector: FC<InputDetectorProps> = ({
 	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 	useEffect(() => {
 		const keyDownHandler = (event: KeyboardEvent) => {
-			setKeySequence((prevSequence) => [
-				...prevSequence.slice(-(sequenceToCheck.length - 1)),
-				event.key,
-			]);
+			setKeySequence((prevSequence) =>
+				[...prevSequence, event.key].slice(-10)
+			);
 		};
 		window.addEventListener("keydown", keyDownHandler);
 		return () => {
@@ -26,7 +25,8 @@ const InputDetector: FC<InputDetectorProps> = ({
 		};
 	}, [sequenceToCheck.length]);
 	useEffect(() => {
-		if (keySequence.join("") === sequenceToCheck && !isDialogOpen) {
+		if (isDialogOpen) return;
+		if (keySequence.join("") === sequenceToCheck) {
 			setIsDialogOpen(true);
 		}
 	}, [keySequence, sequenceToCheck, isDialogOpen]);

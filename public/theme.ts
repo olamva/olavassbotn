@@ -8,9 +8,6 @@ export const makeThemeWithMode = (mode: "light" | "dark"): Theme => {
 					primary: {
 						main: "rgb(211,212,200)",
 					},
-					secondary: {
-						main: "rgb(98, 105, 80)",
-					},
 					background: {
 						default: "rgb(240, 241, 231)",
 					},
@@ -21,13 +18,11 @@ export const makeThemeWithMode = (mode: "light" | "dark"): Theme => {
 				palette: {
 					mode: mode,
 					primary: {
-						main: "rgb(98, 105, 80)",
-					},
-					secondary: {
-						main: "rgb(179, 187, 157)",
+						main: "rgb(20, 20, 20)",
+						contrastText: "rgb(225, 225, 225)",
 					},
 					background: {
-						default: "rgb(33, 35, 27)",
+						default: "rgb(15, 15, 15)",
 					},
 				},
 			});

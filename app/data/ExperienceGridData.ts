@@ -12,6 +12,12 @@ import nextLogo from "@/public/logos/next-js.svg";
 import pythonLogo from "@/public/logos/python.webp";
 import reactLogo from "@/public/logos/react.png";
 
+/*
+HOW TO ADD A NEW EXPERIENCE LIST ITEM:
+Add the logo to the public/logos folder
+Add it to the ExperiencelistItems array below
+Add text to public/locales/[locale]/translation.json
+*/
 export const ExperiencelistItems: ExperienceListItem[] = [
 	{
 		href: "https://online.ntnu.no/",

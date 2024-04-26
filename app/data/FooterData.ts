@@ -5,10 +5,12 @@ export const socialLinks: SocialLink[] = [
 	{
 		icon: GitHub,
 		link: "https://github.com/olamva",
+		label: "GitHub",
 	},
 	{
 		icon: LinkedIn,
 		link: "https://www.linkedin.com/in/ola-vassbotn/",
+		label: "LinkedIn",
 	},
 ];
 

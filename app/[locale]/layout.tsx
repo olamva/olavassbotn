@@ -1,6 +1,8 @@
 import "@/app/globals.css";
 import ApplicationShell from "@/components/default/ApplicationShell";
 import { PaletteMode } from "@mui/material";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
@@ -24,10 +26,18 @@ export default function LocaleLayout({
 	const cookieStore = cookies();
 	const savedMode = cookieStore.get("themeMode");
 	const savedTheme = (savedMode?.value ?? "dark") as PaletteMode;
+
+	const devMode = cookieStore.get("devMode");
+	const devModeValue = devMode?.value === "true";
 	return (
 		<html lang={locale}>
 			<NextIntlClientProvider locale={locale} messages={messages}>
-				<ApplicationShell savedMode={savedTheme}>
+				<Analytics />
+				<SpeedInsights />
+				<ApplicationShell
+					savedMode={savedTheme}
+					savedDevMode={devModeValue}
+				>
 					{children}
 				</ApplicationShell>
 			</NextIntlClientProvider>

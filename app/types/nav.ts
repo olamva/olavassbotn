@@ -3,6 +3,7 @@ export type NavItem = {
 	link?: string;
 	icon?: any;
 	filledIcon?: any;
+	requiresAdmin?: boolean;
 	isDivider?: boolean;
 	isFooter?: boolean;
 };

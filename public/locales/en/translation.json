@@ -1,10 +1,10 @@
 {
 	"HomePage": {
 		"title": "Ola Munthe Vassbotn",
-		"subtitle": "Studying Bachelor of Informatics at NTNU",
-		"experienceTitle": "Experience:"
+		"subtitle": "Studying Bachelor of Informatics at NTNU"
 	},
-	"experience": {
+	"Experience": {
+		"title": "Experience",
 		"0": {
 			"title": "Academic Courses Comittee, Student Organization Online",
 			"hasDescription": "true",
@@ -48,12 +48,24 @@
 			"hasDescription": "false"
 		}
 	},
-	"NavDrawer": {
+	"NavItems": {
 		"home": "Home",
-		"projects": "Projects",
 		"about-me": "About Me",
+		"projects": "Projects",
+		"experience": "Experience",
 		"themes": "Themes",
-		"contribute": "Interested in learning how the website is put together?"
+		"contribute": "Interested in learning how the website is put together?",
+
+		"search-field": "Search..",
+
+		"languageToggle": "Change language to Norwegian",
+		"lightModeToggle": "Change to light mode",
+		"darkModeToggle": "Change to dark mode",
+		"devModeToggle": "Turn on developer mode",
+
+		"navigationTitle": "Navigation",
+		"socialsTitle": "Socials",
+		"settingsTitle": "Settings"
 	},
 	"About Me": {
 		"title": "About Me",
@@ -77,7 +89,8 @@
 		]
 	},
 	"Themes": {
-		"title": "Color Theme for This Website"
+		"title": "Color Theme for This Website",
+		"accessDenied": "Access denied. Please enable developer mode to access this page."
 	},
 	"Projects": {
 		"title": "Projects",
