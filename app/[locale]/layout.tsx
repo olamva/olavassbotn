@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import ApplicationShell from "@/components/default/ApplicationShell";
 import { PaletteMode } from "@mui/material";
+import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
@@ -30,6 +31,7 @@ export default function LocaleLayout({
 	return (
 		<html lang={locale}>
 			<NextIntlClientProvider locale={locale} messages={messages}>
+				<Analytics />
 				<ApplicationShell
 					savedMode={savedTheme}
 					savedDevMode={devModeValue}
