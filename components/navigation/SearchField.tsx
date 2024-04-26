@@ -1,3 +1,4 @@
+import { useColorMode } from "@/contexts/ThemeModeProvider";
 import { Search } from "@mui/icons-material";
 import KeyboardCommandKeyIcon from "@mui/icons-material/KeyboardCommandKey";
 import { Box, Button, Typography, useMediaQuery } from "@mui/material";
@@ -11,6 +12,8 @@ const SearchField = ({ setOpen }: SearchFieldProps) => {
 	const t = useTranslations("NavItems");
 	const theme = useTheme();
 	const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+	const { mode } = useColorMode();
+
 	const OUTER_BORDER_RADIUS = 3;
 	const INNER_BORDER_RADIUS = 1;
 	const FONT_SIZE = 12;
@@ -47,7 +50,11 @@ const SearchField = ({ setOpen }: SearchFieldProps) => {
 						{t("search-field")}
 					</Typography>
 					<Box
-						bgcolor={"primary.dark"}
+						bgcolor={
+							mode == "dark"
+								? "primary.dark"
+								: "primary.light"
+						}
 						display="flex"
 						flexDirection="row"
 						px={0.7}

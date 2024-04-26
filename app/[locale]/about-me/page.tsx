@@ -1,4 +1,5 @@
 "use client";
+import { useColorMode } from "@/contexts/ThemeModeProvider";
 import {
 	Box,
 	Container,
@@ -14,6 +15,7 @@ export default function AboutMe() {
 	const theme = useTheme();
 	const t = useTranslations("About Me");
 	const matches = useMediaQuery(theme.breakpoints.up("md"));
+	const { mode } = useColorMode();
 	return (
 		<Container maxWidth="lg">
 			<Box sx={{ my: 4 }}>
@@ -77,7 +79,10 @@ export default function AboutMe() {
 											flexDirection: "column",
 											height: "100%",
 											p: 3,
-											backgroundColor: "primary.dark",
+											backgroundColor:
+												mode == "dark"
+													? "primary.dark"
+													: "primary.light",
 										}}
 									>
 										<Typography

@@ -1,6 +1,7 @@
 "use client";
 import { konamiCode } from "@/app/data/ProjectsData";
 import InputDetector from "@/components/game/InputDetector";
+import { useColorMode } from "@/contexts/ThemeModeProvider";
 import {
 	Box,
 	Button,
@@ -19,6 +20,7 @@ export default function Projects() {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const [override, setOverride] = useState<boolean>(false);
+	const { mode } = useColorMode();
 	return (
 		<>
 			<InputDetector
@@ -69,7 +71,10 @@ export default function Projects() {
 											flexDirection: "column",
 											height: "100%",
 											p: 3,
-											backgroundColor: "primary.dark",
+											backgroundColor:
+												mode == "dark"
+													? "primary.dark"
+													: "primary.light",
 										}}
 									>
 										<Typography
