@@ -1,16 +1,4 @@
-import { NavItem } from "@/app/types/nav";
-import {
-	Assignment,
-	AssignmentOutlined,
-	Help,
-	HelpOutline,
-	Home,
-	HomeOutlined,
-	Palette,
-	PaletteOutlined,
-	Person,
-	PersonOutlined,
-} from "@mui/icons-material";
+import { navItems } from "@/app/data/NavItems";
 import {
 	Box,
 	Divider,
@@ -36,42 +24,8 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 	const root = "/" + locale;
 	const pathname = usePathname();
 	const theme = useTheme();
-	const t = useTranslations("NavDrawer");
+	const t = useTranslations("NavItems");
 
-	const navItems: NavItem[] = [
-		{
-			label: t("home"),
-			icon: HomeOutlined,
-			filledIcon: Home,
-			link: root,
-		},
-		{ label: "Divider1", isDivider: true },
-		{
-			label: t("projects"),
-			icon: AssignmentOutlined,
-			filledIcon: Assignment,
-			link: root + "/projects",
-		},
-		{
-			label: t("about-me"),
-			icon: PersonOutlined,
-			filledIcon: Person,
-			link: root + "/about-me",
-		},
-		{
-			label: t("themes"),
-			icon: PaletteOutlined,
-			filledIcon: Palette,
-			link: root + "/themes",
-		},
-		{
-			label: t("contribute"),
-			link: "https://github.com/olamva/olavassbotn",
-			icon: HelpOutline,
-			filledIcon: Help,
-			isFooter: true,
-		},
-	];
 	const DrawerList = (
 		<Box
 			sx={{
@@ -89,6 +43,9 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 						.filter((item) => !item.isFooter)
 						.map((item, index) => {
 							const isActive = pathname === item.link;
+							const itemLink = isActive
+								? ""
+								: root + item.link ?? "";
 							return item.isDivider ? (
 								<Divider
 									key={item.label}
@@ -101,7 +58,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 							) : (
 								<ListItem key={item.label} disablePadding>
 									<Link
-										href={isActive ? "" : item.link ?? ""}
+										href={itemLink}
 										style={{ width: "100%" }}
 									>
 										<ListItemButton
@@ -141,7 +98,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 														mt: index === 0 ? 1 : 0,
 													}}
 												>
-													{item.label}
+													{t(item.label)}
 												</Typography>
 											</ListItemText>
 										</ListItemButton>
@@ -179,7 +136,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 													fontSize: "0.7rem",
 												}}
 											>
-												{item.label}
+												{t(item.label)}
 											</Typography>
 										</ListItemText>
 									</ListItemButton>

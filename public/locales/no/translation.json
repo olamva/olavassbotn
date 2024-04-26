@@ -48,12 +48,13 @@
 			"hasDescription": "false"
 		}
 	},
-	"NavDrawer": {
+	"NavItems": {
 		"home": "Hjem",
 		"projects": "Prosjekter",
 		"about-me": "Om Meg",
 		"themes": "Temaer",
-		"contribute": "Interessert i å lære hvordan nettsiden er satt sammen?"
+		"contribute": "Interessert i å lære hvordan nettsiden er satt sammen?",
+		"search-field": "Søk.."
 	},
 	"About Me": {
 		"title": "Om Meg",

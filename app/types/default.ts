@@ -19,3 +19,9 @@ export interface Experience extends ExperienceListItem {
 	title: string;
 	description?: string;
 }
+
+export type ThemesPaper = {
+	label: string;
+	color: string;
+	textColor?: string;
+};

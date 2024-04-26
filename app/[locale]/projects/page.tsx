@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-export default function Home() {
+export default function Projects() {
 	const t = useTranslations("Projects");
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));

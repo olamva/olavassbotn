@@ -2,11 +2,7 @@ import ExperienceGrid from "@/components/home/ExperienceGrid";
 import { Divider, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 
-type HomePageProps = {
-	params: { locale: string };
-};
-
-export default function Home({ params: { locale } }: HomePageProps) {
+export default function Home() {
 	const t = useTranslations("HomePage");
 	return (
 		<>
