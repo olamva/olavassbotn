@@ -1,23 +1,22 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-
 export default function Home() {
 	const t = useTranslations("HomePage");
 	return (
-		<>
+		<Box mt={20}>
 			<Typography
 				variant="h1"
 				align="center"
 				sx={{
 					color: "primary.contrastText",
 					fontSize: {
-						xs: "2.5rem",
-						sm: "3rem",
-						md: "4rem",
-						lg: "5rem",
+						xs: "3rem",
+						sm: "4rem",
+						md: "6rem",
+						lg: "8rem",
 					},
 				}}
-				fontWeight={400}
+				fontWeight={900}
 			>
 				{t("title")}
 			</Typography>
@@ -33,11 +32,11 @@ export default function Home() {
 						lg: "2rem",
 					},
 				}}
-				fontWeight={100}
+				fontWeight={50}
 				gutterBottom
 			>
 				{t("subtitle")}
 			</Typography>
-		</>
+		</Box>
 	);
 }
