@@ -55,7 +55,17 @@
 		"experience": "Experience",
 		"themes": "Themes",
 		"contribute": "Interested in learning how the website is put together?",
-		"search-field": "Search.."
+
+		"search-field": "Search..",
+
+		"languageToggle": "Change language to Norwegian",
+		"lightModeToggle": "Change to light mode",
+		"darkModeToggle": "Change to dark mode",
+		"devModeToggle": "Turn on developer mode",
+
+		"navigationTitle": "Navigation",
+		"socialsTitle": "Socials",
+		"settingsTitle": "Settings"
 	},
 	"About Me": {
 		"title": "About Me",
@@ -79,7 +89,8 @@
 		]
 	},
 	"Themes": {
-		"title": "Color Theme for This Website"
+		"title": "Color Theme for This Website",
+		"accessDenied": "Access denied. Please enable developer mode to access this page."
 	},
 	"Projects": {
 		"title": "Projects",
