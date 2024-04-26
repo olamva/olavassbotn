@@ -1,5 +1,5 @@
 "use client";
-
+import { ThemesPaper } from "@/app/types/default";
 import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
@@ -7,13 +7,14 @@ import { useTranslations } from "next-intl";
 export default function Themes() {
 	const t = useTranslations("Themes");
 	const theme = useTheme();
-	const papers = [
+	const papers: ThemesPaper[] = [
 		{ label: "Primary Main", color: theme.palette.primary.main },
 		{ label: "Primary Dark", color: theme.palette.primary.dark },
 		{ label: "Primary Light", color: theme.palette.primary.light },
 		{
 			label: "Primary Contrast Text",
 			color: theme.palette.primary.contrastText,
+			textColor: theme.palette.secondary.contrastText,
 		},
 		{ label: "Secondary Main", color: theme.palette.secondary.main },
 		{ label: "Secondary Dark", color: theme.palette.secondary.dark },
@@ -60,7 +61,9 @@ export default function Themes() {
 						>
 							<Typography
 								variant="body1"
-								color="primary.contrastText"
+								color={
+									paper.textColor ?? "primary.contrastText"
+								}
 								sx={{
 									fontSize: {
 										xs: "0.75rem",

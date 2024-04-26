@@ -46,12 +46,12 @@ const SearchField = ({ setOpen }: SearchFieldProps) => {
 					bgcolor={"primary.dark"}
 					display="flex"
 					flexDirection="row"
-					px={1}
+					px={0.7}
 					py={0.3}
 					borderRadius={INNER_BORDER_RADIUS}
 					sx={{
 						border: "1px solid",
-						borderColor: "primary.contrastText",
+						borderColor: "secondary.light",
 					}}
 					mx={0.3}
 					alignItems={"center"}
