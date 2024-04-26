@@ -26,7 +26,7 @@ export default function LocaleLayout({
 	const savedTheme = (savedMode?.value ?? "dark") as PaletteMode;
 
 	const devMode = cookieStore.get("devMode");
-	const devModeValue = devMode?.value === "true"; // Correctly convert the string to boolean
+	const devModeValue = devMode?.value === "true";
 	return (
 		<html lang={locale}>
 			<NextIntlClientProvider locale={locale} messages={messages}>
