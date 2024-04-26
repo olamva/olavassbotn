@@ -42,7 +42,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 					{navItems
 						.filter((item) => !item.isFooter)
 						.map((item, index) => {
-							const isActive = pathname === item.link;
+							const isActive = pathname.slice(3) === item.link;
 							const itemLink = isActive
 								? ""
 								: root + item.link ?? "";

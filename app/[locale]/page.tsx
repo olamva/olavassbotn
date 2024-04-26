@@ -1,5 +1,4 @@
-import ExperienceGrid from "@/components/home/ExperienceGrid";
-import { Divider, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 
 export default function Home() {
@@ -39,32 +38,6 @@ export default function Home() {
 			>
 				{t("subtitle")}
 			</Typography>
-			<Divider
-				sx={{
-					my: 1,
-					width: "80%",
-					margin: "auto",
-					backgroundColor: "primary.contrastText",
-				}}
-			/>
-			<Typography
-				variant="h4"
-				align="center"
-				marginTop={2}
-				sx={{
-					color: "primary.contrastText",
-					fontSize: {
-						xs: "1.25rem",
-						sm: "1.5rem",
-						md: "1.75rem",
-						lg: "2rem",
-					},
-				}}
-				fontWeight={700}
-			>
-				{t("experienceTitle")}
-			</Typography>
-			<ExperienceGrid />
 		</>
 	);
 }

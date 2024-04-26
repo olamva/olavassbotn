@@ -10,6 +10,8 @@ import {
 	PaletteOutlined,
 	Person,
 	PersonOutlined,
+	Work,
+	WorkOutline,
 } from "@mui/icons-material";
 
 export const navItems: NavItem[] = [
@@ -21,16 +23,22 @@ export const navItems: NavItem[] = [
 	},
 	{ label: "Divider1", isDivider: true },
 	{
+		label: "about-me",
+		icon: PersonOutlined,
+		filledIcon: Person,
+		link: "/about-me",
+	},
+	{
 		label: "projects",
 		icon: AssignmentOutlined,
 		filledIcon: Assignment,
 		link: "/projects",
 	},
 	{
-		label: "about-me",
-		icon: PersonOutlined,
-		filledIcon: Person,
-		link: "/about-me",
+		label: "experience",
+		icon: WorkOutline,
+		filledIcon: Work,
+		link: "/experience",
 	},
 	{
 		label: "themes",

@@ -1,10 +1,10 @@
 {
 	"HomePage": {
 		"title": "Ola Munthe Vassbotn",
-		"subtitle": "Studying Bachelor of Informatics at NTNU",
-		"experienceTitle": "Experience:"
+		"subtitle": "Studying Bachelor of Informatics at NTNU"
 	},
-	"experience": {
+	"Experience": {
+		"title": "Experience",
 		"0": {
 			"title": "Academic Courses Comittee, Student Organization Online",
 			"hasDescription": "true",
@@ -50,8 +50,9 @@
 	},
 	"NavItems": {
 		"home": "Home",
-		"projects": "Projects",
 		"about-me": "About Me",
+		"projects": "Projects",
+		"experience": "Experience",
 		"themes": "Themes",
 		"contribute": "Interested in learning how the website is put together?",
 		"search-field": "Search.."

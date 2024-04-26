@@ -1,10 +1,10 @@
 {
 	"HomePage": {
 		"title": "Ola Munthe Vassbotn",
-		"subtitle": "Studerer Bachelor i informatikk ved NTNU",
-		"experienceTitle": "Erfaring:"
+		"subtitle": "Studerer Bachelor i informatikk ved NTNU"
 	},
-	"experience": {
+	"Experience": {
+		"title": "Erfaring",
 		"0": {
 			"title": "Fag- og kurskomiteen, Linjeforeningen Online",
 			"hasDescription": "true",
@@ -50,8 +50,9 @@
 	},
 	"NavItems": {
 		"home": "Hjem",
-		"projects": "Prosjekter",
 		"about-me": "Om Meg",
+		"projects": "Prosjekter",
+		"experience": "Erfaring",
 		"themes": "Temaer",
 		"contribute": "Interessert i å lære hvordan nettsiden er satt sammen?",
 		"search-field": "Søk.."
