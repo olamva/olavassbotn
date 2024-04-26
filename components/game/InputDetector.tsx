@@ -26,7 +26,6 @@ const InputDetector: FC<InputDetectorProps> = ({
 	}, [sequenceToCheck.length]);
 	useEffect(() => {
 		if (isDialogOpen) return;
-		console.log(keySequence.join(""));
 		if (keySequence.join("") === sequenceToCheck) {
 			setIsDialogOpen(true);
 		}
