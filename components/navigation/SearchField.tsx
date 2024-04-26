@@ -14,66 +14,68 @@ const SearchField = ({ setOpen }: SearchFieldProps) => {
 	const OUTER_BORDER_RADIUS = 3;
 	const INNER_BORDER_RADIUS = 1;
 	const FONT_SIZE = 12;
-	return smallScreen ? null : (
-		<Button
-			sx={{
-				textTransform: "none",
-				borderRadius: OUTER_BORDER_RADIUS,
-				padding: 0.5,
-			}}
-			onClick={() => setOpen(true)}
-		>
-			<Box
-				bgcolor={"primary.main"}
-				display="flex"
-				flexDirection="row"
-				padding={1}
-				borderRadius={OUTER_BORDER_RADIUS}
-				alignItems="center"
+	return (
+		smallScreen || (
+			<Button
+				sx={{
+					textTransform: "none",
+					borderRadius: OUTER_BORDER_RADIUS,
+					padding: 0.5,
+				}}
+				onClick={() => setOpen(true)}
 			>
-				<Search
-					sx={{
-						color: "primary.contrastText",
-						mx: 0.3,
-						fontSize: FONT_SIZE * 1.5,
-					}}
-				/>
-				<Typography
-					color={"primary.contrastText"}
-					mx={0.3}
-					fontSize={FONT_SIZE}
-				>
-					{t("search-field")}
-				</Typography>
 				<Box
-					bgcolor={"primary.dark"}
+					bgcolor={"primary.main"}
 					display="flex"
 					flexDirection="row"
-					px={0.7}
-					py={0.3}
-					borderRadius={INNER_BORDER_RADIUS}
-					sx={{
-						border: "1px solid",
-						borderColor: "secondary.light",
-					}}
-					mx={0.3}
-					alignItems={"center"}
+					padding={1}
+					borderRadius={OUTER_BORDER_RADIUS}
+					alignItems="center"
 				>
-					<KeyboardCommandKeyIcon
+					<Search
 						sx={{
 							color: "primary.contrastText",
-							fontSize: FONT_SIZE,
+							mx: 0.3,
+							fontSize: FONT_SIZE * 1.5,
 						}}
 					/>
 					<Typography
-						color="primary.contrastText"
+						color={"primary.contrastText"}
+						mx={0.3}
 						fontSize={FONT_SIZE}
 					>
-						K
+						{t("search-field")}
 					</Typography>
+					<Box
+						bgcolor={"primary.dark"}
+						display="flex"
+						flexDirection="row"
+						px={0.7}
+						py={0.3}
+						borderRadius={INNER_BORDER_RADIUS}
+						sx={{
+							border: "1px solid",
+							borderColor: "secondary.light",
+						}}
+						mx={0.3}
+						alignItems={"center"}
+					>
+						<KeyboardCommandKeyIcon
+							sx={{
+								color: "primary.contrastText",
+								fontSize: FONT_SIZE,
+							}}
+						/>
+						<Typography
+							color="primary.contrastText"
+							fontSize={FONT_SIZE}
+						>
+							K
+						</Typography>
+					</Box>
 				</Box>
-			</Box>
-		</Button>
+			</Button>
+		)
 	);
 };
 export default SearchField;
