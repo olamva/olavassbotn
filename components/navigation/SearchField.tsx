@@ -55,7 +55,7 @@ const SearchField = ({ setOpen }: SearchFieldProps) => {
 						borderRadius={INNER_BORDER_RADIUS}
 						sx={{
 							border: "1px solid",
-							borderColor: "secondary.light",
+							borderColor: "primary.light",
 						}}
 						mx={0.3}
 						alignItems={"center"}

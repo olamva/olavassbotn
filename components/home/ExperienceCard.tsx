@@ -12,7 +12,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 	return (
 		<Card
 			sx={{
-				backgroundColor: "primary.main",
+				backgroundColor: "primary.dark",
 			}}
 			elevation={3}
 		>

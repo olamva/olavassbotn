@@ -69,7 +69,7 @@ export default function Projects() {
 											flexDirection: "column",
 											height: "100%",
 											p: 3,
-											backgroundColor: "primary.main",
+											backgroundColor: "primary.dark",
 										}}
 									>
 										<Typography
@@ -104,9 +104,9 @@ export default function Projects() {
 										{isMobile && index === 1 && (
 											<Button
 												variant="contained"
-												color="secondary"
+												color="primary"
 												sx={{
-													mt: "auto",
+													mt: 2,
 													alignSelf: "center",
 												}}
 												onClick={() => {

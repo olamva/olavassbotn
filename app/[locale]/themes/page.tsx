@@ -17,12 +17,9 @@ export default function Themes() {
 			color: theme.palette.primary.contrastText,
 			textColor: theme.palette.secondary.contrastText,
 		},
-		{ label: "Secondary Main", color: theme.palette.secondary.main },
-		{ label: "Secondary Dark", color: theme.palette.secondary.dark },
-		{ label: "Secondary Light", color: theme.palette.secondary.light },
 		{
-			label: "Secondary Contrast Text",
-			color: theme.palette.secondary.contrastText,
+			label: "Background Default",
+			color: theme.palette.background.default,
 		},
 	];
 	const { devMode } = useDevMode();

@@ -38,6 +38,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			}}
 			role="presentation"
 			onClick={toggleDrawer(false)}
+			bgcolor={"background.default"}
 		>
 			<Box flexGrow={1}>
 				<List sx={{ pt: 0 }}>
