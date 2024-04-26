@@ -1,6 +1,7 @@
 import { Search } from "@mui/icons-material";
 import KeyboardCommandKeyIcon from "@mui/icons-material/KeyboardCommandKey";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 
 interface SearchFieldProps {
@@ -8,10 +9,12 @@ interface SearchFieldProps {
 }
 const SearchField = ({ setOpen }: SearchFieldProps) => {
 	const t = useTranslations("NavItems");
+	const theme = useTheme();
+	const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 	const OUTER_BORDER_RADIUS = 3;
 	const INNER_BORDER_RADIUS = 1;
 	const FONT_SIZE = 12;
-	return (
+	return smallScreen ? null : (
 		<Button
 			sx={{
 				textTransform: "none",
