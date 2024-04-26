@@ -1,5 +1,6 @@
 "use client";
 import { ThemesPaper } from "@/app/types/default";
+import { useDevMode } from "@/contexts/DevModeProvider";
 import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
@@ -24,7 +25,8 @@ export default function Themes() {
 			color: theme.palette.secondary.contrastText,
 		},
 	];
-	return (
+	const { devMode } = useDevMode();
+	return devMode ? (
 		<Box p={2} maxWidth={"65%"} m={"auto"}>
 			<Typography
 				variant="h1"
@@ -79,5 +81,15 @@ export default function Themes() {
 				))}
 			</Grid>
 		</Box>
+	) : (
+		<Typography
+			variant="h3"
+			align="center"
+			mt={30}
+			width={"80%"}
+			mx={"auto"}
+		>
+			{t("accessDenied")}
+		</Typography>
 	);
 }

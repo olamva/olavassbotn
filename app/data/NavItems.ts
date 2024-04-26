@@ -45,6 +45,7 @@ export const navItems: NavItem[] = [
 		icon: PaletteOutlined,
 		filledIcon: Palette,
 		link: "/themes",
+		requiresAdmin: true,
 	},
 	{
 		label: "contribute",

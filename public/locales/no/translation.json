@@ -55,7 +55,17 @@
 		"experience": "Erfaring",
 		"themes": "Temaer",
 		"contribute": "Interessert i å lære hvordan nettsiden er satt sammen?",
-		"search-field": "Søk.."
+
+		"search-field": "Søk..",
+
+		"languageToggle": "Bytt Språk til Engelsk",
+		"lightModeToggle": "Bytt til Lyst Tema",
+		"darkModeToggle": "Bytt til Mørkt Tema",
+		"devModeToggle": "Skru på Utviklermodus",
+
+		"navigationTitle": "Navigasjon",
+		"socialsTitle": "Sosiale Medier",
+		"settingsTitle": "Innstillinger"
 	},
 	"About Me": {
 		"title": "Om Meg",
@@ -79,7 +89,8 @@
 		]
 	},
 	"Themes": {
-		"title": "Fargetema for Denne Nettsiden"
+		"title": "Fargetema for Denne Nettsiden",
+		"accessDenied": "Tilgang nektet. Vennligst skru på utviklermodus for å se denne siden."
 	},
 	"Projects": {
 		"title": "Prosjekter",

@@ -1,4 +1,5 @@
 import { navItems } from "@/app/data/NavItems";
+import { useDevMode } from "@/contexts/DevModeProvider";
 import {
 	Box,
 	Divider,
@@ -25,6 +26,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 	const pathname = usePathname();
 	const theme = useTheme();
 	const t = useTranslations("NavItems");
+	const { toggleDevMode, devMode } = useDevMode();
 
 	const DrawerList = (
 		<Box
@@ -40,7 +42,11 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 			<Box flexGrow={1}>
 				<List sx={{ pt: 0 }}>
 					{navItems
-						.filter((item) => !item.isFooter)
+						.filter(
+							(item) =>
+								!item.isFooter &&
+								(item.requiresAdmin ? devMode : true)
+						)
 						.map((item, index) => {
 							const isActive = pathname.slice(3) === item.link;
 							const itemLink = isActive

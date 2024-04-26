@@ -8,9 +8,9 @@ import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const LangToggle: React.FC = () => {
-	const locale = useLocale();
 	const router = useRouter();
 	const pathname = usePathname();
+	const locale = useLocale();
 	const toggleLanguage = () => {
 		const newLocale = locale === "no" ? "en" : "no";
 		const newPathname = "/" + newLocale + pathname.slice(3);
