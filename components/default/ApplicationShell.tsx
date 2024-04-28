@@ -23,7 +23,7 @@ export default function ApplicationShell({
 		Cookies.set("themeMode", mode);
 	}, [mode]);
 	useEffect(() => {
-		Cookies.set("devMode", String(devMode)); // Convert boolean to string explicitly
+		Cookies.set("devMode", String(devMode));
 	}, [devMode]);
 	const theme = useMemo(() => makeThemeWithMode(mode), [mode]);
 	return (

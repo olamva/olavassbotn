@@ -1,5 +1,5 @@
 import { useColorMode } from "@/contexts/ThemeModeProvider";
-import { Search } from "@mui/icons-material";
+import { KeyboardControlKey, Search } from "@mui/icons-material";
 import KeyboardCommandKeyIcon from "@mui/icons-material/KeyboardCommandKey";
 import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -7,8 +7,9 @@ import { useTranslations } from "next-intl";
 
 interface SearchFieldProps {
 	setOpen: (open: boolean) => void;
+	isMac: boolean;
 }
-const SearchField = ({ setOpen }: SearchFieldProps) => {
+const SearchField = ({ setOpen, isMac }: SearchFieldProps) => {
 	const t = useTranslations("NavItems");
 	const theme = useTheme();
 	const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -51,9 +52,7 @@ const SearchField = ({ setOpen }: SearchFieldProps) => {
 					</Typography>
 					<Box
 						bgcolor={
-							mode == "dark"
-								? "primary.dark"
-								: "primary.light"
+							mode == "dark" ? "primary.dark" : "primary.light"
 						}
 						display="flex"
 						flexDirection="row"
@@ -67,12 +66,22 @@ const SearchField = ({ setOpen }: SearchFieldProps) => {
 						mx={0.3}
 						alignItems={"center"}
 					>
-						<KeyboardCommandKeyIcon
-							sx={{
-								color: "primary.contrastText",
-								fontSize: FONT_SIZE,
-							}}
-						/>
+						{isMac ? (
+							<KeyboardCommandKeyIcon
+								sx={{
+									color: "primary.contrastText",
+									fontSize: FONT_SIZE,
+								}}
+							/>
+						) : (
+							<KeyboardControlKey
+								sx={{
+									color: "primary.contrastText",
+									fontSize: FONT_SIZE,
+								}}
+							/>
+						)}
+
 						<Typography
 							color="primary.contrastText"
 							fontSize={FONT_SIZE}
