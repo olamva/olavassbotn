@@ -8,12 +8,36 @@ import { Box, IconButton, Toolbar } from "@mui/material";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo, useState } from "react";
-import { useHandleOpenCommandPalette } from "react-cmdk";
+import { useEffect, useMemo, useState } from "react";
 export default function NavBar() {
 	const [openDrawer, setOpenDrawer] = useState(false);
 	const [openMenu, setOpenMenu] = useState<boolean>(false);
-	useHandleOpenCommandPalette(setOpenMenu);
+
+	const [isMac, setIsMac] = useState(false);
+	useEffect(() => {
+		setIsMac(
+			typeof window !== "undefined"
+				? navigator.userAgent.toUpperCase().indexOf("MAC") >= 0
+				: false
+		);
+
+		function handleKeyDown(e: KeyboardEvent) {
+			if ((isMac ? e.metaKey : e.ctrlKey) && e.key === "k") {
+				e.preventDefault();
+				e.stopPropagation();
+
+				setOpenMenu((currentValue) => {
+					return !currentValue;
+				});
+			}
+		}
+
+		document.addEventListener("keydown", handleKeyDown);
+
+		return () => {
+			document.removeEventListener("keydown", handleKeyDown);
+		};
+	}, [isMac]);
 
 	const toggleDrawer = useMemo(
 		() => (newOpen: boolean) => () => {
@@ -53,7 +77,7 @@ export default function NavBar() {
 				</Box>
 				<Box flexGrow={1}></Box>
 				<Box>
-					<SearchField setOpen={setOpenMenu} />
+					<SearchField setOpen={setOpenMenu} isMac={isMac} />
 				</Box>
 				<Box>
 					<ThemeToggle />
