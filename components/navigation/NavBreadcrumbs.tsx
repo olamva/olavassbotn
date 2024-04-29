@@ -1,6 +1,13 @@
 import { navItems } from "@/app/data/NavItems";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import { Box, Breadcrumbs, Link, Typography } from "@mui/material";
+import {
+	Box,
+	Breadcrumbs,
+	Link,
+	Typography,
+	useMediaQuery,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
@@ -9,6 +16,9 @@ const NavBreadcrumbs = () => {
 	const locale = useLocale();
 	const t = useTranslations("NavItems");
 	const pathnames = pathname.split("/").filter((x) => x && x != locale);
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
 	pathnames.unshift("home");
 	const findNavItem = (path: string) => {
 		return navItems.find((item) => item.label === `${path}`);
@@ -35,10 +45,15 @@ const NavBreadcrumbs = () => {
 								<Icon
 									style={{
 										marginRight: 5,
+										fontSize: isMobile ? "1rem" : "1.25rem",
 									}}
 								/>
 							)}
-							<Typography>{t(value)}</Typography>
+							<Typography
+								fontSize={isMobile ? "0.75rem" : "default"}
+							>
+								{t(value)}
+							</Typography>
 						</Box>
 					</Link>
 				);
