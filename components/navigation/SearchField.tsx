@@ -1,7 +1,13 @@
 import { useColorMode } from "@/contexts/ThemeModeProvider";
 import { KeyboardControlKey, Search } from "@mui/icons-material";
 import KeyboardCommandKeyIcon from "@mui/icons-material/KeyboardCommandKey";
-import { Box, Button, Typography, useMediaQuery } from "@mui/material";
+import {
+	Box,
+	Button,
+	IconButton,
+	Typography,
+	useMediaQuery,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 
@@ -18,80 +24,84 @@ const SearchField = ({ setOpen, isMac }: SearchFieldProps) => {
 	const OUTER_BORDER_RADIUS = 3;
 	const INNER_BORDER_RADIUS = 1;
 	const FONT_SIZE = 12;
-	return (
-		smallScreen || (
-			<Button
+	return smallScreen ? (
+		<IconButton onClick={() => setOpen(true)}>
+			<Search
 				sx={{
-					textTransform: "none",
-					borderRadius: OUTER_BORDER_RADIUS,
-					padding: 0.5,
+					color: "primary.contrastText",
 				}}
-				onClick={() => setOpen(true)}
+			/>
+		</IconButton>
+	) : (
+		<Button
+			sx={{
+				textTransform: "none",
+				borderRadius: OUTER_BORDER_RADIUS,
+				padding: 0.5,
+			}}
+			onClick={() => setOpen(true)}
+		>
+			<Box
+				bgcolor={"primary.main"}
+				display="flex"
+				flexDirection="row"
+				padding={1}
+				borderRadius={OUTER_BORDER_RADIUS}
+				alignItems="center"
 			>
+				<Search
+					sx={{
+						color: "primary.contrastText",
+						mx: 0.3,
+						fontSize: FONT_SIZE * 1.5,
+					}}
+				/>
+				<Typography
+					color={"primary.contrastText"}
+					mx={0.3}
+					fontSize={FONT_SIZE}
+				>
+					{t("search-field")}
+				</Typography>
 				<Box
-					bgcolor={"primary.main"}
+					bgcolor={mode == "dark" ? "primary.dark" : "primary.light"}
 					display="flex"
 					flexDirection="row"
-					padding={1}
-					borderRadius={OUTER_BORDER_RADIUS}
-					alignItems="center"
+					px={0.7}
+					py={0.3}
+					borderRadius={INNER_BORDER_RADIUS}
+					sx={{
+						border: "1px solid",
+						borderColor: "primary.light",
+					}}
+					mx={0.3}
+					alignItems={"center"}
 				>
-					<Search
-						sx={{
-							color: "primary.contrastText",
-							mx: 0.3,
-							fontSize: FONT_SIZE * 1.5,
-						}}
-					/>
+					{isMac ? (
+						<KeyboardCommandKeyIcon
+							sx={{
+								color: "primary.contrastText",
+								fontSize: FONT_SIZE,
+							}}
+						/>
+					) : (
+						<KeyboardControlKey
+							sx={{
+								color: "primary.contrastText",
+								fontSize: FONT_SIZE,
+							}}
+						/>
+					)}
+
 					<Typography
-						color={"primary.contrastText"}
-						mx={0.3}
+						color="primary.contrastText"
 						fontSize={FONT_SIZE}
 					>
-						{t("search-field")}
+						K
 					</Typography>
-					<Box
-						bgcolor={
-							mode == "dark" ? "primary.dark" : "primary.light"
-						}
-						display="flex"
-						flexDirection="row"
-						px={0.7}
-						py={0.3}
-						borderRadius={INNER_BORDER_RADIUS}
-						sx={{
-							border: "1px solid",
-							borderColor: "primary.light",
-						}}
-						mx={0.3}
-						alignItems={"center"}
-					>
-						{isMac ? (
-							<KeyboardCommandKeyIcon
-								sx={{
-									color: "primary.contrastText",
-									fontSize: FONT_SIZE,
-								}}
-							/>
-						) : (
-							<KeyboardControlKey
-								sx={{
-									color: "primary.contrastText",
-									fontSize: FONT_SIZE,
-								}}
-							/>
-						)}
-
-						<Typography
-							color="primary.contrastText"
-							fontSize={FONT_SIZE}
-						>
-							K
-						</Typography>
-					</Box>
 				</Box>
-			</Button>
-		)
+			</Box>
+		</Button>
 	);
 };
 export default SearchField;
