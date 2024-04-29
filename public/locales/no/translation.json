@@ -61,7 +61,8 @@
 		"languageToggle": "Bytt Språk til Engelsk",
 		"lightModeToggle": "Bytt til Lyst Tema",
 		"darkModeToggle": "Bytt til Mørkt Tema",
-		"devModeToggle": "Skru på Utviklermodus",
+		"turnOnDevMode": "Skru på Utviklermodus",
+		"turnOffDevMode": "Skru av Utviklermodus",
 
 		"navigationTitle": "Navigasjon",
 		"socialsTitle": "Sosiale Medier",

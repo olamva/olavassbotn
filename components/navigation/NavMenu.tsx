@@ -34,6 +34,11 @@ const NavMenu = ({ isOpen, setIsOpen }: NavMenuProps) => {
 		Cookies.set("devMode", devMode as unknown as string);
 	}, [devMode]);
 
+	const clickedDevMode = () => {
+		if (devMode) router.push(root);
+		toggleDevMode();
+	};
+
 	const filteredItems = filterItems(
 		[
 			{
@@ -125,9 +130,11 @@ const NavMenu = ({ isOpen, setIsOpen }: NavMenuProps) => {
 					},
 					{
 						id: "devMode",
-						children: t("devModeToggle"),
+						children: t(
+							devMode ? "turnOffDevMode" : "turnOnDevMode"
+						),
 						icon: Code,
-						onClick: () => toggleDevMode(),
+						onClick: () => clickedDevMode(),
 						keywords: [
 							"developer",
 							"mode",

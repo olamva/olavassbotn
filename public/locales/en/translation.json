@@ -61,7 +61,8 @@
 		"languageToggle": "Change language to Norwegian",
 		"lightModeToggle": "Change to light mode",
 		"darkModeToggle": "Change to dark mode",
-		"devModeToggle": "Turn on developer mode",
+		"turnOnDevMode": "Turn on developer mode",
+		"turnOffDevMode": "Turn off developer mode",
 
 		"navigationTitle": "Navigation",
 		"socialsTitle": "Socials",
