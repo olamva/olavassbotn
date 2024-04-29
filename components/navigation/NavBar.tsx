@@ -1,12 +1,12 @@
+import NavBreadcrumbs from "@/components/navigation/NavBreadcrumbs";
 import NavDrawer from "@/components/navigation/NavDrawer";
 import NavMenu from "@/components/navigation/NavMenu";
 import SearchField from "@/components/navigation/SearchField";
 import LangToggle from "@/components/toggles/LangToggle";
 import ThemeToggle from "@/components/toggles/ThemeToggle";
-import { Home, Menu } from "@mui/icons-material";
+import { Menu } from "@mui/icons-material";
 import { Box, IconButton, Toolbar } from "@mui/material";
 import { useLocale } from "next-intl";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 export default function NavBar() {
@@ -56,24 +56,17 @@ export default function NavBar() {
 			<NavMenu isOpen={openMenu} setIsOpen={setOpenMenu} />
 			<NavDrawer toggleDrawer={toggleDrawer} open={openDrawer} />
 			<Toolbar>
-				<Box>
+				<Box display="flex" alignItems="center">
 					<IconButton
 						onClick={toggleDrawer(true)}
 						sx={{
 							color: "primary.contrastText",
+							mr: 1,
 						}}
 					>
 						<Menu />
 					</IconButton>
-					<Link style={{ width: "100%" }} href={homeLink}>
-						<IconButton
-							sx={{
-								color: "primary.contrastText",
-							}}
-						>
-							<Home />
-						</IconButton>
-					</Link>
+					<NavBreadcrumbs />
 				</Box>
 				<Box flexGrow={1}></Box>
 				<Box>
