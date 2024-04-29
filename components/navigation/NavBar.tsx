@@ -6,8 +6,6 @@ import LangToggle from "@/components/toggles/LangToggle";
 import ThemeToggle from "@/components/toggles/ThemeToggle";
 import { Menu } from "@mui/icons-material";
 import { Box, IconButton, Toolbar } from "@mui/material";
-import { useLocale } from "next-intl";
-import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 export default function NavBar() {
 	const [openDrawer, setOpenDrawer] = useState(false);
@@ -44,12 +42,6 @@ export default function NavBar() {
 			setOpenDrawer(newOpen);
 		},
 		[]
-	);
-	const locale = useLocale();
-	const pathname = usePathname();
-	const homeLink = useMemo(
-		() => (pathname === `/${locale}` ? "" : `/${locale}`),
-		[pathname, locale]
 	);
 	return (
 		<>

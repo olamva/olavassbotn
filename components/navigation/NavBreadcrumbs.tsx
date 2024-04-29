@@ -1,7 +1,9 @@
 import { navItems } from "@/app/data/NavItems";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { Box, Breadcrumbs, Link, Typography } from "@mui/material";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+
 const NavBreadcrumbs = () => {
 	const pathname = usePathname();
 	const locale = useLocale();
@@ -12,7 +14,10 @@ const NavBreadcrumbs = () => {
 		return navItems.find((item) => item.label === `${path}`);
 	};
 	return (
-		<Breadcrumbs aria-label="breadcrumb">
+		<Breadcrumbs
+			separator={<NavigateNextIcon fontSize="small" />}
+			aria-label="breadcrumb"
+		>
 			{pathnames.map((value, index) => {
 				const last = index === pathnames.length - 1;
 				const navItem = findNavItem(value);
@@ -26,7 +31,13 @@ const NavBreadcrumbs = () => {
 						key={to}
 					>
 						<Box display="flex" alignItems="center">
-							{Icon && <Icon style={{ marginRight: 5 }} />}
+							{Icon && (
+								<Icon
+									style={{
+										marginRight: 5,
+									}}
+								/>
+							)}
 							<Typography>{t(value)}</Typography>
 						</Box>
 					</Link>
