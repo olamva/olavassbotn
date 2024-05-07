@@ -48,7 +48,7 @@ export default function AboutMe() {
 										textAlign={
 											matches
 												? "left"
-												: index % 2
+												: index & 1
 												? "right"
 												: "left"
 										}
