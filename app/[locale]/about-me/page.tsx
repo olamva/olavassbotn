@@ -20,6 +20,7 @@ export default function AboutMe() {
 							lg: "5rem",
 						},
 					}}
+					gutterBottom
 				>
 					{t("title")}
 				</Typography>

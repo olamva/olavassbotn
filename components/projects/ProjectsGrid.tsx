@@ -37,7 +37,7 @@ const ProjectsGrid = () => {
 								{section.title}
 							</Typography>
 							<ProjectsDescription section={section} />
-							<GameButton section={section} />
+							{section.mobileDescription && <GameButton />}
 							{section.githubLink && (
 								<Button
 									href={`https://github.com/olamva/${section.projectID}`}

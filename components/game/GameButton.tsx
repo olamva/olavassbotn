@@ -3,22 +3,12 @@ import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import { Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-interface GameButtonProps {
-	section: {
-		title: string;
-		description: string;
-		mobileDescription?: string;
-		githubLink?: string;
-		projectID?: string;
-	};
-}
-const GameButton = ({ section }: GameButtonProps) => {
+const GameButton = () => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const { setOverride } = useToggleStates();
 	return (
-		isMobile &&
-		section.mobileDescription && (
+		isMobile && (
 			<Button
 				variant="contained"
 				color="primary"

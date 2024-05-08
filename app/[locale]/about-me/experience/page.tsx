@@ -30,7 +30,19 @@ export default function Projects() {
 							backgroundColor: "primary.contrastText",
 						}}
 					/>
-					<ExperienceGrid />
+					<Box
+						p={2}
+						sx={{
+							maxWidth: {
+								xs: "100%",
+								sm: "100%",
+								md: "80%",
+							},
+						}}
+						m={"auto"}
+					>
+						<ExperienceGrid />
+					</Box>
 				</Box>
 			</Container>
 		</>

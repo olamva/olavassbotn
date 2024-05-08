@@ -1,7 +1,10 @@
 import "@/app/globals.css";
 import ApplicationShell from "@/components/default/ApplicationShell";
-import Template from "@/components/default/Template";
-import { CssBaseline, PaletteMode } from "@mui/material";
+import Footer from "@/components/default/Footer";
+import NavBar from "@/components/navigation/NavBar";
+import NavDrawer from "@/components/navigation/NavDrawer";
+import NavMenu from "@/components/navigation/NavMenu";
+import { Box, CssBaseline, PaletteMode } from "@mui/material";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
@@ -41,7 +44,26 @@ export default function LocaleLayout({
 				>
 					<CssBaseline />
 					<body>
-						<Template>{children}</Template>
+						<NavMenu />
+						<NavDrawer />
+						<Box
+							sx={{
+								display: "flex",
+								flexDirection: "column",
+								minHeight: "100svh",
+							}}
+						>
+							<Box
+								component="main"
+								sx={{
+									flexGrow: 1,
+								}}
+							>
+								<NavBar />
+								{children}
+							</Box>
+							<Footer />
+						</Box>
 					</body>
 				</ApplicationShell>
 			</NextIntlClientProvider>

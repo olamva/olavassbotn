@@ -11,7 +11,6 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 		null
 	);
 	const theme = useTheme();
-	// * The following is old logic that could be useful in the future, and is therefore not removed.
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const unitSize = isMobile ? 20 : 40;
 	const canvasWidth =
