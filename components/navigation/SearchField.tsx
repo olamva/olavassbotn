@@ -1,4 +1,6 @@
+"use client";
 import { useColorMode } from "@/contexts/ThemeModeProvider";
+import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import { KeyboardControlKey, Search } from "@mui/icons-material";
 import KeyboardCommandKeyIcon from "@mui/icons-material/KeyboardCommandKey";
 import {
@@ -11,11 +13,8 @@ import {
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 
-interface SearchFieldProps {
-	setOpen: (open: boolean) => void;
-	isMac: boolean;
-}
-const SearchField = ({ setOpen, isMac }: SearchFieldProps) => {
+const SearchField = () => {
+	const { setOpenMenu, isMac } = useToggleStates();
 	const t = useTranslations("NavItems");
 	const theme = useTheme();
 	const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -25,10 +24,11 @@ const SearchField = ({ setOpen, isMac }: SearchFieldProps) => {
 	const INNER_BORDER_RADIUS = 1;
 	const FONT_SIZE = 12;
 	return smallScreen ? (
-		<IconButton onClick={() => setOpen(true)}>
+		<IconButton onClick={() => setOpenMenu(true)}>
 			<Search
 				sx={{
 					color: "primary.contrastText",
+					fontSize: "15px",
 				}}
 			/>
 		</IconButton>
@@ -39,7 +39,7 @@ const SearchField = ({ setOpen, isMac }: SearchFieldProps) => {
 				borderRadius: OUTER_BORDER_RADIUS,
 				padding: 0.5,
 			}}
-			onClick={() => setOpen(true)}
+			onClick={() => setOpenMenu(true)}
 		>
 			<Box
 				bgcolor={"primary.main"}

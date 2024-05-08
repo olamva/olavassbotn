@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import ApplicationShell from "@/components/default/ApplicationShell";
-import { PaletteMode } from "@mui/material";
+import Template from "@/components/default/Template";
+import { CssBaseline, PaletteMode } from "@mui/material";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
@@ -38,7 +39,10 @@ export default function LocaleLayout({
 					savedMode={savedTheme}
 					savedDevMode={devModeValue}
 				>
-					{children}
+					<CssBaseline />
+					<body>
+						<Template>{children}</Template>
+					</body>
 				</ApplicationShell>
 			</NextIntlClientProvider>
 		</html>

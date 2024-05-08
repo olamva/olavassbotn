@@ -1,27 +1,11 @@
 "use client";
-import { ThemesPaper } from "@/app/types/default";
+import ThemesGrid from "@/components/themes/ThemesGrid";
 import { useDevMode } from "@/contexts/DevModeProvider";
-import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Box, Divider, Grid, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 
 export default function Themes() {
 	const t = useTranslations("Themes");
-	const theme = useTheme();
-	const papers: ThemesPaper[] = [
-		{ label: "Primary Main", color: theme.palette.primary.main },
-		{ label: "Primary Dark", color: theme.palette.primary.dark },
-		{ label: "Primary Light", color: theme.palette.primary.light },
-		{
-			label: "Primary Contrast Text",
-			color: theme.palette.primary.contrastText,
-			textColor: theme.palette.secondary.contrastText,
-		},
-		{
-			label: "Background Default",
-			color: theme.palette.background.default,
-		},
-	];
 	const { devMode } = useDevMode();
 	return devMode ? (
 		<Box p={2} maxWidth={"65%"} m={"auto"}>
@@ -49,33 +33,7 @@ export default function Themes() {
 				}}
 			/>
 			<Grid container spacing={3} my={2}>
-				{papers.map((paper, index) => (
-					<Grid key={index} item xs={12} md={6}>
-						<Paper
-							sx={{
-								backgroundColor: paper.color,
-								padding: 2,
-								marginBottom: 2,
-							}}
-						>
-							<Typography
-								variant="body1"
-								color={
-									paper.textColor ?? "primary.contrastText"
-								}
-								sx={{
-									fontSize: {
-										xs: "0.75rem",
-										sm: "0.875rem",
-										md: "1rem",
-									},
-								}}
-							>
-								{paper.label}: {paper.color}
-							</Typography>
-						</Paper>
-					</Grid>
-				))}
+				<ThemesGrid />
 			</Grid>
 		</Box>
 	) : (
