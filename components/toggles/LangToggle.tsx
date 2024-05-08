@@ -1,16 +1,18 @@
+"use client";
 import NOFlag from "@/public/flags/NO.png";
 import USFlag from "@/public/flags/US.png";
-
-import { IconButton } from "@mui/material";
+import { IconButton, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { useLocale } from "next-intl";
 import Image, { StaticImageData } from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
 
-const LangToggle: React.FC = () => {
+const LangToggle = () => {
 	const router = useRouter();
 	const pathname = usePathname();
 	const locale = useLocale();
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const toggleLanguage = () => {
 		const newLocale = locale === "no" ? "en" : "no";
 		const newPathname = "/" + newLocale + pathname.slice(3);
@@ -42,8 +44,8 @@ const LangToggle: React.FC = () => {
 			<Image
 				src={flagSrc}
 				alt="Toggle Language"
-				width={27}
-				height={27}
+				width={isMobile ? 15 : 20}
+				height={isMobile ? 15 : 20}
 				style={{
 					borderRadius: "50%",
 				}}
