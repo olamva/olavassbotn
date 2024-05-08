@@ -2,6 +2,7 @@
 import { konamiCode } from "@/app/data/ProjectsData";
 import InputDetector from "@/components/game/InputDetector";
 import { useColorMode } from "@/contexts/ThemeModeProvider";
+import { GitHub } from "@mui/icons-material";
 import {
 	Box,
 	Button,
@@ -60,6 +61,8 @@ export default function Projects() {
 									title: string;
 									description: string;
 									mobileDescription?: string;
+									githubLink?: string;
+									projectID?: string;
 								},
 								index: number
 							) => (
@@ -101,24 +104,45 @@ export default function Projects() {
 												color: "primary.contrastText",
 											}}
 										>
-											{isMobile
-												? section.mobileDescription ??
-												  section.description
-												: section.description}
+											{(isMobile &&
+												section.mobileDescription) ||
+												section.description}
 										</Typography>
-										{isMobile && index === 1 && (
+										{isMobile &&
+											section.mobileDescription && (
+												<Button
+													variant="contained"
+													color="primary"
+													sx={{
+														mt: 2,
+														alignSelf: "center",
+													}}
+													onClick={() => {
+														setOverride(true);
+													}}
+												>
+													Play Snake Game
+												</Button>
+											)}
+										{section.githubLink && (
 											<Button
+												href={`https://github.com/olamva/${section.projectID}`}
+												target="_blank"
+												rel="noopener noreferrer"
 												variant="contained"
 												color="primary"
+												startIcon={<GitHub />}
+												autoCapitalize={undefined}
 												sx={{
 													mt: 2,
 													alignSelf: "center",
-												}}
-												onClick={() => {
-													setOverride(true);
+													alignItems: "center",
+													textTransform: "none",
 												}}
 											>
-												Play Snake Game
+												<Typography>
+													{section.githubLink}
+												</Typography>
 											</Button>
 										)}
 									</Paper>

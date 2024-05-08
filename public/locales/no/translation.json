@@ -87,7 +87,9 @@
 				"title": "Mine Mål",
 				"content": "Målet mitt er å bli en full-stack utvikler. Jeg ønsker å jobbe med prosjekter som gjør en forskjell, og som kan hjelpe folk i deres hverdagsliv. Jeg er lidenskapelig opptatt av teknologi, og jeg ser alltid etter nye utfordringer og muligheter for å lære."
 			}
-		]
+		],
+		"projectsbutton": "Mine Prosjekter",
+		"experiencebutton": "Min Erfaring"
 	},
 	"Themes": {
 		"title": "Fargetema for Denne Nettsiden",
@@ -104,6 +106,18 @@
 				"title": "Snake-spill i React",
 				"description": "Et Canvas Snake-spill bygget med React og TypeScript. Alle de typiske snake-funksjonene er inkludert. Om du ønsker å prøve det ut, skriv inn konami-koden 😉",
 				"mobileDescription": "Et Canvas Snake-spill bygget med React og TypeScript. Alle de typiske snake-funksjonene er inkludert."
+			},
+			{
+				"title": "Quizlet-klone med React, TypeScript, Next.js og Mantine",
+				"description": "Dette prosjektet ble bygget i et team i sammenheng med faget TDT4140 Programvareutvikling. Det er en klone av den populære flashcard-appen Quizlet, og ble bygget med React, TypeScript, Next.js og Mantine. Appen lar brukere opprette, dele og studere flashcards, og inkluderer funksjoner som en quizmodus, en søkefunksjon og en mørk modus. Appen er responsiv og visuelt tiltalende, og ble designet med brukervennlighet og tilgjengelighet i tankene. Prosjektet var en flott læringsopplevelse, og jeg fikk mye verdifull erfaring i programvareutvkling, teamarbeid og prosjektledelse.",
+				"githubLink": "Se på prosjektet her!",
+				"projectID": "flashy"
+			},
+			{
+				"title": "Hotellbooking app med Java, JavaFX, Maven og Springboot",
+				"description": "Denne appen ble bygget i et team i sammenheng med faget IT1901 Informatikk prosjektarbeid I. Det er en hotellbooking app som lar brukere søke etter og bestille hotellrom. Appen ble bygget med Java, JavaFX, Maven og Springboot, og inkluderer funksjoner som en søkefunksjon, et bestillingssystem og en bruker 'database' (selv om den databasen bare var et par JSON-filer🫣). Appen er relativt visuelt tiltalende og enkel å bruke, men dette ble bygget veldig tidlig ute i både min og mitt teams karriere. Prosjektet var en flott læringsopplevelse, og jeg fikk mye verdifull erfaring i programvareteknikk, teamarbeid og prosjektledelse.",
+				"githubLink": "Se på appen her!",
+				"projectID": "gr2313"
 			}
 		]
 	}

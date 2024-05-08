@@ -3,6 +3,7 @@ import { socialLinks } from "@/app/data/FooterData";
 import { navItems } from "@/app/data/NavItems";
 import { useDevMode } from "@/contexts/DevModeProvider";
 import { useColorMode } from "@/contexts/ThemeModeProvider";
+import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import { Code, DarkMode, Language, LightMode } from "@mui/icons-material";
 import Cookies from "js-cookie";
 import { useLocale, useTranslations } from "next-intl";
@@ -11,11 +12,8 @@ import { useEffect, useState } from "react";
 import CommandPalette, { filterItems, getItemIndex } from "react-cmdk";
 import "react-cmdk/dist/cmdk.css";
 
-interface NavMenuProps {
-	isOpen: boolean;
-	setIsOpen: (isOpen: boolean) => void;
-}
-const NavMenu = ({ isOpen, setIsOpen }: NavMenuProps) => {
+const NavMenu = () => {
+	const { setOpenMenu, openMenu } = useToggleStates();
 	const [search, setSearch] = useState("");
 	const locale = useLocale();
 	const root = "/" + locale;
@@ -155,8 +153,8 @@ const NavMenu = ({ isOpen, setIsOpen }: NavMenuProps) => {
 		<CommandPalette
 			search={search}
 			onChangeSearch={setSearch}
-			isOpen={isOpen}
-			onChangeOpen={setIsOpen}
+			isOpen={openMenu}
+			onChangeOpen={setOpenMenu}
 			placeholder={t("search-field")}
 		>
 			{filteredItems.length ? (

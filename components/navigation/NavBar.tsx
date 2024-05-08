@@ -1,70 +1,20 @@
+import DrawerToggleButton from "@/components/navigation/DrawerToggleButton";
 import NavBreadcrumbs from "@/components/navigation/NavBreadcrumbs";
-import NavDrawer from "@/components/navigation/NavDrawer";
-import NavMenu from "@/components/navigation/NavMenu";
 import SearchField from "@/components/navigation/SearchField";
 import LangToggle from "@/components/toggles/LangToggle";
 import ThemeToggle from "@/components/toggles/ThemeToggle";
-import { Menu } from "@mui/icons-material";
-import { Box, IconButton, Toolbar } from "@mui/material";
-import { useEffect, useMemo, useState } from "react";
+import { Box, Toolbar } from "@mui/material";
 export default function NavBar() {
-	const [openDrawer, setOpenDrawer] = useState(false);
-	const [openMenu, setOpenMenu] = useState<boolean>(false);
-
-	const [isMac, setIsMac] = useState(false);
-	useEffect(() => {
-		setIsMac(
-			typeof window !== "undefined"
-				? navigator.userAgent.toUpperCase().indexOf("MAC") >= 0
-				: false
-		);
-
-		function handleKeyDown(e: KeyboardEvent) {
-			if ((isMac ? e.metaKey : e.ctrlKey) && e.key === "k") {
-				e.preventDefault();
-				e.stopPropagation();
-
-				setOpenMenu((currentValue) => {
-					return !currentValue;
-				});
-			}
-		}
-
-		document.addEventListener("keydown", handleKeyDown);
-
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown);
-		};
-	}, [isMac]);
-
-	const toggleDrawer = useMemo(
-		() => (newOpen: boolean) => () => {
-			setOpenDrawer(newOpen);
-		},
-		[]
-	);
 	return (
 		<>
-			<NavMenu isOpen={openMenu} setIsOpen={setOpenMenu} />
-			<NavDrawer toggleDrawer={toggleDrawer} open={openDrawer} />
-			<Toolbar>
+			<Toolbar sx={{ p: 0.5 }}>
 				<Box display="flex" alignItems="center">
-					<IconButton
-						onClick={toggleDrawer(true)}
-						sx={{
-							color: "primary.contrastText",
-							mr: 1,
-						}}
-					>
-						<Menu />
-					</IconButton>
+					<DrawerToggleButton />
 					<NavBreadcrumbs />
 				</Box>
 				<Box flexGrow={1}></Box>
 				<Box>
-					<SearchField setOpen={setOpenMenu} isMac={isMac} />
-				</Box>
-				<Box>
+					<SearchField />
 					<ThemeToggle />
 					<LangToggle />
 				</Box>

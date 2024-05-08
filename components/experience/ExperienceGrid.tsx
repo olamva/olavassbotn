@@ -1,5 +1,5 @@
 "use client";
-import ExperienceCard from "@/components/home/ExperienceCard";
+import ExperienceCard from "@/components/experience/ExperienceCard";
 import { useExperienceList } from "@/hooks/useExperienceList";
 import Masonry from "@mui/lab/Masonry";
 import { Box, useMediaQuery, useTheme } from "@mui/material";

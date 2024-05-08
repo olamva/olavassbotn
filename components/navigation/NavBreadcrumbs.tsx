@@ -1,3 +1,4 @@
+"use client";
 import { navItems } from "@/app/data/NavItems";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import {

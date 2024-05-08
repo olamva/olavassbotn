@@ -87,7 +87,9 @@
 				"title": "My Goals",
 				"content": "My goal is to become a full-stack developer. I want to work on projects that make a difference, and that can help people in their everyday lives. I am passionate about technology, and I am always looking for new challenges and opportunities to learn and grow."
 			}
-		]
+		],
+		"projectsbutton": "My Projects",
+		"experiencebutton": "My Experience"
 	},
 	"Themes": {
 		"title": "Color Theme for This Website",
@@ -104,6 +106,18 @@
 				"title": "Snake Game with React",
 				"description": "A Canvas Snake Game built with React and TypeScript. All the typical snake features are included. If you want to try it out, input the konami code 😉",
 				"mobileDescription": "A Canvas Snake Game built with React and TypeScript. All the typical snake features are included."
+			},
+			{
+				"title": "Quizlet clone with React, TypeScript, Next.js, and Mantine",
+				"description": "This project was built in a team in the course TDT4140 Software Engineering. It is a clone of the popular flashcard app Quizlet, and was built with React, TypeScript, Next.js, and Mantine. The app allows users to create, share, and study flashcards, and includes features like a quiz mode, a search function, and a dark mode. The app is responsive and visually appealing, and was designed with usability and accessibility in mind. The project was a great learning experience, and I gained a lot of valuable experience in software engineering, teamwork, and project management.",
+				"githubLink": "Check out the project here!",
+				"projectID": "flashy"
+			},
+			{
+				"title": "Hotel Booking app with Java, JavaFX, Maven, and Springboot",
+				"description": "This app was built in a team in the course IT1901 Informatics Project I. It is a hotel booking app that allows users to search for and book hotel rooms. The app was built with Java, JavaFX, Maven, and Springboot, and includes features like a search function, a booking system, and a user 'database' (even if that database was just a couple JSON files🫣). The app is relatively visually appealing and easy to use, but this was built very early on in both mine and my team's careers. The project was a great learning experience, and I gained a lot of valuable experience in software engineering, teamwork, and project management.",
+				"githubLink": "Check out the app here!",
+				"projectID": "gr2313"
 			}
 		]
 	}

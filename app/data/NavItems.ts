@@ -32,13 +32,14 @@ export const navItems: NavItem[] = [
 		label: "projects",
 		icon: AssignmentOutlined,
 		filledIcon: Assignment,
-		link: "/projects",
+		// TODO make projects and experience subpages of about-me
+		link: "/about-me/projects",
 	},
 	{
 		label: "experience",
 		icon: WorkOutline,
 		filledIcon: Work,
-		link: "/experience",
+		link: "/about-me/experience",
 	},
 	{
 		label: "themes",

@@ -1,5 +1,7 @@
+"use client";
 import { navItems } from "@/app/data/NavItems";
 import { useDevMode } from "@/contexts/DevModeProvider";
+import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import {
 	Box,
 	Divider,
@@ -16,11 +18,8 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-interface NavDrawerProps {
-	toggleDrawer: Function;
-	open: boolean;
-}
-export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
+export default function NavDrawer() {
+	const { toggleDrawer, openDrawer } = useToggleStates();
 	const locale = useLocale();
 	const root = "/" + locale;
 	const pathname = usePathname();
@@ -156,7 +155,7 @@ export default function NavDrawer({ toggleDrawer, open }: NavDrawerProps) {
 	);
 	return (
 		<SwipeableDrawer
-			open={open}
+			open={openDrawer}
 			onOpen={toggleDrawer(true)}
 			onClose={toggleDrawer(false)}
 			sx={{
