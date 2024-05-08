@@ -1,24 +1,7 @@
-
-import { ThemesPaper } from "@/app/types/default";
+import { papers } from "@/app/data/ThemesData";
 import { Grid, Paper, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 const ThemesGrid = () => {
-	const theme = useTheme();
-	const papers: ThemesPaper[] = [
-		{ label: "Primary Main", color: theme.palette.primary.main },
-		{ label: "Primary Dark", color: theme.palette.primary.dark },
-		{ label: "Primary Light", color: theme.palette.primary.light },
-		{
-			label: "Primary Contrast Text",
-			color: theme.palette.primary.contrastText,
-			textColor: theme.palette.secondary.contrastText,
-		},
-		{
-			label: "Background Default",
-			color: theme.palette.background.default,
-		},
-	];
 	return papers.map((paper, index) => (
 		<Grid key={index} item xs={12} md={6}>
 			<Paper
@@ -26,6 +9,9 @@ const ThemesGrid = () => {
 					backgroundColor: paper.color,
 					padding: 2,
 					marginBottom: 2,
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
 				}}
 			>
 				<Typography
@@ -37,9 +23,10 @@ const ThemesGrid = () => {
 							sm: "0.875rem",
 							md: "1rem",
 						},
+						textAlign: "center",
 					}}
 				>
-					{paper.label}: {paper.color}
+					{paper.label}
 				</Typography>
 			</Paper>
 		</Grid>

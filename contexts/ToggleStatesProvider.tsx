@@ -6,6 +6,8 @@ interface ToggleStatesContextType {
 	setOpenMenu: (currentValue: boolean) => void;
 	openMenu: boolean;
 	isMac: boolean;
+	override: boolean;
+	setOverride: (value: boolean) => void;
 }
 const ToggleStatesContext = createContext<ToggleStatesContextType>({
 	toggleDrawer: () => () => {},
@@ -13,6 +15,8 @@ const ToggleStatesContext = createContext<ToggleStatesContextType>({
 	setOpenMenu: () => {},
 	openMenu: false,
 	isMac: false,
+	override: false,
+	setOverride: () => {},
 });
 interface ToggleStatesProviderProps {
 	children: ReactNode;
@@ -21,6 +25,8 @@ interface ToggleStatesProviderProps {
 	setOpenMenu: (currentValue: boolean) => void;
 	openMenu: boolean;
 	isMac: boolean;
+	override: boolean;
+	setOverride: (value: boolean) => void;
 }
 export const useToggleStates = () => useContext(ToggleStatesContext);
 const ToggleStatesProvider: React.FC<ToggleStatesProviderProps> = ({
@@ -30,10 +36,20 @@ const ToggleStatesProvider: React.FC<ToggleStatesProviderProps> = ({
 	setOpenMenu,
 	openMenu,
 	isMac,
+	override,
+	setOverride,
 }) => {
 	return (
 		<ToggleStatesContext.Provider
-			value={{ toggleDrawer, openDrawer, setOpenMenu, openMenu, isMac }}
+			value={{
+				toggleDrawer,
+				openDrawer,
+				setOpenMenu,
+				openMenu,
+				isMac,
+				override,
+				setOverride,
+			}}
 		>
 			{children}
 		</ToggleStatesContext.Provider>
