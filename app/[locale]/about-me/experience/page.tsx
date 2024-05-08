@@ -1,4 +1,4 @@
-import ExperienceGrid from "@/components/home/ExperienceGrid";
+import ExperienceGrid from "@/components/experience/ExperienceGrid";
 import { Box, Container, Divider, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 export default function Projects() {

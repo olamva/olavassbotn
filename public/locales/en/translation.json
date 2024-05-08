@@ -87,7 +87,9 @@
 				"title": "My Goals",
 				"content": "My goal is to become a full-stack developer. I want to work on projects that make a difference, and that can help people in their everyday lives. I am passionate about technology, and I am always looking for new challenges and opportunities to learn and grow."
 			}
-		]
+		],
+		"projectsbutton": "My Projects",
+		"experiencebutton": "My Experience"
 	},
 	"Themes": {
 		"title": "Color Theme for This Website",

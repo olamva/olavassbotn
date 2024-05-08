@@ -1,3 +1,4 @@
+"use client";
 import { contactLinks, socialLinks } from "@/app/data/FooterData";
 import { Box, Link, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
