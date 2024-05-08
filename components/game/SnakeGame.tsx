@@ -1,4 +1,4 @@
-import { Dialog, DialogContent } from "@mui/material";
+import { Dialog, DialogContent, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { FC, useEffect, useRef, useState } from "react";
 interface SnakeGameProps {
@@ -11,9 +11,9 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 		null
 	);
 	const theme = useTheme();
-	// const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-	// const unitSize = isMobile ? 20 : 10;
-	const unitSize = 20;
+	// * The following is old logic that could be useful in the future, and is therefore not removed.
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+	const unitSize = isMobile ? 20 : 40;
 	const canvasWidth =
 		Math.round((window.innerWidth * 0.7) / unitSize) * unitSize;
 	const canvasHeight =
@@ -124,38 +124,34 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				drawSnake();
 			};
 			const changeDirection = (event: KeyboardEvent) => {
-				const LEFT_KEY = 37;
-				const RIGHT_KEY = 39;
-				const UP_KEY = 38;
-				const DOWN_KEY = 40;
-				const keyPressed = event.keyCode;
+				event.preventDefault();
+				const keyPressed = event.key;
 				const lastDirection = nextDirections[
 					nextDirections.length - 1
 				] || { dx, dy };
-				if (
-					keyPressed === LEFT_KEY &&
-					dx !== unitSize &&
-					lastDirection.dx !== -unitSize
-				) {
-					nextDirections.push({ dx: -unitSize, dy: 0 });
-				} else if (
-					keyPressed === UP_KEY &&
-					dy !== unitSize &&
-					lastDirection.dy !== -unitSize
-				) {
-					nextDirections.push({ dx: 0, dy: -unitSize });
-				} else if (
-					keyPressed === RIGHT_KEY &&
-					dx !== -unitSize &&
-					lastDirection.dx !== unitSize
-				) {
-					nextDirections.push({ dx: unitSize, dy: 0 });
-				} else if (
-					keyPressed === DOWN_KEY &&
-					dy !== -unitSize &&
-					lastDirection.dy !== unitSize
-				) {
-					nextDirections.push({ dx: 0, dy: unitSize });
+				switch (keyPressed) {
+					case "ArrowLeft":
+						if (dx !== unitSize && lastDirection.dx !== -unitSize) {
+							nextDirections.push({ dx: -unitSize, dy: 0 });
+						}
+						break;
+					case "ArrowUp":
+						if (dy !== unitSize && lastDirection.dy !== -unitSize) {
+							nextDirections.push({ dx: 0, dy: -unitSize });
+						}
+						break;
+					case "ArrowRight":
+						if (dx !== -unitSize && lastDirection.dx !== unitSize) {
+							nextDirections.push({ dx: unitSize, dy: 0 });
+						}
+						break;
+					case "ArrowDown":
+						if (dy !== -unitSize && lastDirection.dy !== unitSize) {
+							nextDirections.push({ dx: 0, dy: unitSize });
+						}
+						break;
+					default:
+						break;
 				}
 			};
 			let xDown: number | null = null;
@@ -174,7 +170,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				const yUp = e.touches[0].clientY;
 				const xDiff = xDown - xUp;
 				const yDiff = yDown - yUp;
-				const sensitivity = 20; // Increase for more wiggle room
+				const sensitivity = 20; // * Increase if more wiggle room is wanted
 				if (Math.abs(xDiff) > Math.abs(yDiff)) {
 					if (Math.abs(xDiff) > sensitivity) {
 						handlingSwipe = true;
