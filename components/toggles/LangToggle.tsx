@@ -39,6 +39,7 @@ const LangToggle = () => {
 				"& .MuiButton-endIcon": {
 					margin: "0",
 				},
+				padding: "4px",
 			}}
 		>
 			<Image

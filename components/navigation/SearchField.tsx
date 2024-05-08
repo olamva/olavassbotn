@@ -24,7 +24,7 @@ const SearchField = () => {
 	const INNER_BORDER_RADIUS = 1;
 	const FONT_SIZE = 12;
 	return smallScreen ? (
-		<IconButton onClick={() => setOpenMenu(true)}>
+		<IconButton onClick={() => setOpenMenu(true)} sx={{ padding: "4px" }}>
 			<Search
 				sx={{
 					color: "primary.contrastText",

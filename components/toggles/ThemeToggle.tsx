@@ -12,6 +12,7 @@ function ThemeToggle() {
 			onClick={toggleColorMode}
 			sx={{
 				color: "primary.contrastText",
+				padding: "4px",
 			}}
 		>
 			{mode === "dark" ? (
