@@ -1,22 +1,15 @@
 import { Experience } from "@/app/types/default";
-import { useColorMode } from "@/contexts/ThemeModeProvider";
-import { Box, Card, CardContent, Divider, Typography } from "@mui/material";
-import Image from "next/image";
+import { Box, CardContent, Divider, Typography } from "@mui/material";
 import Link from "next/link";
+import DarkModeCard from "./DarkModeAssets/DarkModeCard";
+import DarkModeImage from "./DarkModeAssets/DarkModeImage";
 
 interface ExperienceCardProps {
 	experience: Experience;
 }
 const ExperienceCard = ({ experience }: ExperienceCardProps) => {
-	const { mode } = useColorMode();
 	return (
-		<Card
-			sx={{
-				backgroundColor:
-					mode == "dark" ? "primary.dark" : "primary.light",
-			}}
-			elevation={3}
-		>
+		<DarkModeCard>
 			<Link style={{ width: "100%" }} href={experience.href || ""}>
 				<CardContent
 					sx={{
@@ -59,21 +52,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 												: "0px",
 									}}
 								>
-									<Image
-										src={
-											mode == "dark"
-												? img.src
-												: img.darkSrc ?? img.src
-										}
-										alt={img.alt}
-										style={{
-											position: "absolute",
-											top: 0,
-											left: 0,
-											width: "100%",
-											height: "auto",
-										}}
-									/>
+									<DarkModeImage img={img} />
 								</Box>
 							))}
 						</Box>
@@ -123,7 +102,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 					</Box>
 				</CardContent>
 			</Link>
-		</Card>
+		</DarkModeCard>
 	);
 };
 

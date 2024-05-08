@@ -1,14 +1,10 @@
-"use client";
-import { useColorMode } from "@/contexts/ThemeModeProvider";
-import { Divider, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import AboutMePaper from "@/components/about-me/AboutMePaper";
+import AlternatingDivider from "@/components/about-me/AlternatingDivider";
+import { Grid, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 
 const AboutMeGrid = () => {
-	const theme = useTheme();
 	const t = useTranslations("About Me");
-	const matches = useMediaQuery(theme.breakpoints.up("md"));
-	const { mode } = useColorMode();
 	return (
 		<Grid container spacing={3} mb={7}>
 			{t
@@ -19,20 +15,7 @@ const AboutMeGrid = () => {
 						index: number
 					) => (
 						<Grid item xs={12} md={6} key={index} mb={4}>
-							<Divider
-								textAlign={
-									matches
-										? "left"
-										: index & 1
-										? "right"
-										: "left"
-								}
-								sx={{
-									"&::before, &::after": {
-										borderColor: "primary.contrastText",
-									},
-								}}
-							>
+							<AlternatingDivider index={index}>
 								<Typography
 									color="primary.contrastText"
 									sx={{
@@ -45,20 +28,8 @@ const AboutMeGrid = () => {
 								>
 									{section.title}
 								</Typography>
-							</Divider>
-							<Paper
-								elevation={3}
-								sx={{
-									display: "flex",
-									flexDirection: "column",
-									height: "100%",
-									p: 3,
-									backgroundColor:
-										mode == "dark"
-											? "primary.dark"
-											: "primary.light",
-								}}
-							>
+							</AlternatingDivider>
+							<AboutMePaper>
 								<Typography
 									variant="body1"
 									color="primary.contrastText"
@@ -73,7 +44,7 @@ const AboutMeGrid = () => {
 								>
 									{section.content}
 								</Typography>
-							</Paper>
+							</AboutMePaper>
 						</Grid>
 					)
 				)}

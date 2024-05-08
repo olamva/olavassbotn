@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
+
 export default function Home() {
 	const t = useTranslations("HomePage");
 	return (
-		<Box mt={20}>
+		<Box mt="10svh">
 			<Typography
 				variant="h1"
 				align="center"
