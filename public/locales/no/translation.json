@@ -92,8 +92,7 @@
 		"experiencebutton": "Min Erfaring"
 	},
 	"Themes": {
-		"title": "Fargetema for Denne Nettsiden",
-		"accessDenied": "Ingen adgang. Vennligst skru på utviklermodus for å se denne siden."
+		"title": "Fargetema for Denne Nettsiden"
 	},
 	"Projects": {
 		"title": "Prosjekter",
@@ -120,5 +119,8 @@
 				"projectID": "gr2313"
 			}
 		]
+	},
+	"DevMode": {
+		"accessDenied": "Ingen adgang. Vennligst skru på utviklermodus for å se denne siden."
 	}
 }

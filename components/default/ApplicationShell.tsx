@@ -29,6 +29,7 @@ export default function ApplicationShell({
 
 	const [openDrawer, setOpenDrawer] = useState(false);
 	const [openMenu, setOpenMenu] = useState<boolean>(false);
+	const [override, setOverride] = useState<boolean>(false);
 
 	const [isMac, setIsMac] = useState(false);
 	useEffect(() => {
@@ -72,6 +73,8 @@ export default function ApplicationShell({
 						openMenu={openMenu}
 						setOpenMenu={setOpenMenu}
 						isMac={isMac}
+						override={override}
+						setOverride={setOverride}
 					>
 						{children}
 					</ToggleStatesProvider>

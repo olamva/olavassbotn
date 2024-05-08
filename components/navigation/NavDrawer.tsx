@@ -25,8 +25,8 @@ export default function NavDrawer() {
 	const pathname = usePathname();
 	const theme = useTheme();
 	const t = useTranslations("NavItems");
-	const { toggleDevMode, devMode } = useDevMode();
-
+	const { devMode } = useDevMode();
+	// Potentially refactor to avoid having to use client-side rendering
 	const DrawerList = (
 		<Box
 			sx={{

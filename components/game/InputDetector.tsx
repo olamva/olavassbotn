@@ -1,18 +1,15 @@
+"use client";
 import SnakeGame from "@/components/game/SnakeGame";
+import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import { FC, useEffect, useState } from "react";
 
 interface InputDetectorProps {
 	sequenceToCheck: string;
-	override?: boolean;
-	setOverride?: (override: boolean) => void;
 }
-const InputDetector: FC<InputDetectorProps> = ({
-	sequenceToCheck,
-	override,
-	setOverride,
-}) => {
+const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
 	const [keySequence, setKeySequence] = useState<string[]>([]);
 	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+	const { override, setOverride } = useToggleStates();
 	useEffect(() => {
 		const keyDownHandler = (event: KeyboardEvent) => {
 			setKeySequence((prevSequence) =>
