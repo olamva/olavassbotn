@@ -1,3 +1,4 @@
+"use client";
 import { ExperiencelistItems } from "@/app/data/ExperienceGridData";
 import { Experience } from "@/app/types/default";
 import { useTranslations } from "next-intl";
