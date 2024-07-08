@@ -75,7 +75,9 @@ const useDrawerList = () => {
 											>
 												{item.icon && (
 													<ListItemIcon>
-														{isActive ? (
+														{isActive &&
+														item.filledIcon !==
+															undefined ? (
 															<item.filledIcon
 																sx={{
 																	color: "primary.contrastText",

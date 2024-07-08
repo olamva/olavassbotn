@@ -1,4 +1,3 @@
-import "@/app/globals.css";
 import ApplicationShell from "@/components/default/ApplicationShell";
 import Footer from "@/components/default/Footer";
 import NavBar from "@/components/navigation/NavBar";
