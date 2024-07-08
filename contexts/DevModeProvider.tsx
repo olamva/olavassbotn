@@ -1,6 +1,7 @@
 "use client";
 import {
 	Dispatch,
+	FC,
 	ReactNode,
 	SetStateAction,
 	createContext,
@@ -21,11 +22,11 @@ interface DevModeProviderProps {
 	setMode: Dispatch<SetStateAction<boolean>>;
 }
 export const useDevMode = () => useContext(DevModeContext);
-const DevModeProvider: React.FC<DevModeProviderProps> = ({
+const DevModeProvider: FC<DevModeProviderProps> = ({
 	children,
 	mode,
 	setMode,
-}) => {
+}: DevModeProviderProps) => {
 	const devMode = useMemo(
 		() => ({
 			toggleDevMode: () => {

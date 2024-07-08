@@ -1,7 +1,11 @@
+import { SvgIconTypeMap } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { StaticImageData } from "next/image";
 
 export type SocialLink = {
-	icon: any;
+	icon: OverridableComponent<SvgIconTypeMap<unknown, "svg">> & {
+		muiName: string;
+	};
 	link: string;
 	label?: string;
 };

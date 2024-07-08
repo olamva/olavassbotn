@@ -50,7 +50,7 @@ const NavMenu = () => {
 							(item.requiresAdmin ? devMode : true)
 					)
 					.map((item) => {
-						const itemLink = root + item.link ?? "";
+						const itemLink = root + (item.link ?? "");
 						return {
 							id: item.label,
 							children: t(item.label),

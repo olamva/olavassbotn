@@ -39,7 +39,7 @@ const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
 					open={isDialogOpen}
 					onClose={() => {
 						setIsDialogOpen(false);
-						setOverride && setOverride(false);
+						setOverride(false);
 						setKeySequence([]);
 					}}
 				/>

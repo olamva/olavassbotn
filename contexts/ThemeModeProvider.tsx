@@ -2,6 +2,7 @@
 import { PaletteMode } from "@mui/material";
 import {
 	Dispatch,
+	FC,
 	ReactNode,
 	SetStateAction,
 	createContext,
@@ -21,11 +22,11 @@ interface ThemeModeProviderProps {
 	setMode: Dispatch<SetStateAction<PaletteMode>>;
 }
 export const useColorMode = () => useContext(ColorModeContext);
-const ThemeModeProvider: React.FC<ThemeModeProviderProps> = ({
+const ThemeModeProvider: FC<ThemeModeProviderProps> = ({
 	children,
 	mode,
 	setMode,
-}) => {
+}: ThemeModeProviderProps) => {
 	const colorMode = useMemo(
 		() => ({
 			toggleColorMode: () => {

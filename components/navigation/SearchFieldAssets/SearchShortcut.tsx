@@ -13,7 +13,7 @@ const SearchShortcut = ({
 	INNER_BORDER_RADIUS,
 	FONT_SIZE,
 }: SearchShortcutProps) => {
-	const { setOpenMenu, isMac } = useToggleStates();
+	const { isMac } = useToggleStates();
 	const { mode } = useColorMode();
 	return (
 		<Box
