@@ -16,34 +16,39 @@
 			"description": "Implemented automated UI tests using Cypress"
 		},
 		"2": {
+			"title": "Summer Intern at Vitalthings",
+			"hasDescription": "true",
+			"description": "Worked on frontend and backend of the somnofy web app."
+		},
+		"3": {
 			"title": "HTML",
 			"hasDescription": "false"
 		},
-		"3": {
+		"4": {
 			"title": "CSS",
 			"hasDescription": "false"
 		},
-		"4": {
+		"5": {
 			"title": "JavaScript",
 			"hasDescription": "false"
 		},
-		"5": {
+		"6": {
 			"title": "TypeScript",
 			"hasDescription": "false"
 		},
-		"6": {
+		"7": {
 			"title": "Java",
 			"hasDescription": "false"
 		},
-		"7": {
+		"8": {
 			"title": "Python",
 			"hasDescription": "false"
 		},
-		"8": {
+		"9": {
 			"title": "React",
 			"hasDescription": "false"
 		},
-		"9": {
+		"10": {
 			"title": "Next.js",
 			"hasDescription": "false"
 		}
