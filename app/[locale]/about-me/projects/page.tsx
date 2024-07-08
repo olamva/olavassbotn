@@ -1,5 +1,3 @@
-import { konamiCode } from "@/app/data/ProjectsData";
-import InputDetector from "@/components/game/InputDetector";
 import ProjectsGrid from "@/components/projects/ProjectsGrid";
 import { Box, Container, Divider, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -7,7 +5,6 @@ export default function Projects() {
 	const t = useTranslations("Projects");
 	return (
 		<>
-			<InputDetector sequenceToCheck={konamiCode} />
 			<Container maxWidth="lg">
 				<Box sx={{ my: 4 }}>
 					<Typography

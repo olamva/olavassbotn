@@ -1,4 +1,6 @@
 "use client";
+import { konamiCode } from "@/app/data/ProjectsData";
+import InputDetector from "@/components/game/InputDetector";
 import DevModeProvider from "@/contexts/DevModeProvider";
 import ThemeModeProvider from "@/contexts/ThemeModeProvider";
 import ToggleStatesProvider from "@/contexts/ToggleStatesProvider";
@@ -6,14 +8,14 @@ import { makeThemeWithMode } from "@/public/theme";
 import { ThemeProvider } from "@emotion/react";
 import { PaletteMode } from "@mui/material";
 import Cookies from "js-cookie";
-import { useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 
 export default function ApplicationShell({
 	children,
 	savedMode,
 	savedDevMode,
 }: {
-	children: React.ReactNode;
+	children: ReactNode;
 	savedMode: PaletteMode;
 	savedDevMode: boolean;
 }) {
@@ -76,6 +78,7 @@ export default function ApplicationShell({
 						override={override}
 						setOverride={setOverride}
 					>
+						<InputDetector sequenceToCheck={konamiCode} />
 						{children}
 					</ToggleStatesProvider>
 				</ThemeProvider>
