@@ -18,7 +18,7 @@ const SearchFieldMobile = ({ children }: SearchFieldMobileProps) => {
 			<Search
 				sx={{
 					color: "primary.contrastText",
-					fontSize: "15px",
+					fontSize: "20px",
 				}}
 			/>
 		</IconButton>

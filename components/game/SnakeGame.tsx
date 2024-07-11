@@ -48,7 +48,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 			respawnFood();
 			let dx = unitSize;
 			let dy = 0;
-			let nextDirections = [{ dx: unitSize, dy: 0 }];
+			const nextDirections = [{ dx: unitSize, dy: 0 }];
 			const drawSnakePart = (snakePart: { x: number; y: number }) => {
 				context.fillStyle = "green";
 				context.strokeStyle = "darkgreen";

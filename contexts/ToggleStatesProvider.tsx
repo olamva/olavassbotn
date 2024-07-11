@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, createContext, useContext } from "react";
+import { FC, ReactNode, createContext, useContext } from "react";
 interface ToggleStatesContextType {
 	toggleDrawer: (newOpen: boolean) => () => void;
 	openDrawer: boolean;
@@ -29,7 +29,7 @@ interface ToggleStatesProviderProps {
 	setOverride: (value: boolean) => void;
 }
 export const useToggleStates = () => useContext(ToggleStatesContext);
-const ToggleStatesProvider: React.FC<ToggleStatesProviderProps> = ({
+const ToggleStatesProvider: FC<ToggleStatesProviderProps> = ({
 	children,
 	toggleDrawer,
 	openDrawer,
@@ -38,7 +38,7 @@ const ToggleStatesProvider: React.FC<ToggleStatesProviderProps> = ({
 	isMac,
 	override,
 	setOverride,
-}) => {
+}: ToggleStatesProviderProps) => {
 	return (
 		<ToggleStatesContext.Provider
 			value={{

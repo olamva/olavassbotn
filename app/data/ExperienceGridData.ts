@@ -11,13 +11,14 @@ import javaLogo from "@/public/logos/java.webp";
 import nextLogo from "@/public/logos/next-js.svg";
 import pythonLogo from "@/public/logos/python.webp";
 import reactLogo from "@/public/logos/react.png";
+import VTLogo from "@/public/logos/VTLogo.jpeg";
 
 /*
-* HOW TO ADD A NEW EXPERIENCE LIST ITEM:
-* Add the logo to the public/logos folder
-* Add it to the ExperiencelistItems array below
-* Add text to public/locales/[locale]/translation.json
-*/
+ * HOW TO ADD A NEW EXPERIENCE LIST ITEM:
+ * Add the logo to the public/logos folder
+ * Add it to the ExperiencelistItems array below
+ * Add text to public/locales/[locale]/translation.json
+ */
 export const ExperiencelistItems: ExperienceListItem[] = [
 	{
 		href: "https://online.ntnu.no/",
@@ -39,6 +40,15 @@ export const ExperiencelistItems: ExperienceListItem[] = [
 			{
 				src: tanaLogo,
 				alt: "Tana sin logo",
+			},
+		],
+	},
+	{
+		href: "https://vitalthings.com/en/",
+		imgs: [
+			{
+				src: VTLogo,
+				alt: "Vitalthings sin logo",
 			},
 		],
 	},

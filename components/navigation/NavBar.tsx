@@ -10,7 +10,6 @@ export default function NavBar() {
 			<Toolbar sx={{ p: 0.5 }}>
 				<Box display="flex" alignItems="center">
 					<DrawerToggleButton />
-					<NavBreadcrumbs />
 				</Box>
 				<Box flexGrow={1}></Box>
 				<Box>
@@ -19,6 +18,7 @@ export default function NavBar() {
 					<LangToggle />
 				</Box>
 			</Toolbar>
+			<NavBreadcrumbs />
 		</>
 	);
 }

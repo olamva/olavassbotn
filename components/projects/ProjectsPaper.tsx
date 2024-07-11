@@ -1,9 +1,10 @@
 "use client";
 import { useColorMode } from "@/contexts/ThemeModeProvider";
 import { Paper } from "@mui/material";
+import { ReactNode } from "react";
 
 interface ProjectsPaperProps {
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 const ProjectsPaper = ({ children }: ProjectsPaperProps) => {

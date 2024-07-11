@@ -13,6 +13,7 @@ import {
 	Work,
 	WorkOutline,
 } from "@mui/icons-material";
+import AppsIcon from "@mui/icons-material/Apps";
 
 export const navItems: NavItem[] = [
 	{
@@ -40,6 +41,12 @@ export const navItems: NavItem[] = [
 		icon: WorkOutline,
 		filledIcon: Work,
 		link: "/about-me/experience",
+	},
+	{
+		label: "wordle",
+		icon: AppsIcon,
+		filledIcon: AppsIcon,
+		link: "/about-me/projects/wordle",
 	},
 	{
 		label: "themes",
