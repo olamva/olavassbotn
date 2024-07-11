@@ -1,8 +1,7 @@
 "use client";
 import NOFlag from "@/public/flags/NO.png";
 import USFlag from "@/public/flags/US.png";
-import { IconButton, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { IconButton } from "@mui/material";
 import { useLocale } from "next-intl";
 import Image, { StaticImageData } from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -11,7 +10,6 @@ const LangToggle = () => {
 	const router = useRouter();
 	const pathname = usePathname();
 	const locale = useLocale();
-	const theme = useTheme();
 	const toggleLanguage = () => {
 		const newLocale = locale === "no" ? "en" : "no";
 		const newPathname = "/" + newLocale + pathname.slice(3);

@@ -1,10 +1,8 @@
 "use client";
 import { useColorMode } from "@/contexts/ThemeModeProvider";
 import { DarkMode, LightMode } from "@mui/icons-material";
-import { IconButton, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { IconButton } from "@mui/material";
 function ThemeToggle() {
-	const theme = useTheme();
 	const { toggleColorMode, mode } = useColorMode();
 	return (
 		<IconButton
