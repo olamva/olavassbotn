@@ -1,3 +1,4 @@
+import "@/public/globals.css";
 import ApplicationShell from "@/components/default/ApplicationShell";
 import Footer from "@/components/default/Footer";
 import NavBar from "@/components/navigation/NavBar";
@@ -34,6 +35,12 @@ export default function LocaleLayout({
 	const devModeValue = devMode?.value === "true";
 	return (
 		<html lang={locale}>
+			<head>
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1.0"
+				/>
+			</head>
 			<NextIntlClientProvider locale={locale} messages={messages}>
 				<Analytics />
 				<SpeedInsights />

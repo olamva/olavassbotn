@@ -12,7 +12,6 @@ const LangToggle = () => {
 	const pathname = usePathname();
 	const locale = useLocale();
 	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const toggleLanguage = () => {
 		const newLocale = locale === "no" ? "en" : "no";
 		const newPathname = "/" + newLocale + pathname.slice(3);
@@ -45,8 +44,8 @@ const LangToggle = () => {
 			<Image
 				src={flagSrc}
 				alt="Toggle Language"
-				width={isMobile ? 15 : 20}
-				height={isMobile ? 15 : 20}
+				width={20}
+				height={20}
 				style={{
 					borderRadius: "50%",
 				}}

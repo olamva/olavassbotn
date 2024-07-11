@@ -71,7 +71,9 @@
 
 		"navigationTitle": "Navigasjon",
 		"socialsTitle": "Sosiale Medier",
-		"settingsTitle": "Innstillinger"
+		"settingsTitle": "Innstillinger",
+
+		"wordle": "Wordle"
 	},
 	"About Me": {
 		"title": "Om Meg",

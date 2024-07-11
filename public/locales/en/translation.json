@@ -71,7 +71,9 @@
 
 		"navigationTitle": "Navigation",
 		"socialsTitle": "Socials",
-		"settingsTitle": "Settings"
+		"settingsTitle": "Settings",
+
+		"wordle": "Wordle"
 	},
 	"About Me": {
 		"title": "About Me",

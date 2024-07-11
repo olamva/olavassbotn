@@ -28,6 +28,7 @@ const NavBreadcrumbs = () => {
 		<Breadcrumbs
 			separator={<NavigateNextIcon fontSize="small" />}
 			aria-label="breadcrumb"
+			className="pl-2 sm:pl-8"
 		>
 			{pathnames.map((value, index) => {
 				const last = index === pathnames.length - 1;

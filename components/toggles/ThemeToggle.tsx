@@ -5,7 +5,6 @@ import { IconButton, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 function ThemeToggle() {
 	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const { toggleColorMode, mode } = useColorMode();
 	return (
 		<IconButton
@@ -16,9 +15,9 @@ function ThemeToggle() {
 			}}
 		>
 			{mode === "dark" ? (
-				<DarkMode sx={{ fontSize: isMobile ? "15px" : "20px" }} />
+				<DarkMode sx={{ fontSize: "20px" }} />
 			) : (
-				<LightMode sx={{ fontSize: isMobile ? "15px" : "20px" }} />
+				<LightMode sx={{ fontSize: "20px" }} />
 			)}
 		</IconButton>
 	);
