@@ -6,12 +6,10 @@ import { useTranslations } from "next-intl";
 export default function AboutMe() {
 	const t = useTranslations("About Me");
 	return (
-		<div className="px-6">
-			<div className="my-8">
-				<TitleText t={t} />
-				<SubPageChips />
-				<AboutMeGrid />
-			</div>
+		<div className="my-8 px-6">
+			<TitleText t={t} />
+			<SubPageChips />
+			<AboutMeGrid />
 		</div>
 	);
 }

@@ -1,108 +1,58 @@
 import { Experience } from "@/app/types/default";
-import DarkModeCard from "@/components/experience/DarkModeAssets/DarkModeCard";
-import DarkModeImage from "@/components/experience/DarkModeAssets/DarkModeImage";
-import { Box, CardContent, Divider, Typography } from "@mui/material";
-import Link from "next/link";
+import Image from "next/image";
 
-interface ExperienceCardProps {
-	experience: Experience;
-}
-const ExperienceCard = ({ experience }: ExperienceCardProps) => {
+const ExperienceCard = ({ experience }: { experience: Experience }) => {
 	return (
-		<DarkModeCard>
-			<Link style={{ width: "100%" }} href={experience.href || ""}>
-				<CardContent
-					sx={{
-						padding: "24px",
-						"&:last-child": {
-							paddingBottom: "24px",
-						},
-						display: "flex",
-						lineHeight: "1.5",
-						cursor: experience.href ? "pointer" : "default",
-					}}
-				>
+		<div className="bg-primary-main shadow rounded h-fit">
+			<a className="w-full" href={experience.href ?? ""}>
+				<div className="p-6 flex cursor-pointer">
 					{experience.imgs.length && (
-						<Box
-							sx={{
-								display: "flex",
-								flexDirection: "column",
-								alignItems: "center",
-								justifyContent: "center",
-								marginRight: "24px",
-							}}
-						>
+						<div className="flex flex-col items-center justify-center mr-6">
 							{experience.imgs.map((img, imgIndex) => (
-								<Box
+								<div
 									key={imgIndex}
-									sx={{
-										width: 30,
-										height: 30,
-										position: "relative",
-										marginBottom:
-											experience.imgs.length > 1 &&
-											imgIndex !==
-												experience.imgs.length - 1
-												? "10px"
-												: "0px",
-										marginTop:
-											experience.imgs.length > 1 &&
-											imgIndex !== 0
-												? "10px"
-												: "0px",
-									}}
+									className={`size-[30px] relative ${
+										experience.imgs.length > 1 &&
+										imgIndex !== experience.imgs.length - 1
+											? "mb-[10px]"
+											: ""
+									} ${
+										experience.imgs.length > 1 &&
+										imgIndex !== 0
+											? "mt-[10px]"
+											: ""
+									}`}
 								>
-									<DarkModeImage img={img} />
-								</Box>
+									<div className="hidden dark:block">
+										<Image
+											src={img.src}
+											alt={img.alt}
+											className="absolute inset-0 w-full h-auto"
+										/>
+									</div>
+									<div className="dark:hidden">
+										<Image
+											src={img.darkSrc ?? img.src}
+											alt={img.alt}
+											className="absolute inset-0 w-full h-auto"
+										/>
+									</div>
+								</div>
 							))}
-						</Box>
+						</div>
 					)}
-					<Box
-						sx={{
-							my: "auto",
-						}}
-					>
-						<Typography
-							fontWeight={700}
-							variant="body1"
-							color="primary.contrastText"
-							sx={{
-								fontSize: {
-									xs: "0.75rem",
-									sm: "0.875rem",
-									md: "1rem",
-								},
-							}}
-						>
-							{experience.title}
-						</Typography>
+					<div className="my-auto text-xs sm:text-sm md:text-base">
+						<p className="font-bold">{experience.title}</p>
 						{experience.description && (
 							<>
-								<Divider
-									sx={{
-										my: 1,
-										mx: "auto",
-										width: "100%",
-									}}
-								/>
-								<Typography
-									sx={{
-										fontSize: {
-											xs: "0.75rem",
-											sm: "0.875rem",
-											md: "1rem",
-										},
-									}}
-									color="primary.contrastText"
-								>
-									{experience.description}
-								</Typography>
+								<hr className="my-1 mx-auto w-full border-zinc-400" />
+								{experience.description}
 							</>
 						)}
-					</Box>
-				</CardContent>
-			</Link>
-		</DarkModeCard>
+					</div>
+				</div>
+			</a>
+		</div>
 	);
 };
 
