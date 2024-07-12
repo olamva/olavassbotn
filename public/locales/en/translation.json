@@ -103,6 +103,7 @@
 	},
 	"Projects": {
 		"title": "Projects",
+		"playSnake": "PLAY SNAKE",
 		"projects": [
 			{
 				"title": "Website built with React, TypeScript, Next.js, and Material UI",

@@ -1,14 +1,13 @@
+import Button from "@/components/default/Button";
+import Paper from "@/components/default/Paper";
 import GameButton from "@/components/game/GameButton";
-import ProjectsDescription from "@/components/projects/ProjectsDescription";
-import ProjectsPaper from "@/components/projects/ProjectsPaper";
 import { GitHub } from "@mui/icons-material";
-import { Button, Grid, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 
 const ProjectsGrid = () => {
 	const t = useTranslations("Projects");
 	return (
-		<Grid container spacing={3} my={2}>
+		<div className="grid gap-3 my-4 grid-cols-2">
 			{t.raw("projects").map(
 				(
 					section: {
@@ -20,50 +19,43 @@ const ProjectsGrid = () => {
 					},
 					index: number
 				) => (
-					<Grid item xs={12} md={6} key={index}>
-						<ProjectsPaper>
-							<Typography
-								variant="h5"
-								color={"primary.contrastText"}
-								sx={{
-									fontSize: {
-										xs: "1rem",
-										sm: "1.5rem",
-										md: "2rem",
-									},
-								}}
-								gutterBottom
-							>
+					<div className="col-span-2 sm:col-span-1" key={index}>
+						<Paper>
+							<h5 className="text-base sm:text-2xl md:text-[2rem] mb-3">
 								{section.title}
-							</Typography>
-							<ProjectsDescription section={section} />
+							</h5>
+							<div className="hidden sm:block">
+								<p className="text-xs sm:text-sm md:text-base">
+									{section.description}
+								</p>
+							</div>
+							<div className="block sm:hidden">
+								<p className="text-xs sm:text-sm md:text-base">
+									{section.mobileDescription ??
+										section.description}
+								</p>
+							</div>
 							{section.mobileDescription && <GameButton />}
 							{section.githubLink && (
-								<Button
+								<a
+									className="w-fit self-center"
 									href={`https://github.com/olamva/${section.projectID}`}
 									target="_blank"
 									rel="noopener noreferrer"
-									variant="contained"
-									color="primary"
-									startIcon={<GitHub />}
-									autoCapitalize={undefined}
-									sx={{
-										mt: 2,
-										alignSelf: "center",
-										alignItems: "center",
-										textTransform: "none",
-									}}
 								>
-									<Typography>
-										{section.githubLink}
-									</Typography>
-								</Button>
+									<Button>
+										<GitHub />
+										<p className="pl-1">
+											{section.githubLink}
+										</p>
+									</Button>
+								</a>
 							)}
-						</ProjectsPaper>
-					</Grid>
+						</Paper>
+					</div>
 				)
 			)}
-		</Grid>
+		</div>
 	);
 };
 

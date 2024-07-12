@@ -1,6 +1,6 @@
 import AlternatingDivider from "@/components/about-me/AlternatingDivider";
+import Paper from "@/components/default/Paper";
 import { useTranslations } from "next-intl";
-
 const AboutMeGrid = () => {
 	const t = useTranslations("About Me");
 	return (
@@ -21,11 +21,11 @@ const AboutMeGrid = () => {
 									{section.title}
 								</p>
 							</AlternatingDivider>
-							<div className="flex flex-col h-full p-6 bg-primary-main border border-zinc-300 dark:border-zinc-800 rounded">
+							<Paper>
 								<p className="flex-grow text-xs sm:text-sm md:text-base">
 									{section.content}
 								</p>
-							</div>
+							</Paper>
 						</div>
 					)
 				)}

@@ -1,28 +1,20 @@
 "use client";
+import Button from "@/components/default/Button";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
-import { Button, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { useTranslations } from "next-intl";
 
 const GameButton = () => {
-	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const { setOverride } = useToggleStates();
+	const t = useTranslations("Projects");
 	return (
-		isMobile && (
-			<Button
-				variant="contained"
-				color="primary"
-				sx={{
-					mt: 2,
-					alignSelf: "center",
-				}}
-				onClick={() => {
-					setOverride(true);
-				}}
-			>
-				Play Snake Game
-			</Button>
-		)
+		<Button
+			mobileOnly
+			onClick={() => {
+				setOverride(true);
+			}}
+		>
+			{t("playSnake")}
+		</Button>
 	);
 };
 

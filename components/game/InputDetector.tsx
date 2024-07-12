@@ -33,18 +33,16 @@ const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
 		}
 	}, [override]);
 	return (
-		<>
-			{isDialogOpen && (
-				<SnakeGame
-					open={isDialogOpen}
-					onClose={() => {
-						setIsDialogOpen(false);
-						setOverride(false);
-						setKeySequence([]);
-					}}
-				/>
-			)}
-		</>
+		isDialogOpen && (
+			<SnakeGame
+				open={isDialogOpen}
+				onClose={() => {
+					setIsDialogOpen(false);
+					setOverride(false);
+					setKeySequence([]);
+				}}
+			/>
+		)
 	);
 };
 export default InputDetector;

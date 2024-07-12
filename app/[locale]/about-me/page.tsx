@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 export default function AboutMe() {
 	const t = useTranslations("About Me");
 	return (
-		<div className="max-w-full px-6">
+		<div className="px-6">
 			<div className="my-8">
 				<TitleText t={t} />
 				<SubPageChips />
