@@ -14,11 +14,11 @@ module.exports = {
 				slideVertical: {
 					"0%": {
 						transform: "translateY(50%)",
-						backgroundColor: "rgba(39, 39, 42, 0.5)",
+						backgroundColor: "opacity-50",
 					},
 					"100%": {
 						transform: "translateY(0%)",
-						backgroundColor: "rgba(39, 39, 42, 1)",
+						backgroundColor: "opacity-100",
 					},
 				},
 				wiggle: {
@@ -41,5 +41,5 @@ module.exports = {
 		},
 	},
 	plugins: [],
-  darkMode: 'selector',
+	darkMode: "selector",
 };

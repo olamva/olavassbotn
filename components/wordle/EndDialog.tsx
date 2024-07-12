@@ -14,11 +14,11 @@ const EndDialog = ({ setDisplayEndScreen, endScreenText }: EndDialogProps) => {
 				}
 			}}
 		>
-			<div className="text-white bg-zinc-800 items-center flex rounded-lg p-8 flex-col animate-slideVertical">
+			<div className="text-black dark:text-white bg-zinc-400 dark:bg-zinc-800 items-center flex rounded-lg p-8 flex-col animate-slideVertical">
 				{endScreenText}
 				<div className="h-4" />
 				<div
-					className="bg-zinc-900 p-2 rounded-lg flex-row flex items-center justify-center cursor-pointer"
+					className="bg-zinc-100 dark:bg-zinc-900 p-2 rounded-lg flex-row flex items-center justify-center cursor-pointer"
 					onClick={() => location.reload()}
 				>
 					Reset?
