@@ -1,116 +1,41 @@
-"use client";
 import { contactLinks, socialLinks } from "@/app/data/FooterData";
-import { Box, Link, Typography, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 export default function Footer() {
-	const theme = useTheme();
-	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 	return (
-		<Box
-			component="footer"
-			sx={{
-				py: matches ? 2 : 4,
-				m: "auto",
-				width: "100%",
-				backgroundColor: "primary.main",
-				display: "flex",
-				justifyContent: "center",
-				alignItems: "center",
-				flexDirection: "row",
-				flexWrap: "wrap",
-			}}
-		>
-			<Box
-				sx={{
-					display: "flex",
-					flexDirection: matches ? "column" : "row",
-					alignItems: "center",
-					mr: matches ? 4 : 0,
-				}}
-			>
+		<footer className="py-4 sm:py-8 m-auto w-full bg-[rgb(211,212,200)] dark:bg-[rgb(20,20,20)] flex justify-center items-center flex-wrap">
+			<div className="flex flex-col sm:flex-row items-center mr-4 sm:mr-0">
 				{socialLinks.map((social, index) => (
-					<Link
+					<a
 						key={index}
 						href={social.link}
-						sx={{
-							color: "inherit",
-							textDecoration: "none",
-							display: "flex",
-							alignItems: "center",
-							px: matches ? 0 : 2,
-							mb:
-								matches && index !== socialLinks.length - 1
-									? 2
-									: 0,
-						}}
+						className={`no-underline flex items-center px-0 sm:px-2
+							${index !== socialLinks.length - 1 ? "mb-4" : "mb-0"}
+						sm:mb-0`}
 					>
-						<social.icon
-							sx={{
-								color: "primary.contrastText",
-								fontSize: {
-									xs: "1.5rem",
-									sm: "1.75rem",
-									md: "2rem",
-								},
-							}}
-						/>
-					</Link>
+						<social.icon />
+					</a>
 				))}
-			</Box>
-			<Box
-				sx={{
-					display: "flex",
-					flexDirection: matches ? "column" : "row",
-					alignItems: "flex-start",
-				}}
-			>
+			</div>
+			<div className="flex flex-col sm:flex-row items-start">
 				{contactLinks.map((contact, index) => (
-					<Link
+					<a
 						key={index}
 						href={contact.link}
-						sx={{
-							color: "inherit",
-							textDecoration: "none",
-							display: "flex",
-							alignItems: "center",
-							px: matches ? 0 : 2,
-							mb:
-								matches && index !== contactLinks.length - 1
-									? 2
-									: 0,
-						}}
+						className={`no-underline flex items-center px-0 sm:px-2
+							${index !== contactLinks.length - 1 ? "mb-4" : "mb-0"}
+						sm:mb-0`}
 					>
-						<Box sx={{ display: "flex", alignItems: "center" }}>
-							<contact.icon
-								sx={{
-									color: "primary.contrastText",
-									mr: 1,
-									fontSize: {
-										xs: "1.5rem",
-										sm: "1.75rem",
-										md: "2rem",
-									},
-								}}
-							/>
+						<div className="flex items-center">
+							<contact.icon />
 							{contact.label && (
-								<Typography
-									sx={{
-										color: "primary.contrastText",
-										fontSize: {
-											xs: "0.75rem",
-											sm: "0.875rem",
-											md: "1rem",
-										},
-									}}
-								>
+								<p className="text-black dark:text-white text-[0.75rem] sm:text-[0.875rem] md:text-[1rem]">
 									{contact.label}
-								</Typography>
+								</p>
 							)}
-						</Box>
-					</Link>
+						</div>
+					</a>
 				))}
-			</Box>
-		</Box>
+			</div>
+		</footer>
 	);
 }

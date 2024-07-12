@@ -1,10 +1,10 @@
-import "@/public/globals.css";
 import ApplicationShell from "@/components/default/ApplicationShell";
 import Footer from "@/components/default/Footer";
 import NavBar from "@/components/navigation/NavBar";
 import NavDrawer from "@/components/navigation/NavDrawer";
 import NavMenu from "@/components/navigation/NavMenu";
-import { Box, CssBaseline, PaletteMode } from "@mui/material";
+import "@/public/globals.css";
+import { CssBaseline, PaletteMode } from "@mui/material";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
@@ -34,7 +34,7 @@ export default function LocaleLayout({
 	const devMode = cookieStore.get("devMode");
 	const devModeValue = devMode?.value === "true";
 	return (
-		<html lang={locale}>
+		<html lang={locale} className={savedTheme === "dark" ? savedTheme : ""}>
 			<head>
 				<meta
 					name="viewport"
@@ -52,24 +52,13 @@ export default function LocaleLayout({
 					<body>
 						<NavMenu />
 						<NavDrawer />
-						<Box
-							sx={{
-								display: "flex",
-								flexDirection: "column",
-								minHeight: "100svh",
-							}}
-						>
-							<Box
-								component="main"
-								sx={{
-									flexGrow: 1,
-								}}
-							>
+						<div className="flex flex-col min-h-svh">
+							<main className="flex-grow">
 								<NavBar />
 								{children}
-							</Box>
+							</main>
 							<Footer />
-						</Box>
+						</div>
 					</body>
 				</ApplicationShell>
 			</NextIntlClientProvider>

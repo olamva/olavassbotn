@@ -1,7 +1,7 @@
 "use client";
+
 import NOFlag from "@/public/flags/NO.png";
 import USFlag from "@/public/flags/US.png";
-import { IconButton } from "@mui/material";
 import { useLocale } from "next-intl";
 import Image, { StaticImageData } from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -23,32 +23,16 @@ const LangToggle = () => {
 	};
 	const flagSrc = languages[locale];
 	return (
-		<IconButton
+		<div
 			onClick={toggleLanguage}
-			sx={{
-				background: "none",
-				border: "none",
-				cursor: "pointer",
-				minWidth: "0",
-				"& .MuiButton-startIcon": {
-					margin: "0",
-				},
-				"& .MuiButton-endIcon": {
-					margin: "0",
-				},
-				padding: "4px",
-			}}
+			className="p-1 text-black dark:text-white rounded-full cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors h-fit"
 		>
 			<Image
 				src={flagSrc}
 				alt="Toggle Language"
-				width={20}
-				height={20}
-				style={{
-					borderRadius: "50%",
-				}}
+				className="size-5 rounded-full"
 			/>
-		</IconButton>
+		</div>
 	);
 };
 export default LangToggle;

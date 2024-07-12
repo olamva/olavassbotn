@@ -1,5 +1,7 @@
 import { SocialLink } from "@/app/types/default";
-import { Email, GitHub, LinkedIn, Phone } from "@mui/icons-material";
+import Call from "@/public/icons/call";
+import Mail from "@/public/icons/mail";
+import { GitHub, LinkedIn } from "@mui/icons-material";
 
 export const socialLinks: SocialLink[] = [
 	{
@@ -16,12 +18,12 @@ export const socialLinks: SocialLink[] = [
 
 export const contactLinks: SocialLink[] = [
 	{
-		icon: Phone,
+		icon: Call,
 		link: "tel:+4790778680",
 		label: "+47 90 77 86 80",
 	},
 	{
-		icon: Email,
+		icon: Mail,
 		link: "mailto:ola@vassbotn.com",
 		label: "ola@vassbotn.com",
 	},

@@ -13,6 +13,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
 const NavBreadcrumbs = () => {
+	// TODO use the nextarrow svg
 	const pathname = usePathname();
 	const locale = useLocale();
 	const t = useTranslations("NavItems");
@@ -28,7 +29,7 @@ const NavBreadcrumbs = () => {
 		<Breadcrumbs
 			separator={<NavigateNextIcon fontSize="small" />}
 			aria-label="breadcrumb"
-			className="pl-2 sm:pl-8"
+			className="pl-2 sm:pl-6"
 		>
 			{pathnames.map((value, index) => {
 				const last = index === pathnames.length - 1;
