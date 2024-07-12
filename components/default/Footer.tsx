@@ -28,7 +28,7 @@ export default function Footer() {
 						<div className="flex items-center">
 							<contact.icon />
 							{contact.label && (
-								<p className=" text-[0.75rem] sm:text-[0.875rem] md:text-[1rem]">
+								<p className="pl-1 text-[0.75rem] sm:text-[0.875rem] md:text-[1rem]">
 									{contact.label}
 								</p>
 							)}
