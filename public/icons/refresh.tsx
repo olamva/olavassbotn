@@ -1,4 +1,4 @@
-const refresh = () => (
+const Refresh = () => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		height="20px"
@@ -10,4 +10,4 @@ const refresh = () => (
 	</svg>
 );
 
-export default refresh;
+export default Refresh;

@@ -1,10 +1,10 @@
 "use client";
 
+import ToggleButton from "@/components/toggles/ToggleButton";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import CommandKey from "@/public/icons/CommandKey";
 import ControlKey from "@/public/icons/ControlKey";
-import Search from "@/public/icons/search";
-import { IconButton } from "@mui/material";
+import Search from "@/public/icons/Search";
 import { useTranslations } from "next-intl";
 
 const SearchField = () => {
@@ -32,12 +32,9 @@ const SearchField = () => {
 				</div>
 			</div>
 			<div className="block sm:hidden">
-				<IconButton
-					onClick={() => setOpenMenu(true)}
-					sx={{ padding: "4px" }}
-				>
+				<ToggleButton onClick={() => setOpenMenu(true)}>
 					<Search size="20px" />
-				</IconButton>
+				</ToggleButton>
 			</div>
 		</>
 	);

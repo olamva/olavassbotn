@@ -1,10 +1,10 @@
 import { NavItem } from "@/app/types/nav";
+import Home from "@/public/icons/Home";
 import {
 	Assignment,
 	AssignmentOutlined,
 	Help,
 	HelpOutline,
-	Home,
 	HomeOutlined,
 	Palette,
 	PaletteOutlined,
@@ -33,7 +33,6 @@ export const navItems: NavItem[] = [
 		label: "projects",
 		icon: AssignmentOutlined,
 		filledIcon: Assignment,
-		// TODO make projects and experience subpages of about-me
 		link: "/about-me/projects",
 	},
 	{

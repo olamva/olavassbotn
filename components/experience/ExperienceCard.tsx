@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
 	return (
-		<div className="bg-primary-main shadow rounded h-fit">
+		<div className="bg-primary-main shadow rounded h-fit w-full">
 			<a className="w-full" href={experience.href ?? ""}>
 				<div className="p-6 flex cursor-pointer">
 					{experience.imgs.length && (

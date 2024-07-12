@@ -1,13 +1,7 @@
 "use client";
 import { navItems } from "@/app/data/NavItems";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import {
-	Box,
-	Breadcrumbs,
-	Link,
-	Typography,
-	useMediaQuery,
-} from "@mui/material";
+import { Breadcrumbs, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
@@ -37,13 +31,14 @@ const NavBreadcrumbs = () => {
 				const Icon = navItem?.filledIcon || null;
 				const to = `/${locale}${navItem?.link}`;
 				return (
-					<Link
-						underline="hover"
-						color={last ? "primary.contrastText" : "inherit"}
+					<a
+						className={`hover:underline ${
+							last ? "text-black dark:text-white" : "text-inherit"
+						}`}
+						key={index}
 						href={to}
-						key={to}
 					>
-						<Box display="flex" alignItems="center">
+						<div className="flex items-center">
 							{Icon && (
 								<Icon
 									style={{
@@ -52,13 +47,9 @@ const NavBreadcrumbs = () => {
 									}}
 								/>
 							)}
-							<Typography
-								fontSize={isMobile ? "0.75rem" : "default"}
-							>
-								{t(value)}
-							</Typography>
-						</Box>
-					</Link>
+							<p className="text-xs sm:text-sm">{t(value)}</p>
+						</div>
+					</a>
 				);
 			})}
 		</Breadcrumbs>

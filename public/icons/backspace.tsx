@@ -1,4 +1,4 @@
-const backspace = () => (
+const Backspace = () => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		height="24px"
@@ -10,4 +10,4 @@ const backspace = () => (
 	</svg>
 );
 
-export default backspace;
+export default Backspace;

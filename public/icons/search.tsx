@@ -1,4 +1,4 @@
-const search = ({ size }: { size: string }) => (
+const Search = ({ size }: { size: string }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		height={size}
@@ -10,4 +10,4 @@ const search = ({ size }: { size: string }) => (
 	</svg>
 );
 
-export default search;
+export default Search;

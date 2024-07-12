@@ -1,4 +1,4 @@
-import Refresh from "@/public/icons/refresh";
+import Refresh from "@/public/icons/Refresh";
 
 interface EndDialogProps {
 	setDisplayEndScreen: (value: boolean) => void;

@@ -1,16 +1,16 @@
 "use client";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
-import Menu from "@/public/icons/menu";
+import Menu from "@/public/icons/Menu";
 
 const DrawerToggleButton = () => {
 	const { toggleDrawer } = useToggleStates();
 	return (
-		<div
+		<button
 			onClick={toggleDrawer(true)}
-			className=" hover:text-gray-500 dark:hover:text-gray-300 rounded-full cursor-pointer  transition-colors h-fit"
+			className=" hover:text-gray-500 dark:hover:text-gray-300 rounded-full transition-colors h-fit"
 		>
 			<Menu />
-		</div>
+		</button>
 	);
 };
 

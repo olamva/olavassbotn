@@ -1,4 +1,4 @@
-const home = () => (
+const Home = () => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		height="24px"
@@ -10,4 +10,4 @@ const home = () => (
 	</svg>
 );
 
-export default home;
+export default Home;

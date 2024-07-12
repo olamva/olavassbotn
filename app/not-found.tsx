@@ -1,5 +1,5 @@
 import "@/public/globals.css";
-import Home from "@/public/icons/home";
+import Home from "@/public/icons/Home";
 
 export default function NotFound() {
 	return (

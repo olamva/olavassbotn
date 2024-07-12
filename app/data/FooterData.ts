@@ -1,6 +1,6 @@
 import { SocialLink } from "@/app/types/default";
-import Call from "@/public/icons/call";
-import Mail from "@/public/icons/mail";
+import Call from "@/public/icons/Call";
+import Mail from "@/public/icons/Mail";
 import { GitHub, LinkedIn } from "@mui/icons-material";
 
 export const socialLinks: SocialLink[] = [

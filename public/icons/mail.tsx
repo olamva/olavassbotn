@@ -1,4 +1,4 @@
-const mail = () => (
+const Mail = () => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		height="24px"
@@ -10,4 +10,4 @@ const mail = () => (
 	</svg>
 );
 
-export default mail;
+export default Mail;
