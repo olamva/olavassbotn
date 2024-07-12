@@ -1,5 +1,6 @@
 "use client";
 
+import ToggleButton from "@/components/toggles/ToggleButton";
 import NOFlag from "@/public/flags/NO.png";
 import USFlag from "@/public/flags/US.png";
 import { useLocale } from "next-intl";
@@ -23,16 +24,13 @@ const LangToggle = () => {
 	};
 	const flagSrc = languages[locale];
 	return (
-		<div
-			onClick={toggleLanguage}
-			className="p-1 text-black dark:text-white rounded-full cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors h-fit"
-		>
+		<ToggleButton onClick={toggleLanguage}>
 			<Image
 				src={flagSrc}
 				alt="Toggle Language"
 				className="size-5 rounded-full"
 			/>
-		</div>
+		</ToggleButton>
 	);
 };
 export default LangToggle;

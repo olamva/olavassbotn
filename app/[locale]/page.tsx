@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 export default function Landing() {
 	const t = useTranslations("HomePage");
 	return (
-		<div className="mt-[10svh] text-black dark:text-white">
+		<div className="mt-[10svh] ">
 			<p className="text-[2rem] sm:text-5xl md:text-[5rem] lg:text-8xl font-[900] text-center">
 				{t("title")}
 			</p>

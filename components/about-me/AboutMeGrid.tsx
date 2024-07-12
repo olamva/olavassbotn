@@ -1,12 +1,10 @@
-import AboutMePaper from "@/components/about-me/AboutMePaper";
 import AlternatingDivider from "@/components/about-me/AlternatingDivider";
-import { Grid, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 
 const AboutMeGrid = () => {
 	const t = useTranslations("About Me");
 	return (
-		<Grid container spacing={3} mb={7}>
+		<div className="grid gap-3 grid-cols-2">
 			{t
 				.raw("sections")
 				.map(
@@ -14,41 +12,21 @@ const AboutMeGrid = () => {
 						section: { title: string; content: string },
 						index: number
 					) => (
-						<Grid item xs={12} md={6} key={index} mb={4}>
+						<div className="col-span-2 sm:col-span-1 mb-8">
 							<AlternatingDivider index={index}>
-								<Typography
-									color="primary.contrastText"
-									sx={{
-										fontSize: {
-											xs: "1rem",
-											sm: "1.5rem",
-											md: "2rem",
-										},
-									}}
-								>
+								<p className="text-base sm:text-2xl md:text-[2rem]">
 									{section.title}
-								</Typography>
+								</p>
 							</AlternatingDivider>
-							<AboutMePaper>
-								<Typography
-									variant="body1"
-									color="primary.contrastText"
-									sx={{
-										flexGrow: 1,
-										fontSize: {
-											xs: "0.75rem",
-											sm: "0.875rem",
-											md: "1rem",
-										},
-									}}
-								>
+							<div className="flex flex-col h-full p-6 bg-primary-main border border-zinc-300 dark:border-zinc-800 rounded">
+								<p className="flex-grow text-xs sm:text-sm md:text-base">
 									{section.content}
-								</Typography>
-							</AboutMePaper>
-						</Grid>
+								</p>
+							</div>
+						</div>
 					)
 				)}
-		</Grid>
+		</div>
 	);
 };
 export default AboutMeGrid;

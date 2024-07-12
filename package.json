@@ -4,11 +4,12 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"format": "prettier \"app/**/*.{js,html,json,ts,tsx}\" \"components/**/*.{js,html,json,ts,tsx}\" \"contexts/**/*.{js,html,json,ts,tsx}\" \"hooks/**/*.{js,html,json,ts,tsx}\" --write",
+		"format": "prettier \"app/**/*.{js,html,json,ts,tsx}\" \"components/**/*.{js,html,json,ts,tsx}\" \"contexts/**/*.{js,html,json,ts,tsx}\" \"hooks/**/*.{js,html,json,ts,tsx}\" --write --ignore-path .prettierignore",
 		"build": "next build",
 		"start": "next start",
 		"lint": "npx eslint app/ components/ contexts/ hooks/",
-		"go": "npm run lint && npm run format && npm run dev"
+		"lf": "npm run lint && npm run format",
+		"go": "npm run lf && npm run dev"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.4",

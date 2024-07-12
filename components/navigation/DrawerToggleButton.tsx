@@ -7,7 +7,7 @@ const DrawerToggleButton = () => {
 	return (
 		<div
 			onClick={toggleDrawer(true)}
-			className="text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-300 rounded-full cursor-pointer  transition-colors h-fit"
+			className=" hover:text-gray-500 dark:hover:text-gray-300 rounded-full cursor-pointer  transition-colors h-fit"
 		>
 			<Menu />
 		</div>

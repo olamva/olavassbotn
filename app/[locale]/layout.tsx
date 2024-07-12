@@ -49,7 +49,7 @@ export default function LocaleLayout({
 					savedDevMode={devModeValue}
 				>
 					<CssBaseline />
-					<body>
+					<body className="text-black dark:text-white">
 						<NavMenu />
 						<NavDrawer />
 						<div className="flex flex-col min-h-svh">

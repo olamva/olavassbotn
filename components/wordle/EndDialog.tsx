@@ -14,7 +14,7 @@ const EndDialog = ({ setDisplayEndScreen, endScreenText }: EndDialogProps) => {
 				}
 			}}
 		>
-			<div className="text-black dark:text-white bg-zinc-400 dark:bg-zinc-800 items-center flex rounded-lg p-8 flex-col animate-slideVertical">
+			<div className=" wordle-gray items-center flex rounded-lg p-8 flex-col animate-slideVertical">
 				{endScreenText}
 				<div className="h-4" />
 				<div

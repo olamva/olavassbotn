@@ -20,7 +20,7 @@ export default function WordlePage() {
 				isHardMode={isHardMode}
 				setIsHardMode={setIsHardMode}
 			/>
-			<div className="text-black dark:text-white text-5xl font-[50] flex justify-center">
+			<div className=" text-5xl font-[50] flex justify-center">
 				Wordle
 			</div>
 			<div className="mt-16 flex justify-center items-center">

@@ -110,8 +110,8 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			wordToCheck.current.split("").forEach((letter, i) => {
 				if (letter === currentWord.current[i]) {
 					const box = divs[currentRow.current * AMT_COLS + i];
-					box.classList.remove("bg-yellow-400", "dark:bg-yellow-500");
-					box.classList.add("bg-green-400", "dark:bg-green-500");
+					box.classList.remove("wordle-yellow");
+					box.classList.add("wordle-green");
 					greenLetterPositions.current[i] = letter;
 					setGreenLetters((prev) => [...prev, letter.toUpperCase()]);
 				} else if (currentWord.current.includes(letter)) {
@@ -122,15 +122,12 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 					for (const index of indexes) {
 						const box = divs[currentRow.current * AMT_COLS + index];
 						if (
-							box.classList.contains("bg-yellow-400") ||
-							box.classList.contains("bg-green-400")
+							box.classList.contains("wordle-yellow") ||
+							box.classList.contains("wordle-green")
 						) {
 							continue;
 						}
-						box.classList.add(
-							"bg-yellow-400",
-							"dark:bg-yellow-500"
-						);
+						box.classList.add("wordle-yellow");
 						yellowLetterPositions.current.add(letter);
 						setYellowLetters((prev) => [
 							...prev,
@@ -143,12 +140,12 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			for (let i = 0; i < AMT_COLS; i++) {
 				const box = divs[currentRow.current * AMT_COLS + i];
 				if (
-					box.classList.contains("bg-green-400") ||
-					box.classList.contains("bg-yellow-400")
+					box.classList.contains("wordle-green") ||
+					box.classList.contains("wordle-yellow")
 				) {
 					continue;
 				}
-				box.classList.add("bg-zinc-400", "dark:bg-zinc-800");
+				box.classList.add("wordle-gray");
 				const letter = currentWord.current[i].toUpperCase();
 				setGrayLetters((prev) => [...prev, letter]);
 			}
@@ -266,7 +263,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 	return (
 		<div className="relative">
 			{displayErrorMsg && (
-				<div className="text-black dark:text-white text-center absolute top-[-56px] inset-x-0 bg-zinc-400 dark:bg-zinc-800 w-fit justify-self-center px-2 rounded-md">
+				<div className=" text-center absolute top-[-56px] inset-x-0 wordle-gray w-fit justify-self-center px-2 rounded-md">
 					{errorMsgText}
 				</div>
 			)}

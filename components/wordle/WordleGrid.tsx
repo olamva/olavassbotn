@@ -7,7 +7,7 @@ const WordleGrid = ({ divRef }: { divRef: RefObject<HTMLDivElement> }) => {
 			{Array.from({ length: AMT_COLS * AMT_ROWS }, (_, i) => (
 				<div
 					key={i}
-					className="border border-zinc-500 dark:border-zinc-600 rounded size-16 text-black dark:text-white items-center justify-center flex text-4xl "
+					className="border border-zinc-500 dark:border-zinc-600 rounded size-16  items-center justify-center flex text-4xl "
 				/>
 			))}
 		</div>

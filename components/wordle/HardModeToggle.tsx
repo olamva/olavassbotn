@@ -15,12 +15,14 @@ const HardModeToggle = ({ isHardMode, setIsHardMode }: HardModeToggleProps) => {
 		localStorage.setItem("isHardMode", JSON.stringify(!isHardMode));
 	};
 
-	const toggleClasses = isHardMode ? "dark:bg-green-500 bg-green-400" : "bg-zinc-500 dark:bg-zinc-600";
+	const toggleClasses = isHardMode
+		? "wordle-green"
+		: "bg-zinc-500 dark:bg-zinc-600";
 	const childClasses = isHardMode ? "translate-x-full" : "ml-[1px]";
 
 	return (
 		<div
-			className="text-black dark:text-white font-extralight flex items-center cursor-pointer m-1 select-none w-fit ml-auto"
+			className=" font-extralight flex items-center cursor-pointer m-1 select-none w-fit ml-auto"
 			onClick={toggleHardMode}
 		>
 			Hard mode?

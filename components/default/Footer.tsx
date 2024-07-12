@@ -2,7 +2,7 @@ import { contactLinks, socialLinks } from "@/app/data/FooterData";
 
 export default function Footer() {
 	return (
-		<footer className="py-4 sm:py-8 m-auto w-full bg-[rgb(211,212,200)] dark:bg-[rgb(20,20,20)] flex justify-center items-center flex-wrap">
+		<footer className="py-4 sm:py-8 m-auto w-full bg-primary-main flex justify-center items-center flex-wrap">
 			<div className="flex flex-col sm:flex-row items-center mr-4 sm:mr-0">
 				{socialLinks.map((social, index) => (
 					<a
@@ -28,7 +28,7 @@ export default function Footer() {
 						<div className="flex items-center">
 							<contact.icon />
 							{contact.label && (
-								<p className="text-black dark:text-white text-[0.75rem] sm:text-[0.875rem] md:text-[1rem]">
+								<p className=" text-[0.75rem] sm:text-[0.875rem] md:text-[1rem]">
 									{contact.label}
 								</p>
 							)}

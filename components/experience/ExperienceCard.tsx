@@ -1,8 +1,8 @@
 import { Experience } from "@/app/types/default";
+import DarkModeCard from "@/components/experience/DarkModeAssets/DarkModeCard";
+import DarkModeImage from "@/components/experience/DarkModeAssets/DarkModeImage";
 import { Box, CardContent, Divider, Typography } from "@mui/material";
 import Link from "next/link";
-import DarkModeCard from "./DarkModeAssets/DarkModeCard";
-import DarkModeImage from "./DarkModeAssets/DarkModeImage";
 
 interface ExperienceCardProps {
 	experience: Experience;

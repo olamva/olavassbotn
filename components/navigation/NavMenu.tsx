@@ -37,6 +37,11 @@ const NavMenu = () => {
 		toggleDevMode();
 	};
 
+	const toggleDarkMode = () => {
+		document.documentElement.classList.toggle("dark");
+		toggleColorMode();
+	};
+
 	const filteredItems = filterItems(
 		[
 			{
@@ -112,7 +117,7 @@ const NavMenu = () => {
 								? t("darkModeToggle")
 								: t("lightModeToggle"),
 						icon: mode === "dark" ? LightMode : DarkMode,
-						onClick: () => toggleColorMode(),
+						onClick: () => toggleDarkMode(),
 						keywords: [
 							"dark",
 							"light",
