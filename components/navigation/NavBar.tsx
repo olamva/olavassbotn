@@ -9,6 +9,8 @@ export default function NavBar() {
 			<div className="flex px-6 pt-2">
 				<div className="flex items-center">
 					<DrawerToggleButton />
+					<div className="mx-1" />
+					<NavBreadcrumbs />
 				</div>
 				<div className="flex-grow"></div>
 				<div className="flex items-center">
@@ -17,7 +19,6 @@ export default function NavBar() {
 					<LangToggle />
 				</div>
 			</div>
-			<NavBreadcrumbs />
 		</>
 	);
 }

@@ -1,6 +1,4 @@
 import Dialog from "@/components/default/Dialog";
-import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { FC, useEffect, useRef, useState } from "react";
 interface SnakeGameProps {
 	open: boolean;
@@ -11,9 +9,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 	const [context, setContext] = useState<CanvasRenderingContext2D | null>(
 		null
 	);
-	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-	const unitSize = isMobile ? 20 : 40;
+	const unitSize = 40;
 	const canvasWidth =
 		Math.round((window.innerWidth * 0.7) / unitSize) * unitSize;
 	const canvasHeight =
@@ -209,7 +205,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				clearInterval(gameInterval);
 			};
 		}
-	}, [context, open, theme.palette.secondary.contrastText, unitSize]);
+	}, [context, open, unitSize]);
 	return (
 		<Dialog open={open} setOpen={onClose}>
 			<div className="p-0 size-fit overflow-hidden bg-white dark:bg-black">

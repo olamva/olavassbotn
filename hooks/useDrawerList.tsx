@@ -18,7 +18,7 @@ const useDrawerList = () => {
 	const t = useTranslations("NavItems");
 	const { devMode } = useDevMode();
 	return (
-		<div className="flex flex-col h-full max-w-64 bg-default">
+		<>
 			<div className="flex-grow">
 				<ul>
 					{navItems
@@ -34,21 +34,17 @@ const useDrawerList = () => {
 								<li key={item.label}>
 									<a href={itemLink}>
 										<ListButton>
-											{isActive ? (
-												<item.filledIcon
-													sx={{
-														color: "primary.contrastText",
-														mt: index === 0 ? 1 : 0,
-													}}
-												/>
-											) : (
-												<item.icon
-													sx={{
-														color: "primary.contrastText",
-														mt: index === 0 ? 1 : 0,
-													}}
-												/>
-											)}
+											<div
+												className={
+													index === 0 ? "mt-1" : ""
+												}
+											>
+												{isActive ? (
+													<item.filledIcon />
+												) : (
+													<item.icon />
+												)}
+											</div>
 											<p
 												className={`${
 													index === 0 ? "mt-0" : ""
@@ -74,14 +70,7 @@ const useDrawerList = () => {
 							<li key={item.label}>
 								<a href={item.link}>
 									<button className="flex p-2 items-center hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-opacity-5 transition-all w-full">
-										{item.icon && (
-											<item.icon
-												sx={{
-													color: "primary.contrastText",
-												}}
-												fontSize="small"
-											/>
-										)}
+										{item.icon && <item.icon />}
 										<p className="pl-1 text-xs text-left">
 											{t(item.label)}
 										</p>
@@ -91,7 +80,7 @@ const useDrawerList = () => {
 						))}
 				</ul>
 			</div>
-		</div>
+		</>
 	);
 };
 export default useDrawerList;

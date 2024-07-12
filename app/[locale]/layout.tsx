@@ -5,7 +5,6 @@ import Drawer from "@/components/navigation/Drawer";
 import NavBar from "@/components/navigation/NavBar";
 import NavMenu from "@/components/navigation/NavMenu";
 import "@/public/globals.css";
-import { CssBaseline } from "@mui/material";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
@@ -46,7 +45,6 @@ export default function LocaleLayout({
 				<Analytics />
 				<SpeedInsights />
 				<ApplicationShell savedDevMode={devModeValue}>
-					<CssBaseline />
 					<body className="text-black dark:text-white bg-default">
 						<NavMenu />
 						<Drawer />

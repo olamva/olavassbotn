@@ -1,7 +1,7 @@
 import Button from "@/components/default/Button";
 import Paper from "@/components/default/Paper";
 import GameButton from "@/components/game/GameButton";
-import { GitHub } from "@mui/icons-material";
+import GitHub from "@/public/icons/GitHub";
 import { useTranslations } from "next-intl";
 
 const ProjectsGrid = () => {

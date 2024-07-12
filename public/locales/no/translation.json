@@ -77,7 +77,6 @@
 	},
 	"About Me": {
 		"title": "Om Meg",
-		"playSnake": "SPILL SNAKE",
 		"sections": [
 			{
 				"title": "Hvem Jeg Er",
@@ -104,6 +103,8 @@
 	},
 	"Projects": {
 		"title": "Prosjekter",
+		"playSnake": "SPILL SNAKE",
+
 		"projects": [
 			{
 				"title": "Nettside bygget med React, TypeScript, Next.js, og Material UI",
