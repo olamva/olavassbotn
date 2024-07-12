@@ -1,7 +1,7 @@
 "use client";
 import ExperienceCard from "@/components/experience/ExperienceCard";
 import { useExperienceList } from "@/hooks/useExperienceList";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const ExperienceGrid = () => {
 	const experienceList = useExperienceList();
@@ -15,12 +15,16 @@ const ExperienceGrid = () => {
 	const leftListRef = useRef<HTMLDivElement>(null);
 	const rightListRef = useRef<HTMLDivElement>(null);
 
-	const swapElements = () => {
+	const swapElements = useCallback(() => {
 		if (!leftListRef.current || !rightListRef.current) return;
-		const leftHeight = leftListRef.current.offsetHeight;
-		const rightHeight = rightListRef.current.offsetHeight;
+		const leftChildren = leftListRef.current.children;
+		const leftLastChildHeight =
+			leftChildren[leftChildren.length - 1].clientHeight;
+		const leftHeight = leftListRef.current.clientHeight;
+		const rightHeight = rightListRef.current.clientHeight;
+		const difference = Math.abs(leftHeight - rightHeight);
 
-		if (Math.abs(leftHeight - rightHeight) <= 150) return false;
+		if (difference <= leftLastChildHeight) return false;
 
 		if (leftHeight > rightHeight) {
 			const lastItem = leftList.pop();
@@ -33,7 +37,7 @@ const ExperienceGrid = () => {
 		setLeftList([...leftList]);
 		setRightList([...rightList]);
 		return true;
-	};
+	}, [leftList, rightList]);
 
 	useEffect(() => {
 		const intervalId = setInterval(() => {
@@ -43,7 +47,7 @@ const ExperienceGrid = () => {
 		}, 1);
 
 		return () => clearInterval(intervalId);
-	}, [leftList, rightList]);
+	}, [leftList, rightList, swapElements]);
 
 	return (
 		<div className="mt-4 m-auto max-w-full md:max-w-[80%] grid gap-2 w-full grid-cols-1 sm:grid-cols-2">

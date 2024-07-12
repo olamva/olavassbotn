@@ -3,10 +3,10 @@ import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import Menu from "@/public/icons/Menu";
 
 const DrawerToggleButton = () => {
-	const { toggleDrawer } = useToggleStates();
+	const { setOpenDrawer } = useToggleStates();
 	return (
 		<button
-			onClick={toggleDrawer(true)}
+			onClick={() => setOpenDrawer(true)}
 			className=" hover:text-gray-500 dark:hover:text-gray-300 rounded-full transition-colors h-fit"
 		>
 			<Menu />

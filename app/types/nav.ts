@@ -4,18 +4,17 @@ import { JSX } from "react";
 
 export type NavItem = {
 	label: string;
-	link?: string;
-	icon?:
+	link: string;
+	icon:
 		| (OverridableComponent<SvgIconTypeMap<unknown, "svg">> & {
 				muiName: string;
 		  })
 		| (() => JSX.Element);
-	filledIcon?:
+	filledIcon:
 		| (OverridableComponent<SvgIconTypeMap<unknown, "svg">> & {
 				muiName: string;
 		  })
 		| (() => JSX.Element);
 	requiresAdmin?: boolean;
-	isDivider?: boolean;
 	isFooter?: boolean;
 };

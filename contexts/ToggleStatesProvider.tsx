@@ -1,7 +1,7 @@
 "use client";
 import { FC, ReactNode, createContext, useContext } from "react";
 interface ToggleStatesContextType {
-	toggleDrawer: (newOpen: boolean) => () => void;
+	setOpenDrawer: (newOpen: boolean) => void;
 	openDrawer: boolean;
 	setOpenMenu: (currentValue: boolean) => void;
 	openMenu: boolean;
@@ -10,7 +10,7 @@ interface ToggleStatesContextType {
 	setOverride: (value: boolean) => void;
 }
 const ToggleStatesContext = createContext<ToggleStatesContextType>({
-	toggleDrawer: () => () => {},
+	setOpenDrawer: () => {},
 	openDrawer: false,
 	setOpenMenu: () => {},
 	openMenu: false,
@@ -20,7 +20,7 @@ const ToggleStatesContext = createContext<ToggleStatesContextType>({
 });
 interface ToggleStatesProviderProps {
 	children: ReactNode;
-	toggleDrawer: (newOpen: boolean) => () => void;
+	setOpenDrawer: (newOpen: boolean) => void;
 	openDrawer: boolean;
 	setOpenMenu: (currentValue: boolean) => void;
 	openMenu: boolean;
@@ -31,7 +31,7 @@ interface ToggleStatesProviderProps {
 export const useToggleStates = () => useContext(ToggleStatesContext);
 const ToggleStatesProvider: FC<ToggleStatesProviderProps> = ({
 	children,
-	toggleDrawer,
+	setOpenDrawer,
 	openDrawer,
 	setOpenMenu,
 	openMenu,
@@ -42,7 +42,7 @@ const ToggleStatesProvider: FC<ToggleStatesProviderProps> = ({
 	return (
 		<ToggleStatesContext.Provider
 			value={{
-				toggleDrawer,
+				setOpenDrawer,
 				openDrawer,
 				setOpenMenu,
 				openMenu,

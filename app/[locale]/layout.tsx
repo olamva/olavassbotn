@@ -1,10 +1,11 @@
 import ApplicationShell from "@/components/default/ApplicationShell";
 import Footer from "@/components/default/Footer";
+import InputDetector from "@/components/game/InputDetector";
+import Drawer from "@/components/navigation/Drawer";
 import NavBar from "@/components/navigation/NavBar";
-import NavDrawer from "@/components/navigation/NavDrawer";
 import NavMenu from "@/components/navigation/NavMenu";
 import "@/public/globals.css";
-import { CssBaseline, PaletteMode } from "@mui/material";
+import { CssBaseline } from "@mui/material";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
@@ -12,6 +13,7 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { cookies } from "next/headers";
 import { ReactNode } from "react";
+import { konamiCode } from "../data/ProjectsData";
 
 export const metadata: Metadata = {
 	title: "Ola Munthe Vassbotn's Portfolio",
@@ -29,12 +31,11 @@ export default function LocaleLayout({
 	const messages = useMessages();
 	const cookieStore = cookies();
 	const savedMode = cookieStore.get("themeMode");
-	const savedTheme = (savedMode?.value ?? "dark") as PaletteMode;
 
 	const devMode = cookieStore.get("devMode");
 	const devModeValue = devMode?.value === "true";
 	return (
-		<html lang={locale} className={savedTheme === "dark" ? savedTheme : ""}>
+		<html lang={locale} className={savedMode?.value ?? "dark"}>
 			<head>
 				<meta
 					name="viewport"
@@ -44,20 +45,18 @@ export default function LocaleLayout({
 			<NextIntlClientProvider locale={locale} messages={messages}>
 				<Analytics />
 				<SpeedInsights />
-				<ApplicationShell
-					savedMode={savedTheme}
-					savedDevMode={devModeValue}
-				>
+				<ApplicationShell savedDevMode={devModeValue}>
 					<CssBaseline />
-					<body className="text-black dark:text-white">
+					<body className="text-black dark:text-white bg-default">
 						<NavMenu />
-						<NavDrawer />
+						<Drawer />
 						<div className="flex flex-col min-h-svh">
 							<main className="flex-grow">
 								<NavBar />
 								{children}
 							</main>
 							<Footer />
+							<InputDetector sequenceToCheck={konamiCode} />
 						</div>
 					</body>
 				</ApplicationShell>

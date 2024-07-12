@@ -22,7 +22,6 @@ export const navItems: NavItem[] = [
 		filledIcon: Home,
 		link: "",
 	},
-	{ label: "Divider1", isDivider: true },
 	{
 		label: "about-me",
 		icon: PersonOutlined,

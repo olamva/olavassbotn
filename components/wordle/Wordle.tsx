@@ -1,9 +1,11 @@
 "use client";
 
 import { AMT_COLS, AMT_ROWS } from "@/app/data/WordleConstants";
-import EndDialog from "@/components/wordle/EndDialog";
+import Button from "@/components/default/Button";
+import Dialog from "@/components/default/Dialog";
 import WordleGrid from "@/components/wordle/WordleGrid";
 import { ColorsContext } from "@/contexts/ColorsContext";
+import Refresh from "@/public/icons/Refresh";
 import allowedGuesses from "@/public/wordle/wordle-allowed-guesses.json";
 import answers from "@/public/wordle/wordle-answers-alphabetical.json";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
@@ -268,12 +270,21 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				</div>
 			)}
 			<WordleGrid divRef={divRef} />
-			{displayEndScreen && (
-				<EndDialog
-					setDisplayEndScreen={setDisplayEndScreen}
-					endScreenText={endScreenText}
-				/>
-			)}
+			<Dialog
+				open={displayEndScreen}
+				setOpen={setDisplayEndScreen}
+				blurred
+			>
+				<div className="bg-primary-main items-center flex rounded-lg p-8 flex-col animate-slideVertical">
+					{endScreenText}
+					<div className="h-4" />
+					<Button onClick={() => location.reload()}>
+						Reset?
+						<div className="w-2" />
+						<Refresh />
+					</Button>
+				</div>
+			</Dialog>
 		</div>
 	);
 };
