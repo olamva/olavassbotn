@@ -12,7 +12,10 @@ const AboutMeGrid = () => {
 						section: { title: string; content: string },
 						index: number
 					) => (
-						<div className="col-span-2 sm:col-span-1 mb-8">
+						<div
+							className="col-span-2 sm:col-span-1 mb-8"
+							key={index}
+						>
 							<AlternatingDivider index={index}>
 								<p className="text-base sm:text-2xl md:text-[2rem]">
 									{section.title}
