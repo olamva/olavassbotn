@@ -1,9 +1,9 @@
 "use client";
 
+import Button from "@/components/default/Button";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Button from "../default/Button";
 
 const PlayWordleButton = () => {
 	const t = useTranslations("Projects");

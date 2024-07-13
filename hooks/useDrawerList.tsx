@@ -7,10 +7,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
-const ListButton = ({ children }: { children: ReactNode }) => (
-	<button className="flex p-2 items-center hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-opacity-5 transition-all w-full select-none">
+const ListItem = ({ children }: { children: ReactNode }) => (
+	<div className="flex p-2 items-center hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-opacity-5 transition-all w-full select-none">
 		{children}
-	</button>
+	</div>
 );
 
 const useDrawerList = () => {
@@ -39,18 +39,12 @@ const useDrawerList = () => {
 										href={itemLink}
 										onClick={() => setOpenDrawer(false)}
 									>
-										<ListButton>
-											<div
-												className={
-													index === 0 ? "mt-1" : ""
-												}
-											>
-												{isActive ? (
-													<item.filledIcon />
-												) : (
-													<item.icon />
-												)}
-											</div>
+										<ListItem>
+											{isActive ? (
+												<item.filledIcon size="20px" />
+											) : (
+												<item.icon size="20px" />
+											)}
 											<p
 												className={`${
 													index === 0 ? "mt-0" : ""
@@ -58,7 +52,7 @@ const useDrawerList = () => {
 											>
 												{t(item.label)}
 											</p>
-										</ListButton>
+										</ListItem>
 									</Link>
 									{index === 0 && (
 										<hr className="m-auto w-[90%] border-black dark:border-white" />
@@ -75,12 +69,12 @@ const useDrawerList = () => {
 						.map((item) => (
 							<li key={item.label}>
 								<a href={item.link}>
-									<button className="flex p-2 items-center hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-opacity-5 transition-all w-full">
-										{item.icon && <item.icon />}
+									<div className="flex p-2 items-center hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-opacity-5 transition-all w-full">
+										{item.icon && <item.icon size="16px" />}
 										<p className="pl-1 text-xs text-left">
 											{t(item.label)}
 										</p>
-									</button>
+									</div>
 								</a>
 							</li>
 						))}

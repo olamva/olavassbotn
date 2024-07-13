@@ -1,8 +1,8 @@
-const LinkedIn = () => (
+const LinkedIn = ({ size }: { size?: string }) => (
 	<svg
 		fill="currentColor"
-		height="24px"
-		width="24px"
+		height={size ?? "24px"}
+		width={size ?? "24px"}
 		version="1.1"
 		id="Layer_1"
 		viewBox="0 0 310 310"

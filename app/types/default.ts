@@ -2,7 +2,7 @@ import { StaticImageData } from "next/image";
 import { JSX } from "react";
 
 export type SocialLink = {
-	icon: () => JSX.Element;
+	icon: ({ size }: { size?: string }) => JSX.Element;
 	link: string;
 	label?: string;
 };

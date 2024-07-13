@@ -1,7 +1,6 @@
 "use client";
 import Chip from "@/components/about-me/Chip";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const SubPageChips = () => {
@@ -10,12 +9,8 @@ const SubPageChips = () => {
 
 	return (
 		<div className="flex justify-center">
-			<Link href={`${pathname}/projects`}>
-				<Chip>{t("projectsbutton")}</Chip>
-			</Link>
-			<Link href={`${pathname}/experience`}>
-				<Chip>{t("experiencebutton")}</Chip>
-			</Link>
+			<Chip href={`${pathname}/projects`}>{t("projectsbutton")}</Chip>
+			<Chip href={`${pathname}/experience`}>{t("experiencebutton")}</Chip>
 		</div>
 	);
 };
