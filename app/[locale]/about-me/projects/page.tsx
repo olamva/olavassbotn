@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 export default function Projects() {
 	const t = useTranslations("Projects");
 	return (
-		<div className="my-8 px-6">
+		<div className="my-8 w-[60%] m-auto">
 			<TitleText t={t} />
 			<TitleDivider />
 			<ProjectsGrid />

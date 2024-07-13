@@ -1,5 +1,5 @@
 "use client";
-import SnakeGame from "@/components/game/SnakeGame";
+import SnakeGame from "@/components/snakeGame/SnakeGame";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import { FC, useEffect, useState } from "react";
 

@@ -1,6 +1,6 @@
 import ApplicationShell from "@/components/default/ApplicationShell";
 import Footer from "@/components/default/Footer";
-import InputDetector from "@/components/game/InputDetector";
+import InputDetector from "@/components/snakeGame/InputDetector";
 import Drawer from "@/components/navigation/Drawer";
 import NavBar from "@/components/navigation/NavBar";
 import NavMenu from "@/components/navigation/NavMenu";

@@ -1,9 +1,10 @@
 import Button from "@/components/default/Button";
 import Paper from "@/components/default/Paper";
-import GameButton from "@/components/game/GameButton";
+import PlaySnakeButton from "@/components/projects/PlaySnakeButton";
 import GitHub from "@/public/icons/GitHub";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import PlayWordleButton from "./PlayWordleButton";
 
 const ProjectsGrid = () => {
 	const t = useTranslations("Projects");
@@ -13,8 +14,9 @@ const ProjectsGrid = () => {
 				(
 					section: {
 						title: string;
-						description: string;
-						mobileDescription?: string;
+						description?: string;
+						snakeGame?: string;
+						wordleGame?: string;
 						githubLink?: string;
 						projectID?: string;
 					},
@@ -22,21 +24,16 @@ const ProjectsGrid = () => {
 				) => (
 					<div className="col-span-2 sm:col-span-1" key={index}>
 						<Paper>
-							<h5 className="text-base sm:text-2xl md:text-[2rem] mb-3">
+							<h5 className="text-base sm:text-lg md:text-xl font-bold mb-3">
 								{section.title}
 							</h5>
-							<div className="hidden sm:block">
+							{/* {section.description && (
 								<p className="text-xs sm:text-sm md:text-base">
 									{section.description}
 								</p>
-							</div>
-							<div className="block sm:hidden">
-								<p className="text-xs sm:text-sm md:text-base">
-									{section.mobileDescription ??
-										section.description}
-								</p>
-							</div>
-							{section.mobileDescription && <GameButton />}
+							)} */}
+							{section.snakeGame && <PlaySnakeButton />}
+							{section.wordleGame && <PlayWordleButton />}
 							{section.githubLink && (
 								<Link
 									className="w-fit self-center"

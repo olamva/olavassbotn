@@ -1,21 +1,21 @@
 "use client";
 import Chip from "@/components/about-me/Chip";
 import { useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const SubPageChips = () => {
-	const router = useRouter();
 	const pathname = usePathname();
 	const t = useTranslations("About Me");
 
 	return (
 		<div className="flex justify-center">
-			<Chip onClick={() => router.push(`${pathname}/projects`)}>
-				{t("projectsbutton")}
-			</Chip>
-			<Chip onClick={() => router.push(`${pathname}/experience`)}>
-				{t("experiencebutton")}
-			</Chip>
+			<Link href={`${pathname}/projects`}>
+				<Chip>{t("projectsbutton")}</Chip>
+			</Link>
+			<Link href={`${pathname}/experience`}>
+				<Chip>{t("experiencebutton")}</Chip>
+			</Link>
 		</div>
 	);
 };
