@@ -2,165 +2,91 @@
 import { navItems } from "@/app/data/NavItems";
 import { useDevMode } from "@/contexts/DevModeProvider";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
-import {
-	Box,
-	Divider,
-	Link,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
-	Typography,
-} from "@mui/material";
 import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
+import { ReactNode } from "react";
+
+const ListButton = ({ children }: { children: ReactNode }) => (
+	<button className="flex p-2 items-center hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-opacity-5 transition-all w-full select-none">
+		{children}
+	</button>
+);
 
 const useDrawerList = () => {
-	const { toggleDrawer } = useToggleStates();
 	const locale = useLocale();
 	const root = "/" + locale;
 	const pathname = usePathname();
 	const t = useTranslations("NavItems");
 	const { devMode } = useDevMode();
-	return useMemo(() => {
-		return (
-			<Box
-				sx={{
-					width: 250,
-					display: "flex",
-					flexDirection: "column",
-					height: "100%",
-				}}
-				role="presentation"
-				onClick={toggleDrawer(false)}
-				bgcolor={"background.default"}
-			>
-				<Box flexGrow={1}>
-					<List sx={{ pt: 0 }}>
-						{navItems
-							.filter(
-								(item) =>
-									!item.isFooter &&
-									(item.requiresAdmin ? devMode : true)
-							)
-							.map((item, index) => {
-								const isActive =
-									pathname.slice(3) === item.link;
-								const itemLink = isActive
-									? ""
-									: root + (item.link ?? "");
-								return item.isDivider ? (
-									<Divider
-										key={item.label}
-										sx={{
-											margin: "auto",
-											width: "90%",
-											backgroundColor:
-												"primary.contrastText",
-										}}
-									/>
-								) : (
-									<ListItem key={item.label} disablePadding>
-										<Link
-											href={itemLink}
-											style={{ width: "100%" }}
-										>
-											<ListItemButton
-												onClick={(e) =>
-													isActive &&
-													e.preventDefault()
+	const { setOpenDrawer } = useToggleStates();
+	return (
+		<>
+			<div className="flex-grow">
+				<ul>
+					{navItems
+						.filter(
+							(item) =>
+								!item.isFooter &&
+								(item.requiresAdmin ? devMode : true)
+						)
+						.map((item, index) => {
+							const isActive = pathname.slice(3) === item.link;
+							const itemLink = isActive ? "" : root + item.link;
+							return (
+								<li key={item.label}>
+									<Link
+										href={itemLink}
+										onClick={() => setOpenDrawer(false)}
+									>
+										<ListButton>
+											<div
+												className={
+													index === 0 ? "mt-1" : ""
 												}
 											>
-												{item.icon && (
-													<ListItemIcon>
-														{isActive &&
-														item.filledIcon !==
-															undefined ? (
-															<item.filledIcon
-																sx={{
-																	color: "primary.contrastText",
-																	mt:
-																		index ===
-																		0
-																			? 1
-																			: 0,
-																}}
-															/>
-														) : (
-															<item.icon
-																sx={{
-																	color: "primary.contrastText",
-																	mt:
-																		index ===
-																		0
-																			? 1
-																			: 0,
-																}}
-															/>
-														)}
-													</ListItemIcon>
+												{isActive ? (
+													<item.filledIcon />
+												) : (
+													<item.icon />
 												)}
-												<ListItemText>
-													<Typography
-														sx={{
-															color: "primary.contrastText",
-															mt:
-																index === 0
-																	? 1
-																	: 0,
-														}}
-													>
-														{t(item.label)}
-													</Typography>
-												</ListItemText>
-											</ListItemButton>
-										</Link>
-									</ListItem>
-								);
-							})}
-					</List>
-				</Box>
-				<Box sx={{ pb: 0 }}>
-					<List sx={{ pb: 0 }}>
-						{navItems
-							.filter((item) => item.isFooter)
-							.map((item) => (
-								<ListItem key={item.label} disablePadding>
-									<Link
-										href={item.link ?? ""}
-										style={{ width: "100%" }}
-									>
-										<ListItemButton>
-											{item.icon && (
-												<ListItemIcon>
-													<item.icon
-														sx={{
-															color: "primary.contrastText",
-														}}
-														fontSize="small"
-													/>
-												</ListItemIcon>
-											)}
-											<ListItemText>
-												<Typography
-													sx={{
-														color: "primary.contrastText",
-														fontSize: "0.7rem",
-													}}
-												>
-													{t(item.label)}
-												</Typography>
-											</ListItemText>
-										</ListItemButton>
+											</div>
+											<p
+												className={`${
+													index === 0 ? "mt-0" : ""
+												} pl-1`}
+											>
+												{t(item.label)}
+											</p>
+										</ListButton>
 									</Link>
-								</ListItem>
-							))}
-					</List>
-				</Box>
-			</Box>
-		);
-	}, [pathname, toggleDrawer, devMode, root, t]);
+									{index === 0 && (
+										<hr className="m-auto w-[90%] border-black dark:border-white" />
+									)}
+								</li>
+							);
+						})}
+				</ul>
+			</div>
+			<div>
+				<ul>
+					{navItems
+						.filter((item) => item.isFooter)
+						.map((item) => (
+							<li key={item.label}>
+								<a href={item.link}>
+									<button className="flex p-2 items-center hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-opacity-5 transition-all w-full">
+										{item.icon && <item.icon />}
+										<p className="pl-1 text-xs text-left">
+											{t(item.label)}
+										</p>
+									</button>
+								</a>
+							</li>
+						))}
+				</ul>
+			</div>
+		</>
+	);
 };
 export default useDrawerList;

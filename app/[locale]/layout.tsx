@@ -1,10 +1,10 @@
-import "@/public/globals.css";
 import ApplicationShell from "@/components/default/ApplicationShell";
 import Footer from "@/components/default/Footer";
+import InputDetector from "@/components/snakeGame/InputDetector";
+import Drawer from "@/components/navigation/Drawer";
 import NavBar from "@/components/navigation/NavBar";
-import NavDrawer from "@/components/navigation/NavDrawer";
 import NavMenu from "@/components/navigation/NavMenu";
-import { Box, CssBaseline, PaletteMode } from "@mui/material";
+import "@/public/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
@@ -12,6 +12,7 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { cookies } from "next/headers";
 import { ReactNode } from "react";
+import { konamiCode } from "../data/ProjectsData";
 
 export const metadata: Metadata = {
 	title: "Ola Munthe Vassbotn's Portfolio",
@@ -29,12 +30,11 @@ export default function LocaleLayout({
 	const messages = useMessages();
 	const cookieStore = cookies();
 	const savedMode = cookieStore.get("themeMode");
-	const savedTheme = (savedMode?.value ?? "dark") as PaletteMode;
 
 	const devMode = cookieStore.get("devMode");
 	const devModeValue = devMode?.value === "true";
 	return (
-		<html lang={locale}>
+		<html lang={locale} className={savedMode?.value ?? "dark"}>
 			<head>
 				<meta
 					name="viewport"
@@ -44,32 +44,18 @@ export default function LocaleLayout({
 			<NextIntlClientProvider locale={locale} messages={messages}>
 				<Analytics />
 				<SpeedInsights />
-				<ApplicationShell
-					savedMode={savedTheme}
-					savedDevMode={devModeValue}
-				>
-					<CssBaseline />
-					<body>
+				<ApplicationShell savedDevMode={devModeValue}>
+					<body className="text-black dark:text-white bg-default font-light">
 						<NavMenu />
-						<NavDrawer />
-						<Box
-							sx={{
-								display: "flex",
-								flexDirection: "column",
-								minHeight: "100svh",
-							}}
-						>
-							<Box
-								component="main"
-								sx={{
-									flexGrow: 1,
-								}}
-							>
+						<Drawer />
+						<div className="flex flex-col min-h-svh">
+							<main className="flex-grow">
 								<NavBar />
 								{children}
-							</Box>
+							</main>
 							<Footer />
-						</Box>
+							<InputDetector sequenceToCheck={konamiCode} />
+						</div>
 					</body>
 				</ApplicationShell>
 			</NextIntlClientProvider>

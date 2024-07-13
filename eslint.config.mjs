@@ -38,7 +38,7 @@ export default [
 				"error",
 				{
 					vars: "all",
-					args: "all",
+					args: "after-used",
 					ignoreRestSiblings: true,
 				},
 			],

@@ -1,19 +1,11 @@
 import { NavItem } from "@/app/types/nav";
-import {
-	Assignment,
-	AssignmentOutlined,
-	Help,
-	HelpOutline,
-	Home,
-	HomeOutlined,
-	Palette,
-	PaletteOutlined,
-	Person,
-	PersonOutlined,
-	Work,
-	WorkOutline,
-} from "@mui/icons-material";
-import AppsIcon from "@mui/icons-material/Apps";
+import Apps from "@/public/icons/Apps";
+import Assignment, { AssignmentOutlined } from "@/public/icons/Assignment";
+import { HelpOutlined } from "@/public/icons/Help";
+import Home, { HomeOutlined } from "@/public/icons/Home";
+import Palette, { PaletteOutlined } from "@/public/icons/Palette";
+import Person, { PersonOutlined } from "@/public/icons/Person";
+import Work, { WorkOutlined } from "@/public/icons/Work";
 
 export const navItems: NavItem[] = [
 	{
@@ -22,7 +14,6 @@ export const navItems: NavItem[] = [
 		filledIcon: Home,
 		link: "",
 	},
-	{ label: "Divider1", isDivider: true },
 	{
 		label: "about-me",
 		icon: PersonOutlined,
@@ -33,19 +24,18 @@ export const navItems: NavItem[] = [
 		label: "projects",
 		icon: AssignmentOutlined,
 		filledIcon: Assignment,
-		// TODO make projects and experience subpages of about-me
 		link: "/about-me/projects",
 	},
 	{
 		label: "experience",
-		icon: WorkOutline,
+		icon: WorkOutlined,
 		filledIcon: Work,
 		link: "/about-me/experience",
 	},
 	{
 		label: "wordle",
-		icon: AppsIcon,
-		filledIcon: AppsIcon,
+		icon: Apps,
+		filledIcon: Apps,
 		link: "/about-me/projects/wordle",
 	},
 	{
@@ -58,8 +48,8 @@ export const navItems: NavItem[] = [
 	{
 		label: "contribute",
 		link: "https://github.com/olamva/olavassbotn",
-		icon: HelpOutline,
-		filledIcon: Help,
+		icon: HelpOutlined,
+		filledIcon: HelpOutlined,
 		isFooter: true,
 	},
 ];

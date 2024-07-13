@@ -1,48 +1,42 @@
-import SearchFieldButton from "@/components/navigation/SearchFieldAssets/SearchFieldButton";
-import SearchFieldMobile from "@/components/navigation/SearchFieldAssets/SearchFieldMobile";
-import SearchShortcut from "@/components/navigation/SearchFieldAssets/SearchShortcut";
-import { Search } from "@mui/icons-material";
-import { Box, Typography } from "@mui/material";
+"use client";
+
+import ToggleButton from "@/components/toggles/ToggleButton";
+import { useToggleStates } from "@/contexts/ToggleStatesProvider";
+import CommandKey from "@/public/icons/CommandKey";
+import ControlKey from "@/public/icons/ControlKey";
+import Search from "@/public/icons/Search";
 import { useTranslations } from "next-intl";
 
 const SearchField = () => {
 	const t = useTranslations("NavItems");
-
-	const OUTER_BORDER_RADIUS = 3;
-	const INNER_BORDER_RADIUS = 1;
-	const FONT_SIZE = 12;
+	const { setOpenMenu, isMac } = useToggleStates();
 	return (
-		<SearchFieldMobile>
-			<SearchFieldButton outerBorderRadius={OUTER_BORDER_RADIUS}>
-				<Box
-					bgcolor={"primary.main"}
-					display="flex"
-					flexDirection="row"
-					padding={1}
-					borderRadius={OUTER_BORDER_RADIUS}
-					alignItems="center"
+		<>
+			<div className="hidden sm:block">
+				<div
+					className="bg-primary-main flex flex-row p-2 rounded-xl items-center cursor-pointer select-none"
+					onClick={() => setOpenMenu(true)}
 				>
-					<Search
-						sx={{
-							color: "primary.contrastText",
-							mx: 0.3,
-							fontSize: FONT_SIZE * 1.5,
-						}}
-					/>
-					<Typography
-						color={"primary.contrastText"}
-						mx={0.3}
-						fontSize={FONT_SIZE}
-					>
-						{t("search-field")}
-					</Typography>
-					<SearchShortcut
-						INNER_BORDER_RADIUS={INNER_BORDER_RADIUS}
-						FONT_SIZE={FONT_SIZE}
-					/>
-				</Box>
-			</SearchFieldButton>
-		</SearchFieldMobile>
+					<div className="mx-0.5 ">
+						<Search size="18px" />
+					</div>
+					<p className=" text-xs mx-0.5">{t("search-field")}</p>
+					<div className="bg-[rgb(240, 241, 231)] dark:bg-[rgb(15, 15, 15)] border-[rgb(219,220,211)] dark:border-[rgb(67,67,67)] flex px-1 py-0.5 rounded items-center mx-0.5 border border-solid">
+						{isMac ? (
+							<CommandKey size="12px" />
+						) : (
+							<ControlKey size="12px" />
+						)}
+						<p className=" text-xs">K</p>
+					</div>
+				</div>
+			</div>
+			<div className="block sm:hidden">
+				<ToggleButton onClick={() => setOpenMenu(true)}>
+					<Search size="20px" />
+				</ToggleButton>
+			</div>
+		</>
 	);
 };
 export default SearchField;

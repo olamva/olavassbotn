@@ -6,7 +6,7 @@ import Wordle from "@/components/wordle/Wordle";
 import { ColorsProvider } from "@/contexts/ColorsContext";
 import { useEffect, useState } from "react";
 
-export default function Home() {
+export default function WordlePage() {
 	const [isHardMode, setIsHardMode] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -20,7 +20,7 @@ export default function Home() {
 				isHardMode={isHardMode}
 				setIsHardMode={setIsHardMode}
 			/>
-			<div className="text-white text-5xl font-extralight flex justify-center">
+			<div className=" text-5xl font-[50] flex justify-center">
 				Wordle
 			</div>
 			<div className="mt-16 flex justify-center items-center">

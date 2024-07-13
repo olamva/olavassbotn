@@ -2,9 +2,10 @@
 import { socialLinks } from "@/app/data/FooterData";
 import { navItems } from "@/app/data/NavItems";
 import { useDevMode } from "@/contexts/DevModeProvider";
-import { useColorMode } from "@/contexts/ThemeModeProvider";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
-import { Code, DarkMode, Language, LightMode } from "@mui/icons-material";
+import Code from "@/public/icons/Code";
+import Language from "@/public/icons/Language";
+import LightMode from "@/public/icons/LightMode";
 import Cookies from "js-cookie";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
@@ -26,7 +27,6 @@ const NavMenu = () => {
 		router.push(newPathname);
 		router.refresh();
 	};
-	const { toggleColorMode, mode } = useColorMode();
 	const { toggleDevMode, devMode } = useDevMode();
 	useEffect(() => {
 		Cookies.set("devMode", devMode as unknown as string);
@@ -35,6 +35,10 @@ const NavMenu = () => {
 	const clickedDevMode = () => {
 		if (devMode) router.push(root);
 		toggleDevMode();
+	};
+
+	const toggleDarkMode = () => {
+		document.documentElement.classList.toggle("dark");
 	};
 
 	const filteredItems = filterItems(
@@ -46,7 +50,6 @@ const NavMenu = () => {
 					.filter(
 						(item) =>
 							!item.isFooter &&
-							!item.isDivider &&
 							(item.requiresAdmin ? devMode : true)
 					)
 					.map((item) => {
@@ -107,12 +110,9 @@ const NavMenu = () => {
 					},
 					{
 						id: "theme",
-						children:
-							mode == "light"
-								? t("darkModeToggle")
-								: t("lightModeToggle"),
-						icon: mode === "dark" ? LightMode : DarkMode,
-						onClick: () => toggleColorMode(),
+						children: t("lightModeToggle"),
+						icon: LightMode,
+						onClick: () => toggleDarkMode(),
 						keywords: [
 							"dark",
 							"light",
