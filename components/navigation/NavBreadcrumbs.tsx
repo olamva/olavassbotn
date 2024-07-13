@@ -2,6 +2,7 @@
 import { navItems } from "@/app/data/NavItems";
 import NextArrow from "@/public/icons/NextArrow";
 import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NavBreadcrumbs = () => {
@@ -26,8 +27,8 @@ const NavBreadcrumbs = () => {
 				}`}
 				key={index}
 			>
-				<a
-					className={`hover:underline ${
+				<Link
+					className={`${
 						last
 							? "text-black dark:text-white"
 							: "text-zinc-500 dark:text-zinc-400"
@@ -35,14 +36,18 @@ const NavBreadcrumbs = () => {
 					href={to}
 				>
 					<div className="flex items-center">
-						{Icon && (
-							<div>
-								<Icon />
-							</div>
-						)}
-						<p className="px-1 text-xs sm:text-sm">{t(value)}</p>
+						{Icon && <Icon />}
+						<div
+							className={`${
+								last
+									? "from-black to-black dark:from-white dark:to-white"
+									: "from-zinc-500 to-zinc-500 dark:from-zinc-400 dark:to-zinc-400"
+							}  bg-bottom bg-gradient-radial bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out `}
+						>
+							<p className="text-xs sm:text-sm">{t(value)}</p>
+						</div>
 					</div>
-				</a>
+				</Link>
 				{!last && (
 					<div className="px-0.5 hidden sm:block">
 						<NextArrow size={"10px"} />

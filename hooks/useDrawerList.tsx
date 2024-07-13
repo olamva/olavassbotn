@@ -1,7 +1,9 @@
 "use client";
 import { navItems } from "@/app/data/NavItems";
 import { useDevMode } from "@/contexts/DevModeProvider";
+import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
@@ -17,6 +19,7 @@ const useDrawerList = () => {
 	const pathname = usePathname();
 	const t = useTranslations("NavItems");
 	const { devMode } = useDevMode();
+	const { setOpenDrawer } = useToggleStates();
 	return (
 		<>
 			<div className="flex-grow">
@@ -32,7 +35,10 @@ const useDrawerList = () => {
 							const itemLink = isActive ? "" : root + item.link;
 							return (
 								<li key={item.label}>
-									<a href={itemLink}>
+									<Link
+										href={itemLink}
+										onClick={() => setOpenDrawer(false)}
+									>
 										<ListButton>
 											<div
 												className={
@@ -53,7 +59,7 @@ const useDrawerList = () => {
 												{t(item.label)}
 											</p>
 										</ListButton>
-									</a>
+									</Link>
 									{index === 0 && (
 										<hr className="m-auto w-[90%] border-black dark:border-white" />
 									)}

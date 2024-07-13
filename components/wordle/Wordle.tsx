@@ -34,6 +34,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 	const [displayEndScreen, setDisplayEndScreen] = useState<boolean>(false);
 	const [endScreenText, setEndScreenText] = useState<string>("");
 	const [displayErrorMsg, setDisplayErrorMsg] = useState<boolean>(false);
+	const [displayWord, setDisplayWord] = useState<boolean>(false);
 	const [errorMsgText, setErrorMsgText] = useState<string>("");
 
 	/**
@@ -159,10 +160,8 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				return;
 			}
 			if (currentRow.current === AMT_ROWS - 1) {
-				setEndScreenText(
-					"You lost... The word was " +
-						wordToCheck.current.toUpperCase()
-				);
+				setEndScreenText("You lost... The word was ");
+				setDisplayWord(true);
 				setIsDone(true);
 				showEndScreen();
 				return;
@@ -277,6 +276,11 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			>
 				<div className="bg-primary-main items-center flex rounded-lg p-8 flex-col animate-slideVertical">
 					{endScreenText}
+					{displayWord && (
+						<span className="font-mono bg-zinc-800 rounded px-1">
+							{wordToCheck.current.toUpperCase()}
+						</span>
+					)}
 					<div className="h-4" />
 					<Button onClick={() => location.reload()}>
 						Reset?

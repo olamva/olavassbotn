@@ -1,5 +1,6 @@
 import "@/public/globals.css";
 import Home from "@/public/icons/Home";
+import Link from "next/link";
 
 export default function NotFound() {
 	return (
@@ -15,13 +16,13 @@ export default function NotFound() {
 					<p className="text-6xl">404: Page Not Found</p>
 					<p>Could not find requested resource</p>
 
-					<a
+					<Link
 						className="flex items-end hover:text-gray-400 dark:hover:text-gray-200 w-fit cursor-pointer select-none hover:underline"
 						href="/"
 					>
 						<Home />
 						<div className="ml-1">Return Home</div>
-					</a>
+					</Link>
 				</div>
 			</body>
 		</html>

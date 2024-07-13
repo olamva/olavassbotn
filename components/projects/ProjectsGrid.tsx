@@ -3,6 +3,7 @@ import Paper from "@/components/default/Paper";
 import GameButton from "@/components/game/GameButton";
 import GitHub from "@/public/icons/GitHub";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const ProjectsGrid = () => {
 	const t = useTranslations("Projects");
@@ -37,7 +38,7 @@ const ProjectsGrid = () => {
 							</div>
 							{section.mobileDescription && <GameButton />}
 							{section.githubLink && (
-								<a
+								<Link
 									className="w-fit self-center"
 									href={`https://github.com/olamva/${section.projectID}`}
 									target="_blank"
@@ -49,7 +50,7 @@ const ProjectsGrid = () => {
 											{section.githubLink}
 										</p>
 									</Button>
-								</a>
+								</Link>
 							)}
 						</Paper>
 					</div>
