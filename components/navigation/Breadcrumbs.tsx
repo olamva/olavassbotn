@@ -44,7 +44,7 @@ const Breadcrumbs = () => {
 									: "from-zinc-500 to-zinc-500 dark:from-zinc-400 dark:to-zinc-400"
 							} pl-0.5 bg-bottom bg-gradient-radial bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out `}
 						>
-							<p className="text-xs sm:text-sm">{t(value)}</p>
+							<p className="text-sm">{t(value)}</p>
 						</div>
 					</div>
 				</Link>

@@ -22,16 +22,16 @@ const HardModeToggle = ({ isHardMode, setIsHardMode }: HardModeToggleProps) => {
 
 	return (
 		<div
-			className=" font-extralight flex items-center cursor-pointer m-1 select-none w-fit ml-auto"
+			className=" font-extralight flex items-center justify-center cursor-pointer m-1 select-none w-fit ml-auto"
 			onClick={toggleHardMode}
 		>
 			Hard mode?
 			<div
-				className={`rounded-lg w-7 h-4 border-zinc-200 dark:border-zinc-700 border ${toggleClasses} ml-2 mr-1 items-center flex transition-colors scale-110 origin-top-right`}
+				className={`rounded-full w-9 h-5 border-zinc-200 dark:border-zinc-700 border ${toggleClasses} mx-1 items-center flex transition-colors`}
 				ref={toggleRef}
 			>
 				<div
-					className={`bg-zinc-100 dark:bg-zinc-800 size-3 rounded-full transition-all transform ${childClasses}`}
+					className={`bg-zinc-100 dark:bg-zinc-800 size-4 rounded-full m-0 transition-all transform ${childClasses}`}
 				/>
 			</div>
 		</div>
