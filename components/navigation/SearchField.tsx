@@ -13,7 +13,7 @@ const SearchField = () => {
 	return (
 		<>
 			<div className="hidden sm:block">
-				<div
+				<button
 					className="bg-primary-main flex flex-row p-2 rounded-xl items-center cursor-pointer select-none"
 					onClick={() => setOpenMenu(true)}
 				>
@@ -29,7 +29,7 @@ const SearchField = () => {
 						)}
 						<p className=" text-xs">K</p>
 					</div>
-				</div>
+				</button>
 			</div>
 			<div className="block sm:hidden">
 				<ToggleButton onClick={() => setOpenMenu(true)}>

@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NavBreadcrumbs = () => {
+const Breadcrumbs = () => {
 	const pathname = usePathname();
 	const locale = useLocale();
 	const t = useTranslations("NavItems");
@@ -28,21 +28,21 @@ const NavBreadcrumbs = () => {
 				key={index}
 			>
 				<Link
-					className={`${
+					className={
 						last
-							? "text-black dark:text-white"
-							: "text-zinc-500 dark:text-zinc-400"
-					}`}
+							? "sm:text-black sm:dark:text-white"
+							: "sm:text-zinc-500 sm:dark:text-zinc-400"
+					}
 					href={to}
 				>
 					<div className="flex items-center">
-						{Icon && <Icon />}
+						{Icon && <Icon size={last ? "20px" : "16px"} />}
 						<div
 							className={`${
 								last
 									? "from-black to-black dark:from-white dark:to-white"
 									: "from-zinc-500 to-zinc-500 dark:from-zinc-400 dark:to-zinc-400"
-							}  bg-bottom bg-gradient-radial bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out `}
+							} pl-0.5 bg-bottom bg-gradient-radial bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out `}
 						>
 							<p className="text-xs sm:text-sm">{t(value)}</p>
 						</div>
@@ -59,4 +59,4 @@ const NavBreadcrumbs = () => {
 };
 // </div>
 
-export default NavBreadcrumbs;
+export default Breadcrumbs;

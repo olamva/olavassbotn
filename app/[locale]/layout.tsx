@@ -1,9 +1,10 @@
+import { konamiCode } from "@/app/data/ProjectsData";
 import ApplicationShell from "@/components/default/ApplicationShell";
 import Footer from "@/components/default/Footer";
-import InputDetector from "@/components/snakeGame/InputDetector";
 import Drawer from "@/components/navigation/Drawer";
 import NavBar from "@/components/navigation/NavBar";
 import NavMenu from "@/components/navigation/NavMenu";
+import InputDetector from "@/components/snakeGame/InputDetector";
 import "@/public/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -12,7 +13,6 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { cookies } from "next/headers";
 import { ReactNode } from "react";
-import { konamiCode } from "../data/ProjectsData";
 
 export const metadata: Metadata = {
 	title: "Ola Munthe Vassbotn's Portfolio",

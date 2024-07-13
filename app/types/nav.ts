@@ -3,8 +3,8 @@ import { JSX } from "react";
 export type NavItem = {
 	label: string;
 	link: string;
-	icon: () => JSX.Element;
-	filledIcon: () => JSX.Element;
+	icon: ({ size }: { size?: string }) => JSX.Element;
+	filledIcon: ({ size }: { size?: string }) => JSX.Element;
 	requiresAdmin?: boolean;
 	isFooter?: boolean;
 };
