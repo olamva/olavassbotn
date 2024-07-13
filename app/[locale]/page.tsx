@@ -4,12 +4,12 @@ export default function Landing() {
 	const t = useTranslations("HomePage");
 	return (
 		<div className="mt-[10svh] ">
-			<p className="text-[2rem] sm:text-5xl md:text-[5rem] lg:text-8xl font-[900] text-center">
+			<h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-[900] text-center">
 				{t("title")}
-			</p>
-			<p className="text-center text-xs sm:text-base md:text-2xl lg:text-[2rem] font-[50]">
+			</h1>
+			<h2 className="text-center text-xl md:text-3xl lg:text-5xl font-[50]">
 				{t("subtitle")}
-			</p>
+			</h2>
 		</div>
 	);
 }
