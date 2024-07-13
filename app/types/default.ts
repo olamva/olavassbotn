@@ -1,11 +1,8 @@
-import { SvgIconTypeMap } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { StaticImageData } from "next/image";
+import { JSX } from "react";
 
 export type SocialLink = {
-	icon: OverridableComponent<SvgIconTypeMap<unknown, "svg">> & {
-		muiName: string;
-	};
+	icon: () => JSX.Element;
 	link: string;
 	label?: string;
 };

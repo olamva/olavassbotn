@@ -1,5 +1,4 @@
-import { Dialog, DialogContent, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import Dialog from "@/components/default/Dialog";
 import { FC, useEffect, useRef, useState } from "react";
 interface SnakeGameProps {
 	open: boolean;
@@ -10,14 +9,16 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 	const [context, setContext] = useState<CanvasRenderingContext2D | null>(
 		null
 	);
-	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-	const unitSize = isMobile ? 20 : 40;
+	const unitSize = 40;
 	const canvasWidth =
 		Math.round((window.innerWidth * 0.7) / unitSize) * unitSize;
 	const canvasHeight =
 		Math.round((window.innerHeight * 0.7) / unitSize) * unitSize;
 	useEffect(() => {
+		if (canvasRef.current && context === null) {
+			const renderCtx = canvasRef.current.getContext("2d");
+			setContext(renderCtx);
+		}
 		if (context && open) {
 			let snake = [{ x: 5 * unitSize, y: 5 * unitSize }];
 			let food = { x: 0, y: 0 };
@@ -104,15 +105,6 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 			};
 			const gameLoop = () => {
 				clearCanvas();
-				if (context && canvasRef.current) {
-					context.fillStyle = theme.palette.secondary.contrastText;
-					context.fillRect(
-						0,
-						0,
-						canvasRef.current.width,
-						canvasRef.current.height
-					);
-				}
 				const nextDirection = nextDirections.pop();
 				if (nextDirection) {
 					dx = nextDirection.dx;
@@ -213,34 +205,16 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 				clearInterval(gameInterval);
 			};
 		}
-	}, [context, open, theme.palette.secondary.contrastText, unitSize]);
+	}, [context, open, unitSize]);
 	return (
-		<Dialog
-			open={open}
-			onClose={onClose}
-			TransitionProps={{
-				onEntered: () => {
-					if (canvasRef.current) {
-						const renderCtx = canvasRef.current.getContext("2d");
-						setContext(renderCtx);
-					}
-				},
-			}}
-			maxWidth="xl"
-			PaperProps={{
-				style: {
-					width: canvasWidth,
-					height: canvasHeight,
-				},
-			}}
-		>
-			<DialogContent sx={{ padding: 0, overflow: "hidden" }}>
+		<Dialog open={open} setOpen={onClose}>
+			<div className="p-0 size-fit overflow-hidden bg-white dark:bg-black">
 				<canvas
 					ref={canvasRef}
 					width={canvasWidth}
 					height={canvasHeight}
 				/>
-			</DialogContent>
+			</div>
 		</Dialog>
 	);
 };

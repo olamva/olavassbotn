@@ -1,33 +1,20 @@
 "use client";
-import { konamiCode } from "@/app/data/ProjectsData";
-import InputDetector from "@/components/game/InputDetector";
 import DevModeProvider from "@/contexts/DevModeProvider";
-import ThemeModeProvider from "@/contexts/ThemeModeProvider";
 import ToggleStatesProvider from "@/contexts/ToggleStatesProvider";
-import { makeThemeWithMode } from "@/public/theme";
-import { ThemeProvider } from "@emotion/react";
-import { PaletteMode } from "@mui/material";
 import Cookies from "js-cookie";
-import { ReactNode, useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 export default function ApplicationShell({
 	children,
-	savedMode,
 	savedDevMode,
 }: {
 	children: ReactNode;
-	savedMode: PaletteMode;
 	savedDevMode: boolean;
 }) {
-	const [mode, setMode] = useState<PaletteMode>(savedMode);
 	const [devMode, setDevMode] = useState<boolean>(savedDevMode);
-	useEffect(() => {
-		Cookies.set("themeMode", mode);
-	}, [mode]);
 	useEffect(() => {
 		Cookies.set("devMode", String(devMode));
 	}, [devMode]);
-	const theme = useMemo(() => makeThemeWithMode(mode), [mode]);
 
 	const [openDrawer, setOpenDrawer] = useState(false);
 	const [openMenu, setOpenMenu] = useState<boolean>(false);
@@ -58,31 +45,19 @@ export default function ApplicationShell({
 			document.removeEventListener("keydown", handleKeyDown);
 		};
 	}, [isMac]);
-
-	const toggleDrawer = useMemo(
-		() => (newOpen: boolean) => () => {
-			setOpenDrawer(newOpen);
-		},
-		[]
-	);
 	return (
-		<ThemeModeProvider mode={mode} setMode={setMode}>
-			<DevModeProvider mode={devMode} setMode={setDevMode}>
-				<ThemeProvider theme={theme}>
-					<ToggleStatesProvider
-						toggleDrawer={toggleDrawer}
-						openDrawer={openDrawer}
-						openMenu={openMenu}
-						setOpenMenu={setOpenMenu}
-						isMac={isMac}
-						override={override}
-						setOverride={setOverride}
-					>
-						<InputDetector sequenceToCheck={konamiCode} />
-						{children}
-					</ToggleStatesProvider>
-				</ThemeProvider>
-			</DevModeProvider>
-		</ThemeModeProvider>
+		<DevModeProvider mode={devMode} setMode={setDevMode}>
+			<ToggleStatesProvider
+				setOpenDrawer={setOpenDrawer}
+				openDrawer={openDrawer}
+				openMenu={openMenu}
+				setOpenMenu={setOpenMenu}
+				isMac={isMac}
+				override={override}
+				setOverride={setOverride}
+			>
+				{children}
+			</ToggleStatesProvider>
+		</DevModeProvider>
 	);
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { ColorsContext } from "@/contexts/ColorsContext";
-import Backspace from "@/public/icons/backspace";
+import Backspace from "@/public/icons/Backspace";
 import { MouseEvent, useContext, useEffect, useRef } from "react";
 
 const OnscreenLetter = ({ letter }: { letter: string }) => {
@@ -22,24 +22,32 @@ const OnscreenLetter = ({ letter }: { letter: string }) => {
 			return;
 		}
 		if (greenLetters.includes(letter)) {
-			div.classList.remove("bg-zinc-700", "bg-yellow-500", "bg-zinc-800");
-			div.classList.add("bg-green-500");
+			div.classList.remove(
+				"wordle-letter-blank",
+				"wordle-yellow",
+				"wordle-gray"
+			);
+			div.classList.add("wordle-green");
 		} else if (yellowLetters.includes(letter)) {
-			div.classList.remove("bg-zinc-700", "bg-green-500", "bg-zinc-800");
-			div.classList.add("bg-yellow-500");
+			div.classList.remove(
+				"wordle-letter-blank",
+				"wordle-green",
+				"wordle-gray"
+			);
+			div.classList.add("wordle-yellow");
 		} else if (grayLetters.includes(letter)) {
 			div.classList.remove(
-				"bg-zinc-700",
-				"bg-green-500",
-				"bg-yellow-500"
+				"wordle-letter-blank",
+				"wordle-green",
+				"wordle-yellow"
 			);
-			div.classList.add("bg-zinc-800");
+			div.classList.add("wordle-gray");
 		}
 	}, [greenLetters, yellowLetters, grayLetters, letter]);
 
 	return (
 		<div
-			className="bg-zinc-700 rounded h-12 md:h-16 min-w-8 md:min-w-16 w-fit text-white items-center justify-center flex text-2xl p-2 cursor-pointer select-none"
+			className="wordle-letter-blank rounded h-12 sm:h-12 md:h-16 min-w-8 sm:min-w-12 md:min-w-16 w-fit items-center justify-center flex text-2xl p-2 cursor-pointer select-none"
 			onClick={handleClick}
 			ref={divRef}
 		>

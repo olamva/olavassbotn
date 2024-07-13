@@ -3,22 +3,22 @@ import NavBreadcrumbs from "@/components/navigation/NavBreadcrumbs";
 import SearchField from "@/components/navigation/SearchField";
 import LangToggle from "@/components/toggles/LangToggle";
 import ThemeToggle from "@/components/toggles/ThemeToggle";
-import { Box, Toolbar } from "@mui/material";
 export default function NavBar() {
 	return (
 		<>
-			<Toolbar sx={{ p: 0.5 }}>
-				<Box display="flex" alignItems="center">
+			<div className="flex px-6 pt-2">
+				<div className="flex items-center">
 					<DrawerToggleButton />
-				</Box>
-				<Box flexGrow={1}></Box>
-				<Box>
+					<div className="mx-1" />
+					<NavBreadcrumbs />
+				</div>
+				<div className="flex-grow"></div>
+				<div className="flex items-center">
 					<SearchField />
 					<ThemeToggle />
 					<LangToggle />
-				</Box>
-			</Toolbar>
-			<NavBreadcrumbs />
+				</div>
+			</div>
 		</>
 	);
 }

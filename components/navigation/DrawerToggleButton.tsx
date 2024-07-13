@@ -1,20 +1,16 @@
 "use client";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
-import { Menu } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
+import Menu from "@/public/icons/Menu";
 
 const DrawerToggleButton = () => {
-	const { toggleDrawer } = useToggleStates();
+	const { setOpenDrawer } = useToggleStates();
 	return (
-		<IconButton
-			onClick={toggleDrawer(true)}
-			sx={{
-				color: "primary.contrastText",
-				mr: 1,
-			}}
+		<button
+			onClick={() => setOpenDrawer(true)}
+			className=" hover:text-gray-500 dark:hover:text-gray-300 rounded-full transition-colors h-fit"
 		>
 			<Menu />
-		</IconButton>
+		</button>
 	);
 };
 

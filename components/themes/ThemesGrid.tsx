@@ -1,35 +1,18 @@
 import { papers } from "@/app/data/ThemesData";
-import { Grid, Paper, Typography } from "@mui/material";
 
 const ThemesGrid = () => {
 	return papers.map((paper, index) => (
-		<Grid key={index} item xs={12} md={6}>
-			<Paper
-				sx={{
-					backgroundColor: paper.color,
-					padding: 2,
-					marginBottom: 2,
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-				}}
+		<div key={index}>
+			<div
+				className={`${paper.color} ${
+					paper.textColor ?? ""
+				} p-4 mb-4 flex justify-center items-center border dark:border-zinc-900`}
 			>
-				<Typography
-					variant="body1"
-					color={paper.textColor ?? "primary.contrastText"}
-					sx={{
-						fontSize: {
-							xs: "0.75rem",
-							sm: "0.875rem",
-							md: "1rem",
-						},
-						textAlign: "center",
-					}}
-				>
+				<p className="text-xs sm:text-sm md:text-base text-center">
 					{paper.label}
-				</Typography>
-			</Paper>
-		</Grid>
+				</p>
+			</div>
+		</div>
 	));
 };
 

@@ -1,69 +1,59 @@
-import GameButton from "@/components/game/GameButton";
-import ProjectsDescription from "@/components/projects/ProjectsDescription";
-import ProjectsPaper from "@/components/projects/ProjectsPaper";
-import { GitHub } from "@mui/icons-material";
-import { Button, Grid, Typography } from "@mui/material";
+import Button from "@/components/default/Button";
+import Paper from "@/components/default/Paper";
+import PlaySnakeButton from "@/components/projects/PlaySnakeButton";
+import GitHub from "@/public/icons/GitHub";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+import PlayWordleButton from "./PlayWordleButton";
 
 const ProjectsGrid = () => {
 	const t = useTranslations("Projects");
 	return (
-		<Grid container spacing={3} my={2}>
+		<div className="grid gap-3 my-4 grid-cols-2">
 			{t.raw("projects").map(
 				(
 					section: {
 						title: string;
-						description: string;
-						mobileDescription?: string;
+						description?: string;
+						snakeGame?: string;
+						wordleGame?: string;
 						githubLink?: string;
 						projectID?: string;
 					},
 					index: number
 				) => (
-					<Grid item xs={12} md={6} key={index}>
-						<ProjectsPaper>
-							<Typography
-								variant="h5"
-								color={"primary.contrastText"}
-								sx={{
-									fontSize: {
-										xs: "1rem",
-										sm: "1.5rem",
-										md: "2rem",
-									},
-								}}
-								gutterBottom
-							>
+					<div className="col-span-2 sm:col-span-1" key={index}>
+						<Paper>
+							<h5 className="text-base sm:text-lg md:text-xl font-bold mb-3">
 								{section.title}
-							</Typography>
-							<ProjectsDescription section={section} />
-							{section.mobileDescription && <GameButton />}
+							</h5>
+							{/* {section.description && (
+								<p className="text-xs sm:text-sm md:text-base">
+									{section.description}
+								</p>
+							)} */}
+							{section.snakeGame && <PlaySnakeButton />}
+							{section.wordleGame && <PlayWordleButton />}
 							{section.githubLink && (
-								<Button
+								<Link
+									className="w-fit self-center"
 									href={`https://github.com/olamva/${section.projectID}`}
 									target="_blank"
 									rel="noopener noreferrer"
-									variant="contained"
-									color="primary"
-									startIcon={<GitHub />}
-									autoCapitalize={undefined}
-									sx={{
-										mt: 2,
-										alignSelf: "center",
-										alignItems: "center",
-										textTransform: "none",
-									}}
 								>
-									<Typography>
-										{section.githubLink}
-									</Typography>
-								</Button>
+									<Button>
+										<GitHub />
+										<p className="pl-1">
+											{section.githubLink}
+										</p>
+									</Button>
+								</Link>
 							)}
-						</ProjectsPaper>
-					</Grid>
+						</Paper>
+					</div>
 				)
 			)}
-		</Grid>
+		</div>
 	);
 };
 

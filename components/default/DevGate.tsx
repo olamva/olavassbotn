@@ -1,6 +1,5 @@
 "use client";
 import { useDevMode } from "@/contexts/DevModeProvider";
-import { Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
@@ -13,15 +12,9 @@ const DevGate = ({ children }: DevGateProps) => {
 	return devMode ? (
 		<>{children}</>
 	) : (
-		<Typography
-			variant="h3"
-			align="center"
-			mt={30}
-			width={"80%"}
-			mx={"auto"}
-		>
+		<h3 className="text-center mt-60 w-[80%] mx-auto text-5xl">
 			{t("accessDenied")}
-		</Typography>
+		</h3>
 	);
 };
 

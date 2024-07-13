@@ -1,9 +1,11 @@
 "use client";
 
 import { AMT_COLS, AMT_ROWS } from "@/app/data/WordleConstants";
-import EndDialog from "@/components/wordle/EndDialog";
+import Button from "@/components/default/Button";
+import Dialog from "@/components/default/Dialog";
 import WordleGrid from "@/components/wordle/WordleGrid";
 import { ColorsContext } from "@/contexts/ColorsContext";
+import Refresh from "@/public/icons/Refresh";
 import allowedGuesses from "@/public/wordle/wordle-allowed-guesses.json";
 import answers from "@/public/wordle/wordle-answers-alphabetical.json";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
@@ -32,6 +34,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 	const [displayEndScreen, setDisplayEndScreen] = useState<boolean>(false);
 	const [endScreenText, setEndScreenText] = useState<string>("");
 	const [displayErrorMsg, setDisplayErrorMsg] = useState<boolean>(false);
+	const [displayWord, setDisplayWord] = useState<boolean>(false);
 	const [errorMsgText, setErrorMsgText] = useState<string>("");
 
 	/**
@@ -110,10 +113,8 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			wordToCheck.current.split("").forEach((letter, i) => {
 				if (letter === currentWord.current[i]) {
 					const box = divs[currentRow.current * AMT_COLS + i];
-					if (box.classList.contains("bg-yellow-500")) {
-						box.classList.remove("bg-yellow-500");
-					}
-					box.classList.add("bg-green-500");
+					box.classList.remove("wordle-yellow");
+					box.classList.add("wordle-green");
 					greenLetterPositions.current[i] = letter;
 					setGreenLetters((prev) => [...prev, letter.toUpperCase()]);
 				} else if (currentWord.current.includes(letter)) {
@@ -124,12 +125,12 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 					for (const index of indexes) {
 						const box = divs[currentRow.current * AMT_COLS + index];
 						if (
-							box.classList.contains("bg-yellow-500") ||
-							box.classList.contains("bg-green-500")
+							box.classList.contains("wordle-yellow") ||
+							box.classList.contains("wordle-green")
 						) {
 							continue;
 						}
-						box.classList.add("bg-yellow-500");
+						box.classList.add("wordle-yellow");
 						yellowLetterPositions.current.add(letter);
 						setYellowLetters((prev) => [
 							...prev,
@@ -142,12 +143,12 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			for (let i = 0; i < AMT_COLS; i++) {
 				const box = divs[currentRow.current * AMT_COLS + i];
 				if (
-					box.classList.contains("bg-green-500") ||
-					box.classList.contains("bg-yellow-500")
+					box.classList.contains("wordle-green") ||
+					box.classList.contains("wordle-yellow")
 				) {
 					continue;
 				}
-				box.classList.add("bg-zinc-800");
+				box.classList.add("wordle-gray");
 				const letter = currentWord.current[i].toUpperCase();
 				setGrayLetters((prev) => [...prev, letter]);
 			}
@@ -159,10 +160,8 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				return;
 			}
 			if (currentRow.current === AMT_ROWS - 1) {
-				setEndScreenText(
-					"You lost... The word was " +
-						wordToCheck.current.toUpperCase()
-				);
+				setEndScreenText("You lost... The word was ");
+				setDisplayWord(true);
 				setIsDone(true);
 				showEndScreen();
 				return;
@@ -265,17 +264,31 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 	return (
 		<div className="relative">
 			{displayErrorMsg && (
-				<div className="text-white text-center absolute top-[-56px] inset-x-0 bg-zinc-800 w-fit justify-self-center px-2 rounded-md">
+				<div className=" text-center absolute top-[-56px] inset-x-0 wordle-gray w-fit justify-self-center px-2 rounded-md">
 					{errorMsgText}
 				</div>
 			)}
 			<WordleGrid divRef={divRef} />
-			{displayEndScreen && (
-				<EndDialog
-					setDisplayEndScreen={setDisplayEndScreen}
-					endScreenText={endScreenText}
-				/>
-			)}
+			<Dialog
+				open={displayEndScreen}
+				setOpen={setDisplayEndScreen}
+				blurred
+			>
+				<div className="bg-primary-main items-center flex rounded-lg p-8 flex-col animate-slideVertical">
+					{endScreenText}
+					{displayWord && (
+						<span className="font-mono bg-zinc-800 rounded px-1">
+							{wordToCheck.current.toUpperCase()}
+						</span>
+					)}
+					<div className="h-4" />
+					<Button onClick={() => location.reload()}>
+						Reset?
+						<div className="w-2" />
+						<Refresh />
+					</Button>
+				</div>
+			</Dialog>
 		</div>
 	);
 };
