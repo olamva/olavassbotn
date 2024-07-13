@@ -51,6 +51,10 @@
 		"10": {
 			"title": "Next.js",
 			"hasDescription": "false"
+		},
+		"11": {
+			"title": "Tailwind CSS",
+			"hasDescription": "false"
 		}
 	},
 	"NavItems": {

@@ -27,14 +27,14 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
 										<Image
 											src={img.src}
 											alt={img.alt}
-											className="absolute inset-0 w-full h-auto"
+											className="absolute inset-0 w-full h-auto m-auto"
 										/>
 									</div>
 									<div className="dark:hidden">
 										<Image
 											src={img.darkSrc ?? img.src}
 											alt={img.alt}
-											className="absolute inset-0 w-full h-auto"
+											className="absolute inset-0 w-full h-auto m-auto"
 										/>
 									</div>
 								</div>
