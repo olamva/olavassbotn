@@ -23,7 +23,7 @@ export default function WordlePage() {
 			<div className=" text-5xl font-[50] flex justify-center">
 				Wordle
 			</div>
-			<div className="mt-16 flex justify-center items-center">
+			<div className="flex justify-center items-center my-2">
 				<Wordle isHardMode={isHardMode} />
 			</div>
 			<OnscreenKeyboard />

@@ -1,11 +1,11 @@
 "use client";
 
 import { AMT_COLS, AMT_ROWS } from "@/app/data/WordleConstants";
-import Button from "@/components/default/Button";
 import Dialog from "@/components/default/Dialog";
+import WordleDialogContent from "@/components/wordle/WordleDialogContent";
 import WordleGrid from "@/components/wordle/WordleGrid";
+import WordleNotifications from "@/components/wordle/WordleNotifications";
 import { ColorsContext } from "@/contexts/ColorsContext";
-import Refresh from "@/public/icons/Refresh";
 import allowedGuesses from "@/public/wordle/wordle-allowed-guesses.json";
 import answers from "@/public/wordle/wordle-answers-alphabetical.json";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
@@ -33,9 +33,8 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 
 	const [displayEndScreen, setDisplayEndScreen] = useState<boolean>(false);
 	const [endScreenText, setEndScreenText] = useState<string>("");
-	const [displayErrorMsg, setDisplayErrorMsg] = useState<boolean>(false);
 	const [displayWord, setDisplayWord] = useState<boolean>(false);
-	const [errorMsgText, setErrorMsgText] = useState<string>("");
+	const [notifications, setNotifications] = useState<string[]>([]);
 
 	/**
 	 * @returns `-1` if guess is invalid, `0` if guess is incorrect, or `1` if guess is correct
@@ -54,9 +53,15 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 		[wordToCheck]
 	);
 
-	const handleErrorMsg = useCallback(() => {
+	const addErrorNotification = useCallback((text: string) => {
+		setNotifications((prev) => [...prev, text]);
+		setTimeout(() => {
+			setNotifications((prev) => prev.slice(1));
+		}, 2000);
+	}, []);
+
+	const errorAnimation = useCallback(() => {
 		if (divRef.current === null) return;
-		setDisplayErrorMsg(true);
 		for (let i = 0; i < AMT_COLS; i++) {
 			divRef.current.children[
 				currentRow.current * AMT_COLS + i
@@ -70,9 +75,6 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				].classList.remove("animate-wiggle");
 			}
 		}, 500);
-		setTimeout(() => {
-			setDisplayErrorMsg(false);
-		}, 1500);
 	}, [currentRow]);
 
 	const hardModeCheck = useCallback(() => {
@@ -86,29 +88,35 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 					(letter) => !currentWord.current.includes(letter)
 				)
 			);
-		// remove duplicates
+
 		const uniqueLetters = Array.from(new Set(unusedLetters));
 
 		if (uniqueLetters.length === 0) {
 			return true;
 		}
 
-		let errorMsg = "YOUR GUESS NEEDS TO USE THE HINTS FOR ";
-		uniqueLetters.forEach((letter, i) => {
-			errorMsg += i === uniqueLetters.length - 1 ? letter : letter + ", ";
-		});
-		setErrorMsgText(errorMsg.toUpperCase());
+		let errorMsg = "Your guess needs to use the hints given for ";
+
+		uniqueLetters
+			.sort((a, b) => a.localeCompare(b))
+			.forEach((letter, i) => {
+				errorMsg +=
+					i === uniqueLetters.length - 1
+						? letter.toUpperCase()
+						: letter.toUpperCase() + ", ";
+			});
+		addErrorNotification(errorMsg);
 		return false;
-	}, [greenLetterPositions, yellowLetterPositions]);
+	}, [greenLetterPositions, yellowLetterPositions, addErrorNotification]);
 
 	const handleCheck = useCallback(
 		(divs: HTMLCollection) => {
 			const validationCheck = validateGuess(currentWord.current);
 			if (validationCheck === -1) {
-				setErrorMsgText("NOT IN WORD LIST");
-				return handleErrorMsg();
+				addErrorNotification("Not in word list");
+				return errorAnimation();
 			}
-			if (isHardMode && !hardModeCheck()) return handleErrorMsg();
+			if (isHardMode && !hardModeCheck()) return errorAnimation();
 
 			wordToCheck.current.split("").forEach((letter, i) => {
 				if (letter === currentWord.current[i]) {
@@ -174,12 +182,13 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			currentRow,
 			validateGuess,
 			wordToCheck,
-			handleErrorMsg,
+			errorAnimation,
 			isHardMode,
 			hardModeCheck,
 			setGreenLetters,
 			setYellowLetters,
 			setGrayLetters,
+			addErrorNotification,
 		]
 	);
 
@@ -263,31 +272,18 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 
 	return (
 		<div className="relative">
-			{displayErrorMsg && (
-				<div className=" text-center absolute top-[-56px] inset-x-0 wordle-gray w-fit justify-self-center px-2 rounded-md">
-					{errorMsgText}
-				</div>
-			)}
+			<WordleNotifications notifications={notifications} />
 			<WordleGrid divRef={divRef} />
 			<Dialog
 				open={displayEndScreen}
 				setOpen={setDisplayEndScreen}
 				blurred
 			>
-				<div className="bg-primary-main items-center flex rounded-lg p-8 flex-col animate-slideVertical">
-					{endScreenText}
-					{displayWord && (
-						<span className="font-mono bg-zinc-800 rounded px-1">
-							{wordToCheck.current.toUpperCase()}
-						</span>
-					)}
-					<div className="h-4" />
-					<Button onClick={() => location.reload()}>
-						Reset?
-						<div className="w-2" />
-						<Refresh />
-					</Button>
-				</div>
+				<WordleDialogContent
+					dialogText={endScreenText}
+					displayWord={displayWord}
+					word={wordToCheck.current.toUpperCase()}
+				></WordleDialogContent>
 			</Dialog>
 		</div>
 	);
