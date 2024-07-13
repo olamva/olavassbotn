@@ -111,8 +111,8 @@
 		"playWordle": "SPILL WORDLE",
 		"projects": [
 			{
-				"title": "Nettside bygget med React, TypeScript, Next.js og Tailwind CSS",
-				"description": "Dette prosjektet er faktisk denne nettsiden! Den ble bygget med React, TypeScript, Next.js og Tailwind CSS. Jeg bygde den for å vise frem arbeidet mitt og for å gi informasjon om meg selv til potensielle arbeidsgivere og samarbeidspartnere."
+				"title": "Nettside laget med React, TypeScript, Next.js og Tailwind CSS",
+				"description": "Dette prosjektet er faktisk denne nettsiden! Den ble laget med React, TypeScript, Next.js og Tailwind CSS. Jeg bygde den for å vise frem arbeidet mitt og for å gi informasjon om meg selv til potensielle arbeidsgivere og samarbeidspartnere."
 			},
 			{
 				"title": "Wordle-klone",
@@ -124,13 +124,13 @@
 			},
 			{
 				"title": "Quizlet-klone med React, TypeScript, Next.js og Mantine",
-				"description": "Dette prosjektet ble bygget i et team i kurset TDT4140 Programvareutvikling. Det er en klone av den populære flashcard-appen Quizlet, og ble bygget med React, TypeScript, Next.js og Mantine. Appen lar brukere opprette, dele og studere flashcards, og inkluderer funksjoner som quiz-modus, søkefunksjon og mørk modus.",
+				"description": "Dette prosjektet ble laget i et team i kurset TDT4140 Programvareutvikling. Det er en klone av den populære flashcard-appen Quizlet, og ble laget med React, TypeScript, Next.js og Mantine. Appen lar brukere opprette, dele og studere flashcards, og inkluderer funksjoner som quiz-modus, søkefunksjon og mørk modus.",
 				"githubLink": "Sjekk ut prosjektet her!",
 				"projectID": "flashy"
 			},
 			{
 				"title": "Hotellbestillingsapp med Java, JavaFX, Maven og Springboot",
-				"description": "Denne appen ble bygget i et team i kurset IT1901 Informatikk Prosjekt I. Det er en hotellbestillingsapp som lar brukere søke etter og bestille hotellrom. Appen ble bygget med Java, JavaFX, Maven og Springboot, og inkluderer funksjoner som søkefunksjon, bookingsystem og en bruker 'database' (selv om den databasen bare var noen få JSON-filer🫣). Dette ble bygget veldig tidlig i både min og teamets karriere. Det var en flott læringsopplevelse, og jeg fikk mye verdifull erfaring innen programvareutvikling, teamarbeid og prosjektledelse.",
+				"description": "Denne appen ble laget i et team i kurset IT1901 Informatikk Prosjekt I. Det er en hotellbestillingsapp som lar brukere søke etter og bestille hotellrom. Appen ble laget med Java, JavaFX, Maven og Springboot, og inkluderer funksjoner som søkefunksjon, bookingsystem og en bruker 'database' (selv om den databasen bare var noen få JSON-filer🫣). Dette ble laget veldig tidlig i både min og teamets karriere. Det var en flott læringsopplevelse, og jeg fikk mye verdifull erfaring innen programvareutvikling, teamarbeid og prosjektledelse.",
 				"githubLink": "Sjekk ut appen her!",
 				"projectID": "gr2313"
 			}
