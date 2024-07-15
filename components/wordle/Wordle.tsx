@@ -6,12 +6,13 @@ import WordleDialogContent from "@/components/wordle/WordleDialogContent";
 import WordleGrid from "@/components/wordle/WordleGrid";
 import WordleNotifications from "@/components/wordle/WordleNotifications";
 import { ColorsContext } from "@/contexts/ColorsContext";
+import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import allowedGuesses from "@/public/wordle/wordle-allowed-guesses.json";
 import answers from "@/public/wordle/wordle-answers-alphabetical.json";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 
 const NOTIFICATION_LIFESPAN = 2000;
-const ENDSCREEN_DELAY = 1500;
+const ENDSCREEN_DELAY = 1000;
 const WIGGLE_ANIMATION_DURATION = 200;
 
 interface WordleProps {
@@ -22,9 +23,16 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 	const currentCol = useRef<number>(0);
 	const currentWord = useRef<string[]>([]);
 	const [isDone, setIsDone] = useState<boolean>(false);
+	const { openMenu } = useToggleStates();
 
-	const { setGreenLetters, setYellowLetters, setGrayLetters } =
-		useContext(ColorsContext);
+	const {
+		greenLetters,
+		setGreenLetters,
+		yellowLetters,
+		setYellowLetters,
+		grayLetters,
+		setGrayLetters,
+	} = useContext(ColorsContext);
 
 	const greenLetterPositions = useRef<string[]>([]);
 	const yellowLetterPositions = useRef<Set<string>>(new Set());
@@ -128,7 +136,12 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 					box.classList.remove("wordle-yellow");
 					box.classList.add("wordle-green");
 					greenLetterPositions.current[i] = letter;
-					setGreenLetters((prev) => [...prev, letter.toUpperCase()]);
+					if (!greenLetters.includes(letter.toUpperCase())) {
+						setGreenLetters((prev) => [
+							...prev,
+							letter.toUpperCase(),
+						]);
+					}
 				} else if (currentWord.current.includes(letter)) {
 					const indexes = findAllMatchingLetterIndexes(
 						currentWord.current,
@@ -144,10 +157,12 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 						}
 						box.classList.add("wordle-yellow");
 						yellowLetterPositions.current.add(letter);
-						setYellowLetters((prev) => [
-							...prev,
-							letter.toUpperCase(),
-						]);
+						if (!yellowLetters.includes(letter.toUpperCase())) {
+							setYellowLetters((prev) => [
+								...prev,
+								letter.toUpperCase(),
+							]);
+						}
 						break;
 					}
 				}
@@ -162,7 +177,9 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				}
 				box.classList.add("wordle-gray");
 				const letter = currentWord.current[i].toUpperCase();
-				setGrayLetters((prev) => [...prev, letter]);
+				if (!grayLetters.includes(letter)) {
+					setGrayLetters((prev) => [...prev, letter]);
+				}
 			}
 
 			if (validationCheck === 1) {
@@ -189,8 +206,11 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			errorAnimation,
 			isHardMode,
 			hardModeCheck,
+			greenLetters,
 			setGreenLetters,
+			yellowLetters,
 			setYellowLetters,
+			grayLetters,
 			setGrayLetters,
 			addErrorNotification,
 		]
@@ -198,6 +218,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 
 	const handleKeyDown = useCallback(
 		(e: KeyboardEvent) => {
+			if (openMenu) return;
 			if (isDone) {
 				if (e.key === "Escape") setDisplayEndScreen(false);
 				return;
@@ -244,6 +265,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			displayEndScreen,
 			handleCheck,
 			isDone,
+			openMenu,
 		]
 	);
 
@@ -274,8 +296,41 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 		}, ENDSCREEN_DELAY);
 	};
 
+	const reset = () => {
+		currentRow.current = 0;
+		currentCol.current = 0;
+		currentWord.current = [];
+		wordToCheck.current =
+			answers[Math.floor(Math.random() * answers.length)];
+
+		setIsDone(false);
+		setDisplayEndScreen(false);
+		setEndScreenText("");
+		setDisplayWord(false);
+		setNotifications([]);
+
+		greenLetterPositions.current = [];
+		yellowLetterPositions.current = new Set();
+
+		setGreenLetters([]);
+		setYellowLetters([]);
+		setGrayLetters([]);
+
+		if (divRef.current !== null) {
+			const divs = divRef.current.children;
+			for (let i = 0; i < divs.length; i++) {
+				divs[i].classList.remove(
+					"wordle-green",
+					"wordle-yellow",
+					"wordle-gray"
+				);
+				divs[i].innerHTML = "";
+			}
+		}
+	};
+
 	return (
-		<div className="relative">
+		<>
 			<WordleNotifications notifications={notifications} />
 			<WordleGrid divRef={divRef} />
 			<Dialog
@@ -287,9 +342,10 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 					dialogText={endScreenText}
 					displayWord={displayWord}
 					word={wordToCheck.current.toUpperCase()}
-				></WordleDialogContent>
+					reset={reset}
+				/>
 			</Dialog>
-		</div>
+		</>
 	);
 };
 

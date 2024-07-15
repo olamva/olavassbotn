@@ -66,6 +66,7 @@
 		"contribute": "Interested in learning how the website is put together?",
 
 		"search-field": "Search..",
+		"no-search-results": "No search results found.",
 
 		"languageToggle": "Change language to Norwegian",
 		"lightModeToggle": "Change to light mode",
@@ -73,9 +74,9 @@
 		"turnOnDevMode": "Turn on developer mode",
 		"turnOffDevMode": "Turn off developer mode",
 
-		"navigationTitle": "Navigation",
-		"socialsTitle": "Socials",
-		"settingsTitle": "Settings",
+		"navigation": "Navigation",
+		"socials": "Socials",
+		"settings": "Settings",
 
 		"wordle": "Wordle"
 	},

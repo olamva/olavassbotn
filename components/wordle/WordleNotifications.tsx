@@ -7,7 +7,7 @@ const WordleNotifications = ({
 		{notifications.map((notification, index) => (
 			<div
 				key={index}
-				className="text-center text-sm bg-primary-main w-fit rounded-md my-0.5 p-2 z-50"
+				className="text-center text-sm bg-primary w-fit rounded-md my-0.5 p-2 z-50"
 			>
 				{notification}
 			</div>

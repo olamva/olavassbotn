@@ -42,6 +42,13 @@ const OnscreenLetter = ({ letter }: { letter: string }) => {
 				"wordle-yellow"
 			);
 			div.classList.add("wordle-gray");
+		} else {
+			div.classList.remove(
+				"wordle-green",
+				"wordle-yellow",
+				"wordle-gray"
+			);
+			div.classList.add("wordle-letter-blank");
 		}
 	}, [greenLetters, yellowLetters, grayLetters, letter]);
 
