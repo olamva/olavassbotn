@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
 	return (
-		<div className="bg-primary-main shadow rounded h-fit w-full">
+		<div className="bg-primary-main shadow rounded h-fit w-full my-2 sm:my-0">
 			<Link className="w-full" href={experience.href ?? ""}>
 				<div className="p-6 flex cursor-pointer">
 					{experience.imgs.length && (

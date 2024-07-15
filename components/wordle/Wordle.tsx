@@ -10,6 +10,10 @@ import allowedGuesses from "@/public/wordle/wordle-allowed-guesses.json";
 import answers from "@/public/wordle/wordle-answers-alphabetical.json";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 
+const NOTIFICATION_LIFESPAN = 2000;
+const ENDSCREEN_DELAY = 1500;
+const WIGGLE_ANIMATION_DURATION = 200;
+
 interface WordleProps {
 	isHardMode: boolean;
 }
@@ -57,7 +61,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 		setNotifications((prev) => [...prev, text]);
 		setTimeout(() => {
 			setNotifications((prev) => prev.slice(1));
-		}, 2000);
+		}, NOTIFICATION_LIFESPAN);
 	}, []);
 
 	const errorAnimation = useCallback(() => {
@@ -74,7 +78,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 					currentRow.current * AMT_COLS + i
 				].classList.remove("animate-wiggle");
 			}
-		}, 500);
+		}, WIGGLE_ANIMATION_DURATION);
 	}, [currentRow]);
 
 	const hardModeCheck = useCallback(() => {
@@ -267,7 +271,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 	const showEndScreen = () => {
 		setTimeout(() => {
 			setDisplayEndScreen(true);
-		}, 500);
+		}, ENDSCREEN_DELAY);
 	};
 
 	return (

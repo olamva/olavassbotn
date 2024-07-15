@@ -17,7 +17,7 @@ export default function NotFound() {
 					<p>Could not find requested resource</p>
 
 					<Link
-						className="flex items-end hover:text-gray-400 dark:hover:text-gray-200 w-fit cursor-pointer select-none hover:underline"
+						className="flex items-end active:text-gray-400 dark:active:text-gray-200 sm:hover:text-gray-400 sm:dark:hover:text-gray-200 w-fit cursor-pointer select-none sm:hover:underline active:underline"
 						href="/"
 					>
 						<Home />

@@ -7,7 +7,7 @@ interface ToggleButtonProps {
 const ToggleButton = ({ onClick, children }: ToggleButtonProps) => (
 	<button
 		onClick={onClick}
-		className="p-1 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors h-fit select-none"
+		className="p-1 rounded-full sm:hover:bg-zinc-200 dark:sm:hover:bg-zinc-700 active:bg-zinc-200 dark:active:bg-zinc-700 transition-colors h-fit select-none"
 	>
 		{children}
 	</button>

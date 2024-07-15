@@ -84,19 +84,19 @@
 		"sections": [
 			{
 				"title": "Who I Am",
-				"content": "I am a 20 year old Informatics student at NTNU, and i'm in the 2nd year of my bachelor's degree. I am a member of the Academic Courses Comittee at the Student Organization Online, where I am the deputy head for the school year 24/25."
+				"content": "I am a 21 year old Informatics student at NTNU, and I'm in the 3rd and final year of my bachelor's degree, but I do plan on taking a followup master's degree. I am a member of the Academic Courses Comittee at the Student Organization Online, where I am the deputy head for the school year 24/25."
 			},
 			{
 				"title": "My Skills",
-				"content": "I designed this website in React with TypeScript, leveraging frameworks like Next.js for server-side rendering and SEO benefits. My toolset includes Material UI for designing responsive and theme-consistent UIs, along with a strong foundation in HTML, CSS, and JavaScript. Additionally, I have experience with Java and Python, and have worked on projects in both languages. I am always looking to expand my skillset and learn new technologies."
+				"content": "I have experience with most modern web development technologies, both frontend and backend. I have also worked with Java for a couple of different projects. I'm a quick learner and always open to learning more!"
 			},
 			{
 				"title": "My Journey",
-				"content": "I started my journey in informatics in 2020, when I took some introductory programming classes in High School. After that, I started my Bachelor of Informatics at NTNU Trondheim and have since then learned a lot about programming, web development, and software engineering. I have worked on several projects, both alone and in groups, and have gained a lot of experience in the field."
+				"content": "I started my journey in informatics in 2020, when I took some introductory programming classes in high school. After that, I started my Bachelor of Informatics at NTNU Trondheim and have since then learned a lot about programming, web development, and software engineering. I have worked on several projects, both alone and in groups, and have gained a lot of experience in the field through my summer internship in 2024."
 			},
 			{
 				"title": "My Goals",
-				"content": "My goal is to become a full-stack developer. I want to work on projects that make a difference, and that can help people in their everyday lives. I am passionate about technology, and I am always looking for new challenges and opportunities to learn and grow."
+				"content": "My goal is to become a developer. I want to work on projects that make a difference, and that can help people in their everyday lives. I am passionate about technology, and I am always looking for new challenges and opportunities to learn and grow."
 			}
 		],
 		"projectsbutton": "My Projects",
