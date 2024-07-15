@@ -4,7 +4,7 @@ import DarkMode from "@/public/icons/DarkMode";
 import LightMode from "@/public/icons/LightMode";
 import { useEffect } from "react";
 
-const setCookie = (name: string, value: string, days?: number): void => {
+export const setCookie = (name: string, value: string, days?: number): void => {
 	let expires = "";
 	if (days) {
 		const date = new Date();
@@ -14,7 +14,7 @@ const setCookie = (name: string, value: string, days?: number): void => {
 	document.cookie = name + "=" + (value || "") + expires + "; path=/";
 };
 
-const getCookie = (name: string): string | null => {
+export const getCookie = (name: string): string | null => {
 	const nameEQ = name + "=";
 	const ca = document.cookie.split(";");
 	for (let i = 0; i < ca.length; i++) {

@@ -9,7 +9,7 @@ interface InputDetectorProps {
 const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
 	const [keySequence, setKeySequence] = useState<string[]>([]);
 	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-	const { override, setOverride } = useToggleStates();
+	const { override, setOverride, openMenu } = useToggleStates();
 	useEffect(() => {
 		const keyDownHandler = (event: KeyboardEvent) => {
 			setKeySequence((prevSequence) =>
@@ -22,16 +22,16 @@ const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
 		};
 	}, [sequenceToCheck.length]);
 	useEffect(() => {
-		if (isDialogOpen) return;
+		if (isDialogOpen || openMenu) return;
 		if (keySequence.join("") === sequenceToCheck) {
 			setIsDialogOpen(true);
 		}
-	}, [keySequence, sequenceToCheck, isDialogOpen]);
+	}, [keySequence, sequenceToCheck, isDialogOpen, openMenu]);
 	useEffect(() => {
-		if (override) {
+		if (override && !openMenu) {
 			setIsDialogOpen(true);
 		}
-	}, [override]);
+	}, [override, openMenu]);
 	return (
 		isDialogOpen && (
 			<SnakeGame

@@ -3,28 +3,38 @@
 @tailwind utilities;
 
 @layer components {
-    .wordle-green {
-        @apply bg-green-400 dark:bg-green-500
-    }
-    .wordle-yellow {
-        @apply bg-yellow-400 dark:bg-yellow-500
-    }
-    .wordle-gray {
-        @apply bg-zinc-400 dark:bg-zinc-800
-    }
-    .wordle-letter-blank {
-        @apply bg-zinc-200 dark:bg-zinc-700
-    }
-    .bg-primary-main {
-        @apply bg-[rgb(211,212,200)] dark:bg-[rgb(20,20,20)]
-    }
-    .bg-primary-dark {
-        @apply bg-[rgb(147,148,140)] dark:bg-[rgb(14,14,14)]
-    }
-    .bg-primary-light {
-        @apply bg-[rgb(219,220,211)] dark:bg-[rgb(67,67,67)]
-    }
-    .bg-default {
-        @apply bg-[rgb(240,241,231)] dark:bg-[rgb(15,15,15)]
-    }
+	.wordle-green {
+		@apply bg-green-400 dark:bg-green-500;
+	}
+	.wordle-yellow {
+		@apply bg-yellow-400 dark:bg-yellow-500;
+	}
+	.wordle-gray {
+		@apply bg-zinc-400 dark:bg-zinc-800;
+	}
+	.wordle-letter-blank {
+		@apply bg-zinc-200 dark:bg-zinc-700;
+	}
+	.bg-primary-main {
+		@apply bg-[rgb(211,212,200)] dark:bg-[rgb(20,20,20)];
+	}
+	.bg-primary-dark {
+		@apply bg-[rgb(147,148,140)] dark:bg-[rgb(14,14,14)];
+	}
+	.bg-primary-light {
+		@apply bg-[rgb(219,220,211)] dark:bg-[rgb(67,67,67)];
+	}
+	.bg-default {
+		@apply bg-[rgb(240,241,231)] dark:bg-[rgb(15,15,15)];
+	}
+	.button-hover {
+		@apply hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-10 hover:bg-opacity-5;
+	}
+	.button-hover-mobile {
+		@apply active:bg-black dark:active:bg-white dark:active:bg-opacity-10 active:bg-opacity-5;
+	}
+}
+
+* {
+	box-sizing: border-box;
 }

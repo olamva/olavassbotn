@@ -4,7 +4,7 @@ import { JSX } from "react";
 export type SocialLink = {
 	icon: ({ size }: { size?: string }) => JSX.Element;
 	link: string;
-	label?: string;
+	label: string;
 };
 export interface ImportedImage {
 	src: StaticImageData | string;

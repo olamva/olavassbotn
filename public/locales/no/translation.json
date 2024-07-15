@@ -73,9 +73,9 @@
 		"turnOnDevMode": "Skru på Utviklermodus",
 		"turnOffDevMode": "Skru av Utviklermodus",
 
-		"navigationTitle": "Navigasjon",
-		"socialsTitle": "Sosiale Medier",
-		"settingsTitle": "Innstillinger",
+		"navigation": "Navigasjon",
+		"socials": "Sosiale Medier",
+		"settings": "Innstillinger",
 
 		"wordle": "Wordle"
 	},

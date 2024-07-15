@@ -3,7 +3,7 @@ import ApplicationShell from "@/components/default/ApplicationShell";
 import Footer from "@/components/default/Footer";
 import Drawer from "@/components/navigation/Drawer";
 import NavBar from "@/components/navigation/NavBar";
-import NavMenu from "@/components/navigation/NavMenu";
+import SearchMenu from "@/components/navigation/SearchMenu";
 import InputDetector from "@/components/snakeGame/InputDetector";
 import "@/public/globals.css";
 import { Analytics } from "@vercel/analytics/react";
@@ -46,7 +46,7 @@ export default function LocaleLayout({
 				<SpeedInsights />
 				<ApplicationShell savedDevMode={devModeValue}>
 					<body className="text-black dark:text-white bg-default font-light">
-						<NavMenu />
+						<SearchMenu />
 						<Drawer />
 						<div className="flex flex-col min-h-svh">
 							<main className="flex-grow">
