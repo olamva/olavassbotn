@@ -66,6 +66,7 @@
 		"contribute": "Interessert i å lære hvordan nettsiden er satt sammen?",
 
 		"search-field": "Søk..",
+		"no-search-results": "Ingen søkeresultater funnet.",
 
 		"languageToggle": "Bytt Språk til Engelsk",
 		"lightModeToggle": "Bytt til Lyst Tema",
@@ -73,9 +74,9 @@
 		"turnOnDevMode": "Skru på Utviklermodus",
 		"turnOffDevMode": "Skru av Utviklermodus",
 
-		"navigationTitle": "Navigasjon",
-		"socialsTitle": "Sosiale Medier",
-		"settingsTitle": "Innstillinger",
+		"navigation": "Navigasjon",
+		"socials": "Sosiale Medier",
+		"settings": "Innstillinger",
 
 		"wordle": "Wordle"
 	},

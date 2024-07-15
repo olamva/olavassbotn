@@ -6,12 +6,13 @@ import WordleDialogContent from "@/components/wordle/WordleDialogContent";
 import WordleGrid from "@/components/wordle/WordleGrid";
 import WordleNotifications from "@/components/wordle/WordleNotifications";
 import { ColorsContext } from "@/contexts/ColorsContext";
+import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import allowedGuesses from "@/public/wordle/wordle-allowed-guesses.json";
 import answers from "@/public/wordle/wordle-answers-alphabetical.json";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 
 const NOTIFICATION_LIFESPAN = 2000;
-const ENDSCREEN_DELAY = 1500;
+const ENDSCREEN_DELAY = 1000;
 const WIGGLE_ANIMATION_DURATION = 200;
 
 interface WordleProps {
@@ -22,6 +23,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 	const currentCol = useRef<number>(0);
 	const currentWord = useRef<string[]>([]);
 	const [isDone, setIsDone] = useState<boolean>(false);
+	const { openMenu } = useToggleStates();
 
 	const { setGreenLetters, setYellowLetters, setGrayLetters } =
 		useContext(ColorsContext);
@@ -198,6 +200,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 
 	const handleKeyDown = useCallback(
 		(e: KeyboardEvent) => {
+			if (openMenu) return;
 			if (isDone) {
 				if (e.key === "Escape") setDisplayEndScreen(false);
 				return;
@@ -244,6 +247,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			displayEndScreen,
 			handleCheck,
 			isDone,
+			openMenu,
 		]
 	);
 
@@ -275,7 +279,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 	};
 
 	return (
-		<div className="relative">
+		<>
 			<WordleNotifications notifications={notifications} />
 			<WordleGrid divRef={divRef} />
 			<Dialog
@@ -287,9 +291,9 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 					dialogText={endScreenText}
 					displayWord={displayWord}
 					word={wordToCheck.current.toUpperCase()}
-				></WordleDialogContent>
+				/>
 			</Dialog>
-		</div>
+		</>
 	);
 };
 

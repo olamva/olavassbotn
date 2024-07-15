@@ -37,6 +37,9 @@ export default function ApplicationShell({
 					return !currentValue;
 				});
 			}
+			if (e.key === "Escape") {
+				return setOpenMenu(false);
+			}
 		}
 
 		document.addEventListener("keydown", handleKeyDown);

@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
 const ListItem = ({ children }: { children: ReactNode }) => (
-	<div className="flex p-2 items-center hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-opacity-5 transition-all w-full select-none">
+	<div className="flex p-2 items-center button-hover transition-all w-full select-none">
 		{children}
 	</div>
 );
@@ -69,12 +69,12 @@ const useDrawerList = () => {
 						.map((item) => (
 							<li key={item.label}>
 								<a href={item.link}>
-									<div className="flex p-2 items-center hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-opacity-5 transition-all w-full">
+									<ListItem>
 										{item.icon && <item.icon size="16px" />}
 										<p className="pl-1 text-xs text-left">
 											{t(item.label)}
 										</p>
-									</div>
+									</ListItem>
 								</a>
 							</li>
 						))}

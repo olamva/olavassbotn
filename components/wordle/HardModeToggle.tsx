@@ -18,7 +18,7 @@ const HardModeToggle = ({ isHardMode, setIsHardMode }: HardModeToggleProps) => {
 	const toggleClasses = isHardMode
 		? "wordle-green"
 		: "bg-zinc-500 dark:bg-zinc-600";
-	const childClasses = isHardMode ? "translate-x-full" : "ml-[1px]";
+	const childClasses = isHardMode ? "ml-auto mr-[1px]" : "ml-[1px] mr-auto";
 
 	return (
 		<div
@@ -31,7 +31,7 @@ const HardModeToggle = ({ isHardMode, setIsHardMode }: HardModeToggleProps) => {
 				ref={toggleRef}
 			>
 				<div
-					className={`bg-zinc-100 dark:bg-zinc-800 size-4 rounded-full m-0 transition-all transform ${childClasses}`}
+					className={`bg-zinc-100 dark:bg-zinc-800 size-4 rounded-full m-0 transition-all ${childClasses}`}
 				/>
 			</div>
 		</div>

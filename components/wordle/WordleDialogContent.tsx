@@ -11,7 +11,7 @@ const WordleDialogContent = ({
 	displayWord,
 	word,
 }: WordleDialogContentProps) => (
-	<div className="bg-primary-main items-center flex rounded-lg p-8 flex-col animate-slideVertical">
+	<div className="bg-primary items-center flex rounded-lg p-8 flex-col animate-slideVertical">
 		{dialogText}
 		{displayWord && (
 			<span className="font-mono bg-zinc-800 rounded px-1">{word}</span>
