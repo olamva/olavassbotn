@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
 	return (
-		<footer className="py-4 sm:py-8 m-auto w-full bg-primary-main flex justify-center flex-wrap">
+		<footer className="py-4 sm:py-8 m-auto w-full bg-primary flex justify-center flex-wrap">
 			<div className="flex flex-col sm:flex-row mr-4 sm:mr-0">
 				{socialLinks.map((social, index) => (
 					<Link

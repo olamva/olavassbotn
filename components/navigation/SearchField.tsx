@@ -14,7 +14,7 @@ const SearchField = () => {
 		<>
 			<div className="hidden sm:block">
 				<button
-					className="bg-primary-main button-hover flex flex-row p-2 rounded-xl items-center cursor-pointer select-none"
+					className="bg-primary button-hover flex flex-row p-2 rounded-xl items-center cursor-pointer select-none"
 					onClick={() => setOpenMenu(true)}
 				>
 					<div className="mx-0.5 ">

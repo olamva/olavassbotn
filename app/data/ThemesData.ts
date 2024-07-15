@@ -2,24 +2,15 @@ import { ThemesPaper } from "@/app/types/default";
 
 export const papers: ThemesPaper[] = [
 	{
-		label: "Primary Main",
-		color: "bg-primary-main",
+		label: "Primary",
+		color: "bg-primary",
 	},
 	{
-		label: "Primary Dark",
-		color: "bg-primary-dark",
+		label: "Secondary",
+		color: "bg-secondary",
 	},
 	{
-		label: "Primary Light",
-		color: "bg-primary-light",
-	},
-	{
-		label: "Primary Contrast Text",
-		color: "bg-black dark:bg-white",
-		textColor: "text-white dark:text-black",
-	},
-	{
-		label: "Background Default",
+		label: "Background",
 		color: "bg-default",
 	},
 ];
