@@ -1,22 +1,16 @@
 "use client";
 
-import ToggleButton from "@/components/toggles/ToggleButton";
 import NOFlag from "@/public/flags/NO.png";
 import USFlag from "@/public/flags/US.png";
 import { useLocale } from "next-intl";
 import Image, { StaticImageData } from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const LangToggle = () => {
-	const router = useRouter();
 	const pathname = usePathname();
 	const locale = useLocale();
-	const toggleLanguage = () => {
-		const newLocale = locale === "no" ? "en" : "no";
-		const newPathname = "/" + newLocale + pathname.slice(3);
-		router.push(newPathname);
-		router.refresh(); // ! without this extra refresh, the theme toggle completely breaks apart when changing the language
-	};
+	const newPath = "/" + (locale === "no" ? "en" : "no") + pathname.slice(3);
 
 	const languages: { [key: string]: StaticImageData } = {
 		en: USFlag,
@@ -24,13 +18,17 @@ const LangToggle = () => {
 	};
 	const flagSrc = languages[locale];
 	return (
-		<ToggleButton onClick={toggleLanguage}>
+		<Link
+			href={`${newPath}`}
+			className="p-1 rounded-full sm:hover:bg-zinc-200 dark:sm:hover:bg-zinc-700 active:bg-zinc-200 dark:active:bg-zinc-700 transition-colors h-fit select-none"
+			replace
+		>
 			<Image
 				src={flagSrc}
 				alt="Toggle Language"
 				className="size-5 rounded-full"
 			/>
-		</ToggleButton>
+		</Link>
 	);
 };
 export default LangToggle;

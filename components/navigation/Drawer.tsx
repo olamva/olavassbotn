@@ -36,7 +36,7 @@ const Drawer = () => {
 				openDrawer ? "translate-x-0" : "-translate-x-full"
 			}`}
 		>
-			<div className="flex flex-col h-full max-w-64 bg-default text-left">
+			<div className="flex flex-col h-full max-w-48 md:max-w-64 bg-default text-left">
 				{drawerList}
 			</div>
 		</div>

@@ -50,18 +50,25 @@ const ExperienceGrid = () => {
 	}, [leftList, rightList, swapElements]);
 
 	return (
-		<div className="mt-4 m-auto max-w-full md:max-w-[80%] grid gap-2 w-full grid-cols-1 sm:grid-cols-2">
-			<div className="grid gap-2 h-fit" ref={leftListRef}>
-				{leftList.map((item, index) => (
+		<>
+			<div className="mt-4 m-auto max-w-full md:max-w-[80%] hidden sm:grid gap-2 w-full grid-cols-2">
+				<div className="grid gap-2 h-fit" ref={leftListRef}>
+					{leftList.map((item, index) => (
+						<ExperienceCard key={index} experience={item} />
+					))}
+				</div>
+				<div className="grid gap-2 h-fit" ref={rightListRef}>
+					{rightList.map((item, index) => (
+						<ExperienceCard key={index} experience={item} />
+					))}
+				</div>
+			</div>
+			<div className="sm:hidden mt-4 m-auto max-w-full gap-2 w-full grid-cols-1">
+				{experienceList.map((item, index) => (
 					<ExperienceCard key={index} experience={item} />
 				))}
 			</div>
-			<div className="grid gap-2 h-fit" ref={rightListRef}>
-				{rightList.map((item, index) => (
-					<ExperienceCard key={index} experience={item} />
-				))}
-			</div>
-		</div>
+		</>
 	);
 };
 
