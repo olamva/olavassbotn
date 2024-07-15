@@ -17,7 +17,6 @@ const OnscreenLetter = ({ letter }: { letter: string }) => {
 		useContext(ColorsContext);
 
 	useEffect(() => {
-		console.log("useEffect", greenLetters, yellowLetters, grayLetters);
 		const div = divRef.current;
 		if (letter === "Backspace" || letter === "Enter" || div === null) {
 			return;
