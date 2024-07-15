@@ -17,6 +17,7 @@ const OnscreenLetter = ({ letter }: { letter: string }) => {
 		useContext(ColorsContext);
 
 	useEffect(() => {
+		console.log("useEffect", greenLetters, yellowLetters, grayLetters);
 		const div = divRef.current;
 		if (letter === "Backspace" || letter === "Enter" || div === null) {
 			return;
@@ -42,6 +43,13 @@ const OnscreenLetter = ({ letter }: { letter: string }) => {
 				"wordle-yellow"
 			);
 			div.classList.add("wordle-gray");
+		} else {
+			div.classList.remove(
+				"wordle-green",
+				"wordle-yellow",
+				"wordle-gray"
+			);
+			div.classList.add("wordle-letter-blank");
 		}
 	}, [greenLetters, yellowLetters, grayLetters, letter]);
 
