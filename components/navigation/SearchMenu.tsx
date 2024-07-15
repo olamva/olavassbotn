@@ -24,10 +24,13 @@ import {
 } from "react";
 import { setCookie } from "../toggles/ThemeToggle";
 
+const ICON_SIZE = "16px";
+
 const SearchMenu = () => {
 	const { openMenu, setOpenMenu } = useToggleStates();
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [showClear, setShowClear] = useState(false);
+	const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
 	const pressedItem = (onClick?: () => void) => {
 		if (onClick) onClick();
@@ -36,28 +39,54 @@ const SearchMenu = () => {
 	};
 
 	interface MenuItemLinkProps {
+		icon: ReactElement;
 		href: string;
 		children: ReactNode;
+		selected: boolean;
 	}
-	const MenuItemLink = ({ href, children }: MenuItemLinkProps) => (
+	const MenuItemLink = ({
+		icon,
+		href,
+		children,
+		selected,
+	}: MenuItemLinkProps) => (
 		<Link
-			className="flex p-2 items-center button-hover transition-all w-full select-none"
+			className={`flex py-2 px-1 items-center button-hover transition-all w-full select-none ${
+				selected
+					? "bg-black dark:bg-white dark:bg-opacity-10 bg-opacity-5"
+					: ""
+			}`}
 			href={href}
 			onClick={() => pressedItem()}
 		>
+			{icon}
+			<div className="w-1" />
 			{children}
 		</Link>
 	);
 
 	interface MenuItemButtonProps {
+		icon: ReactElement;
 		onClick: () => void;
 		children: ReactNode;
+		selected: boolean;
 	}
-	const MenuItemButton = ({ onClick, children }: MenuItemButtonProps) => (
+	const MenuItemButton = ({
+		icon,
+		onClick,
+		children,
+		selected,
+	}: MenuItemButtonProps) => (
 		<button
-			className="flex p-2 items-center button-hover transition-all w-full select-none"
+			className={`flex py-2 px-1 items-center button-hover transition-all w-full select-none ${
+				selected
+					? "bg-black dark:bg-white dark:bg-opacity-10 bg-opacity-5"
+					: ""
+			}`}
 			onClick={() => pressedItem(onClick)}
 		>
+			{icon}
+			<div className="w-1" />
 			{children}
 		</button>
 	);
@@ -89,7 +118,7 @@ const SearchMenu = () => {
 		const settingsItems: SearchMenuItem[] = [
 			{
 				label: t("languageToggle"),
-				icon: <Language />,
+				icon: <Language size={ICON_SIZE} />,
 				onClick: () => toggleLanguage(),
 			},
 			{
@@ -98,10 +127,10 @@ const SearchMenu = () => {
 				icon: (
 					<>
 						<div className="dark:hidden">
-							<LightMode />
+							<LightMode size={ICON_SIZE} />
 						</div>
 						<div className="hidden dark:block">
-							<DarkMode />
+							<DarkMode size={ICON_SIZE} />
 						</div>
 					</>
 				),
@@ -109,7 +138,7 @@ const SearchMenu = () => {
 			},
 			{
 				label: t(devMode ? "turnOffDevMode" : "turnOnDevMode"),
-				icon: <Code />,
+				icon: <Code size={ICON_SIZE} />,
 				onClick: () => clickedDevMode(),
 			},
 		];
@@ -148,7 +177,7 @@ const SearchMenu = () => {
 						const itemLink = root + (item.link ?? "");
 						return {
 							label: t(item.label),
-							icon: <item.filledIcon />,
+							icon: <item.filledIcon size={ICON_SIZE} />,
 							href: itemLink,
 						};
 					}),
@@ -158,7 +187,7 @@ const SearchMenu = () => {
 				items: socialLinks.map((item): SearchMenuItem => {
 					return {
 						label: item.label,
-						icon: <item.icon />,
+						icon: <item.icon size={ICON_SIZE} />,
 						href: item.link,
 					};
 				}),
@@ -176,22 +205,21 @@ const SearchMenu = () => {
 	const updateFilteredItems = useCallback(() => {
 		if (inputRef.current === null) return;
 		const searched = inputRef.current.value.toLowerCase();
-		setFilteredItems(
-			menuItems
-				.map((group) => {
-					return {
-						...group,
-						items: group.items.filter(
-							(item) =>
-								item.label.toLowerCase().includes(searched) ||
-								item.darkModeLabel
-									?.toLowerCase()
-									.includes(searched)
-						),
-					};
-				})
-				.filter((group) => group.items.length > 0)
-		);
+		const newFilteredItems = menuItems
+			.map((group) => {
+				return {
+					...group,
+					items: group.items.filter(
+						(item) =>
+							item.label.toLowerCase().includes(searched) ||
+							item.darkModeLabel?.toLowerCase().includes(searched)
+					),
+				};
+			})
+			.filter((group) => group.items.length > 0);
+
+		setFilteredItems(newFilteredItems);
+		setSelectedIndex(0); // Auto-select the first item
 	}, [inputRef, menuItems]);
 
 	const updateShowClear = useCallback(() => {
@@ -212,6 +240,38 @@ const SearchMenu = () => {
 		updateFilteredItems();
 	};
 
+	const handleKeyDown = (e: React.KeyboardEvent) => {
+		if (filteredItems.length === 0) return;
+
+		switch (e.key) {
+			case "ArrowDown":
+				setSelectedIndex((prevIndex) =>
+					Math.min(
+						prevIndex + 1,
+						filteredItems.flatMap((group) => group.items).length - 1
+					)
+				);
+				break;
+			case "ArrowUp":
+				setSelectedIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+				break;
+			case "Enter":
+				const currentItem = filteredItems.flatMap(
+					(group) => group.items
+				)[selectedIndex];
+				if (currentItem.href) {
+					router.push(currentItem.href);
+					setOpenMenu(false);
+					clearInputField();
+				} else if (currentItem.onClick) {
+					currentItem.onClick();
+					setOpenMenu(false);
+					clearInputField();
+				}
+				break;
+		}
+	};
+
 	useEffect(() => {
 		const currentInput = inputRef.current;
 		if (currentInput === null) return;
@@ -226,8 +286,8 @@ const SearchMenu = () => {
 	return (
 		<Dialog open={openMenu} setOpen={setOpenMenu} blurred>
 			<div className="h-80 bg-primary-light shadow-lg rounded overflow-hidden w-[90%] max-w-96 flex flex-col">
-				<div className="flex p-2">
-					<div className="size-fit">
+				<div className="flex px-2 py-3 items-center">
+					<div className="size-fit pr-1">
 						<Search size="20px" />
 					</div>
 					<input
@@ -236,47 +296,62 @@ const SearchMenu = () => {
 						className="outline-none bg-primary-light size-full"
 						autoFocus
 						onChange={handleChange}
+						onKeyDown={handleKeyDown}
+						placeholder={t("search-field")}
 					/>
 					{showClear && (
 						<button
-							className="size-fit hover:text-zinc-600 dark:hover:text-zinc-400"
+							className="size-fit hover:text-zinc-600 dark:hover:text-zinc-400 pl-2"
 							onClick={clearInputField}
 						>
-							<Clear size="20px" />
+							<Clear size="12px" />
 						</button>
 					)}
 				</div>
 				<hr className="mx-auto w-full border-[rgb(211,212,200)] dark:border-[rgb(20,20,20)]" />
 				<div className="overflow-y-auto flex-grow">
 					{filteredItems.map(
-						(group, index) =>
+						(group, groupIndex) =>
 							group.items.length > 0 && (
 								<div key={group.title}>
 									<h1
 										className={`text-lg font-bold pl-1 ${
-											index !== 0 ? "mt-4" : ""
+											groupIndex !== 0 ? "mt-4" : ""
 										}`}
 									>
 										{group.title}
 									</h1>
 
-									{group.items.map(
-										(item) =>
-											item.href && (
-												<MenuItemLink
-													href={item.href}
-													key={item.label}
-												>
-													{item.label}
-												</MenuItemLink>
-											)
-									)}
-									{group.items.map(
-										(item) =>
+									{group.items.map((item, itemIndex) => {
+										const flatIndex =
+											filteredItems
+												.slice(0, groupIndex)
+												.reduce(
+													(acc, g) =>
+														acc + g.items.length,
+													0
+												) + itemIndex;
+										return item.href ? (
+											<MenuItemLink
+												icon={item.icon}
+												href={item.href}
+												key={item.label}
+												selected={
+													flatIndex === selectedIndex
+												}
+											>
+												{item.label}
+											</MenuItemLink>
+										) : (
 											item.onClick && (
 												<MenuItemButton
+													icon={item.icon}
 													onClick={item.onClick}
 													key={item.label}
+													selected={
+														flatIndex ===
+														selectedIndex
+													}
 												>
 													<div className="dark:hidden">
 														{item.label}
@@ -287,7 +362,8 @@ const SearchMenu = () => {
 													</div>
 												</MenuItemButton>
 											)
-									)}
+										);
+									})}
 								</div>
 							)
 					)}
