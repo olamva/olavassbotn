@@ -50,7 +50,7 @@ export const MenuItemLink = ({
 
 	return (
 		<Link
-			className={`flex py-2 px-2 items-center transition-all w-full select-none ${
+			className={`flex py-2 px-3 items-center transition-all w-full select-none ${
 				flatIndex === selectedIndex
 					? "bg-black dark:bg-white dark:bg-opacity-10 bg-opacity-5"
 					: ""
@@ -98,7 +98,7 @@ export const MenuItemButton = ({
 
 	return (
 		<button
-			className={`flex py-2 px-2 items-center transition-all w-full select-none ${
+			className={`flex py-2 px-3 items-center transition-all w-full select-none ${
 				flatIndex === selectedIndex
 					? "bg-black dark:bg-white dark:bg-opacity-10 bg-opacity-5"
 					: ""

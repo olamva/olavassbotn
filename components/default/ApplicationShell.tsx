@@ -1,7 +1,6 @@
 "use client";
 import DevModeProvider from "@/contexts/DevModeProvider";
 import ToggleStatesProvider from "@/contexts/ToggleStatesProvider";
-import Cookies from "js-cookie";
 import { ReactNode, useEffect, useState } from "react";
 
 export default function ApplicationShell({
@@ -12,24 +11,13 @@ export default function ApplicationShell({
 	savedDevMode: boolean;
 }) {
 	const [devMode, setDevMode] = useState<boolean>(savedDevMode);
-	useEffect(() => {
-		Cookies.set("devMode", String(devMode));
-	}, [devMode]);
-
 	const [openDrawer, setOpenDrawer] = useState(false);
 	const [openMenu, setOpenMenu] = useState<boolean>(false);
 	const [override, setOverride] = useState<boolean>(false);
 
-	const [isMac, setIsMac] = useState(false);
 	useEffect(() => {
-		setIsMac(
-			typeof window !== "undefined"
-				? navigator.userAgent.toUpperCase().indexOf("MAC") >= 0
-				: false
-		);
-
 		function handleKeyDown(e: KeyboardEvent) {
-			if ((isMac ? e.metaKey : e.ctrlKey) && e.key === "k") {
+			if ((e.metaKey || e.ctrlKey) && e.key === "k") {
 				e.preventDefault();
 				e.stopPropagation();
 
@@ -47,7 +35,7 @@ export default function ApplicationShell({
 		return () => {
 			document.removeEventListener("keydown", handleKeyDown);
 		};
-	}, [isMac]);
+	}, []);
 	return (
 		<DevModeProvider mode={devMode} setMode={setDevMode}>
 			<ToggleStatesProvider
@@ -55,7 +43,6 @@ export default function ApplicationShell({
 				openDrawer={openDrawer}
 				openMenu={openMenu}
 				setOpenMenu={setOpenMenu}
-				isMac={isMac}
 				override={override}
 				setOverride={setOverride}
 			>
