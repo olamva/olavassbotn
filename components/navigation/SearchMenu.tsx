@@ -154,7 +154,7 @@ const SearchMenu = () => {
 
 	return (
 		<Dialog open={openMenu} setOpen={setOpenMenu} blurred>
-			<div className="h-96 bg-primary shadow-lg rounded-xl overflow-hidden -mt-[28rem] sm:mt-auto w-[90%] max-w-lg flex flex-col">
+			<div className="h-96 bg-primary shadow-lg rounded-xl overflow-hidden -mt-72 sm:mt-auto w-[90%] max-w-lg flex flex-col">
 				<div className="flex px-2 py-3 items-center">
 					<div className="size-fit pr-1">
 						<Search size="20px" />
