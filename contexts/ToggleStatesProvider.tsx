@@ -5,7 +5,6 @@ interface ToggleStatesContextType {
 	openDrawer: boolean;
 	setOpenMenu: (currentValue: boolean) => void;
 	openMenu: boolean;
-	isMac: boolean;
 	override: boolean;
 	setOverride: (value: boolean) => void;
 }
@@ -14,7 +13,6 @@ const ToggleStatesContext = createContext<ToggleStatesContextType>({
 	openDrawer: false,
 	setOpenMenu: () => {},
 	openMenu: false,
-	isMac: false,
 	override: false,
 	setOverride: () => {},
 });
@@ -24,7 +22,6 @@ interface ToggleStatesProviderProps {
 	openDrawer: boolean;
 	setOpenMenu: (currentValue: boolean) => void;
 	openMenu: boolean;
-	isMac: boolean;
 	override: boolean;
 	setOverride: (value: boolean) => void;
 }
@@ -35,7 +32,6 @@ const ToggleStatesProvider: FC<ToggleStatesProviderProps> = ({
 	openDrawer,
 	setOpenMenu,
 	openMenu,
-	isMac,
 	override,
 	setOverride,
 }: ToggleStatesProviderProps) => {
@@ -46,7 +42,6 @@ const ToggleStatesProvider: FC<ToggleStatesProviderProps> = ({
 				openDrawer,
 				setOpenMenu,
 				openMenu,
-				isMac,
 				override,
 				setOverride,
 			}}

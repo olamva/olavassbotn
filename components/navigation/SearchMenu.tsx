@@ -154,13 +154,15 @@ const SearchMenu = () => {
 
 	return (
 		<Dialog open={openMenu} setOpen={setOpenMenu} blurred>
-			<div className="h-80 bg-primary shadow-lg rounded-xl overflow-hidden w-[90%] max-w-96 flex flex-col">
+			<div className="h-96 bg-primary shadow-lg rounded-lg overflow-hidden -mt-52 sm:-mt-0 w-[90%] max-w-lg flex flex-col">
 				<div className="flex px-2 py-3 items-center">
 					<div className="size-fit pr-1">
 						<Search size="20px" />
 					</div>
 					<input
 						type="text"
+						autoComplete="off"
+						id="search"
 						ref={inputRef}
 						className="outline-none bg-inherit size-full"
 						autoFocus
@@ -173,7 +175,7 @@ const SearchMenu = () => {
 							className="size-fit hover:text-zinc-600 dark:hover:text-zinc-400 pl-2"
 							onClick={clearInputField}
 						>
-							<Clear size="12px" />
+							<Clear size="16px" />
 						</button>
 					)}
 				</div>
@@ -185,14 +187,17 @@ const SearchMenu = () => {
 					{filteredItems.map(
 						(group, groupIndex) =>
 							group.items.length > 0 && (
-								<div key={group.title}>
-									<h1
-										className={`text-lg font-bold pl-1 ${
-											groupIndex !== 0 ? "mt-4" : ""
-										}`}
-									>
-										{group.title}
-									</h1>
+								<div key={group.title} className="">
+									<div className="flex flex-col w-fit p-1">
+										<h1
+											className={`text-lg font-bold mx-1 ${
+												groupIndex !== 0 ? "mt-4" : ""
+											}`}
+										>
+											{group.title}
+										</h1>
+										<hr className="border-black dark:border-white" />
+									</div>
 
 									{group.items.map((item, itemIndex) => {
 										const flatIndex =
