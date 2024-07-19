@@ -32,7 +32,7 @@ const Drawer = () => {
 	return (
 		<div
 			ref={drawerRef}
-			className={`fixed h-full transition-transform transform duration-300 ease-in-out z-10 ${
+			className={`fixed h-full transition-transform transform duration-300 ease-in-out shadow z-10 ${
 				openDrawer ? "translate-x-0" : "-translate-x-full"
 			}`}
 		>
