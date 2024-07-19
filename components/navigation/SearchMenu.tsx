@@ -161,6 +161,8 @@ const SearchMenu = () => {
 					</div>
 					<input
 						type="text"
+						autoComplete="off"
+						id="search"
 						ref={inputRef}
 						className="outline-none bg-inherit size-full"
 						autoFocus
