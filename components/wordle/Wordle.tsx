@@ -38,7 +38,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 	const yellowLetterPositions = useRef<Set<string>>(new Set());
 
 	const wordToCheck = useRef<string>(
-		answers[Math.floor(Math.random() * answers.length)]
+		answers[Math.floor(Math.random() * answers.length)],
 	);
 
 	const divRef = useRef<HTMLDivElement>(null);
@@ -62,7 +62,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				return 0;
 			return -1;
 		},
-		[wordToCheck]
+		[wordToCheck],
 	);
 
 	const addErrorNotification = useCallback((text: string) => {
@@ -93,12 +93,12 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 		const unusedLetters = greenLetterPositions.current
 			.filter(
 				(letter, i) =>
-					letter !== undefined && letter !== currentWord.current[i]
+					letter !== undefined && letter !== currentWord.current[i],
 			)
 			.concat(
 				Array.from(yellowLetterPositions.current).filter(
-					(letter) => !currentWord.current.includes(letter)
-				)
+					(letter) => !currentWord.current.includes(letter),
+				),
 			);
 
 		const uniqueLetters = Array.from(new Set(unusedLetters));
@@ -145,7 +145,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				} else if (currentWord.current.includes(letter)) {
 					const indexes = findAllMatchingLetterIndexes(
 						currentWord.current,
-						letter
+						letter,
 					);
 					for (const index of indexes) {
 						const box = divs[currentRow.current * AMT_COLS + index];
@@ -213,7 +213,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			grayLetters,
 			setGrayLetters,
 			addErrorNotification,
-		]
+		],
 	);
 
 	const handleKeyDown = useCallback(
@@ -266,7 +266,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			handleCheck,
 			isDone,
 			openMenu,
-		]
+		],
 	);
 
 	useEffect(() => {
@@ -279,7 +279,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 
 	const findAllMatchingLetterIndexes = (
 		word: string[],
-		letter: string
+		letter: string,
 	): number[] => {
 		const indexes: number[] = [];
 		word.forEach((char, i) => {
@@ -322,7 +322,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				divs[i].classList.remove(
 					"wordle-green",
 					"wordle-yellow",
-					"wordle-gray"
+					"wordle-gray",
 				);
 				divs[i].innerHTML = "";
 			}

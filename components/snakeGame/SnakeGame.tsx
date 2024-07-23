@@ -7,7 +7,7 @@ interface SnakeGameProps {
 const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const [context, setContext] = useState<CanvasRenderingContext2D | null>(
-		null
+		null,
 	);
 	const unitSize = 40;
 	const canvasWidth =
@@ -30,17 +30,17 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 							Math.round(
 								(Math.random() *
 									(canvasRef.current.width - unitSize)) /
-									unitSize
+									unitSize,
 							) * unitSize;
 						foodY =
 							Math.round(
 								(Math.random() *
 									(canvasRef.current.height - unitSize)) /
-									unitSize
+									unitSize,
 							) * unitSize;
 					} while (
 						snake.some(
-							(part) => part.x === foodX && part.y === foodY
+							(part) => part.x === foodX && part.y === foodY,
 						)
 					);
 					food = { x: foodX, y: foodY };
@@ -58,7 +58,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 					snakePart.x,
 					snakePart.y,
 					unitSize,
-					unitSize
+					unitSize,
 				);
 			};
 			const drawSnake = () => snake.forEach(drawSnakePart);
@@ -99,7 +99,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 						0,
 						0,
 						canvasRef.current.width,
-						canvasRef.current.height
+						canvasRef.current.height,
 					);
 				}
 			};
@@ -208,7 +208,7 @@ const SnakeGame: FC<SnakeGameProps> = ({ open, onClose }) => {
 	}, [context, open, unitSize]);
 	return (
 		<Dialog open={open} setOpen={onClose}>
-			<div className="p-0 size-fit overflow-hidden bg-white dark:bg-black">
+			<div className="size-fit overflow-hidden bg-white p-0 dark:bg-black">
 				<canvas
 					ref={canvasRef}
 					width={canvasWidth}

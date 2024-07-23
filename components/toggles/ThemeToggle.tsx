@@ -32,7 +32,7 @@ const ThemeToggle = () => {
 		if (themeMode) {
 			document.documentElement.classList.toggle(
 				"dark",
-				themeMode === "dark"
+				themeMode === "dark",
 			);
 		}
 	}, []);

@@ -13,7 +13,7 @@ const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
 	useEffect(() => {
 		const keyDownHandler = (event: KeyboardEvent) => {
 			setKeySequence((prevSequence) =>
-				[...prevSequence, event.key].slice(-10)
+				[...prevSequence, event.key].slice(-10),
 			);
 		};
 		window.addEventListener("keydown", keyDownHandler);

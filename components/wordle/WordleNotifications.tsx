@@ -3,11 +3,11 @@ const WordleNotifications = ({
 }: {
 	notifications: string[];
 }) => (
-	<div className="flex absolute w-full max-h-full items-center flex-col overflow-hidden">
+	<div className="absolute flex max-h-full w-full flex-col items-center overflow-hidden">
 		{notifications.map((notification, index) => (
 			<div
 				key={index}
-				className="text-center text-sm bg-primary w-fit rounded-md my-0.5 p-2 z-50"
+				className="bg-primary z-50 my-0.5 w-fit rounded-md p-2 text-center text-sm"
 			>
 				{notification}
 			</div>

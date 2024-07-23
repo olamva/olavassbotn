@@ -67,7 +67,7 @@ const useMenuItems = () => {
 			document.documentElement.classList.contains("dark")
 				? "dark"
 				: "light",
-			7
+			7,
 		);
 	};
 
@@ -80,7 +80,7 @@ const useMenuItems = () => {
 			items: navItems
 				.filter(
 					(item) =>
-						!item.isFooter && (item.requiresAdmin ? devMode : true)
+						!item.isFooter && (item.requiresAdmin ? devMode : true),
 				)
 				.map((item): SearchMenuItem => {
 					const itemLink = root + (item.link ?? "");

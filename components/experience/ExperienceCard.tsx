@@ -4,11 +4,11 @@ import Link from "next/link";
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
 	return (
-		<div className="bg-primary shadow rounded h-fit w-full my-2 sm:my-0">
+		<div className="bg-primary my-2 h-fit w-full rounded shadow sm:my-0">
 			<Link className="w-full" href={experience.href}>
-				<div className="p-6 flex cursor-pointer">
+				<div className="flex cursor-pointer p-6">
 					{experience.imgs.length && (
-						<div className="flex flex-col items-center justify-center mr-6">
+						<div className="mr-6 flex flex-col items-center justify-center">
 							{experience.imgs.map((img, imgIndex) => (
 								<div
 									key={imgIndex}
@@ -46,7 +46,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
 						<p className="font-bold">{experience.title}</p>
 						{experience.description && (
 							<>
-								<hr className="my-1 mx-auto w-full border-zinc-400" />
+								<hr className="mx-auto my-1 w-full border-zinc-400" />
 								{experience.description}
 							</>
 						)}

@@ -20,10 +20,8 @@ export default function WordlePage() {
 				isHardMode={isHardMode}
 				setIsHardMode={setIsHardMode}
 			/>
-			<div className=" text-5xl font-[50] flex justify-center">
-				Wordle
-			</div>
-			<div className="flex justify-center items-center my-2">
+			<div className="flex justify-center text-5xl font-[50]">Wordle</div>
+			<div className="my-2 flex items-center justify-center">
 				<Wordle isHardMode={isHardMode} />
 			</div>
 			<OnscreenKeyboard />

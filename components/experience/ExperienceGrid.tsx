@@ -6,10 +6,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 const ExperienceGrid = () => {
 	const experienceList = useExperienceList();
 	const [leftList, setLeftList] = useState(
-		experienceList.filter((_, index) => index % 2 === 0)
+		experienceList.filter((_, index) => index % 2 === 0),
 	);
 	const [rightList, setRightList] = useState(
-		experienceList.filter((_, index) => index % 2 === 1)
+		experienceList.filter((_, index) => index % 2 === 1),
 	);
 
 	const leftListRef = useRef<HTMLDivElement>(null);
@@ -51,19 +51,19 @@ const ExperienceGrid = () => {
 
 	return (
 		<>
-			<div className="mt-4 m-auto max-w-full md:max-w-[80%] hidden sm:grid gap-2 w-full grid-cols-2">
-				<div className="grid gap-2 h-fit" ref={leftListRef}>
+			<div className="m-auto mt-4 hidden w-full max-w-full grid-cols-2 gap-2 sm:grid md:max-w-[80%]">
+				<div className="grid h-fit gap-2" ref={leftListRef}>
 					{leftList.map((item, index) => (
 						<ExperienceCard key={index} experience={item} />
 					))}
 				</div>
-				<div className="grid gap-2 h-fit" ref={rightListRef}>
+				<div className="grid h-fit gap-2" ref={rightListRef}>
 					{rightList.map((item, index) => (
 						<ExperienceCard key={index} experience={item} />
 					))}
 				</div>
 			</div>
-			<div className="sm:hidden mt-4 m-auto max-w-full gap-2 w-full grid-cols-1">
+			<div className="m-auto mt-4 w-full max-w-full grid-cols-1 gap-2 sm:hidden">
 				{experienceList.map((item, index) => (
 					<ExperienceCard key={index} experience={item} />
 				))}

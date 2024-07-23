@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
 const ListItem = ({ children }: { children: ReactNode }) => (
-	<div className="flex p-2 items-center button-hover transition-all w-full select-none">
+	<div className="button-hover flex w-full select-none items-center p-2 transition-all">
 		{children}
 	</div>
 );
@@ -28,7 +28,7 @@ const useDrawerList = () => {
 						.filter(
 							(item) =>
 								!item.isFooter &&
-								(item.requiresAdmin ? devMode : true)
+								(item.requiresAdmin ? devMode : true),
 						)
 						.map((item, index) => {
 							const isActive = pathname.slice(3) === item.link;
@@ -71,7 +71,7 @@ const useDrawerList = () => {
 								<a href={item.link}>
 									<ListItem>
 										{item.icon && <item.icon size="16px" />}
-										<p className="pl-1 text-xs text-left">
+										<p className="pl-1 text-left text-xs">
 											{t(item.label)}
 										</p>
 									</ListItem>

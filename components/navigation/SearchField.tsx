@@ -13,20 +13,20 @@ const SearchField = () => {
 		<>
 			<div className="hidden sm:block">
 				<button
-					className="bg-primary button-hover flex flex-row p-2 rounded-xl items-center cursor-pointer select-none"
+					className="bg-primary button-hover flex cursor-pointer select-none flex-row items-center rounded-xl p-2"
 					onClick={() => setOpenMenu(true)}
 				>
-					<div className="mx-0.5 ">
+					<div className="mx-0.5">
 						<Search size="18px" />
 					</div>
-					<p className=" text-xs mx-0.5">{t("search-field")}</p>
-					<div className="bg-default button-hover border-[rgb(219,220,211)] dark:border-[rgb(67,67,67)] flex px-1 py-0.5 rounded items-center mx-0.5 border border-solid">
+					<p className="mx-0.5 text-xs">{t("search-field")}</p>
+					<div className="bg-default button-hover mx-0.5 flex items-center rounded border border-solid border-[rgb(219,220,211)] px-1 py-0.5 dark:border-[rgb(67,67,67)]">
 						<CommandKey size="12px" />
-						<p className=" text-xs">K</p>
+						<p className="text-xs">K</p>
 					</div>
 				</button>
 			</div>
-			<div className="sm:hidden size-[28px]">
+			<div className="size-[28px] sm:hidden">
 				<ToggleButton onClick={() => setOpenMenu(true)}>
 					<Search size="20px" />
 				</ToggleButton>

@@ -34,7 +34,7 @@ const DevModeProvider: FC<DevModeProviderProps> = ({
 			},
 			devMode: mode,
 		}),
-		[mode, setMode]
+		[mode, setMode],
 	);
 	return (
 		<DevModeContext.Provider value={devMode}>

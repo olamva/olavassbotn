@@ -20,7 +20,7 @@ const LangToggle = () => {
 	return (
 		<Link
 			href={`${newPath}`}
-			className="p-1.5 rounded-full sm:button-hover button-hover-mobile h-fit select-none"
+			className="sm:button-hover button-hover-mobile h-fit select-none rounded-full p-1.5"
 		>
 			<Image
 				src={flagSrc}

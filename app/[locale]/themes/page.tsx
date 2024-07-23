@@ -8,10 +8,10 @@ export default function Themes() {
 
 	return (
 		<DevGate>
-			<div className="p-4 max-w-[65%] m-auto">
+			<div className="m-auto max-w-[65%] p-4">
 				<TitleText t={t} />
 				<TitleDivider />
-				<div className="grid gap-4 my-4">
+				<div className="my-4 grid gap-4">
 					<ThemesGrid />
 				</div>
 			</div>

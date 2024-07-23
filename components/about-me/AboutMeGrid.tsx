@@ -4,16 +4,16 @@ import { useTranslations } from "next-intl";
 const AboutMeGrid = () => {
 	const t = useTranslations("About Me");
 	return (
-		<div className="grid gap-3 grid-cols-2">
+		<div className="grid grid-cols-2 gap-3">
 			{t
 				.raw("sections")
 				.map(
 					(
 						section: { title: string; content: string },
-						index: number
+						index: number,
 					) => (
 						<div
-							className="col-span-2 sm:col-span-1 mb-8"
+							className="col-span-2 mb-8 sm:col-span-1"
 							key={index}
 						>
 							<AlternatingDivider index={index}>
@@ -27,7 +27,7 @@ const AboutMeGrid = () => {
 								</p>
 							</Paper>
 						</div>
-					)
+					),
 				)}
 		</div>
 	);

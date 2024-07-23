@@ -32,11 +32,11 @@ const Drawer = () => {
 	return (
 		<div
 			ref={drawerRef}
-			className={`fixed h-full transition-transform transform duration-300 ease-in-out shadow z-10 ${
+			className={`fixed z-10 h-full transform shadow transition-transform duration-300 ease-in-out ${
 				openDrawer ? "translate-x-0" : "-translate-x-full"
 			}`}
 		>
-			<div className="flex flex-col h-full max-w-48 md:max-w-64 bg-default text-left">
+			<div className="bg-default flex h-full max-w-48 flex-col text-left md:max-w-64">
 				{drawerList}
 			</div>
 		</div>

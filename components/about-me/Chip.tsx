@@ -8,7 +8,7 @@ interface ChipProps {
 const Chip = ({ href, children }: ChipProps) => (
 	<Link
 		href={href}
-		className="py-1 px-2 border border-zinc-300 dark:border-zinc-500 rounded-full text-sm text-center select-none button-hover transition-all mx-2"
+		className="button-hover mx-2 select-none rounded-full border border-zinc-300 px-2 py-1 text-center text-sm transition-all dark:border-zinc-500"
 	>
 		{children}
 	</Link>
