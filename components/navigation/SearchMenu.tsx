@@ -32,18 +32,14 @@ const SearchMenu = () => {
 		if (inputRef.current === null) return;
 		const searched = inputRef.current.value.toLowerCase();
 		const newFilteredItems = menuItems
-			.map((group) => {
-				return {
-					...group,
-					items: group.items.filter(
-						(item) =>
-							item.label.toLowerCase().includes(searched) ||
-							item.darkModeLabel
-								?.toLowerCase()
-								.includes(searched),
-					),
-				};
-			})
+			.map((group) => ({
+				...group,
+				items: group.items.filter(
+					(item) =>
+						item.label.toLowerCase().includes(searched) ||
+						item.darkModeLabel?.toLowerCase().includes(searched),
+				),
+			}))
 			.filter((group) => group.items.length > 0);
 
 		setFilteredItems(newFilteredItems);
@@ -133,11 +129,10 @@ const SearchMenu = () => {
 
 	useEffect(() => {
 		document.addEventListener("mousemove", () => setIgnoreMouse(false));
-		return () => {
+		return () =>
 			document.removeEventListener("mousemove", () =>
 				setIgnoreMouse(false),
 			);
-		};
 	}, []);
 
 	useEffect(() => {
@@ -151,9 +146,10 @@ const SearchMenu = () => {
 		};
 	}, [handleChange]);
 
-	useEffect(() => {
-		handleScrollIntoView();
-	}, [selectedIndex, handleScrollIntoView]);
+	useEffect(
+		() => handleScrollIntoView(),
+		[selectedIndex, handleScrollIntoView],
+	);
 
 	return (
 		<Dialog open={openMenu} setOpen={setOpenMenu} blurred>
@@ -224,11 +220,11 @@ const SearchMenu = () => {
 												clearInputField={
 													clearInputField
 												}
-												innerRef={(el) => {
-													itemRefs.current[
+												innerRef={(el) =>
+													(itemRefs.current[
 														flatIndex
-													] = el!;
-												}}
+													] = el!)
+												}
 												ignoreMouse={ignoreMouse}
 											>
 												{item.label}
@@ -249,11 +245,11 @@ const SearchMenu = () => {
 													clearInputField={
 														clearInputField
 													}
-													innerRef={(el) => {
-														itemRefs.current[
+													innerRef={(el) =>
+														(itemRefs.current[
 															flatIndex
-														] = el!;
-													}}
+														] = el!)
+													}
 													ignoreMouse={ignoreMouse}
 												>
 													<div className="dark:hidden">

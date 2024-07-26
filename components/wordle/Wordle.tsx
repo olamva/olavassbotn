@@ -67,9 +67,10 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 
 	const addErrorNotification = useCallback((text: string) => {
 		setNotifications((prev) => [...prev, text]);
-		setTimeout(() => {
-			setNotifications((prev) => prev.slice(1));
-		}, NOTIFICATION_LIFESPAN);
+		setTimeout(
+			() => setNotifications((prev) => prev.slice(1)),
+			NOTIFICATION_LIFESPAN,
+		);
 	}, []);
 
 	const errorAnimation = useCallback(() => {
@@ -111,12 +112,13 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 
 		uniqueLetters
 			.sort((a, b) => a.localeCompare(b))
-			.forEach((letter, i) => {
-				errorMsg +=
-					i === uniqueLetters.length - 1
-						? letter.toUpperCase()
-						: letter.toUpperCase() + ", ";
-			});
+			.forEach(
+				(letter, i) =>
+					(errorMsg +=
+						i === uniqueLetters.length - 1
+							? letter.toUpperCase()
+							: letter.toUpperCase() + ", "),
+			);
 		addErrorNotification(errorMsg);
 		return false;
 	}, [greenLetterPositions, yellowLetterPositions, addErrorNotification]);
@@ -271,30 +273,17 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);
-
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown);
-		};
+		return () => document.removeEventListener("keydown", handleKeyDown);
 	}, [handleKeyDown]);
 
-	const findAllMatchingLetterIndexes = (
-		word: string[],
-		letter: string,
-	): number[] => {
+	const findAllMatchingLetterIndexes = (word: string[], letter: string) => {
 		const indexes: number[] = [];
-		word.forEach((char, i) => {
-			if (char === letter) {
-				indexes.push(i);
-			}
-		});
+		word.forEach((char, i) => char === letter && indexes.push(i));
 		return indexes;
 	};
 
-	const showEndScreen = () => {
-		setTimeout(() => {
-			setDisplayEndScreen(true);
-		}, ENDSCREEN_DELAY);
-	};
+	const showEndScreen = () =>
+		setTimeout(() => setDisplayEndScreen(true), ENDSCREEN_DELAY);
 
 	const reset = () => {
 		currentRow.current = 0;

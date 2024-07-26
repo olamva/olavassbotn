@@ -6,7 +6,7 @@ import Wordle from "@/components/wordle/Wordle";
 import { ColorsProvider } from "@/contexts/ColorsContext";
 import { useEffect, useState } from "react";
 
-export default function WordlePage() {
+const WordlePage = () => {
 	const [isHardMode, setIsHardMode] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -27,4 +27,6 @@ export default function WordlePage() {
 			<OnscreenKeyboard />
 		</ColorsProvider>
 	);
-}
+};
+
+export default WordlePage;

@@ -71,9 +71,8 @@ const useMenuItems = () => {
 		);
 	};
 
-	useEffect(() => {
-		setCookie("devMode", `${devMode}`, 7);
-	}, [devMode]);
+	useEffect(() => setCookie("devMode", `${devMode}`, 7), [devMode]);
+
 	return [
 		{
 			title: t("navigation"),
@@ -82,24 +81,23 @@ const useMenuItems = () => {
 					(item) =>
 						!item.isFooter && (item.requiresAdmin ? devMode : true),
 				)
-				.map((item): SearchMenuItem => {
-					const itemLink = root + (item.link ?? "");
-					return {
+				.map(
+					(item): SearchMenuItem => ({
 						label: t(item.label),
 						icon: <item.filledIcon size={ICON_SIZE} />,
-						href: itemLink,
-					};
-				}),
+						href: root + (item.link ?? ""),
+					}),
+				),
 		},
 		{
 			title: t("socials"),
-			items: socialLinks.map((item): SearchMenuItem => {
-				return {
+			items: socialLinks.map(
+				(item): SearchMenuItem => ({
 					label: item.label,
 					icon: <item.icon size={ICON_SIZE} />,
 					href: item.link,
-				};
-			}),
+				}),
+			),
 		},
 		{
 			title: t("settings"),

@@ -6,15 +6,7 @@ import { useTranslations } from "next-intl";
 const PlaySnakeButton = () => {
 	const { setOverride } = useToggleStates();
 	const t = useTranslations("Projects");
-	return (
-		<Button
-			onClick={() => {
-				setOverride(true);
-			}}
-		>
-			{t("playSnake")}
-		</Button>
-	);
+	return <Button onClick={() => setOverride(true)}>{t("playSnake")}</Button>;
 };
 
 export default PlaySnakeButton;

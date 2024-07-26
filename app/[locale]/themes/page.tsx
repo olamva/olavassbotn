@@ -3,9 +3,8 @@ import TitleText, { TitleDivider } from "@/components/default/TitleText";
 import ThemesGrid from "@/components/themes/ThemesGrid";
 import { useTranslations } from "next-intl";
 
-export default function Themes() {
+const Themes = () => {
 	const t = useTranslations("Themes");
-
 	return (
 		<DevGate>
 			<div className="m-auto max-w-[65%] p-4">
@@ -17,4 +16,6 @@ export default function Themes() {
 			</div>
 		</DevGate>
 	);
-}
+};
+
+export default Themes;

@@ -44,9 +44,7 @@ export const MenuItemLink = ({
 		}
 	};
 
-	const handleMouseLeave = () => {
-		setMouseEntered(false);
-	};
+	const handleMouseLeave = () => setMouseEntered(false);
 
 	return (
 		<Link
@@ -92,9 +90,7 @@ export const MenuItemButton = ({
 		}
 	};
 
-	const handleMouseLeave = () => {
-		setMouseEntered(false);
-	};
+	const handleMouseLeave = () => setMouseEntered(false);
 
 	return (
 		<button

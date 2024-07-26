@@ -19,13 +19,13 @@ export const metadata: Metadata = {
 	description: "A website designed to show off Ola's skills and projects.",
 };
 
-export default function LocaleLayout({
+const LocaleLayout = ({
 	children,
 	params: { locale },
 }: {
 	children: ReactNode;
 	params: { locale: string };
-}) {
+}) => {
 	unstable_setRequestLocale(locale);
 	const messages = useMessages();
 	const cookieStore = cookies();
@@ -61,4 +61,6 @@ export default function LocaleLayout({
 			</NextIntlClientProvider>
 		</html>
 	);
-}
+};
+
+export default LocaleLayout;

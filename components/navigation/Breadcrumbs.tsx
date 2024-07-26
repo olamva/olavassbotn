@@ -12,9 +12,8 @@ const Breadcrumbs = () => {
 	const pathnames = pathname.split("/").filter((x) => x && x != locale);
 
 	pathnames.unshift("home");
-	const findNavItem = (path: string) => {
-		return navItems.find((item) => item.label === `${path}`);
-	};
+	const findNavItem = (path: string) =>
+		navItems.find((item) => item.label === `${path}`);
 	return (
 		<>
 			<div className="hidden items-center sm:flex">

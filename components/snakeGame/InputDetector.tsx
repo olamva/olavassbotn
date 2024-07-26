@@ -11,15 +11,13 @@ const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
 	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 	const { override, setOverride, openMenu } = useToggleStates();
 	useEffect(() => {
-		const keyDownHandler = (event: KeyboardEvent) => {
+		const keyDownHandler = (event: KeyboardEvent) =>
 			setKeySequence((prevSequence) =>
 				[...prevSequence, event.key].slice(-10),
 			);
-		};
+
 		window.addEventListener("keydown", keyDownHandler);
-		return () => {
-			window.removeEventListener("keydown", keyDownHandler);
-		};
+		return () => window.removeEventListener("keydown", keyDownHandler);
 	}, [sequenceToCheck.length]);
 	useEffect(() => {
 		if (isDialogOpen || openMenu) return;
@@ -28,9 +26,7 @@ const InputDetector: FC<InputDetectorProps> = ({ sequenceToCheck }) => {
 		}
 	}, [keySequence, sequenceToCheck, isDialogOpen, openMenu]);
 	useEffect(() => {
-		if (override && !openMenu) {
-			setIsDialogOpen(true);
-		}
+		if (override && !openMenu) setIsDialogOpen(true);
 	}, [override, openMenu]);
 	return (
 		isDialogOpen && (

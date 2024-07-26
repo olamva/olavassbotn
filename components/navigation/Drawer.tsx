@@ -24,9 +24,8 @@ const Drawer = () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		}
 
-		return () => {
+		return () =>
 			document.removeEventListener("mousedown", handleClickOutside);
-		};
 	}, [openDrawer, setOpenDrawer]);
 
 	return (

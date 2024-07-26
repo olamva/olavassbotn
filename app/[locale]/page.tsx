@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-export default function Landing() {
+const Landing = () => {
 	const t = useTranslations("HomePage");
 	return (
 		<div className="mt-[10svh]">
@@ -12,4 +12,6 @@ export default function Landing() {
 			</h2>
 		</div>
 	);
-}
+};
+
+export default Landing;
