@@ -40,10 +40,9 @@ const ExperienceGrid = () => {
 	}, [leftList, rightList]);
 
 	useEffect(() => {
-		const intervalId = setInterval(
-			() => !swapElements() && clearInterval(intervalId),
-			1,
-		);
+		const intervalId = setInterval(() => {
+			if (!swapElements()) clearInterval(intervalId);
+		}, 1);
 
 		return () => clearInterval(intervalId);
 	}, [leftList, rightList, swapElements]);
