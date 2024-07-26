@@ -1,7 +1,8 @@
 import TitleText, { TitleDivider } from "@/components/default/TitleText";
 import ExperienceGrid from "@/components/experience/ExperienceGrid";
 import { useTranslations } from "next-intl";
-export default function Projects() {
+
+const Projects = () => {
 	const t = useTranslations("Experience");
 	return (
 		<div className="m-6">
@@ -10,4 +11,6 @@ export default function Projects() {
 			<ExperienceGrid />
 		</div>
 	);
-}
+};
+
+export default Projects;

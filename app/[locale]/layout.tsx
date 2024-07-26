@@ -19,13 +19,13 @@ export const metadata: Metadata = {
 	description: "A website designed to show off Ola's skills and projects.",
 };
 
-export default function LocaleLayout({
+const LocaleLayout = ({
 	children,
 	params: { locale },
 }: {
 	children: ReactNode;
 	params: { locale: string };
-}) {
+}) => {
 	unstable_setRequestLocale(locale);
 	const messages = useMessages();
 	const cookieStore = cookies();
@@ -45,10 +45,10 @@ export default function LocaleLayout({
 				<Analytics />
 				<SpeedInsights />
 				<ApplicationShell savedDevMode={devModeValue}>
-					<body className="text-black dark:text-white bg-default font-light">
+					<body className="bg-default font-light text-black transition-colors dark:text-white">
 						<SearchMenu />
 						<Drawer />
-						<div className="flex flex-col min-h-svh">
+						<div className="flex min-h-svh flex-col">
 							<main className="flex-grow">
 								<NavBar />
 								{children}
@@ -61,4 +61,6 @@ export default function LocaleLayout({
 			</NextIntlClientProvider>
 		</html>
 	);
-}
+};
+
+export default LocaleLayout;

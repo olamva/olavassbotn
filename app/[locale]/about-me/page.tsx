@@ -3,7 +3,7 @@ import SubPageChips from "@/components/about-me/SubPageChips";
 import TitleText from "@/components/default/TitleText";
 import { useTranslations } from "next-intl";
 
-export default function AboutMe() {
+const AboutMe = () => {
 	const t = useTranslations("About Me");
 	return (
 		<div className="my-8 px-6">
@@ -12,4 +12,6 @@ export default function AboutMe() {
 			<AboutMeGrid />
 		</div>
 	);
-}
+};
+
+export default AboutMe;

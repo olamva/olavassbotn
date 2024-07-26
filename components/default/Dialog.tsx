@@ -11,12 +11,8 @@ const Dialog = ({ open, setOpen, blurred, children }: DialogProps) =>
 		<div
 			className={`${
 				blurred ? "backdrop-blur-sm" : ""
-			} size-full justify-center items-center flex fixed inset-0`}
-			onClick={(e) => {
-				if (e.target === e.currentTarget) {
-					setOpen(false);
-				}
-			}}
+			} fixed inset-0 flex size-full items-center justify-center`}
+			onClick={(e) => e.target === e.currentTarget && setOpen(false)}
 		>
 			{children}
 		</div>

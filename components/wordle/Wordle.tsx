@@ -38,7 +38,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 	const yellowLetterPositions = useRef<Set<string>>(new Set());
 
 	const wordToCheck = useRef<string>(
-		answers[Math.floor(Math.random() * answers.length)]
+		answers[Math.floor(Math.random() * answers.length)],
 	);
 
 	const divRef = useRef<HTMLDivElement>(null);
@@ -62,14 +62,15 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				return 0;
 			return -1;
 		},
-		[wordToCheck]
+		[wordToCheck],
 	);
 
 	const addErrorNotification = useCallback((text: string) => {
 		setNotifications((prev) => [...prev, text]);
-		setTimeout(() => {
-			setNotifications((prev) => prev.slice(1));
-		}, NOTIFICATION_LIFESPAN);
+		setTimeout(
+			() => setNotifications((prev) => prev.slice(1)),
+			NOTIFICATION_LIFESPAN,
+		);
 	}, []);
 
 	const errorAnimation = useCallback(() => {
@@ -93,12 +94,12 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 		const unusedLetters = greenLetterPositions.current
 			.filter(
 				(letter, i) =>
-					letter !== undefined && letter !== currentWord.current[i]
+					letter !== undefined && letter !== currentWord.current[i],
 			)
 			.concat(
 				Array.from(yellowLetterPositions.current).filter(
-					(letter) => !currentWord.current.includes(letter)
-				)
+					(letter) => !currentWord.current.includes(letter),
+				),
 			);
 
 		const uniqueLetters = Array.from(new Set(unusedLetters));
@@ -111,12 +112,13 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 
 		uniqueLetters
 			.sort((a, b) => a.localeCompare(b))
-			.forEach((letter, i) => {
-				errorMsg +=
-					i === uniqueLetters.length - 1
-						? letter.toUpperCase()
-						: letter.toUpperCase() + ", ";
-			});
+			.forEach(
+				(letter, i) =>
+					(errorMsg +=
+						i === uniqueLetters.length - 1
+							? letter.toUpperCase()
+							: letter.toUpperCase() + ", "),
+			);
 		addErrorNotification(errorMsg);
 		return false;
 	}, [greenLetterPositions, yellowLetterPositions, addErrorNotification]);
@@ -145,7 +147,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				} else if (currentWord.current.includes(letter)) {
 					const indexes = findAllMatchingLetterIndexes(
 						currentWord.current,
-						letter
+						letter,
 					);
 					for (const index of indexes) {
 						const box = divs[currentRow.current * AMT_COLS + index];
@@ -213,7 +215,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			grayLetters,
 			setGrayLetters,
 			addErrorNotification,
-		]
+		],
 	);
 
 	const handleKeyDown = useCallback(
@@ -266,35 +268,22 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 			handleCheck,
 			isDone,
 			openMenu,
-		]
+		],
 	);
 
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);
-
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown);
-		};
+		return () => document.removeEventListener("keydown", handleKeyDown);
 	}, [handleKeyDown]);
 
-	const findAllMatchingLetterIndexes = (
-		word: string[],
-		letter: string
-	): number[] => {
+	const findAllMatchingLetterIndexes = (word: string[], letter: string) => {
 		const indexes: number[] = [];
-		word.forEach((char, i) => {
-			if (char === letter) {
-				indexes.push(i);
-			}
-		});
+		word.forEach((char, i) => char === letter && indexes.push(i));
 		return indexes;
 	};
 
-	const showEndScreen = () => {
-		setTimeout(() => {
-			setDisplayEndScreen(true);
-		}, ENDSCREEN_DELAY);
-	};
+	const showEndScreen = () =>
+		setTimeout(() => setDisplayEndScreen(true), ENDSCREEN_DELAY);
 
 	const reset = () => {
 		currentRow.current = 0;
@@ -322,7 +311,7 @@ const Wordle = ({ isHardMode }: WordleProps) => {
 				divs[i].classList.remove(
 					"wordle-green",
 					"wordle-yellow",
-					"wordle-gray"
+					"wordle-gray",
 				);
 				divs[i].innerHTML = "";
 			}

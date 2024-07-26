@@ -44,15 +44,13 @@ export const MenuItemLink = ({
 		}
 	};
 
-	const handleMouseLeave = () => {
-		setMouseEntered(false);
-	};
+	const handleMouseLeave = () => setMouseEntered(false);
 
 	return (
 		<Link
-			className={`flex py-2 px-3 items-center transition-all w-full select-none ${
+			className={`flex w-full select-none items-center px-3 py-2 transition-all ${
 				flatIndex === selectedIndex
-					? "bg-black dark:bg-white dark:bg-opacity-10 bg-opacity-5"
+					? "bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-10"
 					: ""
 			}`}
 			href={href ?? ""}
@@ -92,15 +90,13 @@ export const MenuItemButton = ({
 		}
 	};
 
-	const handleMouseLeave = () => {
-		setMouseEntered(false);
-	};
+	const handleMouseLeave = () => setMouseEntered(false);
 
 	return (
 		<button
-			className={`flex py-2 px-3 items-center transition-all w-full select-none ${
+			className={`flex w-full select-none items-center px-3 py-2 transition-all ${
 				flatIndex === selectedIndex
-					? "bg-black dark:bg-white dark:bg-opacity-10 bg-opacity-5"
+					? "bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-10"
 					: ""
 			}`}
 			onClick={() => {

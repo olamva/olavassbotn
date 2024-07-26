@@ -25,28 +25,28 @@ const OnscreenLetter = ({ letter }: { letter: string }) => {
 			div.classList.remove(
 				"wordle-letter-blank",
 				"wordle-yellow",
-				"wordle-gray"
+				"wordle-gray",
 			);
 			div.classList.add("wordle-green");
 		} else if (yellowLetters.includes(letter)) {
 			div.classList.remove(
 				"wordle-letter-blank",
 				"wordle-green",
-				"wordle-gray"
+				"wordle-gray",
 			);
 			div.classList.add("wordle-yellow");
 		} else if (grayLetters.includes(letter)) {
 			div.classList.remove(
 				"wordle-letter-blank",
 				"wordle-green",
-				"wordle-yellow"
+				"wordle-yellow",
 			);
 			div.classList.add("wordle-gray");
 		} else {
 			div.classList.remove(
 				"wordle-green",
 				"wordle-yellow",
-				"wordle-gray"
+				"wordle-gray",
 			);
 			div.classList.add("wordle-letter-blank");
 		}
@@ -54,7 +54,7 @@ const OnscreenLetter = ({ letter }: { letter: string }) => {
 
 	return (
 		<div
-			className="wordle-letter-blank rounded h-12 sm:h-12 md:h-16 min-w-8 sm:min-w-12 md:min-w-16 w-fit items-center justify-center flex text-2xl p-2 cursor-pointer select-none font-extralight"
+			className="wordle-letter-blank flex h-12 w-fit min-w-8 cursor-pointer select-none items-center justify-center rounded p-2 text-2xl font-extralight sm:h-12 sm:min-w-12 md:h-16 md:min-w-16"
 			onClick={handleClick}
 			ref={divRef}
 		>

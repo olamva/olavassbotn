@@ -12,12 +12,11 @@ const Breadcrumbs = () => {
 	const pathnames = pathname.split("/").filter((x) => x && x != locale);
 
 	pathnames.unshift("home");
-	const findNavItem = (path: string) => {
-		return navItems.find((item) => item.label === `${path}`);
-	};
+	const findNavItem = (path: string) =>
+		navItems.find((item) => item.label === `${path}`);
 	return (
 		<>
-			<div className="items-center hidden sm:flex">
+			<div className="hidden items-center sm:flex">
 				{pathnames.map((value, index) => {
 					const last = index === pathnames.length - 1;
 					const navItem = findNavItem(value);
@@ -42,7 +41,7 @@ const Breadcrumbs = () => {
 											last
 												? "from-black to-black dark:from-white dark:to-white"
 												: "from-zinc-500 to-zinc-500 dark:from-zinc-400 dark:to-zinc-400"
-										} pl-0.5 bg-bottom bg-gradient-radial bg-[length:0%_1px] bg-no-repeat active:bg-[length:100%_1px] sm:hover:bg-[length:100%_1px] transition-all duration-300 ease-out `}
+										} bg-gradient-radial bg-[length:0%_1px] bg-bottom bg-no-repeat pl-0.5 transition-all duration-300 ease-out active:bg-[length:100%_1px] sm:hover:bg-[length:100%_1px]`}
 									>
 										<p className="text-sm">{t(value)}</p>
 									</div>
@@ -66,7 +65,7 @@ const Breadcrumbs = () => {
 						<Link href={to}>
 							<div className="flex items-center">
 								{Icon && <Icon size="20px" />}
-								<div className="from-black to-black dark:from-white dark:to-white pl-0.5 bg-bottom bg-gradient-radial bg-[length:0%_1px] bg-no-repeat active:bg-[length:100%_1px] transition-all duration-300 ease-out">
+								<div className="bg-gradient-radial from-black to-black bg-[length:0%_1px] bg-bottom bg-no-repeat pl-0.5 transition-all duration-300 ease-out active:bg-[length:100%_1px] dark:from-white dark:to-white">
 									<p className="text-sm">{t(pathnames[0])}</p>
 								</div>
 							</div>

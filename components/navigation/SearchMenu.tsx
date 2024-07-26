@@ -32,16 +32,14 @@ const SearchMenu = () => {
 		if (inputRef.current === null) return;
 		const searched = inputRef.current.value.toLowerCase();
 		const newFilteredItems = menuItems
-			.map((group) => {
-				return {
-					...group,
-					items: group.items.filter(
-						(item) =>
-							item.label.toLowerCase().includes(searched) ||
-							item.darkModeLabel?.toLowerCase().includes(searched)
-					),
-				};
-			})
+			.map((group) => ({
+				...group,
+				items: group.items.filter(
+					(item) =>
+						item.label.toLowerCase().includes(searched) ||
+						item.darkModeLabel?.toLowerCase().includes(searched),
+				),
+			}))
 			.filter((group) => group.items.length > 0);
 
 		setFilteredItems(newFilteredItems);
@@ -77,8 +75,9 @@ const SearchMenu = () => {
 				setSelectedIndex((prevIndex) =>
 					Math.min(
 						prevIndex + 1,
-						filteredItems.flatMap((group) => group.items).length - 1
-					)
+						filteredItems.flatMap((group) => group.items).length -
+							1,
+					),
 				);
 				break;
 			case "ArrowUp":
@@ -130,11 +129,10 @@ const SearchMenu = () => {
 
 	useEffect(() => {
 		document.addEventListener("mousemove", () => setIgnoreMouse(false));
-		return () => {
+		return () =>
 			document.removeEventListener("mousemove", () =>
-				setIgnoreMouse(false)
+				setIgnoreMouse(false),
 			);
-		};
 	}, []);
 
 	useEffect(() => {
@@ -148,14 +146,15 @@ const SearchMenu = () => {
 		};
 	}, [handleChange]);
 
-	useEffect(() => {
-		handleScrollIntoView();
-	}, [selectedIndex, handleScrollIntoView]);
+	useEffect(
+		() => handleScrollIntoView(),
+		[selectedIndex, handleScrollIntoView],
+	);
 
 	return (
 		<Dialog open={openMenu} setOpen={setOpenMenu} blurred>
-			<div className="h-96 bg-primary shadow-lg rounded-lg overflow-hidden -mt-52 sm:-mt-0 w-[90%] max-w-lg flex flex-col">
-				<div className="flex px-2 py-3 items-center">
+			<div className="bg-primary -mt-52 flex h-96 w-[90%] max-w-lg flex-col overflow-hidden rounded-lg shadow-lg sm:-mt-0">
+				<div className="flex items-center px-2 py-3">
 					<div className="size-fit pr-1">
 						<Search size="20px" />
 					</div>
@@ -164,7 +163,7 @@ const SearchMenu = () => {
 						autoComplete="off"
 						id="search"
 						ref={inputRef}
-						className="outline-none bg-inherit size-full"
+						className="size-full bg-inherit outline-none"
 						autoFocus
 						onChange={handleChange}
 						onKeyDown={handleKeyDown}
@@ -172,7 +171,7 @@ const SearchMenu = () => {
 					/>
 					{showClear && (
 						<button
-							className="size-fit hover:text-zinc-600 dark:hover:text-zinc-400 pl-2"
+							className="size-fit pl-2 hover:text-zinc-600 dark:hover:text-zinc-400"
 							onClick={clearInputField}
 						>
 							<Clear size="16px" />
@@ -181,16 +180,16 @@ const SearchMenu = () => {
 				</div>
 				<hr className="mx-auto w-full border-[rgb(219,220,211)] dark:border-[rgb(14,14,14)]" />
 				<div
-					className="overflow-y-auto flex-grow"
+					className="flex-grow overflow-y-auto"
 					ref={scrollContainerRef}
 				>
 					{filteredItems.map(
 						(group, groupIndex) =>
 							group.items.length > 0 && (
 								<div key={group.title} className="">
-									<div className="flex flex-col w-fit p-1">
+									<div className="flex w-fit flex-col p-1">
 										<h1
-											className={`text-lg font-bold mx-1 ${
+											className={`mx-1 text-lg font-bold ${
 												groupIndex !== 0 ? "mt-4" : ""
 											}`}
 										>
@@ -206,7 +205,7 @@ const SearchMenu = () => {
 												.reduce(
 													(acc, g) =>
 														acc + g.items.length,
-													0
+													0,
 												) + itemIndex;
 										return item.href ? (
 											<MenuItemLink
@@ -221,11 +220,11 @@ const SearchMenu = () => {
 												clearInputField={
 													clearInputField
 												}
-												innerRef={(el) => {
-													itemRefs.current[
+												innerRef={(el) =>
+													(itemRefs.current[
 														flatIndex
-													] = el!;
-												}}
+													] = el!)
+												}
 												ignoreMouse={ignoreMouse}
 											>
 												{item.label}
@@ -246,11 +245,11 @@ const SearchMenu = () => {
 													clearInputField={
 														clearInputField
 													}
-													innerRef={(el) => {
-														itemRefs.current[
+													innerRef={(el) =>
+														(itemRefs.current[
 															flatIndex
-														] = el!;
-													}}
+														] = el!)
+													}
 													ignoreMouse={ignoreMouse}
 												>
 													<div className="dark:hidden">
@@ -265,10 +264,10 @@ const SearchMenu = () => {
 										);
 									})}
 								</div>
-							)
+							),
 					)}
 					{filteredItems.length === 0 && (
-						<p className="text-center mt-2">
+						<p className="mt-2 text-center">
 							{t("no-search-results")}
 						</p>
 					)}

@@ -29,12 +29,10 @@ const DevModeProvider: FC<DevModeProviderProps> = ({
 }: DevModeProviderProps) => {
 	const devMode = useMemo(
 		() => ({
-			toggleDevMode: () => {
-				setMode((prevMode) => !prevMode);
-			},
+			toggleDevMode: () => setMode((prevMode) => !prevMode),
 			devMode: mode,
 		}),
-		[mode, setMode]
+		[mode, setMode],
 	);
 	return (
 		<DevModeContext.Provider value={devMode}>

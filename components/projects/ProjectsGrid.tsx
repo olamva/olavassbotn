@@ -9,7 +9,7 @@ import Link from "next/link";
 const ProjectsGrid = () => {
 	const t = useTranslations("Projects");
 	return (
-		<div className="grid gap-3 my-4 grid-cols-2">
+		<div className="my-4 grid grid-cols-2 gap-3">
 			{t.raw("projects").map(
 				(
 					section: {
@@ -20,11 +20,11 @@ const ProjectsGrid = () => {
 						githubLink?: string;
 						projectID?: string;
 					},
-					index: number
+					index: number,
 				) => (
 					<div className="col-span-2 sm:col-span-1" key={index}>
 						<Paper>
-							<h5 className="text-base sm:text-lg md:text-xl font-bold mb-3">
+							<h5 className="mb-3 text-base font-bold sm:text-lg md:text-xl">
 								{section.title}
 							</h5>
 							{/* {section.description && (
@@ -51,7 +51,7 @@ const ProjectsGrid = () => {
 							)}
 						</Paper>
 					</div>
-				)
+				),
 			)}
 		</div>
 	);

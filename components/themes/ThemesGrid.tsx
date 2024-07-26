@@ -1,19 +1,18 @@
 import { papers } from "@/app/data/ThemesData";
 
-const ThemesGrid = () => {
-	return papers.map((paper, index) => (
+const ThemesGrid = () =>
+	papers.map((paper, index) => (
 		<div key={index}>
 			<div
 				className={`${paper.color} ${
 					paper.textColor ?? ""
-				} p-4 mb-4 flex justify-center items-center border dark:border-zinc-900`}
+				} mb-4 flex items-center justify-center border p-4 dark:border-zinc-900`}
 			>
-				<p className="text-xs sm:text-sm md:text-base text-center">
+				<p className="text-center text-xs sm:text-sm md:text-base">
 					{paper.label}
 				</p>
 			</div>
 		</div>
 	));
-};
 
 export default ThemesGrid;

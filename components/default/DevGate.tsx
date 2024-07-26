@@ -12,7 +12,7 @@ const DevGate = ({ children }: DevGateProps) => {
 	return devMode ? (
 		<>{children}</>
 	) : (
-		<h3 className="text-center mt-60 w-[80%] mx-auto text-5xl">
+		<h3 className="mx-auto mt-60 w-[80%] text-center text-5xl">
 			{t("accessDenied")}
 		</h3>
 	);

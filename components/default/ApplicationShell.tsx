@@ -3,38 +3,34 @@ import DevModeProvider from "@/contexts/DevModeProvider";
 import ToggleStatesProvider from "@/contexts/ToggleStatesProvider";
 import { ReactNode, useEffect, useState } from "react";
 
-export default function ApplicationShell({
+const ApplicationShell = ({
 	children,
 	savedDevMode,
 }: {
 	children: ReactNode;
 	savedDevMode: boolean;
-}) {
+}) => {
 	const [devMode, setDevMode] = useState<boolean>(savedDevMode);
 	const [openDrawer, setOpenDrawer] = useState(false);
 	const [openMenu, setOpenMenu] = useState<boolean>(false);
 	const [override, setOverride] = useState<boolean>(false);
 
 	useEffect(() => {
-		function handleKeyDown(e: KeyboardEvent) {
+		const handleKeyDown = (e: KeyboardEvent) => {
 			if ((e.metaKey || e.ctrlKey) && e.key === "k") {
 				e.preventDefault();
 				e.stopPropagation();
 
-				setOpenMenu((currentValue) => {
-					return !currentValue;
-				});
+				setOpenMenu((currentValue) => !currentValue);
 			}
 			if (e.key === "Escape") {
 				return setOpenMenu(false);
 			}
-		}
+		};
 
 		document.addEventListener("keydown", handleKeyDown);
 
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown);
-		};
+		return () => document.removeEventListener("keydown", handleKeyDown);
 	}, []);
 	return (
 		<DevModeProvider mode={devMode} setMode={setDevMode}>
@@ -50,4 +46,6 @@ export default function ApplicationShell({
 			</ToggleStatesProvider>
 		</DevModeProvider>
 	);
-}
+};
+
+export default ApplicationShell;

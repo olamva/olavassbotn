@@ -13,10 +13,10 @@ const WordleDialogContent = ({
 	word,
 	reset,
 }: WordleDialogContentProps) => (
-	<div className="bg-primary items-center flex rounded-lg p-8 flex-col animate-slideVertical">
+	<div className="bg-primary flex animate-slideVertical flex-col items-center rounded-lg p-8">
 		{dialogText}
 		{displayWord && (
-			<span className="font-mono bg-default rounded px-1">{word}</span>
+			<span className="bg-default rounded px-1 font-mono">{word}</span>
 		)}
 		<div className="h-4" />
 		<Button onClick={reset}>

@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 const Button = ({ onClick, children, mobileOnly }: ButtonProps) => (
 	<button
-		className={`bg-default border-zinc-300 dark:border-zinc-800 rounded shadow mt-4 self-center py-2 px-3 select-none sm:button-hover button-hover-mobile transition-all flex justify-center items-center ${
+		className={`bg-default sm:button-hover button-hover-mobile mt-4 flex select-none items-center justify-center self-center rounded border-zinc-300 px-3 py-2 shadow transition-all dark:border-zinc-800 ${
 			mobileOnly ? "sm:hidden" : ""
 		}`}
 		onClick={onClick}
