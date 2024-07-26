@@ -1,7 +1,7 @@
 import { papers } from "@/app/data/ThemesData";
 
-const ThemesGrid = () => {
-	return papers.map((paper, index) => (
+const ThemesGrid = () =>
+	papers.map((paper, index) => (
 		<div key={index}>
 			<div
 				className={`${paper.color} ${
@@ -14,6 +14,5 @@ const ThemesGrid = () => {
 			</div>
 		</div>
 	));
-};
 
 export default ThemesGrid;

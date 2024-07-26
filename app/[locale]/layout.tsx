@@ -45,7 +45,7 @@ export default function LocaleLayout({
 				<Analytics />
 				<SpeedInsights />
 				<ApplicationShell savedDevMode={devModeValue}>
-					<body className="bg-default font-light text-black dark:text-white">
+					<body className="bg-default font-light text-black transition-colors dark:text-white">
 						<SearchMenu />
 						<Drawer />
 						<div className="flex min-h-svh flex-col">

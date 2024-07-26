@@ -34,20 +34,18 @@ const ToggleStatesProvider: FC<ToggleStatesProviderProps> = ({
 	openMenu,
 	override,
 	setOverride,
-}: ToggleStatesProviderProps) => {
-	return (
-		<ToggleStatesContext.Provider
-			value={{
-				setOpenDrawer,
-				openDrawer,
-				setOpenMenu,
-				openMenu,
-				override,
-				setOverride,
-			}}
-		>
-			{children}
-		</ToggleStatesContext.Provider>
-	);
-};
+}: ToggleStatesProviderProps) => (
+	<ToggleStatesContext.Provider
+		value={{
+			setOpenDrawer,
+			openDrawer,
+			setOpenMenu,
+			openMenu,
+			override,
+			setOverride,
+		}}
+	>
+		{children}
+	</ToggleStatesContext.Provider>
+);
 export default ToggleStatesProvider;
