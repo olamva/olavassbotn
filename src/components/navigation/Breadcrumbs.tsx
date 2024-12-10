@@ -32,7 +32,7 @@ const Breadcrumbs = () => {
 								}
 								href={to}
 							>
-								<div className="flex items-center">
+								<div className="group flex items-center">
 									{Icon && (
 										<Icon size={last ? "20px" : "16px"} />
 									)}
@@ -41,7 +41,7 @@ const Breadcrumbs = () => {
 											last
 												? "from-black to-black dark:from-white dark:to-white"
 												: "from-zinc-500 to-zinc-500 dark:from-zinc-400 dark:to-zinc-400"
-										} bg-gradient-radial bg-[length:0%_1px] bg-bottom bg-no-repeat pl-0.5 transition-all duration-300 ease-out active:bg-[length:100%_1px] sm:hover:bg-[length:100%_1px]`}
+										} bg-gradient-radial bg-[length:0%_1px] bg-bottom bg-no-repeat pl-0.5 transition-all duration-300 ease-out active:bg-[length:100%_1px] sm:group-hover:bg-[length:100%_1px]`}
 									>
 										<p className="text-sm">{t(value)}</p>
 									</div>

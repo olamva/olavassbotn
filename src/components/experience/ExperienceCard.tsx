@@ -7,33 +7,23 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => (
 		<Link className="w-full" href={experience.href}>
 			<div className="flex cursor-pointer p-6">
 				{experience.imgs.length && (
-					<div className="mr-6 flex flex-col items-center justify-center">
+					<div className="mr-6 flex flex-col items-center justify-center gap-3">
 						{experience.imgs.map((img, imgIndex) => (
-							<div
-								key={imgIndex}
-								className={`size-[30px] ${
-									experience.imgs.length > 1 &&
-									imgIndex !== experience.imgs.length - 1
-										? "mb-[10px]"
-										: ""
-								} ${
-									experience.imgs.length > 1 && imgIndex !== 0
-										? "mt-[10px]"
-										: ""
-								}`}
-							>
-								<div className="hidden dark:block">
+							<div className="size-8" key={imgIndex}>
+								<div className="aspect-w-1 aspect-h-1 relative hidden h-full w-full dark:block">
 									<Image
+										fill
 										src={img.src}
 										alt={img.alt}
-										className="m-auto"
+										className="object-contain"
 									/>
 								</div>
-								<div className="dark:hidden">
+								<div className="aspect-w-1 aspect-h-1 relative h-full w-full dark:hidden">
 									<Image
+										fill
 										src={img.darkSrc ?? img.src}
 										alt={img.alt}
-										className="m-auto"
+										className="object-contain"
 									/>
 								</div>
 							</div>

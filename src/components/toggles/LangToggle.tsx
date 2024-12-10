@@ -13,14 +13,13 @@ const LangToggle = () => {
 	return (
 		<Link
 			href={newPath}
-			className="sm:button-hover button-hover-mobile h-fit select-none rounded-full p-1.5"
+			className="sm:button-hover button-hover-mobile relative size-4 select-none p-1.5"
 		>
 			<Image
+				fill
 				src={`/flags/${locale === "no" ? "US" : "NO"}.png`}
-				width={16}
-				height={16}
 				alt="Toggle Language"
-				className="size-4 rounded-full"
+				className="rounded-full"
 			/>
 		</Link>
 	);
