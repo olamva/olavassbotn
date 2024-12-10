@@ -1,6 +1,6 @@
 "use client";
+import Menu from "@/assets/Menu";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
-import Menu from "@/public/icons/Menu";
 
 const DrawerToggleButton = () => {
 	const { setOpenDrawer } = useToggleStates();

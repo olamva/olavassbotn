@@ -1,9 +1,7 @@
 "use client";
 
-import NOFlag from "@/public/flags/NO.png";
-import USFlag from "@/public/flags/US.png";
 import { useLocale } from "next-intl";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -12,18 +10,15 @@ const LangToggle = () => {
 	const locale = useLocale();
 	const newPath = "/" + (locale === "no" ? "en" : "no") + pathname.slice(3);
 
-	const languages: { [key: string]: StaticImageData } = {
-		en: USFlag,
-		no: NOFlag,
-	};
-	const flagSrc = languages[locale];
 	return (
 		<Link
-			href={`${newPath}`}
+			href={newPath}
 			className="sm:button-hover button-hover-mobile h-fit select-none rounded-full p-1.5"
 		>
 			<Image
-				src={flagSrc}
+				src={`/flags/${locale === "no" ? "US" : "NO"}.png`}
+				width={16}
+				height={16}
 				alt="Toggle Language"
 				className="size-4 rounded-full"
 			/>

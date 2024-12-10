@@ -1,5 +1,5 @@
-import "@/public/globals.css";
-import Home from "@/public/icons/Home";
+import "@/globals.css";
+import Home from "@/assets/Home";
 import Link from "next/link";
 
 const NotFound = () => (

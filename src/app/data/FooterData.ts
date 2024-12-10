@@ -1,8 +1,8 @@
 import { SocialLink } from "@/app/types/default";
-import Call from "@/public/icons/Call";
-import GitHub from "@/public/icons/GitHub";
-import LinkedIn from "@/public/icons/LinkedIn";
-import Mail from "@/public/icons/Mail";
+import Call from "@/assets/Call";
+import GitHub from "@/assets/GitHub";
+import LinkedIn from "@/assets/LinkedIn";
+import Mail from "@/assets/Mail";
 
 export const socialLinks: SocialLink[] = [
 	{

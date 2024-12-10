@@ -1,11 +1,11 @@
 import { NavItem } from "@/app/types/nav";
-import Apps from "@/public/icons/Apps";
-import Assignment, { AssignmentOutlined } from "@/public/icons/Assignment";
-import { HelpOutlined } from "@/public/icons/Help";
-import Home, { HomeOutlined } from "@/public/icons/Home";
-import Palette, { PaletteOutlined } from "@/public/icons/Palette";
-import Person, { PersonOutlined } from "@/public/icons/Person";
-import Work, { WorkOutlined } from "@/public/icons/Work";
+import Apps from "@/assets/Apps";
+import Assignment, { AssignmentOutlined } from "@/assets/Assignment";
+import { HelpOutlined } from "@/assets/Help";
+import Home, { HomeOutlined } from "@/assets/Home";
+import Palette, { PaletteOutlined } from "@/assets/Palette";
+import Person, { PersonOutlined } from "@/assets/Person";
+import Work, { WorkOutlined } from "@/assets/Work";
 
 export const navItems: NavItem[] = [
 	{

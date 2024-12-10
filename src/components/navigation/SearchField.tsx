@@ -1,9 +1,9 @@
 "use client";
 
+import CommandKey from "@/assets/CommandKey";
+import Search from "@/assets/Search";
 import ToggleButton from "@/components/toggles/ToggleButton";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
-import CommandKey from "@/public/icons/CommandKey";
-import Search from "@/public/icons/Search";
 import { useTranslations } from "next-intl";
 
 const SearchField = () => {

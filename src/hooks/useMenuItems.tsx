@@ -1,12 +1,12 @@
 import { socialLinks } from "@/app/data/FooterData";
 import { navItems } from "@/app/data/NavItems";
 import { SearchMenuItem } from "@/app/types/nav";
+import Code from "@/assets/Code";
+import DarkMode from "@/assets/DarkMode";
+import Language from "@/assets/Language";
+import LightMode from "@/assets/LightMode";
 import { setCookie } from "@/components/toggles/ThemeToggle";
 import { useDevMode } from "@/contexts/DevModeProvider";
-import Code from "@/public/icons/Code";
-import DarkMode from "@/public/icons/DarkMode";
-import Language from "@/public/icons/Language";
-import LightMode from "@/public/icons/LightMode";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";

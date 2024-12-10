@@ -5,7 +5,7 @@ import Drawer from "@/components/navigation/Drawer";
 import NavBar from "@/components/navigation/NavBar";
 import SearchMenu from "@/components/navigation/SearchMenu";
 import InputDetector from "@/components/snakeGame/InputDetector";
-import "@/public/globals.css";
+import "@/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";

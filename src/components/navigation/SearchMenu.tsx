@@ -1,11 +1,11 @@
 "use client";
 import { SearchMenuGroup } from "@/app/types/nav";
+import Clear from "@/assets/Clear";
+import Search from "@/assets/Search";
 import Dialog from "@/components/default/Dialog";
 import { MenuItemButton, MenuItemLink } from "@/components/navigation/MenuItem";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import useMenuItems from "@/hooks/useMenuItems";
-import Clear from "@/public/icons/Clear";
-import Search from "@/public/icons/Search";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";

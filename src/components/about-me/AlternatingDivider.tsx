@@ -9,13 +9,13 @@ const AlternatingDivider = ({ children, index }: AlternatingDividerProps) => (
 		<hr
 			className={`${
 				index & 1 ? "flex-grow" : "min-w-4"
-			} border-black sm:min-w-4 sm:flex-grow-0 dark:border-white`}
+			} border-black dark:border-white sm:min-w-4 sm:flex-grow-0`}
 		/>
 		<div className="mx-2 w-fit">{children}</div>
 		<hr
 			className={`${
 				index & 1 ? "min-w-4" : "flex-grow"
-			} border-black sm:flex-grow dark:border-white`}
+			} border-black dark:border-white sm:flex-grow`}
 		/>
 	</div>
 );

@@ -1,6 +1,6 @@
 "use client";
 import { navItems } from "@/app/data/NavItems";
-import NextArrow from "@/public/icons/NextArrow";
+import NextArrow from "@/assets/NextArrow";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

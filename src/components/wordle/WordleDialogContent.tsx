@@ -1,5 +1,5 @@
+import Refresh from "@/assets/Refresh";
 import Button from "@/components/default/Button";
-import Refresh from "@/public/icons/Refresh";
 
 interface WordleDialogContentProps {
 	dialogText: string;

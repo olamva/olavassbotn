@@ -31,7 +31,3 @@
 		@apply active:bg-black dark:active:bg-white dark:active:bg-opacity-10 active:bg-opacity-5;
 	}
 }
-
-* {
-	box-sizing: border-box;
-}

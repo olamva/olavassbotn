@@ -1,7 +1,7 @@
 "use client";
 
+import Backspace from "@/assets/Backspace";
 import { ColorsContext } from "@/contexts/ColorsContext";
-import Backspace from "@/public/icons/Backspace";
 import { MouseEvent, useContext, useEffect, useRef } from "react";
 
 const OnscreenLetter = ({ letter }: { letter: string }) => {

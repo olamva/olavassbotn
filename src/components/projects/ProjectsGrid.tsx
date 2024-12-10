@@ -1,8 +1,8 @@
+import GitHub from "@/assets/GitHub";
 import Button from "@/components/default/Button";
 import Paper from "@/components/default/Paper";
 import PlaySnakeButton from "@/components/projects/PlaySnakeButton";
 import PlayWordleButton from "@/components/projects/PlayWordleButton";
-import GitHub from "@/public/icons/GitHub";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 

@@ -1,7 +1,7 @@
 "use client";
+import DarkMode from "@/assets/DarkMode";
+import LightMode from "@/assets/LightMode";
 import ToggleButton from "@/components/toggles/ToggleButton";
-import DarkMode from "@/public/icons/DarkMode";
-import LightMode from "@/public/icons/LightMode";
 import { useEffect } from "react";
 
 export const setCookie = (name: string, value: string, days?: number) => {

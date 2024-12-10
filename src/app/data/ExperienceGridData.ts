@@ -7,8 +7,6 @@ import TSLogo from "@/public/logos/TS.svg";
 import tailwindLogo from "@/public/logos/Tailwind.png";
 import tanaLogo from "@/public/logos/Tana.svg";
 import VTLogo from "@/public/logos/VTLogo.jpeg";
-import fagkomLogoDark from "@/public/logos/fagkomDark.png";
-import fagkomLogoLight from "@/public/logos/fagkomLight.png";
 import javaLogo from "@/public/logos/java.webp";
 import nextLogo from "@/public/logos/next-js.svg";
 import pythonLogo from "@/public/logos/python.webp";
@@ -25,8 +23,8 @@ export const ExperiencelistItems: ExperienceListItem[] = [
 		href: "https://online.ntnu.no/",
 		imgs: [
 			{
-				src: fagkomLogoLight,
-				darkSrc: fagkomLogoDark,
+				src: "/logos/fagkomLight.png",
+				darkSrc: "/logos/fagkomDark.png",
 				alt: "Fagkom Online sin logo",
 			},
 			{ src: onlineLogo, alt: "Online sin logo" },
