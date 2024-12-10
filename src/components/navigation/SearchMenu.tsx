@@ -4,6 +4,7 @@ import Clear from "@/assets/Clear";
 import Search from "@/assets/Search";
 import Dialog from "@/components/default/Dialog";
 import { MenuItemButton, MenuItemLink } from "@/components/navigation/MenuItem";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
 import useMenuItems from "@/hooks/useMenuItems";
 import { useTranslations } from "next-intl";
@@ -153,7 +154,7 @@ const SearchMenu = () => {
 
 	return (
 		<Dialog open={openMenu} setOpen={setOpenMenu} blurred>
-			<div className="bg-primary -mt-52 flex h-96 w-[90%] max-w-lg flex-col overflow-hidden rounded-lg shadow-lg sm:-mt-0">
+			<ScrollArea className="bg-primary -mt-52 flex h-96 w-[90%] max-w-lg flex-col overflow-hidden rounded-lg shadow-lg sm:-mt-0">
 				<div className="flex items-center px-2 py-3">
 					<div className="size-fit pr-1">
 						<Search size="20px" />
@@ -272,7 +273,7 @@ const SearchMenu = () => {
 						</p>
 					)}
 				</div>
-			</div>
+			</ScrollArea>
 		</Dialog>
 	);
 };
