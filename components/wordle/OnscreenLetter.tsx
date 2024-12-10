@@ -54,7 +54,7 @@ const OnscreenLetter = ({ letter }: { letter: string }) => {
 
 	return (
 		<div
-			className="wordle-letter-blank flex h-12 w-fit min-w-8 cursor-pointer select-none items-center justify-center rounded p-2 text-2xl font-extralight sm:h-12 sm:min-w-12 md:h-16 md:min-w-16"
+			className="wordle-letter-blank button-hover flex h-12 w-fit min-w-8 cursor-pointer select-none items-center justify-center rounded p-2 text-2xl font-extralight sm:h-12 sm:min-w-12 md:h-16 md:min-w-16"
 			onClick={handleClick}
 			ref={divRef}
 		>
