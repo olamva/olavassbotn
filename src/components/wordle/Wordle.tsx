@@ -1,14 +1,14 @@
 "use client";
 
 import { AMT_COLS, AMT_ROWS } from "@/app/data/WordleConstants";
+import allowedGuesses from "@/assets/wordle/wordle-allowed-guesses.json";
+import answers from "@/assets/wordle/wordle-answers-alphabetical.json";
 import Dialog from "@/components/default/Dialog";
 import WordleDialogContent from "@/components/wordle/WordleDialogContent";
 import WordleGrid from "@/components/wordle/WordleGrid";
 import WordleNotifications from "@/components/wordle/WordleNotifications";
 import { ColorsContext } from "@/contexts/ColorsContext";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
-import allowedGuesses from "@/public/wordle/wordle-allowed-guesses.json";
-import answers from "@/public/wordle/wordle-answers-alphabetical.json";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 
 const NOTIFICATION_LIFESPAN = 2000;
