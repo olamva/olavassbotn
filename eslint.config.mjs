@@ -45,6 +45,7 @@ export default [
 			"no-constant-binary-expression": "error",
 			"no-undef": "error",
 			"react/react-in-jsx-scope": "off",
+			"react/prop-types": "off",
 		},
 	},
 ];

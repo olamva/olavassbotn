@@ -1,8 +1,5 @@
 module.exports = {
-	content: [
-		"./components/**/*.{js,ts,jsx,tsx,mdx}",
-		"./app/**/*.{js,ts,jsx,tsx,mdx}",
-	],
+	content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
 	theme: {
 		extend: {
 			backgroundImage: {
@@ -38,7 +35,14 @@ module.exports = {
 					"slideVertical 0.5s cubic-bezier(0.4, 0, 0.6, 1)",
 				wiggle: "wiggle 0.2s cubic-bezier(0.4, 0, 0.6, 1)",
 			},
+			borderRadius: {
+				lg: "var(--radius)",
+				md: "calc(var(--radius) - 2px)",
+				sm: "calc(var(--radius) - 4px)",
+			},
+			colors: {},
 		},
 	},
-	darkMode: "selector",
+	darkMode: ["class"],
+	plugins: [require("tailwindcss-animate")],
 };
