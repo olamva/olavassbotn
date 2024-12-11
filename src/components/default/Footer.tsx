@@ -1,4 +1,4 @@
-import { contactLinks, socialLinks } from "@/app/data/FooterData";
+import { contactLinks, socialLinks } from "@/data/FooterData";
 import Link from "next/link";
 
 const Footer = () => (

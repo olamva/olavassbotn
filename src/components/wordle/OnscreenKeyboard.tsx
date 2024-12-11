@@ -1,5 +1,5 @@
-import { keys } from "@/app/data/WordleConstants";
 import OnscreenLetter from "@/components/wordle/OnscreenLetter";
+import { keys } from "@/data/wordle/WordleConstants";
 
 const OnscreenKeyboard = () => (
 	<div className="mb-6 flex justify-center">

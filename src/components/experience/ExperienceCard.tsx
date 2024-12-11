@@ -1,4 +1,4 @@
-import { Experience } from "@/app/types/default";
+import { Experience } from "@/types/default";
 import Image from "next/image";
 import Link from "next/link";
 

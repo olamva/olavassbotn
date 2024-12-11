@@ -1,7 +1,7 @@
 "use client";
-import { navItems } from "@/app/data/NavItems";
 import { useDevMode } from "@/contexts/DevModeProvider";
 import { useToggleStates } from "@/contexts/ToggleStatesProvider";
+import { navItems } from "@/data/NavItems";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

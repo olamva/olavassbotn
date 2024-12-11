@@ -1,4 +1,4 @@
-import { papers } from "@/app/data/ThemesData";
+import { papers } from "@/data/ThemesData";
 
 const ThemesGrid = () =>
 	papers.map((paper, index) => (

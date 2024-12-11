@@ -1,4 +1,4 @@
-import { ThemesPaper } from "@/app/types/default";
+import { ThemesPaper } from "@/types/default";
 
 export const papers: ThemesPaper[] = [
 	{

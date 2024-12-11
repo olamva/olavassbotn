@@ -1,5 +1,5 @@
-import { ExperiencelistItems } from "@/app/data/ExperienceGridData";
-import { Experience } from "@/app/types/default";
+import { ExperiencelistItems } from "@/data/ExperienceGridData";
+import { Experience } from "@/types/default";
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 export const useExperienceList = (): Experience[] => {

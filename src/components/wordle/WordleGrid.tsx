@@ -1,4 +1,4 @@
-import { AMT_COLS, AMT_ROWS } from "@/app/data/WordleConstants";
+import { AMT_COLS, AMT_ROWS } from "@/data/wordle/WordleConstants";
 import { RefObject } from "react";
 
 const WordleGrid = ({ divRef }: { divRef: RefObject<HTMLDivElement> }) => (

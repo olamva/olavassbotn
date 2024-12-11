@@ -1,4 +1,3 @@
-import { NavItem } from "@/app/types/nav";
 import Apps from "@/assets/Apps";
 import Assignment, { AssignmentOutlined } from "@/assets/Assignment";
 import { HelpOutlined } from "@/assets/Help";
@@ -6,6 +5,7 @@ import Home, { HomeOutlined } from "@/assets/Home";
 import Palette, { PaletteOutlined } from "@/assets/Palette";
 import Person, { PersonOutlined } from "@/assets/Person";
 import Work, { WorkOutlined } from "@/assets/Work";
+import { NavItem } from "@/types/nav";
 
 export const navItems: NavItem[] = [
 	{

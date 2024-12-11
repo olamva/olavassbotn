@@ -1,10 +1,10 @@
-import { konamiCode } from "@/app/data/ProjectsData";
 import ApplicationShell from "@/components/default/ApplicationShell";
 import Footer from "@/components/default/Footer";
 import Drawer from "@/components/navigation/Drawer";
 import NavBar from "@/components/navigation/NavBar";
 import SearchMenu from "@/components/navigation/SearchMenu";
 import InputDetector from "@/components/snakeGame/InputDetector";
+import { konamiCode } from "@/data/ProjectsData";
 import "@/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";

@@ -1,4 +1,4 @@
-import type { ExperienceListItem } from "@/app/types/default";
+import type { ExperienceListItem } from "@/types/default";
 
 /*
  * HOW TO ADD A NEW EXPERIENCE LIST ITEM:
