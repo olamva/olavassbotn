@@ -116,14 +116,6 @@
 				"description": "This project is actually this website! It was built with React, TypeScript, Next.js, and Tailwind CSS. I built it to showcase my work and to provide information about myself to potential employers and collaborators."
 			},
 			{
-				"title": "Wordle Clone",
-				"wordleGame": "true"
-			},
-			{
-				"title": "Snake Game with React",
-				"snakeGame": "true"
-			},
-			{
 				"title": "Quizlet clone with React, TypeScript, Next.js, and Mantine",
 				"description": "This project was built in a team in the course TDT4140 Software Engineering. It is a clone of the popular flashcard app Quizlet, and was built with React, TypeScript, Next.js, and Mantine. The app allows users to create, share, and study flashcards, and includes features like a quiz mode, a search function, and a dark mode.",
 				"githubLink": "Check out the project here!",
@@ -134,6 +126,20 @@
 				"description": "This app was built in a team in the course IT1901 Informatics Project I. It is a hotel booking app that allows users to search for and book hotel rooms. The app was built with Java, JavaFX, Maven, and Springboot, and includes features like a search function, a booking system, and a user 'database' (even if that database was just a couple JSON files🫣). This was built very early on in both mine and my team's careers. It was a great learning experience, and I gained a lot of valuable experience in software engineering, teamwork, and project management.",
 				"githubLink": "Check out the app here!",
 				"projectID": "gr2313"
+			},
+			{
+				"title": "Y - A Twitter clone with React, Typescript, Vite, MongoDB, and GraphQL",
+				"description": "This project was built in a team in the course IT2810 Web Development. It is a clone of Twitter, and was built with React, Typescript, Vite, MongoDB, and GraphQL. The app allows users to create and share tweets, and includes features like a feed, likes, and retweets.",
+				"githubLink": "Check out the project here!",
+				"projectID": "Y"
+			},
+			{
+				"title": "Wordle Clone",
+				"wordleGame": "true"
+			},
+			{
+				"title": "Snake Game with React",
+				"snakeGame": "true"
 			}
 		]
 	},

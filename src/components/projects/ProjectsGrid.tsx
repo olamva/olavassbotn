@@ -27,11 +27,11 @@ const ProjectsGrid = () => {
 							<h5 className="mb-3 text-base font-bold sm:text-lg md:text-xl">
 								{section.title}
 							</h5>
-							{/* {section.description && (
+							{section.description && (
 								<p className="text-xs sm:text-sm md:text-base">
 									{section.description}
 								</p>
-							)} */}
+							)}
 							{section.snakeGame && <PlaySnakeButton />}
 							{section.wordleGame && <PlayWordleButton />}
 							{section.githubLink && (

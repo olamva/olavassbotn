@@ -16,25 +16,24 @@
 		@apply bg-zinc-200 dark:bg-zinc-700;
 	}
 	.bg-primary {
-		@apply bg-[rgb(211,212,200)] dark:bg-[rgb(20,20,20)];
+		@apply bg-[rgb(230,230,220)] dark:bg-[rgb(20,20,20)];
 	}
 	.bg-secondary {
-		@apply bg-[rgb(219,220,211)] dark:bg-[rgb(14,14,14)];
+		@apply bg-[rgb(220,220,210)] dark:bg-[rgb(14,14,14)];
 	}
 	.bg-default {
-		@apply bg-[rgb(240,241,231)] dark:bg-[rgb(15,15,15)];
+		@apply bg-[rgb(240,240,230)] dark:bg-[rgb(15,15,15)];
 	}
 	.button-hover {
-		@apply hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-10 hover:bg-opacity-5;
+		@apply hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-10;
 	}
 	.button-hover-mobile {
-		@apply active:bg-black dark:active:bg-white dark:active:bg-opacity-10 active:bg-opacity-5;
+		@apply active:bg-black active:bg-opacity-5 dark:active:bg-white dark:active:bg-opacity-10;
 	}
 }
 
 @layer base {
-  :root {
-
-		--radius: 0.5rem
+	:root {
+		--radius: 0.5rem;
 	}
 }

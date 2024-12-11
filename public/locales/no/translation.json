@@ -116,24 +116,30 @@
 				"description": "Dette prosjektet er faktisk denne nettsiden! Den ble laget med React, TypeScript, Next.js og Tailwind CSS. Jeg bygde den for å vise frem arbeidet mitt og for å gi informasjon om meg selv til potensielle arbeidsgivere og samarbeidspartnere."
 			},
 			{
-				"title": "Wordle-klone",
-				"wordleGame": "true"
-			},
-			{
-				"title": "Snake-spill med React",
-				"snakeGame": "true"
-			},
-			{
 				"title": "Quizlet-klone med React, TypeScript, Next.js og Mantine",
 				"description": "Dette prosjektet ble laget i et team i kurset TDT4140 Programvareutvikling. Det er en klone av den populære flashcard-appen Quizlet, og ble laget med React, TypeScript, Next.js og Mantine. Appen lar brukere opprette, dele og studere flashcards, og inkluderer funksjoner som quiz-modus, søkefunksjon og mørk modus.",
 				"githubLink": "Sjekk ut prosjektet her!",
 				"projectID": "flashy"
 			},
 			{
+				"title": "Y - En Twitter klone med React, Typescript, Vite, MongoDB og GraphQL",
+				"description": "Dette prosjektet ble laget i et team i kurset IT2810 Webutvikling. Det er en klone av Twitter, og ble laget med React, Typescript, Vite, MongoDB og GraphQL. Appen lar brukere opprette og dele tweets, og inkluderer funksjoner som en feed, likes og retweets.",
+				"githubLink": "Sjekk ut prosjektet her!",
+				"projectID": "Y"
+			},
+			{
 				"title": "Hotellbestillingsapp med Java, JavaFX, Maven og Springboot",
 				"description": "Denne appen ble laget i et team i kurset IT1901 Informatikk Prosjekt I. Det er en hotellbestillingsapp som lar brukere søke etter og bestille hotellrom. Appen ble laget med Java, JavaFX, Maven og Springboot, og inkluderer funksjoner som søkefunksjon, bookingsystem og en bruker 'database' (selv om den databasen bare var noen få JSON-filer🫣). Dette ble laget veldig tidlig i både min og teamets karriere. Det var en flott læringsopplevelse, og jeg fikk mye verdifull erfaring innen programvareutvikling, teamarbeid og prosjektledelse.",
 				"githubLink": "Sjekk ut appen her!",
 				"projectID": "gr2313"
+			},
+			{
+				"title": "Wordle-klone",
+				"wordleGame": "true"
+			},
+			{
+				"title": "Snake-spill med React",
+				"snakeGame": "true"
 			}
 		]
 	},
