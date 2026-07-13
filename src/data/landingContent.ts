@@ -6,7 +6,7 @@ type LandingContent = {
 		title: string;
 		description: string;
 	};
-	occupation: string;
+	occupations: string[];
 	nav: {
 		work: string;
 		background: string;
@@ -73,10 +73,11 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 			description:
 				"A website to show off Ola Munthe Vassbotn's skills and projects.",
 		},
-		occupation:
-			"Full-stack Developer · Informatics Student · " +
-			getAge() +
-			" years old",
+		occupations: [
+			"Full-stack Developer",
+			"Informatics Student",
+			getAge() + " years old",
+		],
 		nav: {
 			work: "Work",
 			background: "Background",
@@ -194,10 +195,11 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 			description:
 				"En nettside som viser frem Ola Munthe Vassbotns ferdigheter og prosjekter.",
 		},
-		occupation:
-			"Fullstack-utvikler · Informatikkstudent · " +
-			getAge() +
-			" år gammel",
+		occupations: [
+			"Fullstack-utvikler",
+			"Informatikkstudent",
+			getAge() + " år gammel",
+		],
 		nav: {
 			work: "Erfaring",
 			background: "Bakgrunn",

@@ -2,6 +2,17 @@
 
 @theme {
 	--animate-subtle-rise: subtle-rise 500ms ease-out both;
+	--animate-caret-blink: caret-blink 1.1s step-end infinite;
+
+	@keyframes caret-blink {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0;
+		}
+	}
 
 	@keyframes subtle-rise {
 		from {
