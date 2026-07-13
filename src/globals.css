@@ -1,18 +1,16 @@
 @import "tailwindcss";
 
-@media (prefers-reduced-motion: no-preference) {
-	.subtle-rise {
-		animation: subtle-rise 500ms ease-out both;
-	}
-}
+@theme {
+	--animate-subtle-rise: subtle-rise 500ms ease-out both;
 
-@keyframes subtle-rise {
-	from {
-		opacity: 0;
-		transform: translateY(10px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
+	@keyframes subtle-rise {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 }

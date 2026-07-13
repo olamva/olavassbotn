@@ -3,15 +3,11 @@ import "../globals.css";
 
 interface Props {
 	lang: string;
-	title?: string;
-	description?: string;
+	title: string;
+	description: string;
 }
 
-const {
-	lang,
-	title = "Ola Munthe Vassbotn's Portfolio",
-	description = "A website designed to show off Ola's skills and projects.",
-} = Astro.props;
+const { lang, title, description } = Astro.props;
 ---
 
 <!doctype html>
