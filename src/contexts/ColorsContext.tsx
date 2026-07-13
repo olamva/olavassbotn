@@ -1,10 +1,7 @@
-import {
+import React, {
 	createContext,
-	Dispatch,
-	FC,
-	ReactNode,
-	SetStateAction,
 	useState,
+	type Dispatch, type FC, type ReactNode, type SetStateAction
 } from "react";
 
 interface ColorsContextType {
