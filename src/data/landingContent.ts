@@ -51,14 +51,32 @@ type LandingContent = {
 	};
 };
 
+const BIRTHDAY = new Date(2003, 6, 10);
+
+const getAge = (): number => {
+	const now = new Date();
+	let age = now.getFullYear() - BIRTHDAY.getFullYear();
+	const hasHadBirthdayThisYear =
+		now.getMonth() > BIRTHDAY.getMonth() ||
+		(now.getMonth() === BIRTHDAY.getMonth() &&
+			now.getDate() >= BIRTHDAY.getDate());
+	if (!hasHadBirthdayThisYear) {
+		age--;
+	}
+	return age;
+};
+
 export const landingContentByLocale: Record<Locale, LandingContent> = {
 	en: {
 		meta: {
-			title: "Ola Munthe Vassbotn – Portfolio",
+			title: "Ola Munthe Vassbotn - Portfolio",
 			description:
 				"A website to show off Ola Munthe Vassbotn's skills and projects.",
 		},
-		occupation: "Full-stack Developer · Informatics Student",
+		occupation:
+			"Full-stack Developer · Informatics Student · " +
+			getAge() +
+			" years old",
 		nav: {
 			work: "Work",
 			background: "Background",
@@ -93,7 +111,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 				{
 					role: "Full-stack Developer",
 					company: "Vitalthings, Trondheim",
-					period: "Aug 2024 – Dec 2024 (part-time)",
+					period: "Aug 2024 - Dec 2024 (part-time)",
 					highlights: [
 						"Continued developing the Somnofy web application part-time alongside my studies.",
 					],
@@ -118,13 +136,13 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 						{
 							title: "NTNU, Trondheim",
 							subtitle:
-								"MSc in Informatics – Databases and Search",
-							period: "Aug 2025 – Present",
+								"MSc in Informatics - Databases and Search",
+							period: "Aug 2025 - Present",
 						},
 						{
 							title: "NTNU, Trondheim",
 							subtitle: "BSc in Informatics",
-							period: "Aug 2022 – Jun 2025",
+							period: "Aug 2022 - Jun 2025",
 						},
 					],
 				},
@@ -134,13 +152,13 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 						{
 							title: "Online Student Association",
 							subtitle: "Deputy Leader of the Association",
-							period: "Mar 2025 – Present",
+							period: "Mar 2025 - Present",
 						},
 						{
 							title: "Online Student Association",
 							subtitle:
 								"Deputy Leader & Booking Manager, Academic & Course Committee",
-							period: "Feb 2024 – Feb 2025",
+							period: "Feb 2024 - Feb 2025",
 						},
 					],
 				},
@@ -151,14 +169,14 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 			linkLabel: "View on GitHub",
 			items: [
 				{
-					title: "Y – Twitter clone",
+					title: "Y - Twitter clone",
 					description:
 						"A social feed application built as a team project with core feed and interaction functionality.",
 					stack: "React · TypeScript · Vite · MongoDB · GraphQL",
 					link: "https://github.com/olamva/Y",
 				},
 				{
-					title: "Flashy – Quizlet clone",
+					title: "Flashy - Quizlet clone",
 					description:
 						"A collaborative learning app where users create and practice flashcards with quiz flows.",
 					stack: "React · TypeScript · Next.js · Mantine · Firebase",
@@ -172,11 +190,14 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 	},
 	no: {
 		meta: {
-			title: "Ola Munthe Vassbotn – Portefølje",
+			title: "Ola Munthe Vassbotn - Portefølje",
 			description:
 				"En nettside som viser frem Ola Munthe Vassbotns ferdigheter og prosjekter.",
 		},
-		occupation: "Fullstack-utvikler · Informatikkstudent",
+		occupation:
+			"Fullstack-utvikler · Informatikkstudent · " +
+			getAge() +
+			" år gammel",
 		nav: {
 			work: "Erfaring",
 			background: "Bakgrunn",
@@ -211,7 +232,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 				{
 					role: "Fullstack-utvikler",
 					company: "Vitalthings, Trondheim",
-					period: "Aug 2024 – Des 2024 (deltid)",
+					period: "Aug 2024 - Des 2024 (deltid)",
 					highlights: [
 						"Fortsatte utviklingen av Somnofy-webappen på deltid ved siden av studiene.",
 					],
@@ -235,13 +256,13 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					items: [
 						{
 							title: "NTNU, Trondheim",
-							subtitle: "Master i informatikk – databaser og søk",
-							period: "Aug 2025 – Nå",
+							subtitle: "Master i informatikk - databaser og søk",
+							period: "Aug 2025 - Nå",
 						},
 						{
 							title: "NTNU, Trondheim",
 							subtitle: "Bachelor i informatikk",
-							period: "Aug 2022 – Jun 2025",
+							period: "Aug 2022 - Jun 2025",
 						},
 					],
 				},
@@ -251,13 +272,13 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 						{
 							title: "Linjeforeningen Online",
 							subtitle: "Nestleder i foreningen",
-							period: "Mar 2025 – Nå",
+							period: "Mar 2025 - Nå",
 						},
 						{
 							title: "Linjeforeningen Online",
 							subtitle:
 								"Nestleder og bookingansvarlig, Fag- og kurskomitéen",
-							period: "Feb 2024 – Feb 2025",
+							period: "Feb 2024 - Feb 2025",
 						},
 					],
 				},
@@ -268,14 +289,14 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 			linkLabel: "Se på GitHub",
 			items: [
 				{
-					title: "Y – Twitter-klone",
+					title: "Y - Twitter-klone",
 					description:
 						"En sosial feed-applikasjon laget i team med kjernestøtte for feed og interaksjoner.",
 					stack: "React · TypeScript · Vite · MongoDB · GraphQL",
 					link: "https://github.com/olamva/Y",
 				},
 				{
-					title: "Flashy – Quizlet-klone",
+					title: "Flashy - Quizlet-klone",
 					description:
 						"En læringsapp der brukere lager og øver på flashcards med quiz-flyt.",
 					stack: "React · TypeScript · Next.js · Mantine · Firebase",
