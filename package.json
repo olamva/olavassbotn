@@ -20,7 +20,7 @@
 		"lint": "eslint src/",
 		"lf": "pnpm lint && pnpm format",
 		"go": "pnpm lf && pnpm dev",
-		"prepare": "husky"
+		"prepare": "husky || true"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
