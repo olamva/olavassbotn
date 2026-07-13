@@ -2,6 +2,16 @@
 	"name": "olavassbotn",
 	"version": "1.0.0",
 	"private": true,
+	"engines": {
+		"node": "^24.0.0"
+	},
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": "^24.0.0",
+			"onFail": "download"
+		}
+	},
 	"scripts": {
 		"dev": "astro dev",
 		"format": "prettier \"src/**/*.{astro,css,js,json,ts,tsx}\" --write",
