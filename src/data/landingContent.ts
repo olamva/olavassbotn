@@ -6,7 +6,7 @@ type LandingContent = {
 		title: string;
 		description: string;
 	};
-	occupations: string[];
+	subtitle: string[];
 	nav: {
 		work: string;
 		background: string;
@@ -73,10 +73,13 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 			description:
 				"A website to show off Ola Munthe Vassbotn's skills and projects.",
 		},
-		occupations: [
+		subtitle: [
 			"Full-stack Developer",
-			"Informatics Student",
 			getAge() + " years old",
+			"Powered by white monster",
+			"Informatics Student",
+			"Probably debugging something right now",
+			"It works on my machine...",
 		],
 		nav: {
 			work: "Work",
@@ -85,7 +88,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 		},
 		hero: {
 			summary:
-				"I build thoughtful full-stack products with React and TypeScript, and I am currently pursuing an MSc in Informatics focused on databases and search at NTNU.",
+				"Currently studying a Master's in Informatics - Databases and Search @ NTNU Trondheim",
 			downloadCv: "Download CV",
 		},
 		work: {
@@ -96,8 +99,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					company: "Bekk, Oslo",
 					period: "Summer 2026",
 					highlights: [
-						"Worked as a full-stack developer in a consulting environment.",
-						"Contributed to production-oriented solutions with modern web tooling.",
+						"Worked as a full-stack (mostly backend) developer at the Norwegian Directorate for Education and Training.",
 					],
 				},
 				{
@@ -105,7 +107,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					company: "Bekk, Oslo",
 					period: "Summer 2025",
 					highlights: [
-						"Improved customer experience at Møller Digital with a new React frontend and C# backend integration.",
+						"Worked as a full-stack (mostly backend) developer at Møller Digital.",
 						"Helped streamline sales workflows and reduce manual effort.",
 					],
 				},
@@ -123,7 +125,6 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					period: "Summer 2024",
 					highlights: [
 						"Worked across frontend and backend for the Somnofy web application.",
-						"Shipped features in collaboration with product and engineering teams.",
 					],
 				},
 			],
@@ -137,12 +138,12 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 						{
 							title: "NTNU, Trondheim",
 							subtitle:
-								"MSc in Informatics - Databases and Search",
+								"Master in Informatics - Databases and Search",
 							period: "Aug 2025 - Present",
 						},
 						{
 							title: "NTNU, Trondheim",
-							subtitle: "BSc in Informatics",
+							subtitle: "Bachelor in Informatics",
 							period: "Aug 2022 - Jun 2025",
 						},
 					],
@@ -153,7 +154,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 						{
 							title: "Online Student Association",
 							subtitle: "Deputy Leader of the Association",
-							period: "Mar 2025 - Present",
+							period: "Mar 2025 - Mar 2026",
 						},
 						{
 							title: "Online Student Association",
@@ -166,20 +167,20 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 			],
 		},
 		projects: {
-			title: "Selected projects",
+			title: "Projects",
 			linkLabel: "View on GitHub",
 			items: [
 				{
 					title: "Y - Twitter clone",
 					description:
-						"A social feed application built as a team project with core feed and interaction functionality.",
+						"A social feed application with fully fledged functionality built as a team project for the course IT2810.",
 					stack: "React · TypeScript · Vite · MongoDB · GraphQL",
 					link: "https://github.com/olamva/Y",
 				},
 				{
 					title: "Flashy - Quizlet clone",
 					description:
-						"A collaborative learning app where users create and practice flashcards with quiz flows.",
+						"A flashcard based collaborative learning app with quiz flows built as a team project for the course TDT4140.",
 					stack: "React · TypeScript · Next.js · Mantine · Firebase",
 					link: "https://github.com/olamva/flashy",
 				},
@@ -195,10 +196,13 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 			description:
 				"En nettside som viser frem Ola Munthe Vassbotns ferdigheter og prosjekter.",
 		},
-		occupations: [
+		subtitle: [
 			"Fullstack-utvikler",
-			"Informatikkstudent",
 			getAge() + " år gammel",
+			"Drevet av hvit monster",
+			"Informatikkstudent",
+			"Debugger sannsynligvis noe akkurat nå",
+			"Det funker på min maskin...",
 		],
 		nav: {
 			work: "Erfaring",
@@ -207,7 +211,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 		},
 		hero: {
 			summary:
-				"Jeg bygger gode fullstack-løsninger med React og TypeScript, og tar nå en master i informatikk med fokus på databaser og søk ved NTNU.",
+				"Studerer Master i Informatikk - Databaser og Søk @ NTNU Trondheim",
 			downloadCv: "Last ned CV",
 		},
 		work: {
@@ -218,8 +222,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					company: "Bekk, Oslo",
 					period: "Sommer 2026",
 					highlights: [
-						"Jobbet som fullstack-utvikler i et konsulentmiljø.",
-						"Bidro i leveranser av produksjonsnære løsninger med moderne webteknologi.",
+						"Jobbet som fullstack-utvikler (hovedsakelig backend) hos Utdanningsdirektoratet.",
 					],
 				},
 				{
@@ -227,8 +230,8 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					company: "Bekk, Oslo",
 					period: "Sommer 2025",
 					highlights: [
-						"Forbedret kundeopplevelsen hos Møller Digital med nytt React-frontend koblet til C#-backend.",
-						"Hjalp salgsmiljøet med en mer effektiv arbeidsflyt.",
+						"Jobbet som fullstack-utvikler (hovedsakelig backend) hos Møller Digital.",
+						"Hjalp salgsmiljøet med en mer effektiv arbeidsflyt og mindre manuelt arbeid.",
 					],
 				},
 				{
@@ -245,7 +248,6 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					period: "Sommer 2024",
 					highlights: [
 						"Jobbet både frontend og backend i Somnofy-webappen.",
-						"Leverte funksjonalitet i tett samarbeid med produkt og utvikling.",
 					],
 				},
 			],
@@ -258,12 +260,12 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					items: [
 						{
 							title: "NTNU, Trondheim",
-							subtitle: "Master i informatikk - databaser og søk",
+							subtitle: "Master i Informatikk - Databaser og Søk",
 							period: "Aug 2025 - Nå",
 						},
 						{
 							title: "NTNU, Trondheim",
-							subtitle: "Bachelor i informatikk",
+							subtitle: "Bachelor i Informatikk",
 							period: "Aug 2022 - Jun 2025",
 						},
 					],
@@ -274,7 +276,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 						{
 							title: "Linjeforeningen Online",
 							subtitle: "Nestleder i foreningen",
-							period: "Mar 2025 - Nå",
+							period: "Mar 2025 - Mar 2026",
 						},
 						{
 							title: "Linjeforeningen Online",
@@ -287,20 +289,20 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 			],
 		},
 		projects: {
-			title: "Utvalgte prosjekter",
+			title: "Prosjekter",
 			linkLabel: "Se på GitHub",
 			items: [
 				{
 					title: "Y - Twitter-klone",
 					description:
-						"En sosial feed-applikasjon laget i team med kjernestøtte for feed og interaksjoner.",
+						"En sosial feed-applikasjon med all funksjonalitet laget i team for faget IT2810.",
 					stack: "React · TypeScript · Vite · MongoDB · GraphQL",
 					link: "https://github.com/olamva/Y",
 				},
 				{
 					title: "Flashy - Quizlet-klone",
 					description:
-						"En læringsapp der brukere lager og øver på flashcards med quiz-flyt.",
+						"En flashcards-basert læringsapp med quiz-flyt laget i team for faget TDT4140.",
 					stack: "React · TypeScript · Next.js · Mantine · Firebase",
 					link: "https://github.com/olamva/flashy",
 				},
