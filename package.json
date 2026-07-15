@@ -1,49 +1,39 @@
 {
 	"name": "olavassbotn",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"format": "prettier \"src/**/*.{js,html,json,ts,tsx}\" --write --ignore-path .prettierignore",
-		"build": "next build",
-		"start": "next start",
-		"lint": "npx eslint src/ ",
-		"lf": "npm run lint && npm run format",
-		"go": "npm run lf && npm run dev",
-		"prepare": "husky"
+	"engines": {
+		"node": "^24.0.0"
 	},
-	"dependencies": {
-		"@emotion/react": "^11.11.4",
-		"@emotion/styled": "^11.11.0",
-		"@eslint/js": "^9.6.0",
-		"@fontsource/roboto": "^5.0.12",
-		"@radix-ui/react-scroll-area": "^1.2.1",
-		"@vercel/analytics": "^1.2.2",
-		"@vercel/speed-insights": "^1.0.10",
-		"class-variance-authority": "^0.7.1",
-		"clsx": "^2.1.1",
-		"eslint-plugin-react": "^7.34.3",
-		"eslint-plugin-react-hooks": "^4.6.2",
-		"globals": "^15.8.0",
-		"lucide-react": "^0.468.0",
-		"next": "^14.2.20",
-		"next-intl": "^3.10.0",
-		"react": "^18",
-		"react-dom": "^18",
-		"tailwind-merge": "^2.5.5",
-		"tailwindcss-animate": "^1.0.7",
-		"typescript-eslint": "^7.15.0"
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": "^24.0.0",
+			"onFail": "download"
+		}
+	},
+	"scripts": {
+		"dev": "astro dev",
+		"format": "prettier \"src/**/*.{astro,css,js,json,ts,tsx}\" --write",
+		"build": "astro build",
+		"start": "astro preview",
+		"lint": "eslint src/",
+		"lf": "pnpm lint && pnpm format",
+		"go": "pnpm lf && pnpm dev",
+		"prepare": "husky || true"
 	},
 	"devDependencies": {
-		"@types/node": "^20",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
-		"autoprefixer": "^10.4.19",
-		"husky": "^9.0.11",
-		"postcss": "^8.4.39",
-		"prettier": "^3.3.3",
-		"prettier-plugin-tailwindcss": "^0.6.5",
-		"tailwindcss": "^3.4.4",
-		"typescript": "^5"
-	}
+		"@eslint/js": "^10.0.1",
+		"@tailwindcss/vite": "^4.3.2",
+		"astro": "^7.0.7",
+		"eslint": "^10.0.0",
+		"husky": "^9.1.7",
+		"prettier": "^3.9.5",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-tailwindcss": "^0.8.0",
+		"tailwindcss": "^4.3.2",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.63.0"
+	},
+	"packageManager": "pnpm@11.12.0"
 }

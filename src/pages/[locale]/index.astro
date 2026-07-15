@@ -1,0 +1,241 @@
+---
+import {
+	landingContentByLocale,
+	locales,
+	type Locale,
+} from "@/data/landingContent";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+	return locales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const t = landingContentByLocale[locale];
+const nextLocale: Locale = locale === "no" ? "en" : "no";
+---
+
+<BaseLayout lang={locale} title={t.meta.title} description={t.meta.description}>
+	<header
+		class="sticky top-0 z-20 border-b border-slate-200/80 bg-[rgb(244,246,248)]/80 backdrop-blur"
+	>
+		<div
+			class="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4"
+		>
+			<nav class="flex items-center gap-4 text-sm text-slate-700">
+				<a href="#work" class="hover:text-slate-950">
+					{t.nav.work}
+				</a>
+				<a href="#background" class="hover:text-slate-950">
+					{t.nav.background}
+				</a>
+				<a href="#projects" class="hover:text-slate-950">
+					{t.nav.projects}
+				</a>
+			</nav>
+			<a
+				href={`/${nextLocale}`}
+				class="rounded-full border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
+			>
+				{nextLocale.toUpperCase()}
+			</a>
+		</div>
+	</header>
+	<main class="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6">
+		<section class="motion-safe:animate-subtle-rise pt-20">
+			<h1
+				class="text-4xl font-semibold tracking-tight text-slate-950 sm:text-6xl"
+			>
+				Ola Munthe Vassbotn
+			</h1>
+			<p class="mt-3 text-xl text-slate-700">
+				<span class="sr-only">{t.subtitle.join(" · ")}</span>
+				<span aria-hidden="true"
+					><span
+						id="occupation-typewriter"
+						data-phrases={JSON.stringify(t.subtitle)}
+						>{t.subtitle[0]}</span
+					><span
+						class="motion-safe:animate-caret-blink ml-0.5 inline-block h-[1.1em] w-0.5 bg-slate-700 align-[-0.15em]"
+					></span></span
+				>
+			</p>
+			<p class="mt-8 max-w-3xl text-lg leading-relaxed text-slate-700">
+				{t.hero.summary}
+			</p>
+			<div class="mt-10 flex flex-wrap gap-3">
+				<a
+					href={`/cv/ola-vassbotn-cv-${locale}.pdf`}
+					download
+					class="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800"
+				>
+					{t.hero.downloadCv}
+				</a>
+			</div>
+		</section>
+
+		<section id="work" class="motion-safe:animate-subtle-rise">
+			<h2 class="text-3xl font-semibold tracking-tight text-slate-950">
+				{t.work.title}
+			</h2>
+			<ol class="mt-8 space-y-10 border-l border-slate-200 pl-6">
+				{
+					t.work.items.map((item) => (
+						<li class="relative">
+							<span
+								class="absolute top-1.5 left-[-29.5px] size-3 rounded-full border-2 border-slate-400 bg-white"
+								aria-hidden="true"
+							/>
+							<div class="flex flex-wrap items-baseline justify-between gap-2">
+								<h3 class="text-lg font-medium text-slate-900">
+									{item.role} · {item.company}
+								</h3>
+								<p class="text-sm text-slate-600">
+									{item.period}
+								</p>
+							</div>
+							<ul class="mt-2 list-disc space-y-1 pl-5 text-slate-700">
+								{item.highlights.map((highlight) => (
+									<li>{highlight}</li>
+								))}
+							</ul>
+						</li>
+					))
+				}
+			</ol>
+		</section>
+
+		<section id="background" class="motion-safe:animate-subtle-rise">
+			<h2 class="text-3xl font-semibold tracking-tight text-slate-950">
+				{t.background.title}
+			</h2>
+			<div class="mt-8 grid gap-4 md:grid-cols-2">
+				{
+					t.background.sections.map((section) => (
+						<div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+							<h3 class="text-lg font-medium text-slate-900">
+								{section.title}
+							</h3>
+							<ol class="mt-4 space-y-4 border-l border-slate-200 pl-4">
+								{section.items.map((item) => (
+									<li class="relative">
+										<span
+											class="absolute top-1.5 left-[-19.5px] size-2 rounded-full bg-slate-400"
+											aria-hidden="true"
+										/>
+										<p class="font-medium text-slate-800">
+											{item.title}
+										</p>
+										<p class="text-slate-700">
+											{item.subtitle}
+										</p>
+										<p class="text-sm text-slate-600">
+											{item.period}
+										</p>
+									</li>
+								))}
+							</ol>
+						</div>
+					))
+				}
+			</div>
+		</section>
+
+		<section id="projects" class="motion-safe:animate-subtle-rise">
+			<h2 class="text-3xl font-semibold tracking-tight text-slate-950">
+				{t.projects.title}
+			</h2>
+			<div class="mt-8 grid gap-4 md:grid-cols-2">
+				{
+					t.projects.items.map((item) => (
+						<article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+							<h3 class="text-lg font-medium text-slate-900">
+								{item.title}
+							</h3>
+							<p class="mt-2 text-slate-700">
+								{item.description}
+							</p>
+							<p class="mt-3 text-sm text-slate-600">
+								{item.stack}
+							</p>
+							<a
+								href={item.link}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="mt-4 inline-flex text-sm font-medium text-slate-900 underline-offset-2 hover:underline"
+							>
+								{t.projects.linkLabel}
+							</a>
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		<footer class="border-t border-slate-200 py-12">
+			<h2 class="text-xl font-semibold text-slate-950">
+				{t.contact.title}
+			</h2>
+			<div class="mt-4 flex flex-wrap gap-4 text-slate-700">
+				<a href="mailto:ola@vassbotn.com" class="hover:text-slate-900">
+					ola@vassbotn.com
+				</a>
+				<a
+					href="https://www.linkedin.com/in/ola-vassbotn/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="hover:text-slate-900"
+				>
+					LinkedIn
+				</a>
+				<a
+					href="https://github.com/olamva"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="hover:text-slate-900"
+				>
+					GitHub
+				</a>
+			</div>
+		</footer>
+	</main>
+</BaseLayout>
+
+<script>
+	const el = document.getElementById("occupation-typewriter");
+	const phrases: string[] = JSON.parse(el?.dataset.phrases ?? "[]");
+
+	if (el && phrases.length > 1) {
+		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+			el.textContent = phrases.join(" · ");
+		} else {
+			const TYPE_MS = 70;
+			const DELETE_MS = 40;
+			const HOLD_MS = 2_200;
+			const PAUSE_MS = 500;
+			let index = 0;
+
+			const type = (phrase: string, length: number) => {
+				el.textContent = phrase.slice(0, length);
+				if (length < phrase.length) {
+					setTimeout(() => type(phrase, length + 1), TYPE_MS);
+				} else {
+					setTimeout(() => erase(phrase, length), HOLD_MS);
+				}
+			};
+
+			const erase = (phrase: string, length: number) => {
+				el.textContent = phrase.slice(0, length);
+				if (length > 0) {
+					setTimeout(() => erase(phrase, length - 1), DELETE_MS);
+				} else {
+					index = (index + 1) % phrases.length;
+					setTimeout(() => type(phrases[index] ?? "", 1), PAUSE_MS);
+				}
+			};
+
+			const first = phrases[0] ?? "";
+			setTimeout(() => erase(first, first.length), HOLD_MS);
+		}
+	}
+</script>
