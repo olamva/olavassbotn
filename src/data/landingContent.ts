@@ -178,11 +178,11 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					link: "https://github.com/olamva/Y",
 				},
 				{
-					title: "Flashy - Quizlet clone",
+					title: "Diaper Dash - Android game",
 					description:
-						"A flashcard based collaborative learning app with quiz flows built as a team project for the course TDT4140.",
-					stack: "React · TypeScript · Next.js · Mantine · Firebase",
-					link: "https://github.com/olamva/flashy",
+						"A multiplayer Android game with lobbies, power-ups and leaderboards, built on an entity-component-system architecture as a team project for the course TDT4240.",
+					stack: "Java · LibGDX · Android · Firebase",
+					link: "https://github.com/madsab/diaper-dash-domination-derby",
 				},
 			],
 		},
@@ -300,11 +300,11 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					link: "https://github.com/olamva/Y",
 				},
 				{
-					title: "Flashy - Quizlet-klone",
+					title: "Diaper Dash - Android-spill",
 					description:
-						"En flashcards-basert læringsapp med quiz-flyt laget i team for faget TDT4140.",
-					stack: "React · TypeScript · Next.js · Mantine · Firebase",
-					link: "https://github.com/olamva/flashy",
+						"Et flerspiller Android-spill med lobbyer, power-ups og ledertavler, bygget på en entity-component-system-arkitektur i team for faget TDT4240.",
+					stack: "Java · LibGDX · Android · Firebase",
+					link: "https://github.com/madsab/diaper-dash-domination-derby",
 				},
 			],
 		},
