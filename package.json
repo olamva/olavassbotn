@@ -3,37 +3,22 @@
 	"version": "1.0.0",
 	"private": true,
 	"engines": {
-		"node": "^24.0.0"
-	},
-	"devEngines": {
-		"runtime": {
-			"name": "node",
-			"version": "^24.0.0",
-			"onFail": "download"
-		}
+		"node": ">=24"
 	},
 	"scripts": {
 		"dev": "astro dev",
 		"format": "prettier \"src/**/*.{astro,css,js,json,ts,tsx}\" --write",
 		"build": "astro build",
-		"start": "astro preview",
-		"lint": "eslint src/",
-		"lf": "pnpm lint && pnpm format",
-		"go": "pnpm lf && pnpm dev",
-		"prepare": "husky || true"
+		"start": "astro preview"
 	},
 	"devDependencies": {
-		"@eslint/js": "^10.0.1",
 		"@tailwindcss/vite": "^4.3.2",
 		"astro": "^7.0.7",
-		"eslint": "^10.0.0",
-		"husky": "^9.1.7",
 		"prettier": "^3.9.5",
 		"prettier-plugin-astro": "^0.14.1",
 		"prettier-plugin-tailwindcss": "^0.8.0",
 		"tailwindcss": "^4.3.2",
-		"typescript": "^6.0.3",
-		"typescript-eslint": "^8.63.0"
+		"typescript": "^6.0.3"
 	},
 	"packageManager": "pnpm@11.20.0"
 }
