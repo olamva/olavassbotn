@@ -107,7 +107,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					company: "Bekk, Oslo",
 					period: "Summer 2025",
 					highlights: [
-						"Worked as a full-stack (mostly backend) developer at Møller Digital.",
+						"Worked as a full-stack (mostly frontend) developer at Møller Digital.",
 						"Helped streamline sales workflows and reduce manual effort.",
 					],
 				},
@@ -230,7 +230,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 					company: "Bekk, Oslo",
 					period: "Sommer 2025",
 					highlights: [
-						"Jobbet som fullstack-utvikler (hovedsakelig backend) hos Møller Digital.",
+						"Jobbet som fullstack-utvikler (hovedsakelig frontend) hos Møller Digital.",
 						"Hjalp salgsmiljøet med en mer effektiv arbeidsflyt og mindre manuelt arbeid.",
 					],
 				},

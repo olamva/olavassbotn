@@ -204,10 +204,11 @@ const nextLocale: Locale = locale === "no" ? "en" : "no";
 <script>
 	const el = document.getElementById("occupation-typewriter");
 	const phrases: string[] = JSON.parse(el?.dataset.phrases ?? "[]");
+	const first = phrases[0] ?? "";
 
 	if (el && phrases.length > 1) {
 		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-			el.textContent = phrases.join(" · ");
+			el.textContent = first;
 		} else {
 			const TYPE_MS = 70;
 			const DELETE_MS = 40;
@@ -234,7 +235,6 @@ const nextLocale: Locale = locale === "no" ? "en" : "no";
 				}
 			};
 
-			const first = phrases[0] ?? "";
 			setTimeout(() => erase(first, first.length), HOLD_MS);
 		}
 	}
