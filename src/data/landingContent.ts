@@ -180,7 +180,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 				{
 					title: "Diaper Dash - Android game",
 					description:
-						"A multiplayer Android game with lobbies, power-ups and leaderboards, built on an entity-component-system architecture as a team project for the course TDT4240.",
+						"A multiplayer Android game built on an ECS and MVC architecture as a team project for the course TDT4240.",
 					stack: "Java · LibGDX · Android · Firebase",
 					link: "https://github.com/madsab/diaper-dash-domination-derby",
 				},
@@ -302,7 +302,7 @@ export const landingContentByLocale: Record<Locale, LandingContent> = {
 				{
 					title: "Diaper Dash - Android-spill",
 					description:
-						"Et flerspiller Android-spill med lobbyer, power-ups og ledertavler, bygget på en entity-component-system-arkitektur i team for faget TDT4240.",
+						"Et flerspiller Android-spill bygget på en ECS- og MVC-arkitektur i team for faget TDT4240.",
 					stack: "Java · LibGDX · Android · Firebase",
 					link: "https://github.com/madsab/diaper-dash-domination-derby",
 				},
