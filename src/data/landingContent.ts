@@ -118,13 +118,30 @@ const no = {
 	projects: {
 		title: "Prosjekter",
 		linkLabel: "Se på GitHub",
+		appLinkLabel: "Åpne appen",
 		items: [
+			{
+				title: "F1 Pitwall",
+				description:
+					"En F1-nettside med live timing, reprise av nylige økter og sesongstatistikk med en kalkulator for når mesterskapet er avgjort.",
+				stack: "React · TypeScript · Vite · Tailwind · Hono · Oracle Cloud",
+				link: "https://github.com/olamva/f1",
+				appLink: "https://f1.ola-vassbotn.no",
+			},
+			{
+				title: "Banking",
+				description:
+					"Personlig forbruksanalyse over SpareBank 1-kontoene mine, med kategorisering av transaksjoner og kvitteringer fra Rema, Trumf og Gmail.",
+				stack: "React · TypeScript · Vite · Tailwind · Node · SQLite",
+				link: "https://github.com/olamva/banking",
+			},
 			{
 				title: "Y - Twitter-klone",
 				description:
 					"En sosial feed-applikasjon med all funksjonalitet laget i team for faget IT2810.",
 				stack: "React · TypeScript · Vite · MongoDB · GraphQL",
 				link: "https://github.com/olamva/Y",
+				appLink: "https://yeeter.no",
 			},
 			{
 				title: "Diaper Dash",
@@ -243,13 +260,30 @@ const en = {
 	projects: {
 		title: "Projects",
 		linkLabel: "View on GitHub",
+		appLinkLabel: "Open app",
 		items: [
+			{
+				title: "F1 Pitwall",
+				description:
+					"An F1 site with live timing, replays of recent sessions, and season stats with a championship clinch calculator.",
+				stack: "React · TypeScript · Vite · Tailwind · Hono · Oracle Cloud",
+				link: "https://github.com/olamva/f1",
+				appLink: "https://f1.ola-vassbotn.no",
+			},
+			{
+				title: "Banking",
+				description:
+					"Personal spending analysis over my SpareBank 1 accounts, with transaction categorization and receipts from Rema, Trumf and Gmail.",
+				stack: "React · TypeScript · Vite · Tailwind · Node · SQLite",
+				link: "https://github.com/olamva/banking",
+			},
 			{
 				title: "Y - Twitter clone",
 				description:
 					"A social feed application with fully fledged functionality built as a team project for the course IT2810.",
 				stack: "React · TypeScript · Vite · MongoDB · GraphQL",
 				link: "https://github.com/olamva/Y",
+				appLink: "https://yeeter.no",
 			},
 			{
 				title: "Diaper Dash",
