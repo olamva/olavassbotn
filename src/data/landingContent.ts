@@ -125,7 +125,7 @@ const no = {
 				description:
 					"En F1-nettside med live timing, reprise av nylige økter og sesongstatistikk med en kalkulator for når mesterskapet er avgjort.",
 				stack: "React · TypeScript · Vite · Tailwind · Hono · Oracle Cloud",
-				link: "https://github.com/olamva/f1",
+				link: "https://github.com/olamva/f1-pitwall",
 				appLink: "https://f1.ola-vassbotn.no",
 			},
 			{
@@ -267,7 +267,7 @@ const en = {
 				description:
 					"An F1 site with live timing, replays of recent sessions, and season stats with a championship clinch calculator.",
 				stack: "React · TypeScript · Vite · Tailwind · Hono · Oracle Cloud",
-				link: "https://github.com/olamva/f1",
+				link: "https://github.com/olamva/f1-pitwall",
 				appLink: "https://f1.ola-vassbotn.no",
 			},
 			{
